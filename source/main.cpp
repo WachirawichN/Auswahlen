@@ -3,6 +3,14 @@
 
 #include <iostream>
 
+#include "graphic/renderer.h"
+#include "graphic/vertexArray.h"
+#include "graphic/vertexBuffer.h"
+#include "graphic/vertexBufferLayout.h"
+#include "graphic/indexBuffer.h"
+#include "graphic/shader.h"
+#include "graphic/texture.h"
+
 void GLAPIENTRY MessageCallback(GLenum source,
                                 GLenum type,
                                 GLuint id,
@@ -35,6 +43,10 @@ int main()
     }
     glfwMakeContextCurrent(window);
     
+    int width, height;
+    glfwGetFramebufferSize(window, &width, &height);
+    glViewport(0, 0, width, height);
+    
     // Initiate GLEW
     if (glewInit() != GLEW_OK)
     {
@@ -47,20 +59,56 @@ int main()
 
 
     // Create object, shader, variable, blah blah blah here
-
-
-
-    while (!glfwWindowShouldClose(window))
     {
-        glClear(GL_COLOR_BUFFER_BIT);
+        float vertices[] = {
+        //    Vertices   ,   Texture coordinates
+            -0.5f, -0.5f,      0.0f, 0.0f,
+             0.5f, -0.5f,      1.0f, 0.0f,
+             0.5f,  0.5f,      1.0f, 1.0f,
+            -0.5f,  0.5f,      0.0f, 1.0f,
+        };
+    
+        unsigned int indices[] = {
+            0, 1, 2,
+            0, 3, 2
+        };
+    
+        vertexArray va;
+        vertexBuffer vb(4 * 4, vertices);
+        vertexBufferLayout layout;
+        layout.addLayout(2); // Vertices layout
+        layout.addLayout(2); // Texture layout
+        indexBuffer ib(2 * 3, indices);
+    
+        va.addBuffer(vb, layout);
+    
+        shader yeetShader("graphic/res/shader/texture.shader");
+        yeetShader.bind();
+        //yeetShader.setUniform4f("uColor", 0.3f, 0.2f, 0.7f, 1.0f);
 
-        // Draw vertices here
+        texture soulKingShader("graphic/res/texture/dead.png");
+        soulKingShader.bind();
+        yeetShader.setUniform1i("uTexture", 0);
 
+        va.unbind();
+        vb.unbind();
+        ib.unbind();
+        yeetShader.unbind();
+    
+        renderer sceneRenderer;
 
-        glfwSwapBuffers(window);
-        glfwPollEvents();
+        while (!glfwWindowShouldClose(window))
+        {
+            sceneRenderer.clearScreen();
+    
+            // Draw vertices here
+            yeetShader.bind();
+            sceneRenderer.drawScreen(va, ib, yeetShader);
+    
+            glfwSwapBuffers(window);
+            glfwPollEvents();
+        }
     }
-
     glfwTerminate();
     return 0;
 }

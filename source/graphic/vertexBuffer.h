@@ -2,10 +2,12 @@
 
 class vertexBuffer
 {
+    private:
+        unsigned int vertexBufferID;
     public:
-        vertexBuffer();
+        vertexBuffer(unsigned int size, const void* data);
         ~vertexBuffer();
 
-        void bind();
-        void unbind();
+        void bind() const;
+        void unbind() const;
 };
