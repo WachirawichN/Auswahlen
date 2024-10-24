@@ -15,6 +15,7 @@
 #include "graphic/indexBuffer.h"
 #include "graphic/shader.h"
 #include "graphic/texture.h"
+#include "graphic/camera.h"
 
 #include "geometry/cube.h"
 #include "geometry/pyramid.h"
@@ -42,41 +43,21 @@ float lastFrame = 0.0f;
 float deltaTime = 0.0f;
 
 // Camera
-float yaw = -90.0f;
-float pitch = 0.0f;
-glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
-glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
+glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 0.0f);
 float cameraSpeed = 10.0f;
+camera worldCamera(cameraPos);
 
 // Mouse input
-float sensitivity = 0.25f;
+float sensitivity = 0.1f;
 float lastXMousePos = width /2;
 float lastYMousePos = height /2;
 void mouseCallbackHandler(GLFWwindow* window, double xPos, double yPos)
 {
     float xDst = xPos - lastXMousePos;
     float yDst = lastYMousePos - yPos;
+    worldCamera.rotateCamera(xDst * sensitivity, yDst * sensitivity);
     lastXMousePos = xPos;
     lastYMousePos = yPos;
-
-    yaw += xDst * sensitivity;
-    pitch += yDst * sensitivity;
-
-    if (pitch > 89.0f)
-    {
-        pitch = 89.0f;
-    }
-    else if (pitch < -89.0f)
-    {
-        pitch = -89.0f;
-    }
-
-    glm::vec3 direction;
-    direction.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-    direction.y = sin(glm::radians(pitch));
-    direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
-    cameraFront = glm::normalize(direction);
 }
 
 // Keyboard input
@@ -92,19 +73,19 @@ void keyboardCallbackHandler(GLFWwindow* window, int key, int scancode, int acti
         switch (key)
         {
             case GLFW_KEY_W:
-                cameraPos += cameraFront * cameraSpeed * deltaTime;
+                worldCamera.move(cameraSpeed, deltaTime);
                 break;
 
             case GLFW_KEY_S:
-                cameraPos -= cameraFront * cameraSpeed * deltaTime;
+                worldCamera.move(cameraSpeed, deltaTime, false, true);
                 break;
 
             case GLFW_KEY_A:
-                cameraPos -= glm::normalize(glm::cross(cameraFront, up)) * cameraSpeed * deltaTime;
+                worldCamera.move(cameraSpeed, deltaTime, true, true);
                 break;
 
             case GLFW_KEY_D:
-                cameraPos += glm::normalize(glm::cross(cameraFront, up)) * cameraSpeed * deltaTime;
+                worldCamera.move(cameraSpeed, deltaTime, true, false);
                 break;
         }
     }
@@ -221,12 +202,7 @@ int main()
         renderer sceneRenderer;
 
         // Perspective projection
-        float fov = 90.0f;
-
-        // Projection matrix
-        glm::mat4 projection = glm::perspective(glm::radians(fov), (float)width/(float)height, 0.1f, 100.0f);
-
-        yeetShader.setUniformMat4fv("projection", GL_FALSE, projection);
+        yeetShader.setUniformMat4fv("projection", GL_FALSE, worldCamera.getProjection());
 
         // Mouse input
         glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -242,7 +218,7 @@ int main()
         {
             sceneRenderer.clearScreen();
             float currentFrame = glfwGetTime();
-            glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, up);
+            yeetShader.setUniformMat4fv("view", GL_FALSE, worldCamera.getView()); // Should only change when camera move
     
             // Draw vertices here
             // Render crystals
@@ -264,7 +240,6 @@ int main()
                 model = glm::rotate(model, glm::radians(rotateAngle * multiplier), glm::vec3(0.0f, 1.0f, 0.0f));
 
                 yeetShader.setUniformMat4fv("model", GL_FALSE, model);
-                yeetShader.setUniformMat4fv("view", GL_FALSE, view);
                 sceneRenderer.drawScreen(va, ib, yeetShader);
             }
 
