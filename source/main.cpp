@@ -16,6 +16,11 @@
 #include "graphic/shader.h"
 #include "graphic/texture.h"
 
+#include "geometry/cube.h"
+#include "geometry/pyramid.h"
+
+
+// OpenGL Logging
 void GLAPIENTRY MessageCallback(GLenum source,
                                 GLenum type,
                                 GLuint id,
@@ -28,6 +33,84 @@ void GLAPIENTRY MessageCallback(GLenum source,
             ( type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : "" ), type, severity, message );
 }
 
+// Window
+int width = 2560;
+int height = 1440;
+
+// Timing
+float lastFrame = 0.0f;
+float deltaTime = 0.0f;
+
+// Camera
+float yaw = -90.0f;
+float pitch = 0.0f;
+glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
+glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
+float cameraSpeed = 10.0f;
+
+// Mouse input
+float sensitivity = 0.25f;
+float lastXMousePos = width /2;
+float lastYMousePos = height /2;
+void mouseCallbackHandler(GLFWwindow* window, double xPos, double yPos)
+{
+    float xDst = xPos - lastXMousePos;
+    float yDst = lastYMousePos - yPos;
+    lastXMousePos = xPos;
+    lastYMousePos = yPos;
+
+    yaw += xDst * sensitivity;
+    pitch += yDst * sensitivity;
+
+    if (pitch > 89.0f)
+    {
+        pitch = 89.0f;
+    }
+    else if (pitch < -89.0f)
+    {
+        pitch = -89.0f;
+    }
+
+    glm::vec3 direction;
+    direction.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+    direction.y = sin(glm::radians(pitch));
+    direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+    cameraFront = glm::normalize(direction);
+}
+
+// Keyboard input
+void keyboardCallbackHandler(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+    {
+        glfwSetWindowShouldClose(window, true);
+    }
+
+    if (action == GLFW_PRESS || action == GLFW_REPEAT)
+    {
+        switch (key)
+        {
+            case GLFW_KEY_W:
+                cameraPos += cameraFront * cameraSpeed * deltaTime;
+                break;
+
+            case GLFW_KEY_S:
+                cameraPos -= cameraFront * cameraSpeed * deltaTime;
+                break;
+
+            case GLFW_KEY_A:
+                cameraPos -= glm::normalize(glm::cross(cameraFront, up)) * cameraSpeed * deltaTime;
+                break;
+
+            case GLFW_KEY_D:
+                cameraPos += glm::normalize(glm::cross(cameraFront, up)) * cameraSpeed * deltaTime;
+                break;
+        }
+    }
+}
+
+
 int main()
 {
     GLFWwindow* window;
@@ -39,7 +122,7 @@ int main()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    window = glfwCreateWindow(800, 800, "Auswahlen", NULL, NULL);
+    window = glfwCreateWindow(width, height, "Auswahlen", glfwGetPrimaryMonitor(), NULL);
     if (!window)
     {
         std::cout << "Fail to create window." << std::endl;
@@ -48,8 +131,6 @@ int main()
     }
     glfwMakeContextCurrent(window);
     
-    int width, height;
-    glfwGetFramebufferSize(window, &width, &height);
     glViewport(0, 0, width, height);
     glClearColor(0.0f, 0.02f, 0.1f, 1.0f);
     
@@ -68,59 +149,68 @@ int main()
 
     // Create object, shader, variable, blah blah blah here
     {
-        float vertices[] = {
-        //        Vertices         ,   Texture coordinates
-            -0.5f, -0.5f, -0.5f,         0.0f, 0.0f, // Back bottom left
-             0.5f, -0.5f, -0.5f,         1.0f, 0.0f, // Back bottom right
-             0.5f,  0.5f, -0.5f,         1.0f, 1.0f, // Back top right
-            -0.5f,  0.5f, -0.5f,         0.0f, 1.0f, // Back top left
 
-            -0.5f, -0.5f,  0.5f,         0.0f, 0.0f, // Front bottom left
-             0.5f, -0.5f,  0.5f,         1.0f, 0.0f, // Front bottom right
-             0.5f,  0.5f,  0.5f,         1.0f, 1.0f, // Front top right
-            -0.5f,  0.5f,  0.5f,         0.0f, 1.0f, // Front top left
+        pyramid illuminati(1.0f, 1.0f, 1.0f);
+        std::vector<float> vertices = illuminati.getVertices();
+        std::vector<unsigned int> indices = illuminati.getIndices();
+
+        glm::vec3 illuminatiPositions[] = {
+        //              Position              ,             Scale
+            glm::vec3(0.0f,   0.5f,    0.0f),   glm::vec3(1.0f,  1.0f,  1.0f),
+            glm::vec3(0.0f,  -0.5f,    0.0f),   glm::vec3(1.0f,  1.0f,  1.0f),
+
+
+
+            glm::vec3(2.5f,   2.0f,    -2.5f),   glm::vec3(0.8f,  2.0f,  0.8f),
+            glm::vec3(2.5f,  -2.0f,    -2.5f),   glm::vec3(0.8f,  2.0f,  0.8f),
+            glm::vec3(2.5f,   1.25f,   -2.5f),   glm::vec3(0.75f, 0.75f, 0.75f),
+            glm::vec3(2.5f,  -1.25f,   -2.5f),   glm::vec3(0.75f, 0.75f, 0.75f),
+ 
+            glm::vec3(2.5f,   0.125f,  -2.5f),   glm::vec3(0.25f, 0.25f, 0.25f),
+            glm::vec3(2.5f,  -0.125f,  -2.5f),   glm::vec3(0.25f, 0.25f, 0.25f),
+
+
+            glm::vec3(-2.5f,  2.0f,    -2.5f),   glm::vec3(0.8f,  2.0f,  0.8f),
+            glm::vec3(-2.5f, -2.0f,    -2.5f),   glm::vec3(0.8f,  2.0f,  0.8f),
+            glm::vec3(-2.5f,  1.25f,   -2.5f),   glm::vec3(0.75f, 0.75f, 0.75f),
+            glm::vec3(-2.5f, -1.25f,   -2.5f),   glm::vec3(0.75f, 0.75f, 0.75f),
+ 
+            glm::vec3(-2.5f,  0.125f,  -2.5f),   glm::vec3(0.25f, 0.25f, 0.25f),
+            glm::vec3(-2.5f, -0.125f,  -2.5f),   glm::vec3(0.25f, 0.25f, 0.25f),
+
+
+
+            glm::vec3(2.5f,   2.0f,     2.5f),   glm::vec3(0.8f,  2.0f,  0.8f),
+            glm::vec3(2.5f,  -2.0f,     2.5f),   glm::vec3(0.8f,  2.0f,  0.8f),
+            glm::vec3(2.5f,   1.25f,    2.5f),   glm::vec3(0.75f, 0.75f, 0.75f),
+            glm::vec3(2.5f,  -1.25f,    2.5f),   glm::vec3(0.75f, 0.75f, 0.75f),
+ 
+            glm::vec3(2.5f,   0.125f,   2.5f),   glm::vec3(0.25f, 0.25f, 0.25f),
+            glm::vec3(2.5f,  -0.125f,   2.5f),   glm::vec3(0.25f, 0.25f, 0.25f),
+
+
+            glm::vec3(-2.5f,  2.0f,     2.5f),   glm::vec3(0.8f,  2.0f,  0.8f),
+            glm::vec3(-2.5f, -2.0f,     2.5f),   glm::vec3(0.8f,  2.0f,  0.8f),
+            glm::vec3(-2.5f,  1.25f,    2.5f),   glm::vec3(0.75f, 0.75f, 0.75f),
+            glm::vec3(-2.5f, -1.25f,    2.5f),   glm::vec3(0.75f, 0.75f, 0.75f),
+ 
+            glm::vec3(-2.5f,  0.125f,   2.5f),   glm::vec3(0.25f, 0.25f, 0.25f),
+            glm::vec3(-2.5f, -0.125f,   2.5f),   glm::vec3(0.25f, 0.25f, 0.25f),
         };
-    
-        unsigned int indices[] = {
-            // Front
-            4, 5, 6,
-            4, 7, 6,
 
-            // Back
-            0, 1, 2,
-            0, 3, 2,
-
-            // Left
-            0, 3, 7,
-            0, 4, 7,
-
-            // Right
-            1, 2, 6,
-            1, 5, 6,
-
-            // Top
-            3,2,6,
-            3,7,6,
-
-            // Bottom
-            4,0,1,
-            4,5,1,
-        };
-    
         vertexArray va;
-        vertexBuffer vb(8 * 5, vertices);
+        vertexBuffer vb(vertices.size(), vertices.data());
         vertexBufferLayout layout;
         layout.addLayout(3); // Vertices layout
         layout.addLayout(2); // Texture layout
-        indexBuffer ib(6 * 2 * 3, indices); // Side * Triangle per side * Vertices per triangle
+        indexBuffer ib (indices.size(), indices.data());
     
         va.addBuffer(vb, layout);
     
         shader yeetShader("graphic/res/shader/3d.shader");
         yeetShader.bind();
-        //yeetShader.setUniform4f("uColor", 0.3f, 0.2f, 0.7f, 1.0f);
 
-        texture soulKingTexture("graphic/res/texture/dead.png");
+        texture soulKingTexture("graphic/res/texture/fade.png");
         soulKingTexture.bind();
         yeetShader.setUniform1i("uTexture", 0);
 
@@ -132,38 +222,55 @@ int main()
 
         // Perspective projection
         float fov = 90.0f;
-        double currentTime = glfwGetTime();
 
-        glm::mat4 view = glm::mat4(1.0f);
-        view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
-
+        // Projection matrix
         glm::mat4 projection = glm::perspective(glm::radians(fov), (float)width/(float)height, 0.1f, 100.0f);
 
-        glm::mat4 model = glm::mat4(1.0f);
-        model = glm::rotate(model, glm::radians(20.0f), glm::vec3(1.0f, 0.0f, 0.f)); 
-
-        yeetShader.setUniformMat4fv("view", GL_FALSE, view);
         yeetShader.setUniformMat4fv("projection", GL_FALSE, projection);
-        yeetShader.setUniformMat4fv("model", GL_FALSE, model);
 
-        yeetShader.unbind();
+        // Mouse input
+        glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+        glfwSetCursorPosCallback(window, mouseCallbackHandler);
 
+        // Keyborad input
+        glfwSetKeyCallback(window, keyboardCallbackHandler);
+
+        // Toggle wireframe
         //glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 
         while (!glfwWindowShouldClose(window))
         {
             sceneRenderer.clearScreen();
+            float currentFrame = glfwGetTime();
+            glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, up);
     
             // Draw vertices here
-            sceneRenderer.drawScreen(va, ib, yeetShader);
-
-            if (glfwGetTime() - currentTime >= 0.01)
+            // Render crystals
+            for (int i = 0; i < 26; i++)
             {
-                model = glm::rotate(model, glm::radians(0.1f), glm::vec3(0.0f, 1.0f, 0.0f)); 
+                int multiplier = 1; // Define rotation direction
+                if (i & 2 > 0.0f)
+                {
+                    multiplier = -1;
+                }
+                glm::mat4 model = glm::mat4(1.0f);
+                model = glm::translate(model, illuminatiPositions[i * 2]);
+                model = glm::scale(model, illuminatiPositions[(i * 2) + 1]);
+
+                model = glm::rotate(model, glm::radians(i * 180.0f), glm::vec3(0.0f, 0.0f, 1.0f)); //Flip pyramid
+
+                // Rotate pyramid
+                float rotateAngle = glfwGetTime() * 20.0f;
+                model = glm::rotate(model, glm::radians(rotateAngle * multiplier), glm::vec3(0.0f, 1.0f, 0.0f));
+
                 yeetShader.setUniformMat4fv("model", GL_FALSE, model);
-                currentTime = glfwGetTime();
+                yeetShader.setUniformMat4fv("view", GL_FALSE, view);
+                sceneRenderer.drawScreen(va, ib, yeetShader);
             }
 
+            deltaTime = currentFrame - lastFrame;
+            lastFrame = currentFrame;
+            
             glfwSwapBuffers(window);
             glfwPollEvents();
         }
