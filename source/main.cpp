@@ -131,7 +131,7 @@ int main()
     // Create object, shader, variable, blah blah blah here
     {
         // Icosphere
-        icosphere icosahedron(1.0f, 1);
+        icosphere icosahedron(1.0f);
         std::vector<float> icosahedronVertices = icosahedron.getVertices();
         std::vector<unsigned int> icosahedronIndices = icosahedron.getIndices();
         glm::vec3 icosahedronPos[] = {

@@ -14,7 +14,7 @@ class icosphere
         std::vector<float> vertices;
         std::vector<unsigned int> indices;
     public:
-        icosphere(float radius, int subdivision);
+        icosphere(float radius, int subdivision = 1);
 
         std::vector<float> getVertices();
         std::vector<unsigned int> getIndices();
