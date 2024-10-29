@@ -131,7 +131,7 @@ int main()
     // Create object, shader, variable, blah blah blah here
     {
         // Icosphere
-        icosphere icosahedron(1.0f);
+        icosphere icosahedron(1.0f, 2);
         std::vector<float> icosahedronVertices = icosahedron.getVertices();
         std::vector<unsigned int> icosahedronIndices = icosahedron.getIndices();
         glm::vec3 icosahedronPos[] = {
@@ -175,7 +175,7 @@ int main()
         glfwSetKeyCallback(window, keyboardCallbackHandler);
 
         // Toggle wireframe
-        //glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+        glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 
         while (!glfwWindowShouldClose(window))
         {
@@ -191,8 +191,8 @@ int main()
                 model = glm::translate(model, icosahedronPos[i * 2]);
                 model = glm::scale(model, icosahedronPos[(i * 2) + 1]);
 
-                float rotateAngle = glfwGetTime() * 20.0f;
-                model = glm::rotate(model, glm::radians(rotateAngle), glm::vec3(0.0f, 1.0f, 0.0f));
+                //float rotateAngle = glfwGetTime() * 20.0f;
+                //model = glm::rotate(model, glm::radians(rotateAngle), glm::vec3(0.0f, 1.0f, 0.0f));
 
                 yeetShader.setUniformMat4fv("model", GL_FALSE, model);
                 sceneRenderer.drawScreen(icosahedronVa, icosahedronIb, yeetShader);
