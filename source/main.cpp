@@ -35,8 +35,11 @@ void GLAPIENTRY MessageCallback(GLenum source,
 }
 
 // Window
-int width = 2560;
-int height = 1440;
+//int width = 2560;
+//int height = 1440;
+
+int width = 1920;
+int height = 1080;
 
 // Timing
 float lastFrame = 0.0f;
@@ -131,7 +134,7 @@ int main()
     // Create object, shader, variable, blah blah blah here
     {
         // Icosphere
-        icosphere icosahedron(1.0f, 2);
+        icosphere icosahedron(1.0f, 1);
         std::vector<float> icosahedronVertices = icosahedron.getVertices();
         std::vector<unsigned int> icosahedronIndices = icosahedron.getIndices();
         glm::vec3 icosahedronPos[] = {
