@@ -32,7 +32,7 @@ void generateIcosahedron(float radius, std::vector<float>* vertices, std::vector
             vertices->push_back(1.0f / 3 * (i + 1)); // Vertical texture
 
             // Indices
-            // Connect to tip / bottom vertice
+            // Connect to tip / bottom vertex
             indices->push_back(i); // Tip / Bottom vertex
             indices->push_back((2 + (i * 5)) + j); // Current vertex
             indices->push_back((2 + (i * 5)) + ((j + 1) % 5)); // Next vertex
@@ -48,11 +48,11 @@ void generateIcosahedron(float radius, std::vector<float>* vertices, std::vector
     }
 }
 
-std::vector<glm::vec3> getMiddleVertices(int indexA, int indexB, int indexC, std::vector<float>* vertices)
+std::vector<glm::vec3> getMiddleVertices(int indexA, int indexB, int indexC, std::vector<float> vertices)
 {
-    glm::vec3 vertexA(vertices->at(indexA * 5), vertices->at(indexA * 5 + 1), vertices->at(indexA * 5 + 2));
-    glm::vec3 vertexB(vertices->at(indexB * 5), vertices->at(indexB * 5 + 1), vertices->at(indexB * 5 + 2));
-    glm::vec3 vertexC(vertices->at(indexC * 5), vertices->at(indexC * 5 + 1), vertices->at(indexC * 5 + 2));
+    glm::vec3 vertexA(vertices.at(indexA * 5), vertices.at(indexA * 5 + 1), vertices.at(indexA * 5 + 2));
+    glm::vec3 vertexB(vertices.at(indexB * 5), vertices.at(indexB * 5 + 1), vertices.at(indexB * 5 + 2));
+    glm::vec3 vertexC(vertices.at(indexC * 5), vertices.at(indexC * 5 + 1), vertices.at(indexC * 5 + 2));
 
     std::vector<glm::vec3> middleVertices = {
         (vertexA + vertexB) * 0.5f,
@@ -63,11 +63,11 @@ std::vector<glm::vec3> getMiddleVertices(int indexA, int indexB, int indexC, std
     return middleVertices;
 }
 
-std::vector<glm::vec2> getMiddleTexture(int indexA, int indexB, int indexC, std::vector<float>* vertices)
+std::vector<glm::vec2> getMiddleTexture(int indexA, int indexB, int indexC, std::vector<float> vertices)
 {
-    glm::vec2 textureA(vertices->at(indexA * 5 + 3), vertices->at(indexA * 5 + 4));
-    glm::vec2 textureB(vertices->at(indexB * 5 + 3), vertices->at(indexB * 5 + 4));
-    glm::vec2 textureC(vertices->at(indexC * 5 + 3), vertices->at(indexC * 5 + 4));
+    glm::vec2 textureA(vertices.at(indexA * 5 + 3), vertices.at(indexA * 5 + 4));
+    glm::vec2 textureB(vertices.at(indexB * 5 + 3), vertices.at(indexB * 5 + 4));
+    glm::vec2 textureC(vertices.at(indexC * 5 + 3), vertices.at(indexC * 5 + 4));
 
     std::vector<glm::vec2> middleTextures = {
         (textureA + textureB) * 0.5f,
@@ -80,80 +80,64 @@ std::vector<glm::vec2> getMiddleTexture(int indexA, int indexB, int indexC, std:
 
 glm::vec3 calculateNewCoordinate(glm::vec3 vertices, float radius)
 {
-    glm::vec3 newCoordinate(glm::normalize(vertices) * radius);
-    return newCoordinate;
+    glm::vec3 normalizedVertice(glm::normalize(vertices));
+    normalizedVertice *= radius;
+    return normalizedVertice;
 }
 
-void subdivideIcosahedron(std::vector<float>* vertices, std::vector<unsigned int>* indices)
+void subdivideIcosahedron(std::vector<float>* vertices, std::vector<unsigned int>* indices, float radius)
 {
     // Adding subdivision into icosahedron to turn it into icosphere
     // Method using may cause more memory to use more than it should because some new vertices maybe duplicate
     // TLDR Extreme unreadable / unoptimized
-    
-    int currentIndicesSize = indices->size();
-    for (int j = 0; j < currentIndicesSize; j += 3) // Loop through each triangle
+    int originalIndicesSize = indices->size();
+    for (int i = 0; i < originalIndicesSize; i += 3) // Loop through each triangle
     {
-        // Calculate distance between each vertices
-        int indexA = indices->at(j);
-        int indexB = indices->at(j + 1);
-        int indexC = indices->at(j + 2);
 
-        std::vector<glm::vec3> middleVertices = getMiddleVertices(indexA, indexB, indexC, vertices);
-        std::vector<glm::vec2> middleTextures = getMiddleTexture(indexA, indexB, indexC, vertices);
+        // Calculate distance between each vertices
+        int indexA = indices->at(0);
+        int indexB = indices->at(1);
+        int indexC = indices->at(2);
+
+        // Remove old first three indices
+        indices->erase(indices->begin(), indices->begin() + 3);
+
+        std::vector<glm::vec3> middleVertices = getMiddleVertices(indexA, indexB, indexC, *vertices);
+        std::vector<glm::vec2> middleTextures = getMiddleTexture(indexA, indexB, indexC, *vertices);
 
         // Create three new vertices at each middle point between old vertices
         // Order from left to right, top to bottom
         int startIndex = vertices->size() / 5;
-        for (int k = 0; k < 3; k++)
+        for (int j = 0; j < 3; j++)
         {
-            glm::vec3 newVertices = calculateNewCoordinate(middleVertices[k], 1.0f);
-            float* vertex = glm::value_ptr(newVertices);
-            float* texture = glm::value_ptr(middleTextures[k]);
+            glm::vec3 newVertices = calculateNewCoordinate(middleVertices[j], radius);
+            vertices->push_back(newVertices.x);
+            vertices->push_back(newVertices.y);
+            vertices->push_back(newVertices.z);
 
-            vertices->push_back(vertex[0]);
-            vertices->push_back(vertex[1]);
-            vertices->push_back(vertex[2]);
-
-            vertices->push_back(texture[0]);
-            vertices->push_back(texture[1]);
+            vertices->push_back(middleTextures[j].x);
+            vertices->push_back(middleTextures[j].y);
         }
-
         // Update indices
         // First triangle
-        indices->push_back(indexA); // Old vertice
-        indices->push_back(vertices->size() - 3); // First new vertices
-        indices->push_back(vertices->size() - 2); // Second new vertices
+        indices->push_back(indexA); // Old vertex
+        indices->push_back(vertices->size() / 5 - 1 - 2); // First new vertices
+        indices->push_back(vertices->size() / 5 - 1 - 1); // Second new vertices
 
-        // First triangle
-        indices->push_back(indexB); // Old vertice
-        indices->push_back(vertices->size() - 3); // First new vertices
-        indices->push_back(vertices->size() - 1); // Third new vertices
+        // Second triangle
+        indices->push_back(indexB); // Old vertex
+        indices->push_back(vertices->size() / 5 - 1 - 2); // First new vertices
+        indices->push_back(vertices->size() / 5 - 1); // Third new vertices
 
-        // First triangle
-        indices->push_back(vertices->size() - 3); // First new vertices
-        indices->push_back(vertices->size() - 2); // Second new vertices
-        indices->push_back(vertices->size() - 1); // Second new vertices
+        // Third triangle
+        indices->push_back(vertices->size() / 5 - 1 - 2); // First new vertices
+        indices->push_back(vertices->size() / 5 - 1 - 1); // Second new vertices
+        indices->push_back(vertices->size() / 5 - 1); // Third new vertices
 
-        // First triangle
-        indices->push_back(indexC); // Old vertice
-        indices->push_back(vertices->size() - 2); // Second new vertices
-        indices->push_back(vertices->size() - 1); // Last new vertices
-
-        // 0, 1, 2, 3
-        // size 4
-
-        /*
-        indices->erase(indices->begin() + (j - 1), indices->begin() + (j + 1)); // Remove old triangle vertices
-        for (int k = 0; k < 4; k++)
-        {
-        }
-            
-        indices->push_back(indexA);
-        indices->push_back(startIndex);
-        startIndex += 1;
-        indices->push_back(startIndex);
-        startIndex += 1;
-        */
+        // Fourth triangle
+        indices->push_back(indexC); // Old vertex
+        indices->push_back(vertices->size() / 5 - 1- 1); // Second new vertices
+        indices->push_back(vertices->size() / 5 - 1); // Third new vertices
     }
 }
 
@@ -162,24 +146,10 @@ icosphere::icosphere(float radius, int subdivision)
 {
     generateIcosahedron(radius, &vertices, &indices);
 
-    for (int i = 0; i < vertices.size() / 5; i++)
-    {
-        std::cout << vertices.at(i * 5) << "," << vertices.at(i * 5 + 1) << "," << vertices.at(i * 5 + 2) << std::endl;
-    }
-
     for (int i = 0; i < subdivision - 1; i++)
     {
-        subdivideIcosahedron(&vertices, &indices);
+        subdivideIcosahedron(&vertices, &indices, radius);
     }
-
-    // Amount of row
-    /*
-    int totalIteration = 2;
-    for (int i = 0; i < subdivision - 1; i++)
-    {
-        totalIteration += (pow(2, i) * 3);
-    }
-    */
 }
 
 std::vector<float> icosphere::getVertices()

@@ -35,11 +35,11 @@ void GLAPIENTRY MessageCallback(GLenum source,
 }
 
 // Window
-//int width = 2560;
-//int height = 1440;
+int width = 2560;
+int height = 1440;
 
-int width = 1920;
-int height = 1080;
+//int width = 1920;
+//int height = 1080;
 
 // Timing
 float lastFrame = 0.0f;
@@ -134,7 +134,7 @@ int main()
     // Create object, shader, variable, blah blah blah here
     {
         // Icosphere
-        icosphere icosahedron(1.0f, 1);
+        icosphere icosahedron(2.0f, 3);
         std::vector<float> icosahedronVertices = icosahedron.getVertices();
         std::vector<unsigned int> icosahedronIndices = icosahedron.getIndices();
         glm::vec3 icosahedronPos[] = {
@@ -194,8 +194,8 @@ int main()
                 model = glm::translate(model, icosahedronPos[i * 2]);
                 model = glm::scale(model, icosahedronPos[(i * 2) + 1]);
 
-                //float rotateAngle = glfwGetTime() * 20.0f;
-                //model = glm::rotate(model, glm::radians(rotateAngle), glm::vec3(0.0f, 1.0f, 0.0f));
+                float rotateAngle = glfwGetTime() * 20.0f;
+                model = glm::rotate(model, glm::radians(rotateAngle), glm::vec3(0.0f, 1.0f, 0.0f));
 
                 yeetShader.setUniformMat4fv("model", GL_FALSE, model);
                 sceneRenderer.drawScreen(icosahedronVa, icosahedronIb, yeetShader);
