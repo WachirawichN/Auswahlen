@@ -2,18 +2,21 @@
 
 #include <vector>
 
-class pyramid
+namespace geometry
 {
-    private:
-        float width;
-        float height;
-        float depth;
+    class pyramid
+    {
+        private:
+            float width;
+            float height;
+            float depth;
 
-        std::vector<float> vertices;
-        std::vector<unsigned int> indices;
-    public:
-        pyramid(float width, float height, float depth);
+            std::vector<float> vertices;
+            std::vector<unsigned int> indices;
+        public:
+            pyramid(float width, float height, float depth);
 
-        std::vector<float> getVertices();
-        std::vector<unsigned int> getIndices();
-};
+            std::vector<float> getVertices();
+            std::vector<unsigned int> getIndices();
+    };
+}

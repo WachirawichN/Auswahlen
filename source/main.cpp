@@ -17,9 +17,7 @@
 #include "graphic/texture.h"
 #include "graphic/camera.h"
 
-#include "geometry/cube.h"
-#include "geometry/pyramid.h"
-#include "geometry/icosphere.h"
+#include "geometry/geometry.h"
 
 // OpenGL Logging
 void GLAPIENTRY MessageCallback(GLenum source,
@@ -134,7 +132,7 @@ int main()
     // Create object, shader, variable, blah blah blah here
     {
         // Icosphere
-        icosphere icosahedron(2.0f, 3);
+        geometry::icosphere icosahedron(2.0f, 4);
         std::vector<float> icosahedronVertices = icosahedron.getVertices();
         std::vector<unsigned int> icosahedronIndices = icosahedron.getIndices();
         glm::vec3 icosahedronPos[] = {

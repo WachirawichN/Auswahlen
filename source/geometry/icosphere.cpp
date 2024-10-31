@@ -141,7 +141,7 @@ void subdivideIcosahedron(std::vector<float>* vertices, std::vector<unsigned int
     }
 }
 
-icosphere::icosphere(float radius, int subdivision)
+geometry::icosphere::icosphere(float radius, int subdivision)
     : radius(radius), subdivision(subdivision)
 {
     generateIcosahedron(radius, &vertices, &indices);
@@ -152,12 +152,12 @@ icosphere::icosphere(float radius, int subdivision)
     }
 }
 
-std::vector<float> icosphere::getVertices()
+std::vector<float> geometry::icosphere::getVertices()
 {
     return vertices;
 }
 
-std::vector<unsigned int> icosphere::getIndices()
+std::vector<unsigned int> geometry::icosphere::getIndices()
 {
     return indices;
 }

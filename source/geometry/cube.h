@@ -2,19 +2,22 @@
 
 #include <vector>
 
-class cube
+namespace geometry
 {
-    private:
-        float width;
-        float height;
-        float depth;
+    class cube
+    {
+        private:
+            float width;
+            float height;
+            float depth;
 
-        std::vector<float> vertices;
-        std::vector<unsigned int> indices;
-    public:
-        cube(float width, float height, float depth);
+            std::vector<float> vertices;
+            std::vector<unsigned int> indices;
+        public:
+            cube(float width, float height, float depth);
 
-        std::vector<float> getVertices();
-        std::vector<unsigned int> getIndices();
-};
+            std::vector<float> getVertices();
+            std::vector<unsigned int> getIndices();
+    };
+}
 

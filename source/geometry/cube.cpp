@@ -1,6 +1,6 @@
 #include "cube.h"
 
-cube::cube(float width, float height, float depth)
+geometry::cube::cube(float width, float height, float depth)
     : width(width), height(height), depth(depth)
 {
     vertices = {
@@ -36,12 +36,12 @@ cube::cube(float width, float height, float depth)
         4,5,1,
     };
 }
-std::vector<float> cube::getVertices()
+std::vector<float> geometry::cube::getVertices()
 {
     return vertices;
 }
 
-std::vector<unsigned int> cube::getIndices()
+std::vector<unsigned int> geometry::cube::getIndices()
 {
     return indices;
 }

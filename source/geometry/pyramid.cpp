@@ -1,6 +1,6 @@
 #include "pyramid.h"
 
-pyramid::pyramid(float width, float height, float depth)
+geometry::pyramid::pyramid(float width, float height, float depth)
     : width(width), height(height), depth(depth)
 {
     vertices = {
@@ -27,12 +27,12 @@ pyramid::pyramid(float width, float height, float depth)
         0,1,2,
     };
 }
-std::vector<float> pyramid::getVertices()
+std::vector<float> geometry::pyramid::getVertices()
 {
     return vertices;
 }
 
-std::vector<unsigned int> pyramid::getIndices()
+std::vector<unsigned int> geometry::pyramid::getIndices()
 {
     return indices;
 }
