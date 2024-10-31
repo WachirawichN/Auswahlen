@@ -3,20 +3,10 @@
 
 #include "dependencies/GLM/glm.hpp"
 #include "dependencies/GLM/ext.hpp"
-#include "dependencies/GLM/matrix.hpp"
-#include "dependencies/GLM/vec4.hpp"
 
 #include <iostream>
 
-#include "graphic/renderer.h"
-#include "graphic/vertexArray.h"
-#include "graphic/vertexBuffer.h"
-#include "graphic/vertexBufferLayout.h"
-#include "graphic/indexBuffer.h"
-#include "graphic/shader.h"
-#include "graphic/texture.h"
-#include "graphic/camera.h"
-
+#include "graphic/graphic.h"
 #include "geometry/geometry.h"
 
 // OpenGL Logging
