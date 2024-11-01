@@ -6,4 +6,4 @@ Step 3. Compile the C++ code into .exe file using 'cl /EHsc /MD /D GLEW_STATIC m
 
 
 
-cl /EHsc /MD /D GLEW_STATIC main.cpp graphic/indexBuffer.cpp graphic/renderer.cpp graphic/vertexArray.cpp graphic/vertexBuffer.cpp graphic/vertexBufferLayout.cpp graphic/shader.cpp graphic/texture.cpp graphic/camera.cpp geometry/cube.cpp geometry/pyramid.cpp geometry/icosphere.cpp dependencies/stb/stb_image.cpp /link /LIBPATH:"G:\Code_saves\Auswahlen\source\dependencies\GLFW" /LIBPATH:"G:\Code_saves\Auswahlen\source\dependencies\GLEW\lib\Release\x64" glew32s.lib glfw3.lib opengl32.lib User32.lib Gdi32.lib Shell32.lib
+cl /EHsc /MD /D GLEW_STATIC main.cpp graphic/indexBuffer.cpp graphic/renderer.cpp graphic/vertexArray.cpp graphic/vertexBuffer.cpp graphic/vertexBufferLayout.cpp graphic/shader.cpp graphic/texture.cpp graphic/camera.cpp graphic/geometry/cube.cpp graphic/geometry/pyramid.cpp graphic/geometry/icosphere.cpp dependencies/stb/stb_image.cpp /link /LIBPATH:"G:\Code_saves\Auswahlen\source\dependencies\GLFW" /LIBPATH:"G:\Code_saves\Auswahlen\source\dependencies\GLEW\lib\Release\x64" glew32s.lib glfw3.lib opengl32.lib User32.lib Gdi32.lib Shell32.lib

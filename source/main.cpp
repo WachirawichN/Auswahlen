@@ -7,7 +7,7 @@
 #include <iostream>
 
 #include "graphic/graphic.h"
-#include "geometry/geometry.h"
+#include "graphic/geometry/geometry.h"
 
 // OpenGL Logging
 void GLAPIENTRY MessageCallback(GLenum source,
@@ -122,26 +122,26 @@ int main()
     // Create object, shader, variable, blah blah blah here
     {
         // Icosphere
-        geometry::icosphere icosahedron(2.0f, 4);
-        std::vector<float> icosahedronVertices = icosahedron.getVertices();
-        std::vector<unsigned int> icosahedronIndices = icosahedron.getIndices();
-        glm::vec3 icosahedronPos[] = {
+        geometry::icosphere icosphere(2.0f, 2);
+        std::vector<float> icosphereVertices = icosphere.getVertices();
+        std::vector<unsigned int> icosphereIndices = icosphere.getIndices();
+        glm::vec3 icospherePos[] = {
         //               Position              ,             Scale
             glm::vec3( 0.0f,   0.0f,    0.0f),   glm::vec3(1.0f,  1.0f,  1.0f),
         };
 
-        vertexArray icosahedronVa;
-        vertexBuffer icosahedronVb(icosahedronVertices.size(), icosahedronVertices.data());
-        vertexBufferLayout icosahedronLayout;
-        icosahedronLayout.addLayout(3);
-        icosahedronLayout.addLayout(2);
-        indexBuffer icosahedronIb(icosahedronIndices.size(), icosahedronIndices.data());
+        vertexArray icosphereVa;
+        vertexBuffer icosphereVb(icosphereVertices.size(), icosphereVertices.data());
+        vertexBufferLayout icosphereLayout;
+        icosphereLayout.addLayout(3);
+        icosphereLayout.addLayout(2);
+        indexBuffer icosphereIb(icosphereIndices.size(), icosphereIndices.data());
 
-        icosahedronVa.addBuffer(icosahedronVb, icosahedronLayout);
+        icosphereVa.addBuffer(icosphereVb, icosphereLayout);
 
-        icosahedronVa.unbind();
-        icosahedronVb.unbind();
-        icosahedronIb.unbind();
+        icosphereVa.unbind();
+        icosphereVb.unbind();
+        icosphereIb.unbind();
 
 
         // Shader program
@@ -179,16 +179,17 @@ int main()
             for (int i = 0; i < 1; i++)
             {
                 glm::mat4 model = glm::mat4(1.0f);
-                model = glm::translate(model, icosahedronPos[i * 2]);
-                model = glm::scale(model, icosahedronPos[(i * 2) + 1]);
+                model = glm::translate(model, icospherePos[i * 2]);
+                model = glm::scale(model, icospherePos[(i * 2) + 1]);
 
                 float rotateAngle = glfwGetTime() * 20.0f;
                 model = glm::rotate(model, glm::radians(rotateAngle), glm::vec3(0.0f, 1.0f, 0.0f));
 
                 yeetShader.setUniformMat4fv("model", GL_FALSE, model);
-                sceneRenderer.drawScreen(icosahedronVa, icosahedronIb, yeetShader);
+                sceneRenderer.drawScreen(icosphereVa, icosphereIb, yeetShader);
             }
 
+            //std::cout << "FPS: " << 1.0f / deltaTime << std::endl;
             deltaTime = currentFrame - lastFrame;
             lastFrame = currentFrame;
             

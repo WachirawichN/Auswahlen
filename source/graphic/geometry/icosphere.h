@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../dependencies/GLM/glm.hpp"
-#include "../dependencies/GLM/gtc/type_ptr.hpp"
+#include "../../dependencies/GLM/glm.hpp"
+#include "../../dependencies/GLM/gtc/type_ptr.hpp"
 
 #include <vector>
 #include <math.h>
