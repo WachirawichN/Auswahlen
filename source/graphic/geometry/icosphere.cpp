@@ -151,13 +151,3 @@ geometry::icosphere::icosphere(float radius, int subdivision)
         subdivideIcosahedron(&vertices, &indices, radius);
     }
 }
-
-std::vector<float> geometry::icosphere::getVertices()
-{
-    return vertices;
-}
-
-std::vector<unsigned int> geometry::icosphere::getIndices()
-{
-    return indices;
-}

@@ -3,22 +3,17 @@
 #include "../../dependencies/GLM/glm.hpp"
 #include "../../dependencies/GLM/gtc/type_ptr.hpp"
 
-#include <vector>
+#include "shape.h"
 #include <math.h>
 
 namespace geometry
 {
-    class icosphere
+    class icosphere : public shape
     {
         private:
             float radius;
             int subdivision;
-            std::vector<float> vertices;
-            std::vector<unsigned int> indices;
         public:
             icosphere(float radius, int subdivision = 1);
-
-            std::vector<float> getVertices();
-            std::vector<unsigned int> getIndices();
     };
 }

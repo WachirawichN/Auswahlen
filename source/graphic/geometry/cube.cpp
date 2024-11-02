@@ -36,12 +36,3 @@ geometry::cube::cube(float width, float height, float depth)
         4,5,1,
     };
 }
-std::vector<float> geometry::cube::getVertices()
-{
-    return vertices;
-}
-
-std::vector<unsigned int> geometry::cube::getIndices()
-{
-    return indices;
-}

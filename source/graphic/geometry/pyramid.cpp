@@ -27,12 +27,3 @@ geometry::pyramid::pyramid(float width, float height, float depth)
         0,1,2,
     };
 }
-std::vector<float> geometry::pyramid::getVertices()
-{
-    return vertices;
-}
-
-std::vector<unsigned int> geometry::pyramid::getIndices()
-{
-    return indices;
-}
