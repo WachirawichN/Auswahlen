@@ -9,6 +9,8 @@
 #include "graphic/graphic.h"
 #include "graphic/geometry/geometry.h"
 
+#include "physic/object/sphere.h"
+
 // OpenGL Logging
 void GLAPIENTRY MessageCallback(GLenum source,
                                 GLenum type,
@@ -122,26 +124,19 @@ int main()
     // Create object, shader, variable, blah blah blah here
     {
         // Icosphere
-        geometry::icosphere icosphere(2.0f, 2);
-        std::vector<float> icosphereVertices = icosphere.getVertices();
-        std::vector<unsigned int> icosphereIndices = icosphere.getIndices();
-        glm::vec3 icospherePos[] = {
-        //               Position              ,             Scale
-            glm::vec3( 0.0f,   0.0f,    0.0f),   glm::vec3(1.0f,  1.0f,  1.0f),
-        };
-
-        vertexArray icosphereVa;
-        vertexBuffer icosphereVb(icosphereVertices.size(), icosphereVertices.data());
-        vertexBufferLayout icosphereLayout;
-        icosphereLayout.addLayout(3);
-        icosphereLayout.addLayout(2);
-        indexBuffer icosphereIb(icosphereIndices.size(), icosphereIndices.data());
-
-        icosphereVa.addBuffer(icosphereVb, icosphereLayout);
-
-        icosphereVa.unbind();
-        icosphereVb.unbind();
-        icosphereIb.unbind();
+        object::sphere sphere(1.0f, 3, true, true, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(90.0f, 90.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f));
+        std::vector<float> sphereVertices = sphere.getVertices();
+        std::vector<unsigned int> sphereIndices = sphere.getIndices();
+        vertexArray sphereVA;
+        vertexBuffer sphereVB(sphereVertices.size(), sphereVertices.data());
+        vertexBufferLayout sphereLayout;
+        sphereLayout.addLayout(3);
+        sphereLayout.addLayout(2);
+        indexBuffer sphereIB(sphereIndices.size(), sphereIndices.data());
+        sphereVA.addBuffer(sphereVB, sphereLayout);
+        sphereVA.unbind();
+        sphereVB.unbind();
+        sphereIB.unbind();
 
 
         // Shader program
@@ -176,18 +171,17 @@ int main()
             yeetShader.setUniformMat4fv("view", GL_FALSE, worldCamera.getView()); // Should only change when camera move
     
             // Draw vertices here
-            for (int i = 0; i < 1; i++)
-            {
-                glm::mat4 model = glm::mat4(1.0f);
-                model = glm::translate(model, icospherePos[i * 2]);
-                model = glm::scale(model, icospherePos[(i * 2) + 1]);
+            glm::mat4 model = glm::mat4(1.0f);
+            model = glm::translate(model, sphere.getPosition());
+            model = glm::scale(model, sphere.getScale());
+ 
+            //float rotateAngle = glfwGetTime() * 20.0f;
+            //model = glm::rotate(model, glm::radians(360.0f), glm::vec3(90.0f / 360.0f, 90.0f / 360.0f, 0.0f / 360.0f));
+            model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.5f, 0.0f));
+            //model = glm::rotate(model, glm::radians(360.0f), glm::vec3(sphere.getRotation().x / 360.0f, sphere.getRotation().y / 360.0f, sphere.getRotation().z / 360.0f));
 
-                float rotateAngle = glfwGetTime() * 20.0f;
-                model = glm::rotate(model, glm::radians(rotateAngle), glm::vec3(0.0f, 1.0f, 0.0f));
-
-                yeetShader.setUniformMat4fv("model", GL_FALSE, model);
-                sceneRenderer.drawScreen(icosphereVa, icosphereIb, yeetShader);
-            }
+            yeetShader.setUniformMat4fv("model", GL_FALSE, model);
+            sceneRenderer.drawScreen(sphereVA, sphereIB, yeetShader);
 
             //std::cout << "FPS: " << 1.0f / deltaTime << std::endl;
             deltaTime = currentFrame - lastFrame;
