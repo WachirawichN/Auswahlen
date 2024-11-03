@@ -4,9 +4,9 @@
 
 namespace geometry
 {
-    class pyramid : public shape
+    class pyramid : public geometry::shape
     {
-        private:
+        protected:
             float width;
             float height;
             float depth;

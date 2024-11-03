@@ -8,8 +8,10 @@
 
 #include "graphic/graphic.h"
 #include "graphic/geometry/geometry.h"
+#include "physic/simulation.h"
 
 #include "physic/object/sphere.h"
+#include "physic/object/cube.h"
 
 // OpenGL Logging
 void GLAPIENTRY MessageCallback(GLenum source,
@@ -115,30 +117,14 @@ int main()
     }
 
     // Getting error message
-    glEnable(GL_DEBUG_OUTPUT);
-    glDebugMessageCallback(MessageCallback, 0);
+    //glEnable(GL_DEBUG_OUTPUT);
+    //glDebugMessageCallback(MessageCallback, 0);
 
     glEnable(GL_DEPTH_TEST); 
 
 
     // Create object, shader, variable, blah blah blah here
     {
-        // Icosphere
-        object::sphere sphere(1.0f, 3, true, true, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(90.0f, 90.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f));
-        std::vector<float> sphereVertices = sphere.getVertices();
-        std::vector<unsigned int> sphereIndices = sphere.getIndices();
-        vertexArray sphereVA;
-        vertexBuffer sphereVB(sphereVertices.size(), sphereVertices.data());
-        vertexBufferLayout sphereLayout;
-        sphereLayout.addLayout(3);
-        sphereLayout.addLayout(2);
-        indexBuffer sphereIB(sphereIndices.size(), sphereIndices.data());
-        sphereVA.addBuffer(sphereVB, sphereLayout);
-        sphereVA.unbind();
-        sphereVB.unbind();
-        sphereIB.unbind();
-
-
         // Shader program
         shader yeetShader("graphic/res/shader/3d.shader");
         yeetShader.bind();
@@ -148,10 +134,12 @@ int main()
         soulKingTexture.bind();
         yeetShader.setUniform1i("uTexture", 0);
 
-        renderer sceneRenderer;
+        object::sphere sphere(1.0f, 3, true, true, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f));
+        object::cube cube(1.0f, 2.0f, 1.0f, true, true, glm::vec3(-1.0f, -1.0f, -1.0f), glm::vec3(225.0f, -270.0f, 22.5f), glm::vec3(1.0f, 1.0f, 1.0f));
 
-        // Perspective projection
-        yeetShader.setUniformMat4fv("projection", GL_FALSE, worldCamera.getProjection());
+        simulation currentSimulation(&worldCamera, yeetShader);
+        currentSimulation.addObject(std::make_shared<object::sphere>(sphere));
+        currentSimulation.addObject(std::make_shared<object::cube>(cube));
 
         // Mouse input
         glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -165,23 +153,9 @@ int main()
 
         while (!glfwWindowShouldClose(window))
         {
-            sceneRenderer.clearScreen();
-            
             float currentFrame = glfwGetTime();
-            yeetShader.setUniformMat4fv("view", GL_FALSE, worldCamera.getView()); // Should only change when camera move
-    
-            // Draw vertices here
-            glm::mat4 model = glm::mat4(1.0f);
-            model = glm::translate(model, sphere.getPosition());
-            model = glm::scale(model, sphere.getScale());
- 
-            //float rotateAngle = glfwGetTime() * 20.0f;
-            //model = glm::rotate(model, glm::radians(360.0f), glm::vec3(90.0f / 360.0f, 90.0f / 360.0f, 0.0f / 360.0f));
-            model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.5f, 0.0f));
-            //model = glm::rotate(model, glm::radians(360.0f), glm::vec3(sphere.getRotation().x / 360.0f, sphere.getRotation().y / 360.0f, sphere.getRotation().z / 360.0f));
-
-            yeetShader.setUniformMat4fv("model", GL_FALSE, model);
-            sceneRenderer.drawScreen(sphereVA, sphereIB, yeetShader);
+            
+            currentSimulation.drawSimulation();
 
             //std::cout << "FPS: " << 1.0f / deltaTime << std::endl;
             deltaTime = currentFrame - lastFrame;

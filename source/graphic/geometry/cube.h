@@ -4,9 +4,9 @@
 
 namespace geometry
 {
-    class cube : public shape
+    class cube : public geometry::shape
     {
-        private:
+        protected:
             float width;
             float height;
             float depth;

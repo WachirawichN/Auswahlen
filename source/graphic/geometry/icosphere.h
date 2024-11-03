@@ -8,9 +8,9 @@
 
 namespace geometry
 {
-    class icosphere : public shape
+    class icosphere : public geometry::shape
     {
-        private:
+        protected:
             float radius;
             int subdivision;
         public:
