@@ -8,10 +8,11 @@
 
 #include "graphic/graphic.h"
 #include "graphic/geometry/geometry.h"
-#include "physic/simulation.h"
 
-#include "physic/object/sphere.h"
-#include "physic/object/cube.h"
+#include "simulation/simulation.h"
+
+#include "simulation/object/sphere.h"
+#include "simulation/object/cube.h"
 
 // OpenGL Logging
 void GLAPIENTRY MessageCallback(GLenum source,
