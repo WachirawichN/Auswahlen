@@ -1,6 +1,6 @@
 #pragma once
 
-#include "object/object.h"
+#include "object/objectBaseClass.h"
 
 #include "../graphic/graphic.h"
 #include "../graphic/geometry/shape.h"

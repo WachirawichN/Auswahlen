@@ -135,12 +135,13 @@ int main()
         soulKingTexture.bind();
         yeetShader.setUniform1i("uTexture", 0);
 
-        object::sphere sphere(1.0f, 3, true, true, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f));
-        object::cube cube(1.0f, 2.0f, 1.0f, true, true, glm::vec3(-1.0f, -1.0f, -1.0f), glm::vec3(225.0f, -270.0f, 22.5f), glm::vec3(1.0f, 1.0f, 1.0f));
+        //std::shared_ptr<object::sphere> spherePtr(new object::sphere(1.0f, 3, true, true, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+        std::shared_ptr<object::cube> cubePtr(new object::cube(1.0f, 2.0f, 1.0f, true, true, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
 
         simulation currentSimulation(&worldCamera, yeetShader);
-        currentSimulation.addObject(std::make_shared<object::sphere>(sphere));
-        currentSimulation.addObject(std::make_shared<object::cube>(cube));
+        //currentSimulation.addObject(std::make_shared<object::sphere>(sphere));
+        //currentSimulation.addObject(spherePtr);
+        currentSimulation.addObject(cubePtr);
 
         // Mouse input
         glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -156,6 +157,8 @@ int main()
         {
             float currentFrame = glfwGetTime();
             
+            //cubePtr->rotate(glm::vec3(1.0f, 0.0f, 0.0f));
+            //spherePtr->rescale(glm::vec3(1.0f, 0.0f, 0.0f));
             currentSimulation.drawSimulation();
 
             //std::cout << "FPS: " << 1.0f / deltaTime << std::endl;

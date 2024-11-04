@@ -16,16 +16,15 @@ void simulation::drawSimulation()
     workspaceRenderer.clearScreen();
     programShader.setUniformMat4fv("view", GL_FALSE, mainCamera->getView()); // Should only change when camera move
 
-    // Render objects
-    for (size_t i = 0; i < objects.size(); i++)
+    for (int i = 0; i < objects.size(); i++)
     {
         std::shared_ptr<object::objectBaseClass> currentObject = objects.at(i);
 
-        geometry::shape* shapePart = dynamic_cast<geometry::shape*>(currentObject.get());
-        if (shapePart) // Check if object is inheritance of shape class
+        geometry::shape* shapePtr = dynamic_cast<geometry::shape*>(currentObject.get());
+        if (shapePtr) // Check if object is inheritance of shape class
         {
-            std::vector<float> vertices = shapePart->getVertices();
-            std::vector<unsigned int> indices = shapePart->getIndices();
+            std::vector<float> vertices = shapePtr->getVertices();
+            std::vector<unsigned int> indices = shapePtr->getIndices();
 
             // Could be more efficient if make the object class have its own buffer but may use more ram
             vertexArray va;
@@ -41,19 +40,12 @@ void simulation::drawSimulation()
             modelMatrix = glm::scale(modelMatrix, currentObject->getScale());
 
             glm::vec3 objectRotation = currentObject->getRotation();
-            // Make the rotation be within 360 degree
-            for (int i = 0; i < 3; i++)
-            {
-                if (objectRotation[i] > 360 || objectRotation[i] < 0)
-                {
-                    int multiplier = floor(objectRotation[i] / 360.0f);
-                    objectRotation[i] -= multiplier * 360.0f;
-                }
-            }
+            //std::cout << "Rotation: " << objectRotation.x << ", " << objectRotation.y << ", " << objectRotation.z << std::endl;
             float degree = std::max(objectRotation.x, std::max(objectRotation.y, objectRotation.z));
-            if (degree != 0)
+            if (degree != 0.0f)
             {
                 modelMatrix = glm::rotate(modelMatrix, glm::radians(degree), glm::vec3(objectRotation.x / degree, objectRotation.y / degree, objectRotation.z / degree));
+                //std::cout << "Degree: " << degree << " , " << objectRotation.x / degree << ", " << objectRotation.y / degree << ", " << objectRotation.z / degree << std::endl;
             }
 
             programShader.setUniformMat4fv("model", GL_FALSE, modelMatrix);

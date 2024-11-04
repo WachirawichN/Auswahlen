@@ -1,6 +1,6 @@
 #pragma once
 
-#include "object.h"
+#include "objectBaseClass.h"
 #include "../../graphic/geometry/icosphere.h"
 
 namespace object
