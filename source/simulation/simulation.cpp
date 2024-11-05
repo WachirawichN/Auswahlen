@@ -1,4 +1,5 @@
 #include "simulation.h"
+#include "physic/gravity.cpp"
 
 simulation::simulation(camera* mainCamera, shader programShader)
     : mainCamera(mainCamera), programShader(programShader)
@@ -57,4 +58,16 @@ void simulation::drawSimulation()
         }
     }
     
+}
+
+void simulation::updateSimulation(float deltaTime)
+{
+    for (int i = 0; i < objects.size(); i++)
+    {
+        std::shared_ptr<object::objectBaseClass> currentObject = objects.at(i);
+        if (currentObject->isGravityAffected())
+        {
+            currentObject->getPosition().y -= gravity(currentObject->getPosition(), 9.8f, deltaTime);
+        }
+    }
 }

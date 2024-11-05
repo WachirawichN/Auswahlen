@@ -24,6 +24,16 @@ object::objectBaseClass::objectBaseClass(bool collision, bool gravity, glm::vec3
     std::cout << "Set rotation: " << getRotation().x << ", " << getRotation().y << ", " << getRotation().z << std::endl;
 }
 
+bool object::objectBaseClass::isCollide()
+{
+    return collision;
+}
+
+bool object::objectBaseClass::isGravityAffected()
+{
+    return collision;
+}
+
 void object::objectBaseClass::setCollision(bool newValue)
 {
     collision = newValue;

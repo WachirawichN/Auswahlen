@@ -22,4 +22,5 @@ class simulation
 
         void addObject(std::shared_ptr<object::objectBaseClass> newObject);
         void drawSimulation();
+        void updateSimulation(float deltaTime);
 };

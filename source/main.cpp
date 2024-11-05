@@ -28,11 +28,11 @@ void GLAPIENTRY MessageCallback(GLenum source,
 }
 
 // Window
-int width = 2560;
-int height = 1440;
+//int width = 2560;
+//int height = 1440;
 
-//int width = 1920;
-//int height = 1080;
+int width = 1920;
+int height = 1080;
 
 // Timing
 float lastFrame = 0.0f;
@@ -135,12 +135,12 @@ int main()
         soulKingTexture.bind();
         yeetShader.setUniform1i("uTexture", 0);
 
-        //std::shared_ptr<object::sphere> spherePtr(new object::sphere(1.0f, 3, true, true, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
-        std::shared_ptr<object::cube> cubePtr(new object::cube(1.0f, 2.0f, 1.0f, true, true, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+        std::shared_ptr<object::sphere> spherePtr(new object::sphere(1.0f, 3, true, true, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+        std::shared_ptr<object::cube> cubePtr(new object::cube(1.0f, 2.0f, 1.0f, true, true, glm::vec3(-2.0f, -4.0f, 3.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
 
         simulation currentSimulation(&worldCamera, yeetShader);
         //currentSimulation.addObject(std::make_shared<object::sphere>(sphere));
-        //currentSimulation.addObject(spherePtr);
+        currentSimulation.addObject(spherePtr);
         currentSimulation.addObject(cubePtr);
 
         // Mouse input
@@ -158,7 +158,7 @@ int main()
             float currentFrame = glfwGetTime();
             
             //cubePtr->rotate(glm::vec3(1.0f, 0.0f, 0.0f));
-            //spherePtr->rescale(glm::vec3(1.0f, 0.0f, 0.0f));
+            //spherePtr->rotate(glm::vec3(0.0f, 1.0f, 0.0f));
             currentSimulation.drawSimulation();
 
             //std::cout << "FPS: " << 1.0f / deltaTime << std::endl;
