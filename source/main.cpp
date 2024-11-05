@@ -39,7 +39,7 @@ float lastFrame = 0.0f;
 float deltaTime = 0.0f;
 
 // Camera
-glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 5.0f);
+glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 15.0f);
 float cameraSpeed = 10.0f;
 camera worldCamera(cameraPos);
 
@@ -99,6 +99,7 @@ int main()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
+    //window = glfwCreateWindow(width, height, "Auswahlen", NULL, NULL); // Window mode (for use when recording demo)
     window = glfwCreateWindow(width, height, "Auswahlen", glfwGetPrimaryMonitor(), NULL);
     if (!window)
     {
@@ -118,8 +119,8 @@ int main()
     }
 
     // Getting error message
-    //glEnable(GL_DEBUG_OUTPUT);
-    //glDebugMessageCallback(MessageCallback, 0);
+    glEnable(GL_DEBUG_OUTPUT);
+    glDebugMessageCallback(MessageCallback, 0);
 
     glEnable(GL_DEPTH_TEST); 
 
@@ -135,9 +136,10 @@ int main()
         soulKingTexture.bind();
         yeetShader.setUniform1i("uTexture", 0);
 
-        std::shared_ptr<object::sphere> spherePtr(new object::sphere(1.0f, 3, true, true, 1.0f, glm::vec3(0.0f, 10.0f, 0.0f), glm::vec3(2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
-        std::shared_ptr<object::sphere> sphereParabolaPtr(new object::sphere(1.0f, 3, true, true, 1.0f, glm::vec3(5.0f, 20.0f, 0.0f), glm::vec3(-10.0f, -10.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
-        std::shared_ptr<object::cube> cubePtr(new object::cube(1.0f, 2.0f, 1.0f, true, true, 1.0f, glm::vec3(5.0f, 0.0f, 0.0f), glm::vec3(-2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+        std::shared_ptr<object::sphere> spherePtr(new object::sphere(1.0f, 3, true, true, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 50.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+        std::shared_ptr<object::sphere> sphereParabolaPtr(new object::sphere(1.0f, 3, true, true, 1.0f, glm::vec3(2.5f, 100.0f, 0.0f), glm::vec3(-25.0f, -500.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+
+        std::shared_ptr<object::cube> cubePtr(new object::cube(1.0f, 2.0f, 3.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(45.0f, 45.0f, 45.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
 
         simulation currentSimulation(&worldCamera, yeetShader);
         currentSimulation.addObject(spherePtr);
@@ -152,7 +154,7 @@ int main()
         glfwSetKeyCallback(window, keyboardCallbackHandler);
 
         // Toggle wireframe
-        glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+        //glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 
         while (!glfwWindowShouldClose(window))
         {
