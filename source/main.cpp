@@ -28,18 +28,18 @@ void GLAPIENTRY MessageCallback(GLenum source,
 }
 
 // Window
-//int width = 2560;
-//int height = 1440;
+int width = 2560;
+int height = 1440;
 
-int width = 1920;
-int height = 1080;
+//int width = 1920;
+//int height = 1080;
 
 // Timing
 float lastFrame = 0.0f;
 float deltaTime = 0.0f;
 
 // Camera
-glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
+glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 5.0f);
 float cameraSpeed = 10.0f;
 camera worldCamera(cameraPos);
 
@@ -135,12 +135,13 @@ int main()
         soulKingTexture.bind();
         yeetShader.setUniform1i("uTexture", 0);
 
-        std::shared_ptr<object::sphere> spherePtr(new object::sphere(1.0f, 3, true, true, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
-        std::shared_ptr<object::cube> cubePtr(new object::cube(1.0f, 2.0f, 1.0f, true, true, glm::vec3(-2.0f, -4.0f, 3.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+        std::shared_ptr<object::sphere> spherePtr(new object::sphere(1.0f, 3, true, true, 1.0f, glm::vec3(0.0f, 10.0f, 0.0f), glm::vec3(2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+        std::shared_ptr<object::sphere> sphereParabolaPtr(new object::sphere(1.0f, 3, true, true, 1.0f, glm::vec3(5.0f, 20.0f, 0.0f), glm::vec3(-10.0f, -10.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+        std::shared_ptr<object::cube> cubePtr(new object::cube(1.0f, 2.0f, 1.0f, true, true, 1.0f, glm::vec3(5.0f, 0.0f, 0.0f), glm::vec3(-2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
 
         simulation currentSimulation(&worldCamera, yeetShader);
-        //currentSimulation.addObject(std::make_shared<object::sphere>(sphere));
         currentSimulation.addObject(spherePtr);
+        currentSimulation.addObject(sphereParabolaPtr);
         currentSimulation.addObject(cubePtr);
 
         // Mouse input
@@ -157,8 +158,7 @@ int main()
         {
             float currentFrame = glfwGetTime();
             
-            //cubePtr->rotate(glm::vec3(1.0f, 0.0f, 0.0f));
-            //spherePtr->rotate(glm::vec3(0.0f, 1.0f, 0.0f));
+            currentSimulation.updateSimulation(deltaTime);
             currentSimulation.drawSimulation();
 
             //std::cout << "FPS: " << 1.0f / deltaTime << std::endl;

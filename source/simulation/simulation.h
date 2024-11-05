@@ -14,11 +14,13 @@ class simulation
     private:
         std::vector<std::shared_ptr<object::objectBaseClass>> objects;
 
+        float gravity;
+
         renderer workspaceRenderer;
         camera* mainCamera;
         shader programShader;
     public:
-        simulation(camera* mainCamera, shader programShader);
+        simulation(camera* mainCamera, shader programShader, float gravity = -9.8f);
 
         void addObject(std::shared_ptr<object::objectBaseClass> newObject);
         void drawSimulation();
