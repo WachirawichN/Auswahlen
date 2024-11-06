@@ -28,18 +28,18 @@ void GLAPIENTRY MessageCallback(GLenum source,
 }
 
 // Window
-//int width = 2560;
-//int height = 1440;
+int width = 2560;
+int height = 1440;
 
-int width = 1920;
-int height = 1080;
+//int width = 1920;
+//int height = 1080;
 
 // Timing
 float lastFrame = 0.0f;
 float deltaTime = 0.0f;
 
 // Camera
-glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 15.0f);
+glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 5.0f);
 float cameraSpeed = 10.0f;
 camera worldCamera(cameraPos);
 
@@ -99,7 +99,6 @@ int main()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    //window = glfwCreateWindow(width, height, "Auswahlen", NULL, NULL); // Window mode (for use when recording demo)
     window = glfwCreateWindow(width, height, "Auswahlen", glfwGetPrimaryMonitor(), NULL);
     if (!window)
     {
@@ -136,15 +135,12 @@ int main()
         soulKingTexture.bind();
         yeetShader.setUniform1i("uTexture", 0);
 
-        std::shared_ptr<object::sphere> spherePtr(new object::sphere(1.0f, 3, true, true, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 50.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
-        std::shared_ptr<object::sphere> sphereParabolaPtr(new object::sphere(1.0f, 3, true, true, 1.0f, glm::vec3(2.5f, 100.0f, 0.0f), glm::vec3(-25.0f, -500.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
-
-        std::shared_ptr<object::cube> cubePtr(new object::cube(1.0f, 2.0f, 3.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(45.0f, 45.0f, 45.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
-
         simulation currentSimulation(&worldCamera, yeetShader);
-        currentSimulation.addObject(spherePtr);
-        currentSimulation.addObject(sphereParabolaPtr);
-        currentSimulation.addObject(cubePtr);
+        for (int i = 0; i < 5; i++)
+        {
+            std::shared_ptr<object::sphere> spherePtr(new object::sphere(0.5f, 3, false, true, 1.0f, glm::vec3(0.0f, i * 2.0f, 0.0f), glm::vec3(i - 2.5f, i * -0.1f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+            currentSimulation.addObject(spherePtr);
+        }
 
         // Mouse input
         glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -154,16 +150,23 @@ int main()
         glfwSetKeyCallback(window, keyboardCallbackHandler);
 
         // Toggle wireframe
-        glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+        //glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 
+        // FOR RECODING WITH DEVLOG ONLY (use nvidia replay for best result)
+        //float haltCurrentTime = glfwGetTime();
+        //while (haltCurrentTime < 5.0f)
+        //{
+        //    deltaTime = haltCurrentTime - lastFrame;
+        //    lastFrame = haltCurrentTime;
+        //    haltCurrentTime = glfwGetTime();
+        //}
+        
         while (!glfwWindowShouldClose(window))
         {
             float currentFrame = glfwGetTime();
             
             currentSimulation.updateSimulation(deltaTime);
             currentSimulation.drawSimulation();
-
-            sphereParabolaPtr->rotate(glm::vec3(0.0f, 0.1f, 0.0f));
 
             //std::cout << "FPS: " << 1.0f / deltaTime << std::endl;
             deltaTime = currentFrame - lastFrame;
