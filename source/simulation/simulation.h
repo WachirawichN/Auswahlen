@@ -1,6 +1,7 @@
 #pragma once
 
 #include "object/objectBaseClass.h"
+#include "physic/projectileMotion.h"
 
 #include "../graphic/graphic.h"
 #include "../graphic/geometry/shape.h"

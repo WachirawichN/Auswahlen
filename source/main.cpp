@@ -28,11 +28,11 @@ void GLAPIENTRY MessageCallback(GLenum source,
 }
 
 // Window
-int width = 2560;
-int height = 1440;
+//int width = 2560;
+//int height = 1440;
 
-//int width = 1920;
-//int height = 1080;
+int width = 1920;
+int height = 1080;
 
 // Timing
 float lastFrame = 0.0f;
@@ -154,7 +154,7 @@ int main()
         glfwSetKeyCallback(window, keyboardCallbackHandler);
 
         // Toggle wireframe
-        //glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+        glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 
         while (!glfwWindowShouldClose(window))
         {
@@ -162,6 +162,8 @@ int main()
             
             currentSimulation.updateSimulation(deltaTime);
             currentSimulation.drawSimulation();
+
+            sphereParabolaPtr->rotate(glm::vec3(0.0f, 0.1f, 0.0f));
 
             //std::cout << "FPS: " << 1.0f / deltaTime << std::endl;
             deltaTime = currentFrame - lastFrame;

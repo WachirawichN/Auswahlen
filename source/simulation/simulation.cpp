@@ -1,5 +1,4 @@
 #include "simulation.h"
-#include "physic/projectileMotion.cpp"
 
 simulation::simulation(camera* mainCamera, shader programShader, float gravity)
     : mainCamera(mainCamera), programShader(programShader), gravity(gravity)
@@ -67,12 +66,10 @@ void simulation::updateSimulation(float deltaTime)
         std::shared_ptr<object::objectBaseClass> currentObject = objects.at(i);
         if (currentObject->isGravityAffected())
         {
-            glm::vec3 deltaVelocity = calculateVelocity(glm::vec3(0.0f, gravity, 0.0f), deltaTime);
+            glm::vec3 deltaVelocity = projectileMotion::calculateVelocity(glm::vec3(0.0f, gravity, 0.0f), deltaTime);
             currentObject->changeVelocity(deltaVelocity);
-            //std::cout << currentObject->isGravityAffected() << std::endl;
-            //std::cout << "Changed velocity by: " << deltaVelocity.x << ", " << deltaVelocity.y << ", " << deltaVelocity.z << std::endl;
         }
-        glm::vec3 distance = calculateDistance(currentObject->getVelocity(), deltaTime);
+        glm::vec3 distance = projectileMotion::calculateDistance(currentObject->getVelocity(), deltaTime);
         currentObject->move(distance);
     }
 }
