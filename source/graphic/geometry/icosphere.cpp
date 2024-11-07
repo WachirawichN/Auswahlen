@@ -151,3 +151,8 @@ geometry::icosphere::icosphere(float radius, int subdivision)
         subdivideIcosahedron(&vertices, &indices, radius);
     }
 }
+
+float geometry::icosphere::getRadius() const
+{
+    return radius;
+}

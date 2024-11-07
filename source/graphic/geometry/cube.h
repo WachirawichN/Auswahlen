@@ -12,6 +12,9 @@ namespace geometry
             float depth;
         public:
             cube(float width, float height, float depth);
+            float getWidth() const;
+            float getDepth() const;
+            float getHeight() const;
     };
 }
 

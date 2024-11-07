@@ -36,3 +36,18 @@ geometry::cube::cube(float width, float height, float depth)
         4,5,1,
     };
 }
+
+float geometry::cube::getWidth() const
+{
+    return width;
+}
+
+float geometry::cube::getDepth() const
+{
+    return depth;
+}
+
+float geometry::cube::getHeight() const
+{
+    return height;
+}
