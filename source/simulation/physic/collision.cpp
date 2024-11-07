@@ -4,12 +4,7 @@
 
 float pythagorasTheorem(glm::vec3 dstVector)
 {
-    float sum = 0;
-    for (int i = 0; i > 3; i++)
-    {
-        sum += pow(dstVector[i], 2);
-    }
-    return sqrt(sum);
+    return sqrt(pow(dstVector.x, 2) + pow(dstVector.y, 2) + pow(dstVector.z, 2));
 }
 
 bool collision::sphereBoxCollision(std::shared_ptr<object::objectBaseClass> sphere, std::shared_ptr<object::objectBaseClass> box)
@@ -44,15 +39,19 @@ bool collision::sphereBoxCollision(std::shared_ptr<object::objectBaseClass> sphe
 
 bool collision::sphereSphereCollision(std::shared_ptr<object::objectBaseClass> sphere1, std::shared_ptr<object::objectBaseClass> sphere2)
 {
-    glm::vec3 dst = sphere1->getPosition() + sphere2->getPosition();
+    glm::vec3 dst = sphere1->getPosition() - sphere2->getPosition();
     float dstLength = pythagorasTheorem(dst);
+
     
     geometry::icosphere* shapePtr1 = dynamic_cast<geometry::icosphere*>(sphere1.get());
     float sphere1Radius = shapePtr1->getRadius();
+    glm::vec3 sphereScale1 = sphere1->getScale();
+
     geometry::icosphere* shapePtr2 = dynamic_cast<geometry::icosphere*>(sphere2.get());
     float sphere2Radius = shapePtr2->getRadius();
+    glm::vec3 sphereScale2 = sphere2->getScale();
 
-    return (dstLength < sphere1Radius + sphere2Radius) ? true : false;
+    return (dstLength < (sphere1Radius * sphereScale1.x + sphere2Radius * sphereScale2.x)) ? true : false;
 }
 
 glm::vec3 collision::collisionResolver(glm::vec3 objectVelocity)

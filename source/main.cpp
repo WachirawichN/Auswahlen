@@ -12,8 +12,8 @@
 #include "simulation/object/sphere.h"
 #include "simulation/object/cube.h"
 
-#include <typeinfo>
 #include <iostream>
+#include <cstdlib>
 
 // OpenGL Logging
 void GLAPIENTRY MessageCallback(GLenum source,
@@ -136,21 +136,39 @@ int main()
         soulKingTexture.bind();
         yeetShader.setUniform1i("uTexture", 0);
 
-        std::shared_ptr<object::cube> cubePtr(new object::cube(1.0f, 1.0f, 1.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, -3.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(5.0f, 0.5f, 5.0f)));
-        std::shared_ptr<object::sphere> spherePtr(new object::sphere(1.0f, 3, true, true, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.25f, 0.25f, 0.25f)));
+        std::shared_ptr<object::cube> floorPtr(new object::cube(1.0f, 1.0f, 1.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, -5.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 0.25f, 10.0f)));
+        std::shared_ptr<object::cube> topPtr(new object::cube(1.0f, 1.0f, 1.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 5.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 0.25f, 10.0f)));
+
+        std::shared_ptr<object::cube> leftPtr(new object::cube(1.0f, 1.0f, 1.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(-5.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.25f, 10.0f, 10.0f)));
+        std::shared_ptr<object::cube> rightPtr(new object::cube(1.0f, 1.0f, 1.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(5.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.25f, 10.0f, 10.0f)));
+
+        std::shared_ptr<object::cube> frontPtr(new object::cube(1.0f, 1.0f, 1.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, -5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 10.0f, 0.25f)));
+        std::shared_ptr<object::cube> backPtr(new object::cube(1.0f, 1.0f, 1.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 10.0f, 0.25f)));
 
         simulation currentSimulation(&worldCamera, yeetShader);
-        currentSimulation.addObject(spherePtr);
-        currentSimulation.addObject(cubePtr);
+        //currentSimulation.addObject(spherePtr);
+        currentSimulation.addObject(floorPtr);
+        currentSimulation.addObject(topPtr);
+        currentSimulation.addObject(leftPtr);
+        currentSimulation.addObject(rightPtr);
+        currentSimulation.addObject(frontPtr);
+        currentSimulation.addObject(backPtr);
 
+        std::shared_ptr<object::sphere> spherePtr1(new object::sphere(1.0f, 3, false, true, 1.0f, glm::vec3(3.0f, 0.0f, 0.0f), glm::vec3(-1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.1f, 0.1f, 0.1f)));
+        std::shared_ptr<object::sphere> spherePtr2(new object::sphere(1.0f, 3, false, true, 1.0f, glm::vec3(-3.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.1f, 0.1f, 0.1f)));
+        currentSimulation.addObject(spherePtr1);
+        currentSimulation.addObject(spherePtr2);
         /*
-        for (int i = 0; i < 5; i++)
+        srand(0);
+        for (int i = 0; i < 100; i++)
         {
-            std::shared_ptr<object::sphere> spherePtr(new object::sphere(0.5f, 3, false, true, 1.0f, glm::vec3(0.0f, i * 2.0f, 0.0f), glm::vec3(i - 2.5f, i * -0.1f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+            glm::vec3 initailVelocity(((rand() & 101) - 50) / 10, ((rand() & 101) - 50) / 50, ((rand() & 101) - 50) / 10);
+            glm::vec3 initailPosition(((rand() & 7) - 3), ((rand() & 7) - 3), ((rand() & 7) - 3));
+            std::shared_ptr<object::sphere> spherePtr(new object::sphere(1.0f, 3, false, true, 1.0f, initailVelocity, initailPosition, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.1f, 0.1f, 0.1f)));
             currentSimulation.addObject(spherePtr);
-            std::cout << typeid(spherePtr).name() << std::endl;
         }
         */
+        
 
         // Mouse input
         glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -178,7 +196,7 @@ int main()
             currentSimulation.updateSimulation(deltaTime);
             currentSimulation.drawSimulation();
 
-            //std::cout << "FPS: " << 1.0f / deltaTime << std::endl;
+            //std::cout << "FPS: " << floor(1.0f / deltaTime) << std::endl;
             deltaTime = currentFrame - lastFrame;
             lastFrame = currentFrame;
             

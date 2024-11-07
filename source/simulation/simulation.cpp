@@ -83,10 +83,12 @@ void simulation::updateSimulation(float deltaTime)
             bool isCollide = false;
             if (dynamic_cast<geometry::icosphere*>(targetObject.get()) != nullptr)
             {
+                //std::cout << "box collide" << std::endl;
                 isCollide = collision::sphereSphereCollision(currentObject, targetObject);
             }
             else if (dynamic_cast<geometry::cube*>(targetObject.get()) != nullptr)
             {
+                //std::cout << "sphere collide" << std::endl;
                 isCollide = collision::sphereBoxCollision(currentObject, targetObject);
             }
             
@@ -94,6 +96,7 @@ void simulation::updateSimulation(float deltaTime)
             {
                 currentObject->changeVelocity(currentObject->getVelocity() * 2.0f * -1.0f);
             }
+            //std::cout << std::endl;
         }
     }
 }
