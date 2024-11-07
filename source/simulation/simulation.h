@@ -1,13 +1,18 @@
 #pragma once
 
 #include "object/objectBaseClass.h"
+#include "object/sphere.h"
+#include "object/cube.h"
+
 #include "physic/projectileMotion.h"
+#include "physic/collision.h"
 
 #include "../graphic/graphic.h"
 #include "../graphic/geometry/shape.h"
 
 #include <vector>
 #include <memory>
+#include <typeinfo>
 
 // Handle all the rendering and the physic in the scene
 class simulation

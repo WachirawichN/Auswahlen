@@ -18,7 +18,7 @@ namespace object
             glm::vec3 rotation;
             glm::vec3 scale;
         public:
-            objectBaseClass(bool collision = true,
+            objectBaseClass(bool collision = true, // Determine if the object will be affected by collision resolver
                             bool gravity = true,
                             float mass = 1,
                             glm::vec3 velocity = glm::vec3(0.0f, 0.0f, 0.0f),

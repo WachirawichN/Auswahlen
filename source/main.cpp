@@ -4,8 +4,6 @@
 #include "dependencies/GLM/glm.hpp"
 #include "dependencies/GLM/ext.hpp"
 
-#include <iostream>
-
 #include "graphic/graphic.h"
 #include "graphic/geometry/geometry.h"
 
@@ -13,6 +11,9 @@
 
 #include "simulation/object/sphere.h"
 #include "simulation/object/cube.h"
+
+#include <typeinfo>
+#include <iostream>
 
 // OpenGL Logging
 void GLAPIENTRY MessageCallback(GLenum source,
@@ -28,11 +29,11 @@ void GLAPIENTRY MessageCallback(GLenum source,
 }
 
 // Window
-//int width = 2560;
-//int height = 1440;
+int width = 2560;
+int height = 1440;
 
-int width = 1920;
-int height = 1080;
+//int width = 1920;
+//int height = 1080;
 
 // Timing
 float lastFrame = 0.0f;
@@ -118,8 +119,8 @@ int main()
     }
 
     // Getting error message
-    glEnable(GL_DEBUG_OUTPUT);
-    glDebugMessageCallback(MessageCallback, 0);
+    //lEnable(GL_DEBUG_OUTPUT);
+    //lDebugMessageCallback(MessageCallback, 0);
 
     glEnable(GL_DEPTH_TEST); 
 
@@ -135,12 +136,21 @@ int main()
         soulKingTexture.bind();
         yeetShader.setUniform1i("uTexture", 0);
 
+        std::shared_ptr<object::cube> cubePtr(new object::cube(1.0f, 1.0f, 1.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, -3.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(5.0f, 0.5f, 5.0f)));
+        std::shared_ptr<object::sphere> spherePtr(new object::sphere(1.0f, 3, true, true, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.25f, 0.25f, 0.25f)));
+
         simulation currentSimulation(&worldCamera, yeetShader);
+        currentSimulation.addObject(spherePtr);
+        currentSimulation.addObject(cubePtr);
+
+        /*
         for (int i = 0; i < 5; i++)
         {
             std::shared_ptr<object::sphere> spherePtr(new object::sphere(0.5f, 3, false, true, 1.0f, glm::vec3(0.0f, i * 2.0f, 0.0f), glm::vec3(i - 2.5f, i * -0.1f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
             currentSimulation.addObject(spherePtr);
+            std::cout << typeid(spherePtr).name() << std::endl;
         }
+        */
 
         // Mouse input
         glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -150,7 +160,7 @@ int main()
         glfwSetKeyCallback(window, keyboardCallbackHandler);
 
         // Toggle wireframe
-        //glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+        glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 
         // FOR RECODING WITH DEVLOG ONLY (use nvidia replay for best result)
         //float haltCurrentTime = glfwGetTime();

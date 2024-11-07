@@ -10,7 +10,6 @@ void simulation::addObject(std::shared_ptr<object::objectBaseClass> newObject)
 {
     objects.push_back(newObject);
 }
-
 void simulation::drawSimulation()
 {
     workspaceRenderer.clearScreen();
@@ -58,12 +57,12 @@ void simulation::drawSimulation()
     }
     
 }
-
 void simulation::updateSimulation(float deltaTime)
 {
     for (int i = 0; i < objects.size(); i++)
     {
         std::shared_ptr<object::objectBaseClass> currentObject = objects.at(i);
+        
         if (currentObject->isGravityAffected())
         {
             glm::vec3 deltaVelocity = projectileMotion::calculateVelocity(glm::vec3(0.0f, gravity, 0.0f), deltaTime);
@@ -71,5 +70,30 @@ void simulation::updateSimulation(float deltaTime)
         }
         glm::vec3 distance = projectileMotion::calculateDistance(currentObject->getVelocity(), deltaTime);
         currentObject->move(distance);
+
+        // Collision detection
+        for (int j = 0; j < objects.size(); j++) // Loop through target object
+        {
+            if (j == i || (dynamic_cast<geometry::cube*>(currentObject.get())) != nullptr) // Check if current object is cube
+            {
+                continue;
+            }
+
+            std::shared_ptr<object::objectBaseClass> targetObject = objects.at(j);
+            bool isCollide = false;
+            if (dynamic_cast<geometry::icosphere*>(targetObject.get()) != nullptr)
+            {
+                isCollide = collision::sphereSphereCollision(currentObject, targetObject);
+            }
+            else if (dynamic_cast<geometry::cube*>(targetObject.get()) != nullptr)
+            {
+                isCollide = collision::sphereBoxCollision(currentObject, targetObject);
+            }
+            
+            if (isCollide)
+            {
+                currentObject->changeVelocity(currentObject->getVelocity() * 2.0f * -1.0f);
+            }
+        }
     }
 }
