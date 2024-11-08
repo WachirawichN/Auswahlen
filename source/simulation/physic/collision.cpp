@@ -13,13 +13,9 @@ bool collision::sphereBoxCollision(std::shared_ptr<object::objectBaseClass> sphe
 
     glm::vec3 spherePosition = sphere->getPosition();
     glm::vec3 sphereScale = sphere->getScale();
-    //geometry::icosphere* shapePtr = dynamic_cast<geometry::icosphere*>(sphere.get());
-    //float sphereRadius = shapePtr->getRadius();
 
     glm::vec3 boxPosition = box->getPosition();
     glm::vec3 boxScale = box->getScale();
-    //geometry::cube* boxPtr = dynamic_cast<geometry::cube*>(box.get());
-    //float boxDimensions[] = {boxPtr->getWidth(), boxPtr->getDepth(), boxPtr->getHeight()};
     for (int i = 0; i < 3; i++) // Loop through axis
     {
         float sphereStart = spherePosition[i] - sphereScale[i];
@@ -52,6 +48,20 @@ bool collision::sphereSphereCollision(std::shared_ptr<object::objectBaseClass> s
     glm::vec3 sphereScale2 = sphere2->getScale();
 
     return (dstLength < (sphere1Radius * sphereScale1.x + sphere2Radius * sphereScale2.x)) ? true : false;
+}
+
+bool collision::continuouseCollisionDetection(std::shared_ptr<object::objectBaseClass> currentObject, std::shared_ptr<object::objectBaseClass> target)
+{
+    glm::vec3 objectVelocity = currentObject->getVelocity();
+    glm::vec3 objectPosition = currentObject->getPosition();
+    glm::vec3 targetPosition = target->getPosition();
+    for (int axis = 0; axis < 3; axis++)
+    {
+        float objectAxisPosition = objectPosition[axis];
+        float targetAxisPosition = targetPosition[axis];
+        float distance = objectAxisPosition - targetAxisPosition;
+    }
+    return;
 }
 
 glm::vec3 collision::collisionResolver(glm::vec3 objectVelocity)
