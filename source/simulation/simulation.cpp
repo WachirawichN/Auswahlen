@@ -80,6 +80,9 @@ void simulation::updateSimulation(float deltaTime)
             }
 
             std::shared_ptr<object::objectBaseClass> targetObject = objects.at(j);
+            collision::continuouseCollisionDetection(currentObject, targetObject, deltaTime);
+
+            /*
             bool isCollide = false;
             if (dynamic_cast<geometry::icosphere*>(targetObject.get()) != nullptr)
             {
@@ -97,6 +100,7 @@ void simulation::updateSimulation(float deltaTime)
                 currentObject->changeVelocity(currentObject->getVelocity() * 2.0f * -1.0f);
             }
             //std::cout << std::endl;
+            */
         }
     }
 }
