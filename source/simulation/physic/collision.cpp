@@ -52,36 +52,54 @@ bool collision::sphereSphereCollision(std::shared_ptr<object::objectBaseClass> s
 
 void collision::continuouseCollisionDetection(std::shared_ptr<object::objectBaseClass> currentObject, std::shared_ptr<object::objectBaseClass> target, float deltaTime)
 {
-    glm::vec3 objectVelocity = currentObject->getVelocity();
     glm::vec3 objectPosition = currentObject->getPosition();
+    glm::vec3 objectScale = currentObject->getScale();
+
     glm::vec3 targetPosition = target->getPosition();
-    
+    glm::vec3 targetScale = target->getScale();
+
+    glm::vec3 newObjectPosition(0.0f, 0.0f, 0.0f);
+
     int axisOfContact = 0;
-    for (int i = 0; i < 3; i++)
+
+    for (int axis = 0; axis < 3; axis++)
     {
-        if ((abs(objectPosition[i] - targetPosition[i]) / ((objectVelocity[i] == 0) ? 1 : objectVelocity[i])) < deltaTime)
+        // Positive = front
+        // Negative = back
+        float objectSide = objectPosition[axis] - targetPosition[axis];
+
+        // Stepping physic calculation
+        float newAxisPosition = currentObject->getVelocity()[axis] * deltaTime;
+
+        // Detect collision
+        if (objectSide > 0) // Front detection
         {
-            axisOfContact++;
+            float targetPositive = targetPosition[axis] + (targetScale[axis] / 2);
+            // Object collided
+            if (newAxisPosition < targetPositive)
+            {
+                axisOfContact++;
+                newObjectPosition[axis] = newAxisPosition;
+            }
         }
-        std::cout << i << ": " << axisOfContact << std::endl;
+        else if (objectSide < 0) // Back detection
+        {
+            float targetNegative = targetPosition[axis] - (targetScale[axis] / 2);
+            // Object collided
+            if (newAxisPosition > targetNegative)
+            {
+                axisOfContact++;
+                newObjectPosition[axis] = newAxisPosition;
+            }
+        }
     }
-    std::cout<<std::endl;
+
+    std::cout <<axisOfContact<<std::endl;
     if (axisOfContact == 3)
     {
-        std::cout<<"collide"<<std::endl;
-        float overTime = abs(objectPosition.y - targetPosition.y) / objectVelocity.y; // Time for object to get to target center in Y axis
-
-        float newDstY = abs(objectPosition.y - targetPosition.y) + (objectVelocity.y * overTime);
-
-        float finalTargetDstY = newDstY + (currentObject->getScale().y / 2.0f); // Distance from center of target to center of object on collision site in Y axis
-        float finalDstY = abs(objectPosition.y - targetPosition.y) - finalTargetDstY; // Distance from object position to collision site in Y axis
-
-        float bestTime = finalDstY / objectVelocity.y; // Time for object to get to collision site
-        currentObject->move(objectVelocity * bestTime);
+        glm::vec3 distance(newObjectPosition - objectPosition);
         currentObject->setGravity(false);
-        currentObject->changeVelocity(currentObject->getVelocity() * -1.0f);
-
-        float leftOverTime = deltaTime - bestTime;
+        currentObject->move(distance);
     }
 }
 

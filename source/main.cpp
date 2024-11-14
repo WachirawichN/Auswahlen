@@ -137,24 +137,24 @@ int main()
         yeetShader.setUniform1i("uTexture", 0);
 
         std::shared_ptr<object::cube> floorPtr(new object::cube(1.0f, 1.0f, 1.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, -5.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 0.25f, 10.0f)));
-        std::shared_ptr<object::cube> topPtr(new object::cube(1.0f, 1.0f, 1.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 5.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 0.25f, 10.0f)));
+        //std::shared_ptr<object::cube> topPtr(new object::cube(1.0f, 1.0f, 1.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 5.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 0.25f, 10.0f)));
 
-        std::shared_ptr<object::cube> leftPtr(new object::cube(1.0f, 1.0f, 1.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(-5.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.25f, 10.0f, 10.0f)));
-        std::shared_ptr<object::cube> rightPtr(new object::cube(1.0f, 1.0f, 1.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(5.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.25f, 10.0f, 10.0f)));
+        //std::shared_ptr<object::cube> leftPtr(new object::cube(1.0f, 1.0f, 1.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(-5.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.25f, 10.0f, 10.0f)));
+        //std::shared_ptr<object::cube> rightPtr(new object::cube(1.0f, 1.0f, 1.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(5.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.25f, 10.0f, 10.0f)));
 
-        std::shared_ptr<object::cube> frontPtr(new object::cube(1.0f, 1.0f, 1.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, -5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 10.0f, 0.25f)));
-        std::shared_ptr<object::cube> backPtr(new object::cube(1.0f, 1.0f, 1.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 10.0f, 0.25f)));
+        //std::shared_ptr<object::cube> frontPtr(new object::cube(1.0f, 1.0f, 1.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, -5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 10.0f, 0.25f)));
+        //std::shared_ptr<object::cube> backPtr(new object::cube(1.0f, 1.0f, 1.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 10.0f, 0.25f)));
 
         simulation currentSimulation(&worldCamera, yeetShader);
         //currentSimulation.addObject(spherePtr);
         currentSimulation.addObject(floorPtr);
-        currentSimulation.addObject(topPtr);
-        currentSimulation.addObject(leftPtr);
-        currentSimulation.addObject(rightPtr);
-        currentSimulation.addObject(frontPtr);
-        currentSimulation.addObject(backPtr);
+        //currentSimulation.addObject(topPtr);
+        //currentSimulation.addObject(leftPtr);
+        //currentSimulation.addObject(rightPtr);
+        //currentSimulation.addObject(frontPtr);
+        //currentSimulation.addObject(backPtr);
 
-        std::shared_ptr<object::sphere> spherePtr1(new object::sphere(1.0f, 3, false, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(-1.0f, -5.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.1f, 0.1f, 0.1f)));
+        std::shared_ptr<object::sphere> spherePtr1(new object::sphere(1.0f, 3, false, true, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 2.5f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.1f, 0.1f, 0.1f)));
         //std::shared_ptr<object::sphere> spherePtr2(new object::sphere(1.0f, 3, false, true, 1.0f, glm::vec3(-3.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.1f, 0.1f, 0.1f)));
         currentSimulation.addObject(spherePtr1);
         //currentSimulation.addObject(spherePtr2);
