@@ -29,11 +29,11 @@ void GLAPIENTRY MessageCallback(GLenum source,
 }
 
 // Window
-//int width = 2560;
-//int height = 1440;
+int width = 2560;
+int height = 1440;
 
-int width = 1920;
-int height = 1080;
+//int width = 1920;
+//int height = 1080;
 
 // Timing
 float lastFrame = 0.0f;
@@ -154,7 +154,7 @@ int main()
         //currentSimulation.addObject(frontPtr);
         //currentSimulation.addObject(backPtr);
 
-        std::shared_ptr<object::sphere> spherePtr1(new object::sphere(1.0f, 3, false, true, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 2.5f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.1f, 0.1f, 0.1f)));
+        std::shared_ptr<object::sphere> spherePtr1(new object::sphere(1.0f, 3, false, true, 1.0f, glm::vec3(-.5f, 0.0f, 0.0f), glm::vec3(1.0f, 2.00f, 3.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.1f, 0.1f, 0.1f)));
         //std::shared_ptr<object::sphere> spherePtr2(new object::sphere(1.0f, 3, false, true, 1.0f, glm::vec3(-3.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.1f, 0.1f, 0.1f)));
         currentSimulation.addObject(spherePtr1);
         //currentSimulation.addObject(spherePtr2);

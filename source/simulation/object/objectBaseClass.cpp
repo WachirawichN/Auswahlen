@@ -45,9 +45,9 @@ void object::objectBaseClass::changeVelocity(glm::vec3 deltaVelocity)
 {
     velocity += deltaVelocity;
 }
-void object::objectBaseClass::move(glm::vec3 distnace)
+void object::objectBaseClass::move(glm::vec3 distance)
 {
-    position += distnace;
+    position += distance;
 }
 void object::objectBaseClass::rotate(glm::vec3 degree)
 {
