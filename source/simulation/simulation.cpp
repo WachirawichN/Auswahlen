@@ -68,8 +68,8 @@ void simulation::updateSimulation(float deltaTime)
             glm::vec3 deltaVelocity = projectileMotion::calculateVelocity(glm::vec3(0.0f, gravity, 0.0f), deltaTime);
             currentObject->changeVelocity(deltaVelocity);
         }
-        glm::vec3 distance = projectileMotion::calculateDistance(currentObject->getVelocity(), deltaTime);
-        currentObject->move(distance);
+        //glm::vec3 distance = projectileMotion::calculateDistance(currentObject->getVelocity(), deltaTime);
+        //currentObject->move(distance);
 
         // Collision detection
         for (int j = 0; j < objects.size(); j++) // Loop through target object

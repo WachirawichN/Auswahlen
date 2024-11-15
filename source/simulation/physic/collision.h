@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../object/objectBaseClass.h"
+#include "projectileMotion.h"
 #include <memory>
 
 namespace collision

@@ -59,6 +59,7 @@ void collision::continuouseCollisionDetection(std::shared_ptr<object::objectBase
     glm::vec3 targetScale = target->getScale();
 
     glm::vec3 newObjectPosition(0.0f, 0.0f, 0.0f);
+    glm::vec3 newObjectVelocity = currentObject->getVelocity();
 
     int axisOfContact = 0;
 
@@ -92,15 +93,37 @@ void collision::continuouseCollisionDetection(std::shared_ptr<object::objectBase
                 newObjectPosition[axis] = newAxisPosition;
             }
         }
+        else
+        {
+            axisOfContact++;
+        }
+        
+        std::cout << axis << " : " << axisOfContact << std::endl;
     }
 
-    std::cout <<axisOfContact<<std::endl;
     if (axisOfContact == 3)
     {
-        glm::vec3 distance(newObjectPosition - objectPosition);
-        currentObject->setGravity(false);
-        currentObject->move(distance);
+        glm::vec3 dst(newObjectPosition - objectPosition);
+        std::cout << "Object position : " << objectPosition.x << " " << objectPosition.y << " " << objectPosition.z << std::endl;
+        std::cout << "New object position : " << newObjectPosition.x << " " << newObjectPosition.y << " " << newObjectPosition.z << std::endl;
+        std::cout << "New distance : " << dst.x << " " << dst.y << " " << dst.z << std::endl;
+        currentObject->move(dst);
+
+        float usageTime = pythagorasTheorem(dst) / pythagorasTheorem(currentObject->getVelocity());
+        float leftOverTime = deltaTime - usageTime;
+        std::cout << "Left over time : " << leftOverTime << std::endl;
+        glm::vec3 reflectDst = projectileMotion::calculateDistance(newObjectVelocity, leftOverTime);
+        std::cout << "Rerflected distnace : " << reflectDst.x << " " << reflectDst.y << " " << reflectDst.z << std::endl;
+        currentObject->move(reflectDst);
     }
+    else
+    {
+        // Stepping normal physic calcultion
+        glm::vec3 dst = projectileMotion::calculateDistance(currentObject->getVelocity(), deltaTime);
+        currentObject->move(dst);
+    }
+
+    std::cout << std::endl;
 }
 
 glm::vec3 collision::collisionResolver(glm::vec3 objectVelocity)
