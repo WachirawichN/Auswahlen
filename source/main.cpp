@@ -122,8 +122,7 @@ int main()
     //lEnable(GL_DEBUG_OUTPUT);
     //lDebugMessageCallback(MessageCallback, 0);
 
-    glEnable(GL_DEPTH_TEST); 
-
+    glEnable(GL_DEPTH_TEST);
 
     // Create object, shader, variable, blah blah blah here
     {
@@ -136,38 +135,50 @@ int main()
         soulKingTexture.bind();
         yeetShader.setUniform1i("uTexture", 0);
 
-        std::shared_ptr<object::cube> floorPtr(new object::cube(1.0f, 1.0f, 1.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, -5.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 0.25f, 10.0f)));
-        //std::shared_ptr<object::cube> topPtr(new object::cube(1.0f, 1.0f, 1.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 5.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 0.25f, 10.0f)));
-
-        //std::shared_ptr<object::cube> leftPtr(new object::cube(1.0f, 1.0f, 1.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(-5.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.25f, 10.0f, 10.0f)));
-        //std::shared_ptr<object::cube> rightPtr(new object::cube(1.0f, 1.0f, 1.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(5.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.25f, 10.0f, 10.0f)));
-
-        //std::shared_ptr<object::cube> frontPtr(new object::cube(1.0f, 1.0f, 1.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, -5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 10.0f, 0.25f)));
-        //std::shared_ptr<object::cube> backPtr(new object::cube(1.0f, 1.0f, 1.0f, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 10.0f, 0.25f)));
-
         simulation currentSimulation(&worldCamera, yeetShader);
-        //currentSimulation.addObject(spherePtr);
-        currentSimulation.addObject(floorPtr);
-        //currentSimulation.addObject(topPtr);
-        //currentSimulation.addObject(leftPtr);
-        //currentSimulation.addObject(rightPtr);
-        //currentSimulation.addObject(frontPtr);
-        //currentSimulation.addObject(backPtr);
 
-        std::shared_ptr<object::sphere> spherePtr1(new object::sphere(1.0f, 3, false, true, 1.0f, glm::vec3(-.5f, 0.0f, 0.0f), glm::vec3(1.0f, 2.00f, 3.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.1f, 0.1f, 0.1f)));
-        //std::shared_ptr<object::sphere> spherePtr2(new object::sphere(1.0f, 3, false, true, 1.0f, glm::vec3(-3.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.1f, 0.1f, 0.1f)));
+        
+        std::shared_ptr<object::sphere> spherePtr1(new object::sphere(3, true, false, 1.0f, glm::vec3(0.5f, -500.0f, 0.25f), glm::vec3(-3.0f, 0.0f, -1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.5f, 0.5f, 0.5f)));
         currentSimulation.addObject(spherePtr1);
-        //currentSimulation.addObject(spherePtr2);
+        std::shared_ptr<object::cube> block(new object::cube(true, true, 99999.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, -5.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 0.25f, 10.0f)));
+        currentSimulation.addObject(block);
+        
+        
         /*
+        std::shared_ptr<object::sphere> spherePtr1(new object::sphere(3, true, true, 1.0f, glm::vec3(-1.5f, 0.0f, 0.0f), glm::vec3(2.0f, 0.0f, -1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.5f, 0.5f, 0.5f)));
+        currentSimulation.addObject(spherePtr1);
+        std::shared_ptr<object::sphere> spherePtr2(new object::sphere(3, true, true, 1.0f, glm::vec3(1.5f, 0.0f, 0.0f), glm::vec3(-2.0f, 0.0f, -1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.5f, 0.5f, 0.5f)));
+        currentSimulation.addObject(spherePtr2);
+        */
+
+        /*
+        std::shared_ptr<object::cube> floorPtr(new object::cube(true, true, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, -5.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 0.25f, 10.0f)));
+        std::shared_ptr<object::cube> topPtr(new object::cube(true, true, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 5.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 0.25f, 10.0f)));
+
+        std::shared_ptr<object::cube> leftPtr(new object::cube(true, true, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(-5.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.25f, 10.0f, 10.0f)));
+        std::shared_ptr<object::cube> rightPtr(new object::cube(true, true, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(5.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.25f, 10.0f, 10.0f)));
+
+        std::shared_ptr<object::cube> frontPtr(new object::cube(true, true, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, -5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 10.0f, 0.25f)));
+        std::shared_ptr<object::cube> backPtr(new object::cube(true, true, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 10.0f, 0.25f)));
+
+
+        currentSimulation.addObject(floorPtr);
+        currentSimulation.addObject(topPtr);
+        currentSimulation.addObject(leftPtr);
+        currentSimulation.addObject(rightPtr);
+        currentSimulation.addObject(frontPtr);
+        currentSimulation.addObject(backPtr);
+
         srand(0);
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 10; i++)
         {
             glm::vec3 initailVelocity(((rand() & 101) - 50) / 10, ((rand() & 101) - 50) / 50, ((rand() & 101) - 50) / 10);
             glm::vec3 initailPosition(((rand() & 7) - 3), ((rand() & 7) - 3), ((rand() & 7) - 3));
-            std::shared_ptr<object::sphere> spherePtr(new object::sphere(1.0f, 3, false, true, 1.0f, initailVelocity, initailPosition, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.1f, 0.1f, 0.1f)));
+            std::shared_ptr<object::sphere> spherePtr(new object::sphere(3, true, true, 1.0f, initailVelocity, initailPosition, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.1f, 0.1f, 0.1f)));
             currentSimulation.addObject(spherePtr);
         }
         */
+        
         
 
         // Mouse input

@@ -58,54 +58,112 @@ void collision::continuouseCollisionDetection(std::shared_ptr<object::objectBase
     glm::vec3 targetPosition = target->getPosition();
     glm::vec3 targetScale = target->getScale();
 
-    glm::vec3 newObjectPosition(0.0f, 0.0f, 0.0f);
+    glm::vec3 newObjectPosition = objectPosition;
     glm::vec3 newObjectVelocity = currentObject->getVelocity();
 
     int axisOfContact = 0;
 
     for (int axis = 0; axis < 3; axis++)
     {
-        float objectSide = objectPosition[axis] - targetPosition[axis];
+        float currentObjectSide = objectPosition[axis] - targetPosition[axis];
+        float objectAxisBorder = objectScale[axis] / 2;
 
         // Stepping physic calculation
         float newAxisPosition = objectPosition[axis] + (newObjectVelocity[axis] * deltaTime);
 
         // Detect collision
-        if (objectSide > 0) // Positive detection (Front, Right, Top)
+        if (currentObjectSide > 0) // Positive border detection (Front, Right, Top)
         {
             float positiveBorder = targetPosition[axis] + (targetScale[axis] / 2);
 
-            if (newAxisPosition < positiveBorder)
+            // Run when new object position is within positive border
+            
+            if (newAxisPosition - objectAxisBorder < positiveBorder)
             {
+                //std::cout << "Object new border position: " << newAxisPosition - objectAxisBorder << " Positive border: " << positiveBorder << std::endl;
                 axisOfContact++;
-                if (newObjectVelocity[axis] == 0.0f) // Object already inside target collision box
+
+                // Side from object border to target border
+                float oldObjBorderTargetSide = objectPosition[axis] + objectAxisBorder;
+
+                // Execute when object ram into border
+                // Check if object border come from the other side of target border
+                if (oldObjBorderTargetSide > positiveBorder)
                 {
-                    newObjectPosition[axis] = objectPosition[axis];
-                }
-                else // Object ram into target
-                {
+                    //std::cout << "Old object-target side: " << oldObjBorderTargetSide << std::endl;
+                    //std::cout << "New object-target side: " << newAxisPosition - objectAxisBorder << std::endl;
+
                     newObjectPosition[axis] = positiveBorder + (objectScale[axis] / 2);
                     newObjectVelocity[axis] *= -1;
+
+                    //std::cout << "New axis position : " << newObjectPosition[axis] << std::endl;
                 }
+
+                // Execute when object is moving in that axis
+                /*
+                if (newObjectVelocity[axis] != 0.0f)
+                {
+                    // Side from object border to target border
+                    float oldObjBorderTargetSide = (objectPosition[axis] + objectAxisBorder) - targetPosition[axis];
+                    float newObjBorderTargetSide = (newAxisPosition + objectAxisBorder) - targetPosition[axis];
+
+                    // Execute when object ram into border
+                    if ((oldObjBorderTargetSide < 0) != (newObjBorderTargetSide < 0))
+                    {
+                        //std::cout << "Ricochet" << std::endl;
+                        newObjectPosition[axis] = positiveBorder + (objectScale[axis] / 2);
+                        newObjectVelocity[axis] *= -1;
+                        std::cout << "New axis position : " << newObjectPosition[axis] << std::endl;
+                    }
+                }
+                */
             }
         }
-        else if (objectSide < 0) // Negative detection (Back, Left Bottom)
+        else if (currentObjectSide < 0) // Negative border detection (Back, Left, Bottom)
         {
             float negativeBorder = targetPosition[axis] - (targetScale[axis] / 2);
 
-            if (newAxisPosition < negativeBorder)
+            // Run when new object position is within negative border
+            
+            if (newAxisPosition + objectAxisBorder > negativeBorder)
             {
+                //std::cout << "Object new border position: " << newAxisPosition + objectAxisBorder << " Negative border: " << negativeBorder << std::endl;
                 axisOfContact++;
 
-                if (newObjectVelocity[axis] == 0.0f) // Object already inside target collision box
+                // Side from object border to target border
+                float oldObjBorderTargetSide = objectPosition[axis] + objectAxisBorder;
+
+                // Execute when object ram into border
+                // Check if object border come from the other side of target border
+                if (oldObjBorderTargetSide < negativeBorder)
                 {
-                    newObjectPosition[axis] = objectPosition[axis];
-                }
-                else // Object ram into target
-                {
+                    //std::cout << "Old object-target side: " << oldObjBorderTargetSide << std::endl;
+                    //std::cout << "New object-target side: " << newAxisPosition + objectAxisBorder << std::endl;
+
                     newObjectPosition[axis] = negativeBorder - (objectScale[axis] / 2);
                     newObjectVelocity[axis] *= -1;
+
+                    //std::cout << "New axis position : " << newObjectPosition[axis] << std::endl;
                 }
+
+                // Execute when object is moving in that axis
+                /*
+                if (newObjectVelocity[axis] != 0.0f)
+                {
+                    // Side from object border to target border
+                    float oldObjBorderTargetSide = (objectPosition[axis] + objectAxisBorder) - targetPosition[axis];
+                    float newObjBorderTargetSide = (newAxisPosition + objectAxisBorder) - targetPosition[axis];
+
+                    // Execute when object ram into border
+                    if ((oldObjBorderTargetSide < 0) != (newObjBorderTargetSide < 0))
+                    {
+                        //std::cout << "Ricochet" << std::endl;
+                        newObjectPosition[axis] = negativeBorder - (objectScale[axis] / 2);
+                        newObjectVelocity[axis] *= -1;
+                        std::cout << "New axis position : " << newObjectPosition[axis] << std::endl;
+                    }
+                }
+                */
             }
         }
         else
@@ -119,18 +177,15 @@ void collision::continuouseCollisionDetection(std::shared_ptr<object::objectBase
     if (axisOfContact == 3)
     {
         //std::cout << "Original velocity : " << currentObject->getVelocity().x << " " << currentObject->getVelocity().y << " " << currentObject->getVelocity().z << std::endl;
-
-        glm::vec3 deltaVelocity((newObjectVelocity - currentObject->getVelocity()) * 0.8f);
-
-        currentObject->changeVelocity(deltaVelocity);
-
-        //std::cout << "Delta velocity : " << deltaVelocity.x << " " << deltaVelocity.y << " " << deltaVelocity.z << std::endl;
+        //currentObject->changeVelocity(-(currentObject->getVelocity()));
+        //std::cout << "Neutralize velocity : " << currentObject->getVelocity().x << " " << currentObject->getVelocity().y << " " << currentObject->getVelocity().z << std::endl;
+        currentObject->changeVelocity(newObjectVelocity - currentObject->getVelocity());
         //std::cout << "New velocity : " << currentObject->getVelocity().x << " " << currentObject->getVelocity().y << " " << currentObject->getVelocity().z << std::endl;
 
         glm::vec3 dst(newObjectPosition - objectPosition); // Distance from current object position to the surface of the target
-        //std::cout << "Object position : " << objectPosition.x << " " << objectPosition.y << " " << objectPosition.z << std::endl;
-        //std::cout << "New object position : " << newObjectPosition.x << " " << newObjectPosition.y << " " << newObjectPosition.z << std::endl;
-        //std::cout << "New distance : " << dst.x << " " << dst.y << " " << dst.z << std::endl;
+        //std::cout << "Distance : " << dst.x << " " << dst.y << " " << dst.z << std::endl;
+        //std::cout << "New position : " << newObjectPosition.x << " " << newObjectPosition.y << " " << newObjectPosition.z << std::endl;
+        //std::cout << "Org position : " << objectPosition.x << " " << objectPosition.y << " " << objectPosition.z << std::endl;
 
         float usageTime = pythagorasTheorem(dst) / pythagorasTheorem(currentObject->getVelocity());
         float leftOverTime = deltaTime - usageTime;
@@ -138,13 +193,13 @@ void collision::continuouseCollisionDetection(std::shared_ptr<object::objectBase
         glm::vec3 reflectDst = projectileMotion::calculateDistance(newObjectVelocity, leftOverTime);
         //std::cout << "Rerflected distnace : " << reflectDst.x << " " << reflectDst.y << " " << reflectDst.z << std::endl;
         currentObject->move(reflectDst + dst);
+        std::cout << "collided" << std::endl;
     }
     else
     {
         // Stepping normal physic calcultion
         glm::vec3 dst = projectileMotion::calculateDistance(currentObject->getVelocity(), deltaTime);
         currentObject->move(dst);
-        std::cout << "Normale step" << std::endl;
     }
 
     //std::cout << std::endl;

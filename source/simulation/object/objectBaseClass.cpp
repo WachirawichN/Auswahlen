@@ -16,8 +16,8 @@ glm::vec3 normalizeRotation(glm::vec3 objectRotation)
     return newRotation;
 }
 
-object::objectBaseClass::objectBaseClass(bool collision, bool gravity, float mass, glm::vec3 velocity, glm::vec3 position, glm::vec3 rotation, glm::vec3 scale)
-    : collision(collision), gravity(gravity), mass(mass), velocity(velocity), position(position), rotation(normalizeRotation(rotation)), scale(scale)
+object::objectBaseClass::objectBaseClass(bool collision, bool anchored, float mass, glm::vec3 velocity, glm::vec3 position, glm::vec3 rotation, glm::vec3 scale)
+    : collision(collision), anchored(anchored), mass(mass), velocity(velocity), position(position), rotation(normalizeRotation(rotation)), scale(scale)
 {
     //std::cout << gravity << std::endl;
     //std::cout << "Set rotation: " << getRotation().x << ", " << getRotation().y << ", " << getRotation().z << std::endl;
@@ -27,18 +27,18 @@ bool object::objectBaseClass::isCollide()
 {
     return collision;
 }
-bool object::objectBaseClass::isGravityAffected()
+bool object::objectBaseClass::isAnchored()
 {
-    return gravity;
+    return anchored;
 }
 
 void object::objectBaseClass::setCollision(bool newValue)
 {
     collision = newValue;
 }
-void object::objectBaseClass::setGravity(bool newValue)
+void object::objectBaseClass::setAnchored(bool newValue)
 {
-    gravity = newValue;
+    anchored = newValue;
 }
 
 void object::objectBaseClass::changeVelocity(glm::vec3 deltaVelocity)

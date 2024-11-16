@@ -9,16 +9,13 @@ namespace object
     {
         private:
         public:
-            cube(float width = 1.0f,
-                 float height = 1.0f,
-                 float depth = 1.0f,
-                 bool collision = true,
-                 bool gravity = true,
+            cube(bool collision = true,
+                 bool anchored = false,
                  float mass = 1,
                  glm::vec3 velocity = glm::vec3(0.0f, 0.0f, 0.0f),
                  glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f),
                  glm::vec3 rotation = glm::vec3(0.0f, 0.0f, 0.0f),
                  glm::vec3 scale = glm::vec3(1.0f, 1.0f, 1.0f))
-                : geometry::cube::cube(width, height, depth), object::objectBaseClass(collision, gravity, mass, velocity, position, rotation, scale) {}
+                : geometry::cube::cube(1.0f, 1.0f, 1.0f), object::objectBaseClass(collision, anchored, mass, velocity, position, rotation, scale) {}
     };
 }

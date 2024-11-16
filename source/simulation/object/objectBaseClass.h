@@ -9,7 +9,7 @@ namespace object
     {
         protected:
             bool collision;
-            bool gravity;
+            bool anchored;
 
             float mass;
             glm::vec3 velocity;
@@ -19,7 +19,7 @@ namespace object
             glm::vec3 scale;
         public:
             objectBaseClass(bool collision = true, // Determine if the object will be affected by collision resolver
-                            bool gravity = true,
+                            bool anchored = false,
                             float mass = 1,
                             glm::vec3 velocity = glm::vec3(0.0f, 0.0f, 0.0f),
                             glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f),
@@ -28,10 +28,10 @@ namespace object
             virtual ~objectBaseClass() = default;
 
             bool isCollide();
-            bool isGravityAffected();
+            bool isAnchored();
 
             void setCollision(bool newValue);
-            void setGravity(bool newValue);
+            void setAnchored(bool newValue);
 
             void changeVelocity(glm::vec3 deltaVelocity);
             void move(glm::vec3 distance);
