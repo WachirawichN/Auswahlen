@@ -50,7 +50,7 @@ bool collision::sphereSphereCollision(std::shared_ptr<object::objectBaseClass> s
     return (dstLength < (sphere1Radius * sphereScale1.x + sphere2Radius * sphereScale2.x)) ? true : false;
 }
 
-void collision::continuouseCollisionDetection(std::shared_ptr<object::objectBaseClass> currentObject, std::shared_ptr<object::objectBaseClass> target, float deltaTime)
+float collision::continuouseCollisionDetection(std::shared_ptr<object::objectBaseClass> currentObject, std::shared_ptr<object::objectBaseClass> target, float deltaTime)
 {
     glm::vec3 objectPosition = currentObject->getPosition();
     glm::vec3 objectScale = currentObject->getScale();
@@ -77,7 +77,6 @@ void collision::continuouseCollisionDetection(std::shared_ptr<object::objectBase
             float positiveBorder = targetPosition[axis] + (targetScale[axis] / 2);
 
             // Run when new object position is within positive border
-            
             if (newAxisPosition - objectAxisBorder < positiveBorder)
             {
                 axisOfContact++;
@@ -91,7 +90,6 @@ void collision::continuouseCollisionDetection(std::shared_ptr<object::objectBase
                 {
                     newObjectPosition[axis] = positiveBorder + (objectScale[axis] / 2);
                     newObjectVelocity[axis] *= -1;
-                    std::cout << axis << ": " << positiveBorder << " " << objectScale[axis] / 2 << std::endl;
                 }
             }
         }
@@ -113,7 +111,6 @@ void collision::continuouseCollisionDetection(std::shared_ptr<object::objectBase
                 {
                     newObjectPosition[axis] = negativeBorder - (objectScale[axis] / 2);
                     newObjectVelocity[axis] *= -1;
-                    std::cout << axis << ": " << negativeBorder << " " << objectScale[axis] / 2 << std::endl;
                 }
             }
         }
@@ -126,24 +123,24 @@ void collision::continuouseCollisionDetection(std::shared_ptr<object::objectBase
     if (axisOfContact == 3)
     {
         // Multiply velocity with velocity conservation
-        newObjectVelocity *= 0.4f;
+        newObjectVelocity *= 1.0f;
 
         // Neutralize old velocity
         currentObject->changeVelocity(-(currentObject->getVelocity()));
         currentObject->changeVelocity(newObjectVelocity);
 
-        glm::vec3 dst(newObjectPosition - objectPosition); // Distance from current object position to the surface of the target
+        // Move object to the surface of the target
+        glm::vec3 toSurfaceDst(newObjectPosition - objectPosition);
+        currentObject->move(toSurfaceDst);
 
-        float usageTime = pythagorasTheorem(dst) / pythagorasTheorem(newObjectVelocity);
+        float usageTime = pythagorasTheorem(toSurfaceDst) / pythagorasTheorem(newObjectVelocity);
         float leftOverTime = deltaTime - usageTime;
-        glm::vec3 reflectDst = projectileMotion::calculateDistance(newObjectVelocity, leftOverTime);
-        currentObject->move(reflectDst + dst);
+        return leftOverTime;
     }
     else
     {
         // Stepping normal physic calcultion
-        glm::vec3 dst = projectileMotion::calculateDistance(currentObject->getVelocity(), deltaTime);
-        currentObject->move(dst);
+        return deltaTime;
     }
 }
 

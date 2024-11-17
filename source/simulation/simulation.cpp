@@ -71,17 +71,20 @@ void simulation::updateSimulation(float deltaTime)
         //glm::vec3 distance = projectileMotion::calculateDistance(currentObject->getVelocity(), deltaTime);
         //currentObject->move(distance);
 
+        float travelTime = deltaTime;
+        
         // Collision detection
-        if (currentObject->canCollide())
+        if (currentObject->canCollide() && !(currentObject->isAnchored()))
         {
-            for (int j = 0; j < objects.size(); j++) // Loop through target object
+            // Loop through target object
+            for (int j = 0; j < objects.size(); j++)
             {
                 // Check if object is a cube or can target be collided
                 //if (j == i || (dynamic_cast<geometry::cube*>(currentObject.get())) != nullptr)
                 //{
                 //    continue;
                 //}
-                if (j == i || currentObject->isAnchored())
+                if (j == i)
                 {
                     continue;
                 }
@@ -91,12 +94,12 @@ void simulation::updateSimulation(float deltaTime)
                 // Check if target can be collided
                 if (targetObject->canCollide())
                 {
-                    collision::continuouseCollisionDetection(currentObject, targetObject, deltaTime);
+                    travelTime = collision::continuouseCollisionDetection(currentObject, targetObject, deltaTime);
                 }
                 
-
             }
         }
-        
+        glm::vec3 dst = projectileMotion::calculateDistance(currentObject->getVelocity(), travelTime);
+        currentObject->move(dst);
     }
 }
