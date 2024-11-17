@@ -27,7 +27,7 @@ namespace object
                             glm::vec3 scale = glm::vec3(1.0f, 1.0f, 1.0f));
             virtual ~objectBaseClass() = default;
 
-            bool isCollide();
+            bool canCollide();
             bool isAnchored();
 
             void setCollision(bool newValue);

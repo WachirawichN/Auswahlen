@@ -23,7 +23,7 @@ object::objectBaseClass::objectBaseClass(bool collision, bool anchored, float ma
     //std::cout << "Set rotation: " << getRotation().x << ", " << getRotation().y << ", " << getRotation().z << std::endl;
 }
 
-bool object::objectBaseClass::isCollide()
+bool object::objectBaseClass::canCollide()
 {
     return collision;
 }

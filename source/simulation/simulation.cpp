@@ -63,7 +63,7 @@ void simulation::updateSimulation(float deltaTime)
     {
         std::shared_ptr<object::objectBaseClass> currentObject = objects.at(i);
         
-        if (!(currentObject->isAnchored()))
+        if (!currentObject->isAnchored())
         {
             glm::vec3 deltaVelocity = projectileMotion::calculateVelocity(glm::vec3(0.0f, gravity, 0.0f), deltaTime);
             currentObject->changeVelocity(deltaVelocity);
@@ -72,16 +72,27 @@ void simulation::updateSimulation(float deltaTime)
         //currentObject->move(distance);
 
         // Collision detection
-        for (int j = 0; j < objects.size(); j++) // Loop through target object
+        if (currentObject->canCollide())
         {
-            // Check if object is a cube
-            if (j == i || (dynamic_cast<geometry::cube*>(currentObject.get())) != nullptr)
+            for (int j = 0; j < objects.size(); j++) // Loop through target object
             {
-                continue;
-            }
+                // Check if object is a cube or can target be collided
+                if (j == i || (dynamic_cast<geometry::cube*>(currentObject.get())) != nullptr)
+                {
+                    continue;
+                }
 
-            std::shared_ptr<object::objectBaseClass> targetObject = objects.at(j);
-            collision::continuouseCollisionDetection(currentObject, targetObject, deltaTime);
+                std::shared_ptr<object::objectBaseClass> targetObject = objects.at(j);
+
+                // Check if target can be collided
+                if (targetObject->canCollide())
+                {
+                    collision::continuouseCollisionDetection(currentObject, targetObject, deltaTime);
+                }
+                
+
+            }
         }
+        
     }
 }
