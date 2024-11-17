@@ -213,7 +213,7 @@ int main()
             currentSimulation.updateSimulation(deltaTime);
             currentSimulation.drawSimulation();
 
-            //std::cout << "FPS: " << floor(1.0f / deltaTime) << std::endl;
+            std::cout << "FPS: " << std::round(floor(1.0f / deltaTime)) << std::endl;
             deltaTime = currentFrame - lastFrame;
             lastFrame = currentFrame;
             

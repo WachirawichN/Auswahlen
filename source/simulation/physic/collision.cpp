@@ -63,9 +63,13 @@ float collision::continuouseCollisionDetection(std::shared_ptr<object::objectBas
 
     int axisOfContact = 0;
 
+    // Check whether object is clipping with target in each axis
     for (int axis = 0; axis < 3; axis++)
     {
+        // Side of object relative to target
         float currentObjectSide = objectPosition[axis] - targetPosition[axis];
+
+        // Distance from object center to axis border
         float objectAxisBorder = objectScale[axis] / 2;
 
         // Stepping physic calculation
@@ -74,6 +78,7 @@ float collision::continuouseCollisionDetection(std::shared_ptr<object::objectBas
         // Detect collision
         if (currentObjectSide > 0) // Positive border detection (Front, Right, Top)
         {
+            // Positive border of target
             float positiveBorder = targetPosition[axis] + (targetScale[axis] / 2);
 
             // Run when new object position is within positive border
@@ -95,6 +100,7 @@ float collision::continuouseCollisionDetection(std::shared_ptr<object::objectBas
         }
         else if (currentObjectSide < 0) // Negative border detection (Back, Left, Bottom)
         {
+            // Negative border of target
             float negativeBorder = targetPosition[axis] - (targetScale[axis] / 2);
 
             // Run when new object position is within negative border
@@ -139,7 +145,6 @@ float collision::continuouseCollisionDetection(std::shared_ptr<object::objectBas
     }
     else
     {
-        // Stepping normal physic calcultion
         return deltaTime;
     }
 }
