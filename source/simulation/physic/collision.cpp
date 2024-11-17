@@ -91,6 +91,7 @@ void collision::continuouseCollisionDetection(std::shared_ptr<object::objectBase
                 {
                     newObjectPosition[axis] = positiveBorder + (objectScale[axis] / 2);
                     newObjectVelocity[axis] *= -1;
+                    std::cout << axis << ": " << positiveBorder << " " << objectScale[axis] / 2 << std::endl;
                 }
             }
         }
@@ -112,6 +113,7 @@ void collision::continuouseCollisionDetection(std::shared_ptr<object::objectBase
                 {
                     newObjectPosition[axis] = negativeBorder - (objectScale[axis] / 2);
                     newObjectVelocity[axis] *= -1;
+                    std::cout << axis << ": " << negativeBorder << " " << objectScale[axis] / 2 << std::endl;
                 }
             }
         }
@@ -123,19 +125,19 @@ void collision::continuouseCollisionDetection(std::shared_ptr<object::objectBase
 
     if (axisOfContact == 3)
     {
-        //currentObject->changeVelocity((newObjectVelocity * 0.2f) - currentObject->getVelocity());
+        // Multiply velocity with velocity conservation
+        newObjectVelocity *= 0.4f;
+
+        // Neutralize old velocity
         currentObject->changeVelocity(-(currentObject->getVelocity()));
-        currentObject->changeVelocity(newObjectVelocity * 0.2f);
+        currentObject->changeVelocity(newObjectVelocity);
 
         glm::vec3 dst(newObjectPosition - objectPosition); // Distance from current object position to the surface of the target
 
-        float usageTime = pythagorasTheorem(dst) / pythagorasTheorem(currentObject->getVelocity());
+        float usageTime = pythagorasTheorem(dst) / pythagorasTheorem(newObjectVelocity);
         float leftOverTime = deltaTime - usageTime;
-        glm::vec3 reflectDst = projectileMotion::calculateDistance(currentObject->getVelocity(), leftOverTime);
+        glm::vec3 reflectDst = projectileMotion::calculateDistance(newObjectVelocity, leftOverTime);
         currentObject->move(reflectDst + dst);
-
-        std::cout << currentObject->getPosition().x << " " << currentObject->getPosition().y << " " << currentObject->getPosition().z << std::endl;
-        //std::cout << "collide" << std::endl;
     }
     else
     {

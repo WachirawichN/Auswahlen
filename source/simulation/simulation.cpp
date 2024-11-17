@@ -77,7 +77,11 @@ void simulation::updateSimulation(float deltaTime)
             for (int j = 0; j < objects.size(); j++) // Loop through target object
             {
                 // Check if object is a cube or can target be collided
-                if (j == i || (dynamic_cast<geometry::cube*>(currentObject.get())) != nullptr)
+                //if (j == i || (dynamic_cast<geometry::cube*>(currentObject.get())) != nullptr)
+                //{
+                //    continue;
+                //}
+                if (j == i || currentObject->isAnchored())
                 {
                     continue;
                 }
