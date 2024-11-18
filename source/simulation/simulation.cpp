@@ -68,8 +68,6 @@ void simulation::updateSimulation(float deltaTime)
             glm::vec3 deltaVelocity = projectileMotion::calculateVelocity(glm::vec3(0.0f, gravity, 0.0f), deltaTime);
             currentObject->changeVelocity(deltaVelocity);
         }
-        //glm::vec3 distance = projectileMotion::calculateDistance(currentObject->getVelocity(), deltaTime);
-        //currentObject->move(distance);
 
         float travelTime = deltaTime;
         
@@ -79,15 +77,7 @@ void simulation::updateSimulation(float deltaTime)
             // Loop through target object
             for (int j = 0; j < objects.size(); j++)
             {
-                // Check if object is a cube or can target be collided
-                //if (j == i || (dynamic_cast<geometry::cube*>(currentObject.get())) != nullptr)
-                //{
-                //    continue;
-                //}
-                if (j == i)
-                {
-                    continue;
-                }
+                if (j == i) continue;
 
                 std::shared_ptr<object::objectBaseClass> targetObject = objects.at(j);
 
@@ -100,6 +90,12 @@ void simulation::updateSimulation(float deltaTime)
             }
         }
         glm::vec3 dst = projectileMotion::calculateDistance(currentObject->getVelocity(), travelTime);
-        currentObject->move(dst);
+        currentObject->move(dst); // Cause object to go through target when the object is going too fast
+
+        if ((dynamic_cast<geometry::icosphere*>(currentObject.get())) != nullptr)
+        {
+            std::cout << "New object position: " << currentObject->getPosition().x << ", " << currentObject->getPosition().y << ", " << currentObject->getPosition().z << " Delta second: " << deltaTime << std::endl;
+            std::cout << std::endl;
+        }
     }
 }

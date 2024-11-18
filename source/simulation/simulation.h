@@ -25,6 +25,8 @@ class simulation
         renderer workspaceRenderer;
         camera* mainCamera;
         shader programShader;
+
+        unsigned int gpuCoreCount;
     public:
         simulation(camera* mainCamera, shader programShader, float gravity = -9.8f);
 
