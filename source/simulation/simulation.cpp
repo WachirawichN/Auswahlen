@@ -69,33 +69,44 @@ void simulation::updateSimulation(float deltaTime)
             currentObject->changeVelocity(deltaVelocity);
         }
 
-        float travelTime = deltaTime;
         
-        // Collision detection
-        if (currentObject->canCollide() && !(currentObject->isAnchored()))
+        if (objects.size() == 1)
         {
-            // Loop through target object
-            for (int j = 0; j < objects.size(); j++)
-            {
-                if (j == i) continue;
-
-                std::shared_ptr<object::objectBaseClass> targetObject = objects.at(j);
-
-                // Check if target can be collided
-                if (targetObject->canCollide())
-                {
-                    travelTime = collision::continuouseCollisionDetection(currentObject, targetObject, deltaTime);
-                }
-                
-            }
+            glm::vec3 dst = projectileMotion::calculateDistance(currentObject->getVelocity(), deltaTime);
+            currentObject->move(dst); // Cause object to go through target when the object is going too fast
         }
-        glm::vec3 dst = projectileMotion::calculateDistance(currentObject->getVelocity(), travelTime);
-        currentObject->move(dst); // Cause object to go through target when the object is going too fast
 
-        if ((dynamic_cast<geometry::icosphere*>(currentObject.get())) != nullptr)
+        // Collision detection
+        if (currentObject->canCollide() && !(currentObject->isAnchored()) && objects.size() > 1)
         {
-            std::cout << "New object position: " << currentObject->getPosition().x << ", " << currentObject->getPosition().y << ", " << currentObject->getPosition().z << " Delta second: " << deltaTime << std::endl;
-            std::cout << std::endl;
+            float travelTime = deltaTime;
+
+            while (travelTime != 0.0f)
+            {
+                float beforeTme = travelTime;
+                // Loop through target object
+                for (int j = 0; j < objects.size(); j++)
+                {
+                    if (j == i) continue;
+
+                    std::shared_ptr<object::objectBaseClass> targetObject = objects.at(j);
+
+                    // Check if target can be collided
+                    if (targetObject->canCollide())
+                    {
+                        // Move object / check for collision
+                        travelTime = collision::continuouseCollisionDetection(currentObject, targetObject, travelTime, 0.8f);
+                    }
+                }
+
+                // Run when object doesn't collide with anything
+                if (beforeTme == travelTime)
+                {
+                    glm::vec3 dst = projectileMotion::calculateDistance(currentObject->getVelocity(), travelTime);
+                    currentObject->move(dst); // Cause object to go through target when the object is going too fast
+                    break;
+                }
+            }
         }
     }
 }

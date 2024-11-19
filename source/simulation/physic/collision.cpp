@@ -50,7 +50,7 @@ bool collision::sphereSphereCollision(std::shared_ptr<object::objectBaseClass> s
     return (dstLength < (sphere1Radius * sphereScale1.x + sphere2Radius * sphereScale2.x)) ? true : false;
 }
 
-float collision::continuouseCollisionDetection(std::shared_ptr<object::objectBaseClass> currentObject, std::shared_ptr<object::objectBaseClass> target, float deltaTime)
+float collision::continuouseCollisionDetection(std::shared_ptr<object::objectBaseClass> currentObject, std::shared_ptr<object::objectBaseClass> target, float deltaTime, float energyConversion)
 {
     glm::vec3 objectPosition = currentObject->getPosition();
     glm::vec3 objectScale = currentObject->getScale();
@@ -62,8 +62,6 @@ float collision::continuouseCollisionDetection(std::shared_ptr<object::objectBas
     glm::vec3 newObjectVelocity = currentObject->getVelocity();
 
     int axisOfContact = 0;
-
-    std::cout << "Target X position: " << targetPosition.x << std::endl;
 
     // Check whether object is clipping with target in each axis
     for (int axis = 0; axis < 3; axis++)
@@ -83,7 +81,6 @@ float collision::continuouseCollisionDetection(std::shared_ptr<object::objectBas
             // Positive border of target
             float positiveBorder = targetPosition[axis] + (targetScale[axis] / 2);
 
-            std::cout << "Axis: " << axis << " Next object axis position: " << newAxisPosition << " Object border position: " << newAxisPosition - objectAxisBorder << " Positive border: " << positiveBorder;
             // Run when new object position is within positive border
             if (newAxisPosition - objectAxisBorder < positiveBorder)
             {
@@ -100,14 +97,12 @@ float collision::continuouseCollisionDetection(std::shared_ptr<object::objectBas
                     newObjectVelocity[axis] *= -1;
                 }
             }
-            std::cout << " Current contact add up: " << axisOfContact << std::endl;
         }
         else if (currentObjectSide < 0) // Negative border detection (Back, Left, Bottom)
         {
             // Negative border of target
             float negativeBorder = targetPosition[axis] - (targetScale[axis] / 2);
 
-            std::cout << "Axis: " << axis << " Next object axis position: " << newAxisPosition << " Object border position: " << newAxisPosition + objectAxisBorder << " Negative border: " << negativeBorder;
             // Run when new object position is within negative border
             if (newAxisPosition + objectAxisBorder > negativeBorder)
             {
@@ -124,20 +119,17 @@ float collision::continuouseCollisionDetection(std::shared_ptr<object::objectBas
                     newObjectVelocity[axis] *= -1;
                 }
             }
-            std::cout << " Current contact add up: " << axisOfContact << std::endl;
         }
         else
         {
-            std::cout << "Axis: " << axis << " Side = 0 " << std::endl;
             axisOfContact++;
         }
     }
 
-    std::cout << "Contact: " << axisOfContact << std::endl;
     if (axisOfContact == 3)
     {
-        // Multiply velocity with velocity conservation
-        newObjectVelocity *= 1.0f;
+        // Multiply velocity with energy conservation
+        newObjectVelocity *= energyConversion;
 
         // Neutralize old velocity
         currentObject->changeVelocity(-(currentObject->getVelocity()));
@@ -151,17 +143,7 @@ float collision::continuouseCollisionDetection(std::shared_ptr<object::objectBas
         // Calculate left over time from traveling to target surface
         float usageTime = pythagorasTheorem(toSurfaceDst) / pythagorasTheorem(newObjectVelocity);
         float leftOverTime = deltaTime - usageTime;
-
-        std::cout << "Collide with object" << std::endl;
-        std::cout << "Delta second: " << deltaTime << " second" << std::endl;
-        std::cout << "New position: " << newObjectPosition.x << ", " << newObjectPosition.y << ", " << newObjectPosition.z << std::endl;
-        std::cout << "New velocity: " << newObjectVelocity.x << ", " << newObjectVelocity.y << ", " << newObjectVelocity.z << std::endl;
         return leftOverTime;
     }
     else return deltaTime;
-}
-
-glm::vec3 collision::collisionResolver(glm::vec3 objectVelocity)
-{
-    return objectVelocity * -1.0f;
 }
