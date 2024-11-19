@@ -83,7 +83,7 @@ void simulation::updateSimulation(float deltaTime)
 
             while (travelTime != 0.0f)
             {
-                float beforeTme = travelTime;
+                float beforeTime = travelTime;
                 // Loop through target object
                 for (int j = 0; j < objects.size(); j++)
                 {
@@ -99,14 +99,18 @@ void simulation::updateSimulation(float deltaTime)
                     }
                 }
 
-                // Run when object doesn't collide with anything
-                if (beforeTme == travelTime)
+                // Run when object doesn't collide with anything within time frame
+                if (beforeTime == travelTime)
                 {
+                    //std::cout << "Left over time: " << travelTime << std::endl;
+                    //std::cout << "Move from: " << currentObject->getPosition().x << " " << currentObject->getPosition().y << " " << currentObject->getPosition().z << std::endl;
                     glm::vec3 dst = projectileMotion::calculateDistance(currentObject->getVelocity(), travelTime);
                     currentObject->move(dst); // Cause object to go through target when the object is going too fast
+                    //std::cout << "To: " << currentObject->getPosition().x << " " << currentObject->getPosition().y << " " << currentObject->getPosition().z << std::endl;
                     break;
                 }
             }
+            //std::cout << std::endl;
         }
     }
 }

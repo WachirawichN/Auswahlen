@@ -28,14 +28,13 @@ void GLAPIENTRY MessageCallback(GLenum source,
 }
 
 // Window
-//int width = 2560;
-//int height = 1440;
+int width = 2560;
+int height = 1440;
 
-int width = 1920;
-int height = 1080;
+//int width = 1920;
+//int height = 1080;
 
 // Timing
-float lastFrame = 0.0f;
 float deltaTime = 0.0f;
 
 // Camera
@@ -138,12 +137,14 @@ int main()
 
 
         
-        std::shared_ptr<object::sphere> spherePtr1(new object::sphere(3, true, false, 1.0f, glm::vec3(-15.0f, 64.0f, -25.0f), glm::vec3(-1.0f, -0.5f, 0.25f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.5f, 1.5f, 1.5f)));
+        std::shared_ptr<object::sphere> spherePtr1(new object::sphere(3, true, false, 1.0f, glm::vec3(-1500.0f, 6400.0f, 0.0f), glm::vec3(-1.0f, -0.5f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.5f, 1.5f, 1.5f)));
         currentSimulation.addObject(spherePtr1);
-        std::shared_ptr<object::sphere> spherePtr2(new object::sphere(3, true, false, 1.0f, glm::vec3(35.0f, -20.0f, 42.0f), glm::vec3(2.5f, 2.5f, 2.5f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
-        currentSimulation.addObject(spherePtr2);
-        //std::shared_ptr<object::sphere> spherePtr2(new object::sphere(3, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(2.0f, 4.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+
+        //std::shared_ptr<object::sphere> spherePtr2(new object::sphere(3, true, false, 1.0f, glm::vec3(-7.5f, 0.0f, 0.0f), glm::vec3(2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
         //currentSimulation.addObject(spherePtr2);
+        //std::shared_ptr<object::sphere> spherePtr3(new object::sphere(3, true, false, 1.0f, glm::vec3(7.5f, 0.0f, 0.0f), glm::vec3(-2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+        //currentSimulation.addObject(spherePtr3);
+
         //std::shared_ptr<object::cube> physBlock(new object::cube(true, false, 1.0f, glm::vec3(-2.0f, -4.0f, 7.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.5f, 0.5f, 0.5f)));
         //currentSimulation.addObject(physBlock);
         //std::shared_ptr<object::cube> block(new object::cube(true, true, 99999.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 1.0f, 10.0f)));
@@ -164,16 +165,16 @@ int main()
         std::shared_ptr<object::cube> rightPtr(new object::cube(true, true, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(5.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.5f, 10.5f, 10.5f)));
         std::shared_ptr<object::cube> leftPtr(new object::cube(true, true, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(-5.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.5f, 10.5f, 10.5f)));
 
-        std::shared_ptr<object::cube> frontPtr(new object::cube(true, true, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.5f, 10.5f, 0.5f)));
-        std::shared_ptr<object::cube> backPtr(new object::cube(true, true, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, -5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.5f, 10.5f, 0.5f)));
+        //std::shared_ptr<object::cube> frontPtr(new object::cube(true, true, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.5f, 10.5f, 0.5f)));
+        //std::shared_ptr<object::cube> backPtr(new object::cube(true, true, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, -5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.5f, 10.5f, 0.5f)));
 
 
         currentSimulation.addObject(topPtr);
         currentSimulation.addObject(floorPtr);
         currentSimulation.addObject(rightPtr);
         currentSimulation.addObject(leftPtr);
-        currentSimulation.addObject(frontPtr);
-        currentSimulation.addObject(backPtr);
+        //currentSimulation.addObject(frontPtr);
+        //currentSimulation.addObject(backPtr);
         
         
         /*
@@ -208,20 +209,22 @@ int main()
         //    haltCurrentTime = glfwGetTime();
         //}
         
+        float lastFrame = glfwGetTime();
+
         while (!glfwWindowShouldClose(window))
         {
-            float currentFrame = glfwGetTime();
-            deltaTime = currentFrame - lastFrame;
-            lastFrame = currentFrame;
             
-            if (currentFrame > 5.0f)
-            {
-                currentSimulation.updateSimulation(deltaTime);
-            }
-            //currentSimulation.updateSimulation(deltaTime);
+            //if (currentFrame > 0.375f)
+            //{
+            //    currentSimulation.updateSimulation(deltaTime);
+            //}
+            currentSimulation.updateSimulation(deltaTime);
             currentSimulation.drawSimulation();
 
             //std::cout << "FPS: " << std::round(floor(1.0f / deltaTime)) << std::endl;
+            float currentFrame = glfwGetTime();
+            deltaTime = currentFrame - lastFrame;
+            lastFrame = currentFrame;
             
             glfwSwapBuffers(window);
             glfwPollEvents();

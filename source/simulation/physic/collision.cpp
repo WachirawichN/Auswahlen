@@ -1,5 +1,6 @@
 #include "collision.h"
 
+#include "../object/sphere.h"
 #include <iostream>
 
 float pythagorasTheorem(glm::vec3 dstVector)
@@ -133,17 +134,41 @@ float collision::continuouseCollisionDetection(std::shared_ptr<object::objectBas
 
         // Neutralize old velocity
         currentObject->changeVelocity(-(currentObject->getVelocity()));
+        currentObject->changeVelocity(newObjectVelocity);
 
         // Move object to the surface of the target
         glm::vec3 toSurfaceDst(newObjectPosition - objectPosition);
         currentObject->move(toSurfaceDst);
 
-        currentObject->changeVelocity(newObjectVelocity);
 
         // Calculate left over time from traveling to target surface
         float usageTime = pythagorasTheorem(toSurfaceDst) / pythagorasTheorem(newObjectVelocity);
+        // Sometimes usageTime might be more than deltaTime, might cause some problem later
         float leftOverTime = deltaTime - usageTime;
+
+        if (leftOverTime < 0)
+        {
+            std::cout << "Insufficient time: " << leftOverTime << " New velocity: " << newObjectVelocity.x << " " << newObjectVelocity.y << " " << newObjectVelocity.z << std::endl;
+            return 0.0f;
+            /*
+            std::cout << "Distance: " << pythagorasTheorem(toSurfaceDst) << " Velocity: " << pythagorasTheorem(newObjectVelocity) << std::endl;
+            std::cout << "Delta time: " << deltaTime << " Usage time: " << usageTime << std::endl;
+            std::cout << "Usage time: " << toSurfaceDst.x / newObjectVelocity.x << " " << toSurfaceDst.y / newObjectVelocity.y << " " << toSurfaceDst.z / newObjectVelocity.z << std::endl;
+            std::cout << "Position: " << currentObject->getPosition().x << " " << currentObject->getPosition().y << " " << currentObject->getPosition().z << std::endl;
+            std::cout << "Velocity: " << newObjectVelocity.x << " " << newObjectVelocity.y << " " << newObjectVelocity.z << std::endl;
+            std::cout << "Distance: " << toSurfaceDst.x << " " << toSurfaceDst.y << " " << toSurfaceDst.z << std::endl;
+            currentObject->setAnchored(true);
+            currentObject->setCollision(false);
+            */
+        }
+
+        //std::cout << "Collide, Left over time: " << leftOverTime << " New velocity: " << newObjectVelocity.x << " " << newObjectVelocity.y << " " << newObjectVelocity.z << " New position: " << newObjectPosition.x << " " << newObjectPosition.y << " " << newObjectPosition.z << std::endl;
+
         return leftOverTime;
     }
-    else return deltaTime;
+    else
+    {
+        //std::cout << "No collide, Time:" << deltaTime << ", Current position: " << newObjectPosition.x << ", " << newObjectPosition.y << ", " << newObjectPosition.z << ", Contact: " << axisOfContact << std::endl;
+        return deltaTime;
+    }
 }
