@@ -28,18 +28,18 @@ void GLAPIENTRY MessageCallback(GLenum source,
 }
 
 // Window
-int width = 2560;
-int height = 1440;
+//int width = 2560;
+//int height = 1440;
 
-//int width = 1920;
-//int height = 1080;
+int width = 1920;
+int height = 1080;
 
 // Timing
 float deltaTime = 0.0f;
 
 // Camera
 glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 5.0f);
-float cameraSpeed = 10.0f;
+float cameraSpeed = 50.0f;
 camera worldCamera(cameraPos);
 
 // Mouse input
@@ -137,18 +137,18 @@ int main()
 
 
         
-        std::shared_ptr<object::sphere> spherePtr1(new object::sphere(3, true, false, 1.0f, glm::vec3(-1500.0f, 6400.0f, 0.0f), glm::vec3(-1.0f, -0.5f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.5f, 1.5f, 1.5f)));
-        currentSimulation.addObject(spherePtr1);
+        //std::shared_ptr<object::sphere> spherePtr1(new object::sphere(3, true, false, 1.0f, glm::vec3(-2000.0f, 64.0f, 0.0f), glm::vec3(-1.0f, -0.5f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.5f, 1.5f, 1.5f)));
+        //currentSimulation.addObject(spherePtr1);
 
         //std::shared_ptr<object::sphere> spherePtr2(new object::sphere(3, true, false, 1.0f, glm::vec3(-7.5f, 0.0f, 0.0f), glm::vec3(2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
         //currentSimulation.addObject(spherePtr2);
         //std::shared_ptr<object::sphere> spherePtr3(new object::sphere(3, true, false, 1.0f, glm::vec3(7.5f, 0.0f, 0.0f), glm::vec3(-2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
         //currentSimulation.addObject(spherePtr3);
 
-        //std::shared_ptr<object::cube> physBlock(new object::cube(true, false, 1.0f, glm::vec3(-2.0f, -4.0f, 7.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.5f, 0.5f, 0.5f)));
-        //currentSimulation.addObject(physBlock);
-        //std::shared_ptr<object::cube> block(new object::cube(true, true, 99999.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 1.0f, 10.0f)));
-        //currentSimulation.addObject(block);
+        std::shared_ptr<object::cube> physBlock1(new object::cube(true, false, 1.0f, glm::vec3(-7.5f, 0.0f, 0.0f), glm::vec3(2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+        currentSimulation.addObject(physBlock1);
+        std::shared_ptr<object::cube> physBlock2(new object::cube(true, false, 1.0f, glm::vec3(7.5f, 0.0f, 0.0f), glm::vec3(-2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+        currentSimulation.addObject(physBlock2);
         
         
         /*
@@ -218,7 +218,7 @@ int main()
             //{
             //    currentSimulation.updateSimulation(deltaTime);
             //}
-            currentSimulation.updateSimulation(deltaTime);
+            currentSimulation.updateSimulation(deltaTime / 10);
             currentSimulation.drawSimulation();
 
             //std::cout << "FPS: " << std::round(floor(1.0f / deltaTime)) << std::endl;

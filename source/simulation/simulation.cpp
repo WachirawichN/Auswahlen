@@ -70,6 +70,17 @@ void simulation::updateSimulation(float deltaTime)
         }
 
         
+        /*
+        if (dynamic_cast<geometry::icosphere*>(currentObject.get()) != NULL)
+        {
+            std::cout << "Cast to sphere" << std::endl;
+        }
+        else
+        {
+            std::cout << "Fail to cast to sphere" << std::endl;
+        }
+        */
+
         if (objects.size() == 1)
         {
             glm::vec3 dst = projectileMotion::calculateDistance(currentObject->getVelocity(), deltaTime);
