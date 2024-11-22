@@ -38,6 +38,7 @@ namespace object
             void rotate(glm::vec3 degree);
             void rescale(glm::vec3 deltaScale);
 
+            float getMass() const;
             glm::vec3 getVelocity() const;
             glm::vec3 getPosition() const;
             glm::vec3 getRotation() const;

@@ -60,6 +60,10 @@ void object::objectBaseClass::rescale(glm::vec3 deltaScale)
     scale = deltaScale;
 }
 
+float object::objectBaseClass::getMass() const
+{
+    return mass;
+}
 glm::vec3 object::objectBaseClass::getVelocity() const
 {
     return velocity;

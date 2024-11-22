@@ -65,7 +65,7 @@ void simulation::updateSimulation(float deltaTime)
         
         if (!currentObject->isAnchored())
         {
-            glm::vec3 deltaVelocity = projectileMotion::calculateVelocity(glm::vec3(0.0f, gravity, 0.0f), deltaTime);
+            glm::vec3 deltaVelocity = fundamental::calculateVelocity(glm::vec3(0.0f, gravity, 0.0f), deltaTime);
             currentObject->changeVelocity(deltaVelocity);
         }
 
@@ -83,7 +83,7 @@ void simulation::updateSimulation(float deltaTime)
 
         if (objects.size() == 1)
         {
-            glm::vec3 dst = projectileMotion::calculateDistance(currentObject->getVelocity(), deltaTime);
+            glm::vec3 dst = fundamental::calculateDistance(currentObject->getVelocity(), deltaTime);
             currentObject->move(dst); // Cause object to go through target when the object is going too fast
         }
 
@@ -115,7 +115,7 @@ void simulation::updateSimulation(float deltaTime)
                 {
                     //std::cout << "Left over time: " << travelTime << std::endl;
                     //std::cout << "Move from: " << currentObject->getPosition().x << " " << currentObject->getPosition().y << " " << currentObject->getPosition().z << std::endl;
-                    glm::vec3 dst = projectileMotion::calculateDistance(currentObject->getVelocity(), travelTime);
+                    glm::vec3 dst = fundamental::calculateDistance(currentObject->getVelocity(), travelTime);
                     currentObject->move(dst); // Cause object to go through target when the object is going too fast
                     //std::cout << "To: " << currentObject->getPosition().x << " " << currentObject->getPosition().y << " " << currentObject->getPosition().z << std::endl;
                     break;

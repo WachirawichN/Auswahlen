@@ -4,7 +4,7 @@
 #include "object/sphere.h"
 #include "object/cube.h"
 
-#include "physic/projectileMotion.h"
+#include "physic/fundamental.h"
 #include "physic/collision.h"
 
 #include "../graphic/graphic.h"

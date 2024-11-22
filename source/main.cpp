@@ -28,11 +28,11 @@ void GLAPIENTRY MessageCallback(GLenum source,
 }
 
 // Window
-//int width = 2560;
-//int height = 1440;
+int width = 2560;
+int height = 1440;
 
-int width = 1920;
-int height = 1080;
+//int width = 1920;
+//int height = 1080;
 
 // Timing
 float deltaTime = 0.0f;
