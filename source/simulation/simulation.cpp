@@ -68,8 +68,11 @@ void simulation::updateSimulation(float deltaTime)
             glm::vec3 deltaVelocity = fundamental::calculateVelocity(glm::vec3(0.0f, gravity, 0.0f), deltaTime);
             currentObject->changeVelocity(deltaVelocity);
         }
+    }
 
-        
+    for (int i = 0; i < objects.size(); i++)
+    {
+        std::shared_ptr<object::objectBaseClass> currentObject = objects.at(i);
         /*
         if (dynamic_cast<geometry::icosphere*>(currentObject.get()) != NULL)
         {
@@ -103,14 +106,19 @@ void simulation::updateSimulation(float deltaTime)
                     std::shared_ptr<object::objectBaseClass> targetObject = objects.at(j);
 
                     // Check if target can be collided
+                    std::cout << "ID: " << i << std::endl;
+                    travelTime = collision::testCollisionDetection(currentObject, targetObject, deltaTime);
+                    /*
                     if (targetObject->canCollide())
                     {
                         // Move object / check for collision
                         travelTime = collision::continuouseCollisionDetection(currentObject, targetObject, travelTime, 0.8f);
                     }
+                    */
                 }
 
                 // Run when object doesn't collide with anything within time frame
+                /*
                 if (beforeTime == travelTime)
                 {
                     //std::cout << "Left over time: " << travelTime << std::endl;
@@ -120,6 +128,7 @@ void simulation::updateSimulation(float deltaTime)
                     //std::cout << "To: " << currentObject->getPosition().x << " " << currentObject->getPosition().y << " " << currentObject->getPosition().z << std::endl;
                     break;
                 }
+                */
             }
             //std::cout << std::endl;
         }

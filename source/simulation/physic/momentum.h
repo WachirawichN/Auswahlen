@@ -6,5 +6,5 @@
 
 namespace momentum
 {
-    void elasticCollision(std::shared_ptr<object::objectBaseClass> object, std::shared_ptr<object::objectBaseClass> target);
+    glm::vec3 elasticCollision(std::shared_ptr<object::objectBaseClass> object, std::shared_ptr<object::objectBaseClass> target);
 }

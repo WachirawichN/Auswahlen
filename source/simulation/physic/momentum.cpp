@@ -14,7 +14,7 @@ glm::vec3 calculateObjectVelocity(glm::vec3 aVelocity, float aMass, glm::vec3 bV
     return glm::vec3(velocity[0], velocity[1], velocity[2]);
 }
 
-void momentum::elasticCollision(std::shared_ptr<object::objectBaseClass> object, std::shared_ptr<object::objectBaseClass> target)
+glm::vec3 momentum::elasticCollision(std::shared_ptr<object::objectBaseClass> object, std::shared_ptr<object::objectBaseClass> target)
 {
     glm::vec3 objectVelocity = object->getVelocity();
     float objectMass = object->getMass();
@@ -22,5 +22,5 @@ void momentum::elasticCollision(std::shared_ptr<object::objectBaseClass> object,
     glm::vec3 targetVelocity = target->getVelocity();
     float targetMass = target->getMass();
 
-    object->changeVelocity(calculateObjectVelocity(objectVelocity, objectMass, targetVelocity, targetMass) - objectVelocity);
+    return calculateObjectVelocity(objectVelocity, objectMass, targetVelocity, targetMass);
 }
