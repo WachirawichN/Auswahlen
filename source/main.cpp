@@ -133,12 +133,14 @@ int main()
         soulKingTexture.bind();
         yeetShader.setUniform1i("uTexture", 0);
 
-        simulation currentSimulation(&worldCamera, yeetShader);
+        simulation currentSimulation(&worldCamera, yeetShader, 0.0f);
 
 
         
         //std::shared_ptr<object::sphere> spherePtr1(new object::sphere(3, true, false, 1.0f, glm::vec3(-2000.0f, 64.0f, 0.0f), glm::vec3(-1.0f, -0.5f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.5f, 1.5f, 1.5f)));
         //currentSimulation.addObject(spherePtr1);
+        std::shared_ptr<object::sphere> spherePtr1(new object::sphere(3, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+        currentSimulation.addObject(spherePtr1);
 
         //std::shared_ptr<object::sphere> spherePtr2(new object::sphere(3, true, false, 1.0f, glm::vec3(-7.5f, 0.0f, 0.0f), glm::vec3(2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
         //currentSimulation.addObject(spherePtr2);
@@ -147,8 +149,8 @@ int main()
 
         std::shared_ptr<object::cube> physBlock1(new object::cube(true, false, 1.0f, glm::vec3(-7.5f, 0.0f, 0.0f), glm::vec3(2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
         currentSimulation.addObject(physBlock1);
-        std::shared_ptr<object::cube> physBlock2(new object::cube(true, false, 1.0f, glm::vec3(7.5f, 0.0f, 0.0f), glm::vec3(-2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
-        currentSimulation.addObject(physBlock2);
+        //std::shared_ptr<object::cube> physBlock2(new object::cube(true, false, 1.0f, glm::vec3(7.5f, 0.0f, 0.0f), glm::vec3(-2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+        //currentSimulation.addObject(physBlock2);
         
         
         /*
@@ -217,8 +219,8 @@ int main()
             float currentFrame = glfwGetTime();
             deltaTime = currentFrame - lastFrame;
             lastFrame = currentFrame;
-            if (currentFrame > 0.0f) currentSimulation.updateSimulation(deltaTime);
-            //currentSimulation.updateSimulation(deltaTime / 10);
+            //if (currentFrame > 0.0f) currentSimulation.updateSimulation(deltaTime);
+            currentSimulation.updateSimulation(deltaTime);
             currentSimulation.drawSimulation();
 
             //std::cout << "FPS: " << std::round(floor(1.0f / deltaTime)) << std::endl;

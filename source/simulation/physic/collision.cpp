@@ -246,9 +246,6 @@ float collision::testCollisionDetection(std::shared_ptr<object::objectBaseClass>
     glm::vec3 tarScale = target->getScale();
     glm::vec3 tarVel = target->getVelocity();
 
-    //std::cout << "Object position: " << objPos.x << " " << objPos.y << " " << objPos.z << std::endl;
-    //std::cout << "Target position: " << tarPos.x << " " << tarPos.y << " " << tarPos.z << std::endl;
-
     for (int axis = 0; axis < 3; axis++)
     {
         float side = objPos[axis] - tarPos[axis];
@@ -266,25 +263,13 @@ float collision::testCollisionDetection(std::shared_ptr<object::objectBaseClass>
         }
         
     }
-    std::cout << objPos.x << " " << objPos.y << " " << objPos.z << std::endl;
-    std::cout << tarPos.x << " " << tarPos.y << " " << tarPos.z << std::endl;
 
     float distance = pythagorasTheorem(objPos - tarPos);
-    //std::cout << distance << std::endl;
-    float travelTime = distance / (pythagorasTheorem(objVel) + pythagorasTheorem(tarVel));
+    float travelTime = distance / pythagorasTheorem(objVel - tarVel);
 
     if (!object->isAnchored())
     {
-        std::cout << "Object side position: " << objPos.x << " " << objPos.y << " " << objPos.z << std::endl;
-        std::cout << "Target side position: " << tarPos.x << " " << tarPos.y << " " << tarPos.z << std::endl;
-        std::cout << "Object velocity: " << objVel.x << " " << objVel.y << " " << objVel.z << std::endl;
-        std::cout << "Target velocity: " << objVel.x << " " << objVel.y << " " << objVel.z << std::endl;
-        std::cout << "Velocity comparison: " << ((objVel.y == tarVel.y) ? "True" : "False" )<< std::endl;
-        std::cout << "Velocity different: " << objVel.y - tarVel.y << std::endl;
-        std::cout << "Distance: " << distance << std::endl;
-        std::cout << "Delta time: " << deltaTime << std::endl;
-        std::cout << "Travel time: " << travelTime << std::endl;
-
+        //std::cout << "Time took: " << travelTime << std::endl;
         if (travelTime > deltaTime)
         {
             object->move(fundamental::calculateDistance(objVel, deltaTime));
@@ -292,48 +277,45 @@ float collision::testCollisionDetection(std::shared_ptr<object::objectBaseClass>
         }
         else if (travelTime > 0)
         {
-            std::cout << "Collide" << std::endl;
+            //std::cout << "Collide" << std::endl;
             object->move(fundamental::calculateDistance(objVel, travelTime));
             target->move(fundamental::calculateDistance(tarVel, travelTime));
 
+
+            // Debugging
+            /*
             object->changeVelocity(-objVel);
             target->changeVelocity(-tarVel);
 
             object->setAnchored(true);
             target->setAnchored(true);
+            */
+
+
+            glm::vec3 objNewVel = momentum::elasticCollision(object, target);
+            glm::vec3 tarNewVel = momentum::elasticCollision(target, object);
+
+            object->changeVelocity(objNewVel - objVel);
+            target->changeVelocity(tarNewVel - tarVel);
+            
+            std::cout << "Distance: " << distance << std::endl;
+            std::cout << "Obj new vel: " << object->getVelocity().x << " " << object->getVelocity().y << " " << object->getVelocity().z << std::endl;
+            std::cout << "Tar new vel: " << target->getVelocity().x << " " << target->getVelocity().y << " " << target->getVelocity().z << std::endl;
+            std::cout << std::endl;
+
+            object->move(fundamental::calculateDistance(objNewVel, deltaTime - travelTime));
+            target->move(fundamental::calculateDistance(tarNewVel, deltaTime - travelTime));
+
+
+            // Debugging
+
+            //object->changeVelocity(-objNewVel);
+            //target->changeVelocity(-tarNewVel);
+
+            //object->setAnchored(true);
+            //target->setAnchored(true);
+            
         }
+        return 0.0f;
     }
-    std::cout << std::endl;
-
-    return 0.0f;
-    /*
-    int axisOfCollision = 0;
-    
-    glm::vec3 objPos = object->getPosition();
-    glm::vec3 objScale = object->getScale();
-    glm::vec3 objVel = object->getVelocity();
-    glm::vec3 newObjPos = objPos + (objVel * deltaTime);
-    glm::vec3 objDst = newObjPos - objPos;
-
-    glm::vec3 tarPos = target->getPosition();
-    glm::vec3 tarScale = target->getScale();
-    glm::vec3 tarVel = target->getVelocity();
-    glm::vec3 newTarPos = tarPos + (tarVel * deltaTime);
-    glm::vec3 tarDst = newTarPos - tarPos;
-
-    // Check X and Z axis
-    for (int axis = 0; axis > 3; axis += 2)
-    {
-        axisOfCollision += checkAxisCollision(objPos[axis], objScale[axis], objDst[axis], tarPos[axis], tarScale[axis], tarDst[axis]);
-    }
-    // Check Y axis
-    axisOfCollision += (axisOfCollision == 2) ? checkAxisCollision(objPos[1], objScale[1], objDst[1], tarPos[1], tarScale[1], tarDst[1]) : 0;
-
-    if (axisOfCollision == 3)
-    {
-        float timeToTravel = pythagorasTheorem(objPos - tarPos) / (pythagorasTheorem(objVel) + pythagorasTheorem(tarVel));
-        
-    }
-    else return deltaTime;
-    */
 }

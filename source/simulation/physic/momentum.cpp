@@ -4,7 +4,7 @@ float calculateAxisVelocity(float aAxisVelocity, float aMass, float bAxisVelocit
 {
     return (((aMass - bMass) / (aMass + bMass)) * aAxisVelocity) + (((2 * bMass) / (aMass + bMass)) * bAxisVelocity);
 }
-glm::vec3 calculateObjectVelocity(glm::vec3 aVelocity, float aMass, glm::vec3 bVelocity, float bMass)
+glm::vec3 calculateNewObjectVelocity(glm::vec3 aVelocity, float aMass, glm::vec3 bVelocity, float bMass)
 {
     std::vector<float> velocity;
     for (int axis = 0; axis < 3; axis++)
@@ -22,5 +22,5 @@ glm::vec3 momentum::elasticCollision(std::shared_ptr<object::objectBaseClass> ob
     glm::vec3 targetVelocity = target->getVelocity();
     float targetMass = target->getMass();
 
-    return calculateObjectVelocity(objectVelocity, objectMass, targetVelocity, targetMass);
+    return calculateNewObjectVelocity(objectVelocity, objectMass, targetVelocity, targetMass);
 }
