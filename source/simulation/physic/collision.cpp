@@ -3,14 +3,29 @@
 #include "../object/sphere.h"
 #include <iostream>
 
-float pythagorasTheorem(glm::vec3 dstVector)
+float pythagoras(glm::vec3 dstVector)
 {
     return sqrt(pow(dstVector.x, 2) + pow(dstVector.y, 2) + pow(dstVector.z, 2));
 }
 
-float calculateTimeToMove(float dst, float aVelocity, float bVelocity)
+float timeToMove(float dst, float aVelocity, float bVelocity)
 {
-    return dst / (aVelocity + bVelocity);
+    float totalVelocity = aVelocity - bVelocity;
+    return (totalVelocity == 0.0f) ? 0.0f : (dst / (aVelocity - bVelocity));
+}
+
+float timeToMove3D(glm::vec3 objAPos, glm::vec3 objAVel, glm::vec3 objBPos, glm::vec3 objBVel)
+{
+    std::vector<float> axisTimes = {};
+    for (int axis = 0; axis < 3; axis++)
+    {
+        float dst = abs(objAPos[axis] - objBPos[axis]);
+        float time = timeToMove(dst, objAVel[axis], objBVel[axis]);
+        if (time < 0.0f) return -1.0f;
+        
+        axisTimes.push_back(time);
+    }
+    return pythagoras(glm::vec3(axisTimes[0], axisTimes[1], axisTimes[2]));
 }
 
 bool checkAxisCollision(float objPos, float objDim, float objDst, float tarPos, float tarDim, float tarDst)
@@ -52,23 +67,6 @@ bool checkAxisCollision(float objPos, float objDim, float objDst, float tarPos, 
     return false;
     
 }
-
-/*
-bool checkCollision()
-{
-    int axisOfCollision = 0;
-
-
-    // Check X axis
-    axisOfCollision += checkAxisCollision();
-    // Check Z axis
-    axisOfCollision += checkAxisCollision();
-    // Check Y axis
-    axisOfCollision += (axisOfCollision == 2) ? checkAxisCollision() : 0;
-
-    return (axisOfCollision == 3);
-}
-*/
 
 /*
 bool collision::sphereBoxCollision(std::shared_ptr<object::objectBaseClass> sphere, std::shared_ptr<object::objectBaseClass> box)
@@ -205,7 +203,7 @@ float collision::continuouseCollisionDetection(std::shared_ptr<object::objectBas
 
 
         // Calculate left over time from traveling to target surface
-        float usageTime = pythagorasTheorem(toSurfaceDst) / pythagorasTheorem(newObjectVelocity);
+        float usageTime = pythagoras(toSurfaceDst) / pythagoras(newObjectVelocity);
         // Sometimes usageTime might be more than deltaTime, might cause some problem later
         float leftOverTime = deltaTime - usageTime;
 
@@ -264,19 +262,22 @@ float collision::testCollisionDetection(std::shared_ptr<object::objectBaseClass>
         
     }
 
-    float distance = pythagorasTheorem(objPos - tarPos);
-    float travelTime = distance / pythagorasTheorem(objVel - tarVel);
+    //float distance = pythagoras(objPos - tarPos);
+    //float travelTime = distance / pythagoras(objVel - tarVel);
+    float travelTime = timeToMove3D(objPos, objVel, tarPos, tarVel);
 
     if (!object->isAnchored())
     {
-        //std::cout << "Time took: " << travelTime << std::endl;
-        if (travelTime > deltaTime)
+        if (travelTime > deltaTime && travelTime > 0.0f)
         {
+            // Did not collide
             object->move(fundamental::calculateDistance(objVel, deltaTime));
             target->move(fundamental::calculateDistance(tarVel, deltaTime));
         }
-        else if (travelTime > 0)
+        else if (travelTime > 0.0f)
         {
+            // Did collide
+            std::cout << "Time took: " << travelTime << std::endl;
             //std::cout << "Collide" << std::endl;
             object->move(fundamental::calculateDistance(objVel, travelTime));
             target->move(fundamental::calculateDistance(tarVel, travelTime));
@@ -298,10 +299,12 @@ float collision::testCollisionDetection(std::shared_ptr<object::objectBaseClass>
             object->changeVelocity(objNewVel - objVel);
             target->changeVelocity(tarNewVel - tarVel);
             
-            std::cout << "Distance: " << distance << std::endl;
+            //std::cout << "Distance: " << distance << std::endl;
             std::cout << "Obj new vel: " << object->getVelocity().x << " " << object->getVelocity().y << " " << object->getVelocity().z << std::endl;
             std::cout << "Tar new vel: " << target->getVelocity().x << " " << target->getVelocity().y << " " << target->getVelocity().z << std::endl;
-            std::cout << std::endl;
+
+            std::cout << "Obj new pos: " << object->getPosition().x << " " << object->getPosition().y << " " << object->getPosition().z << std::endl;
+            std::cout << "Tar new pos: " << target->getPosition().x << " " << target->getPosition().y << " " << target->getPosition().z << std::endl;
 
             object->move(fundamental::calculateDistance(objNewVel, deltaTime - travelTime));
             target->move(fundamental::calculateDistance(tarNewVel, deltaTime - travelTime));
@@ -318,4 +321,5 @@ float collision::testCollisionDetection(std::shared_ptr<object::objectBaseClass>
         }
         return 0.0f;
     }
+    return deltaTime;
 }

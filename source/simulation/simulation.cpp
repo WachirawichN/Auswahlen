@@ -83,6 +83,8 @@ void simulation::updateSimulation(float deltaTime)
             std::cout << "Fail to cast to sphere" << std::endl;
         }
         */
+        
+        std::cout << "ID: " << i << std::endl;
 
         if (objects.size() == 1)
         {
@@ -106,7 +108,6 @@ void simulation::updateSimulation(float deltaTime)
                     std::shared_ptr<object::objectBaseClass> targetObject = objects.at(j);
 
                     // Check if target can be collided
-                    std::cout << "ID: " << i << std::endl;
                     travelTime = collision::testCollisionDetection(currentObject, targetObject, deltaTime);
                     /*
                     if (targetObject->canCollide())
@@ -130,7 +131,7 @@ void simulation::updateSimulation(float deltaTime)
                 }
                 */
             }
-            //std::cout << std::endl;
         }
+        std::cout << std::endl;
     }
 }
