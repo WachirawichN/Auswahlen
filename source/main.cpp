@@ -28,11 +28,11 @@ void GLAPIENTRY MessageCallback(GLenum source,
 }
 
 // Window
-//int width = 2560;
-//int height = 1440;
+int width = 2560;
+int height = 1440;
 
-int width = 1920;
-int height = 1080;
+//int width = 1920;
+//int height = 1080;
 
 // Timing
 float deltaTime = 0.0f;
@@ -136,11 +136,10 @@ int main()
         simulation currentSimulation(&worldCamera, yeetShader, 0.0f);
 
 
-        
-        //std::shared_ptr<object::sphere> spherePtr1(new object::sphere(3, true, false, 1.0f, glm::vec3(-2000.0f, 64.0f, 0.0f), glm::vec3(-1.0f, -0.5f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.5f, 1.5f, 1.5f)));
-        //currentSimulation.addObject(spherePtr1);
         std::shared_ptr<object::sphere> spherePtr1(new object::sphere(3, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
         currentSimulation.addObject(spherePtr1);
+        std::shared_ptr<object::sphere> spherePtr2(new object::sphere(3, true, false, 5.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(-2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.5f, 1.5f, 1.5f)));
+        currentSimulation.addObject(spherePtr2);
 
         //std::shared_ptr<object::sphere> spherePtr2(new object::sphere(3, true, false, 1.0f, glm::vec3(-7.5f, 0.0f, 0.0f), glm::vec3(2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
         //currentSimulation.addObject(spherePtr2);

@@ -11,7 +11,7 @@ float pythagoras(glm::vec3 dstVector)
 float timeToMove(float dst, float aVelocity, float bVelocity)
 {
     float totalVelocity = aVelocity - bVelocity;
-    return (totalVelocity == 0.0f) ? 0.0f : (dst / (aVelocity - bVelocity));
+    return (totalVelocity == 0.0f) ? 0.0f : (dst / (bVelocity - aVelocity));
 }
 
 float timeToMove3D(glm::vec3 objAPos, glm::vec3 objAVel, glm::vec3 objBPos, glm::vec3 objBVel)
@@ -19,9 +19,9 @@ float timeToMove3D(glm::vec3 objAPos, glm::vec3 objAVel, glm::vec3 objBPos, glm:
     std::vector<float> axisTimes = {};
     for (int axis = 0; axis < 3; axis++)
     {
-        float dst = abs(objAPos[axis] - objBPos[axis]);
+        float dst = objAPos[axis] - objBPos[axis];
         float time = timeToMove(dst, objAVel[axis], objBVel[axis]);
-        if (time < 0.0f) return -1.0f;
+        if (time < 0.0f) return 0.0f;
         
         axisTimes.push_back(time);
     }
@@ -265,61 +265,56 @@ float collision::testCollisionDetection(std::shared_ptr<object::objectBaseClass>
     //float distance = pythagoras(objPos - tarPos);
     //float travelTime = distance / pythagoras(objVel - tarVel);
     float travelTime = timeToMove3D(objPos, objVel, tarPos, tarVel);
+    std::cout << "Delta time: " << deltaTime << std::endl;
+    std::cout << "Time took: " << travelTime << std::endl;
 
-    if (!object->isAnchored())
+
+    if (travelTime < deltaTime && travelTime > 0.0f)
     {
-        if (travelTime > deltaTime && travelTime > 0.0f)
-        {
-            // Did not collide
-            object->move(fundamental::calculateDistance(objVel, deltaTime));
-            target->move(fundamental::calculateDistance(tarVel, deltaTime));
-        }
-        else if (travelTime > 0.0f)
-        {
-            // Did collide
-            std::cout << "Time took: " << travelTime << std::endl;
-            //std::cout << "Collide" << std::endl;
-            object->move(fundamental::calculateDistance(objVel, travelTime));
-            target->move(fundamental::calculateDistance(tarVel, travelTime));
+        // Did collide
+        //std::cout << "Collide" << std::endl;
+        object->move(fundamental::calculateDistance(objVel, travelTime));
+        target->move(fundamental::calculateDistance(tarVel, travelTime));
 
 
-            // Debugging
-            /*
-            object->changeVelocity(-objVel);
-            target->changeVelocity(-tarVel);
+        // Debugging
+        /*
+        object->changeVelocity(-objVel);
+        target->changeVelocity(-tarVel);
 
-            object->setAnchored(true);
-            target->setAnchored(true);
-            */
+        object->setAnchored(true);
+        target->setAnchored(true);
+        */
 
 
-            glm::vec3 objNewVel = momentum::elasticCollision(object, target);
-            glm::vec3 tarNewVel = momentum::elasticCollision(target, object);
+        glm::vec3 objNewVel = momentum::elasticCollision(object, target);
+        glm::vec3 tarNewVel = momentum::elasticCollision(target, object);
 
-            object->changeVelocity(objNewVel - objVel);
-            target->changeVelocity(tarNewVel - tarVel);
+        object->changeVelocity(objNewVel - objVel);
+        target->changeVelocity(tarNewVel - tarVel);
             
-            //std::cout << "Distance: " << distance << std::endl;
-            std::cout << "Obj new vel: " << object->getVelocity().x << " " << object->getVelocity().y << " " << object->getVelocity().z << std::endl;
-            std::cout << "Tar new vel: " << target->getVelocity().x << " " << target->getVelocity().y << " " << target->getVelocity().z << std::endl;
+        //std::cout << "Distance: " << distance << std::endl;
+        std::cout << "Obj new vel: " << object->getVelocity().x << " " << object->getVelocity().y << " " << object->getVelocity().z << std::endl;
+        std::cout << "Tar new vel: " << target->getVelocity().x << " " << target->getVelocity().y << " " << target->getVelocity().z << std::endl;
 
-            std::cout << "Obj new pos: " << object->getPosition().x << " " << object->getPosition().y << " " << object->getPosition().z << std::endl;
-            std::cout << "Tar new pos: " << target->getPosition().x << " " << target->getPosition().y << " " << target->getPosition().z << std::endl;
+        std::cout << "Obj new pos: " << object->getPosition().x << " " << object->getPosition().y << " " << object->getPosition().z << std::endl;
+        std::cout << "Tar new pos: " << target->getPosition().x << " " << target->getPosition().y << " " << target->getPosition().z << std::endl;
 
-            object->move(fundamental::calculateDistance(objNewVel, deltaTime - travelTime));
-            target->move(fundamental::calculateDistance(tarNewVel, deltaTime - travelTime));
+        object->move(fundamental::calculateDistance(objNewVel, deltaTime - travelTime));
+        target->move(fundamental::calculateDistance(tarNewVel, deltaTime - travelTime));
 
 
-            // Debugging
+        // Debugging
 
-            //object->changeVelocity(-objNewVel);
-            //target->changeVelocity(-tarNewVel);
+        //object->changeVelocity(-objNewVel);
+        //target->changeVelocity(-tarNewVel);
 
-            //object->setAnchored(true);
-            //target->setAnchored(true);
-            
-        }
-        return 0.0f;
+        //object->setAnchored(true);
+        //target->setAnchored(true);
+
+        std::cout << "Return: " << deltaTime - travelTime << std::endl;
+        return deltaTime - travelTime;
     }
+    std::cout << "Return: " << deltaTime << std::endl;
     return deltaTime;
 }

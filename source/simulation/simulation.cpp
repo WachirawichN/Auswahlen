@@ -86,20 +86,13 @@ void simulation::updateSimulation(float deltaTime)
         
         std::cout << "ID: " << i << std::endl;
 
-        if (objects.size() == 1)
-        {
-            glm::vec3 dst = fundamental::calculateDistance(currentObject->getVelocity(), deltaTime);
-            currentObject->move(dst); // Cause object to go through target when the object is going too fast
-        }
-
         // Collision detection
         if (currentObject->canCollide() && !(currentObject->isAnchored()) && objects.size() > 1)
         {
-            float travelTime = deltaTime;
-
-            while (travelTime != 0.0f)
+            while (deltaTime > 0.0f)
             {
-                float beforeTime = travelTime;
+                float beforeTime = deltaTime;
+                std::cout << "Delta time: " << deltaTime << std::endl;
                 // Loop through target object
                 for (int j = 0; j < objects.size(); j++)
                 {
@@ -108,7 +101,7 @@ void simulation::updateSimulation(float deltaTime)
                     std::shared_ptr<object::objectBaseClass> targetObject = objects.at(j);
 
                     // Check if target can be collided
-                    travelTime = collision::testCollisionDetection(currentObject, targetObject, deltaTime);
+                    deltaTime = collision::testCollisionDetection(currentObject, targetObject, deltaTime);
                     /*
                     if (targetObject->canCollide())
                     {
@@ -118,20 +111,18 @@ void simulation::updateSimulation(float deltaTime)
                     */
                 }
 
-                // Run when object doesn't collide with anything within time frame
-                /*
-                if (beforeTime == travelTime)
+                if (beforeTime == deltaTime) 
                 {
-                    //std::cout << "Left over time: " << travelTime << std::endl;
-                    //std::cout << "Move from: " << currentObject->getPosition().x << " " << currentObject->getPosition().y << " " << currentObject->getPosition().z << std::endl;
-                    glm::vec3 dst = fundamental::calculateDistance(currentObject->getVelocity(), travelTime);
-                    currentObject->move(dst); // Cause object to go through target when the object is going too fast
-                    //std::cout << "To: " << currentObject->getPosition().x << " " << currentObject->getPosition().y << " " << currentObject->getPosition().z << std::endl;
+                    currentObject->move(fundamental::calculateDistance(currentObject->getVelocity(), deltaTime));
+                    std::cout << "Break" << std::endl;
                     break;
                 }
-                */
             }
         }
-        std::cout << std::endl;
+
+        //glm::vec3 dst = fundamental::calculateDistance(currentObject->getVelocity(), deltaTime);
+        //currentObject->move(dst); // Cause object to go through target when the object is going too fast
+
+        //std::cout << std::endl;
     }
 }
