@@ -13,6 +13,7 @@
 #include <vector>
 #include <memory>
 #include <typeinfo>
+#include <iomanip>
 
 // Handle all the rendering and the physic in the scene
 class simulation

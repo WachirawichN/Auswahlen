@@ -34,8 +34,12 @@ int height = 1440;
 //int width = 1920;
 //int height = 1080;
 
-// Timing
+// Simulation
 float deltaTime = 0.0f;
+
+bool manualStep = true;
+float manualDeltaTime = 0.0f;
+float deltaTimeStep = 0.001f;
 
 // Camera
 glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 5.0f);
@@ -81,6 +85,33 @@ void keyboardCallbackHandler(GLFWwindow* window, int key, int scancode, int acti
 
             case GLFW_KEY_D:
                 worldCamera.move(cameraSpeed, deltaTime, true, false);
+                break;
+
+            // Manual simulation step
+            case GLFW_KEY_R:
+                manualStep = !manualStep;
+                break;
+                
+            case GLFW_KEY_E:
+                if (manualStep) manualDeltaTime = deltaTimeStep;
+                break;
+            case GLFW_KEY_Q:
+                if (manualStep) manualDeltaTime = -deltaTimeStep;
+                break;
+
+            case GLFW_KEY_X:
+                if (manualStep)
+                {
+                    deltaTimeStep *= 2;
+                    std::cout << "Current delta time step: " << deltaTimeStep << std::endl;
+                }
+                break;
+            case GLFW_KEY_Z:
+                if (manualStep)
+                {
+                    deltaTimeStep /= 2;
+                    std::cout << "Current delta time step: " << deltaTimeStep << std::endl;
+                }
                 break;
         }
     }
@@ -136,17 +167,17 @@ int main()
         simulation currentSimulation(&worldCamera, yeetShader, 0.0f);
 
 
-        std::shared_ptr<object::sphere> spherePtr1(new object::sphere(3, true, false, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+        std::shared_ptr<object::sphere> spherePtr1(new object::sphere(3, true, false, 5.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(-2.5f, 2.5f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.5f, 1.5f, 1.5f)));
         currentSimulation.addObject(spherePtr1);
-        std::shared_ptr<object::sphere> spherePtr2(new object::sphere(3, true, false, 5.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(-2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.5f, 1.5f, 1.5f)));
-        currentSimulation.addObject(spherePtr2);
+        std::shared_ptr<object::sphere> spherePtr0(new object::sphere(3, true, false, 0.5f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+        currentSimulation.addObject(spherePtr0);
 
         //std::shared_ptr<object::sphere> spherePtr2(new object::sphere(3, true, false, 1.0f, glm::vec3(-7.5f, 0.0f, 0.0f), glm::vec3(2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
         //currentSimulation.addObject(spherePtr2);
         //std::shared_ptr<object::sphere> spherePtr3(new object::sphere(3, true, false, 1.0f, glm::vec3(7.5f, 0.0f, 0.0f), glm::vec3(-2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
         //currentSimulation.addObject(spherePtr3);
 
-        std::shared_ptr<object::cube> physBlock1(new object::cube(true, false, 1.0f, glm::vec3(-7.5f, 0.0f, 0.0f), glm::vec3(2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+        std::shared_ptr<object::cube> physBlock1(new object::cube(true, false, 1.0f, glm::vec3(-7.5f, 7.5f, 0.0f), glm::vec3(2.5f, -2.5f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
         currentSimulation.addObject(physBlock1);
         //std::shared_ptr<object::cube> physBlock2(new object::cube(true, false, 1.0f, glm::vec3(7.5f, 0.0f, 0.0f), glm::vec3(-2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
         //currentSimulation.addObject(physBlock2);
@@ -162,10 +193,8 @@ int main()
         
         //std::shared_ptr<object::cube> topPtr(new object::cube(true, true, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 5.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.5f, 0.5f, 10.5f)));
         //std::shared_ptr<object::cube> floorPtr(new object::cube(true, true, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, -5.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.5f, 0.5f, 10.5f)));
-
         //std::shared_ptr<object::cube> rightPtr(new object::cube(true, true, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(5.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.5f, 10.5f, 10.5f)));
         //std::shared_ptr<object::cube> leftPtr(new object::cube(true, true, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(-5.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.5f, 10.5f, 10.5f)));
-
         //std::shared_ptr<object::cube> frontPtr(new object::cube(true, true, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.5f, 10.5f, 0.5f)));
         //std::shared_ptr<object::cube> backPtr(new object::cube(true, true, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, -5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.5f, 10.5f, 0.5f)));
 
@@ -200,26 +229,27 @@ int main()
 
         // Toggle wireframe
         glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
-
-        // FOR RECODING WITH DEVLOG ONLY (use nvidia replay for best result)
-        //float haltCurrentTime = glfwGetTime();
-        //while (haltCurrentTime < 5.0f)
-        //{
-        //    deltaTime = haltCurrentTime - lastFrame;
-        //    lastFrame = haltCurrentTime;
-        //    haltCurrentTime = glfwGetTime();
-        //}
         
         float lastFrame = glfwGetTime();
-
         while (!glfwWindowShouldClose(window))
         {
             
             float currentFrame = glfwGetTime();
             deltaTime = currentFrame - lastFrame;
             lastFrame = currentFrame;
-            //if (currentFrame > 0.0f) currentSimulation.updateSimulation(deltaTime);
-            currentSimulation.updateSimulation(deltaTime);
+            if (manualStep)
+            {
+                if (manualDeltaTime != 0.0f)
+                {
+                    currentSimulation.updateSimulation(manualDeltaTime);
+                    manualDeltaTime = 0.0f;
+                }
+            }
+            else
+            {
+                //if (currentFrame > 5.0f) currentSimulation.updateSimulation(deltaTime / 10.0f);
+                currentSimulation.updateSimulation(deltaTime);
+            }
             currentSimulation.drawSimulation();
 
             //std::cout << "FPS: " << std::round(floor(1.0f / deltaTime)) << std::endl;

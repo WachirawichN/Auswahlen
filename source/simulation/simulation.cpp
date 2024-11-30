@@ -59,6 +59,7 @@ void simulation::drawSimulation()
 }
 void simulation::updateSimulation(float deltaTime)
 {
+    // Apply gravity
     for (int i = 0; i < objects.size(); i++)
     {
         std::shared_ptr<object::objectBaseClass> currentObject = objects.at(i);
@@ -70,59 +71,48 @@ void simulation::updateSimulation(float deltaTime)
         }
     }
 
+    //float collisionTime;
     for (int i = 0; i < objects.size(); i++)
     {
         std::shared_ptr<object::objectBaseClass> currentObject = objects.at(i);
-        /*
-        if (dynamic_cast<geometry::icosphere*>(currentObject.get()) != NULL)
-        {
-            std::cout << "Cast to sphere" << std::endl;
-        }
-        else
-        {
-            std::cout << "Fail to cast to sphere" << std::endl;
-        }
-        */
         
-        std::cout << "ID: " << i << std::endl;
+        std::cout << "Object ID: " << i << std::endl;
 
         // Collision detection
+        float collisionTime = deltaTime;
         if (currentObject->canCollide() && !(currentObject->isAnchored()) && objects.size() > 1)
         {
-            while (deltaTime > 0.0f)
+            while (collisionTime > 0.0f)
             {
-                float beforeTime = deltaTime;
-                std::cout << "Delta time: " << deltaTime << std::endl;
-                // Loop through target object
+                float beforeTime = collisionTime;
+
+                // Loop through every target objects
                 for (int j = 0; j < objects.size(); j++)
                 {
                     if (j == i) continue;
 
                     std::shared_ptr<object::objectBaseClass> targetObject = objects.at(j);
+                    if (!targetObject->canCollide()) continue;
 
-                    // Check if target can be collided
-                    deltaTime = collision::testCollisionDetection(currentObject, targetObject, deltaTime);
-                    /*
-                    if (targetObject->canCollide())
-                    {
-                        // Move object / check for collision
-                        travelTime = collision::continuouseCollisionDetection(currentObject, targetObject, travelTime, 0.8f);
-                    }
-                    */
+                    std::cout << "  Target ID: " << j << std::endl;
+                    collisionTime = collision::dstBaseCD(currentObject, targetObject, collisionTime);
                 }
 
-                if (beforeTime == deltaTime) 
-                {
-                    currentObject->move(fundamental::calculateDistance(currentObject->getVelocity(), deltaTime));
-                    std::cout << "Break" << std::endl;
-                    break;
-                }
+                if (beforeTime == collisionTime) break;
             }
         }
-
-        //glm::vec3 dst = fundamental::calculateDistance(currentObject->getVelocity(), deltaTime);
-        //currentObject->move(dst); // Cause object to go through target when the object is going too fast
-
-        //std::cout << std::endl;
+        currentObject->move(fundamental::calculateDistance(currentObject->getVelocity(), deltaTime));
     }
+
+    // Logging objects velocity
+    /*
+    std::cout << "Frame velocity:" << std::endl;
+    for (int i = 0; i < objects.size(); i++)
+    {
+        std::shared_ptr<object::objectBaseClass> currentObject = objects.at(i);
+        glm::vec3 objectVelocity = currentObject->getVelocity();
+        std::cout << " Object ID: " << i << std::fixed << std::setprecision(5) << " Velocity: " << objectVelocity.x << ", " << objectVelocity.y << ", " << objectVelocity.z << std::endl;
+    }
+    */
+    std::cout << std::endl;
 }
