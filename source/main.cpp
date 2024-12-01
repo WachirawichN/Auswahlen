@@ -39,7 +39,7 @@ float deltaTime = 0.0f;
 
 bool manualStep = true;
 float manualDeltaTime = 0.0f;
-float deltaTimeStep = 0.001f;
+float deltaTimeStep = 0.008f;
 
 // Camera
 glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 5.0f);
@@ -167,20 +167,17 @@ int main()
         simulation currentSimulation(&worldCamera, yeetShader, 0.0f);
 
 
-        std::shared_ptr<object::sphere> spherePtr1(new object::sphere(3, true, false, 5.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(-2.5f, 2.5f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.5f, 1.5f, 1.5f)));
-        currentSimulation.addObject(spherePtr1);
-        std::shared_ptr<object::sphere> spherePtr0(new object::sphere(3, true, false, 0.5f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
-        currentSimulation.addObject(spherePtr0);
+        //std::shared_ptr<object::sphere> spherePtr0(new object::sphere(3, true, false, 5.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(-2.5f, 2.5f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.5f, 1.5f, 1.5f)));
+        //currentSimulation.addObject(spherePtr0);
+        //std::shared_ptr<object::sphere> spherePtr1(new object::sphere(3, true, false, 0.5f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+        //currentSimulation.addObject(spherePtr1);
 
-        //std::shared_ptr<object::sphere> spherePtr2(new object::sphere(3, true, false, 1.0f, glm::vec3(-7.5f, 0.0f, 0.0f), glm::vec3(2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
-        //currentSimulation.addObject(spherePtr2);
-        //std::shared_ptr<object::sphere> spherePtr3(new object::sphere(3, true, false, 1.0f, glm::vec3(7.5f, 0.0f, 0.0f), glm::vec3(-2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
-        //currentSimulation.addObject(spherePtr3);
-
-        std::shared_ptr<object::cube> physBlock1(new object::cube(true, false, 1.0f, glm::vec3(-7.5f, 7.5f, 0.0f), glm::vec3(2.5f, -2.5f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+        std::shared_ptr<object::cube> physBlock0(new object::cube(true, false, 5.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(-2.5f, 2.5f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.5f, 1.5f, 1.5f)));
+        currentSimulation.addObject(physBlock0);
+        std::shared_ptr<object::cube> physBlock1(new object::cube(true, false, 0.5f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.5f, 0.5f, 0.5f)));
         currentSimulation.addObject(physBlock1);
-        //std::shared_ptr<object::cube> physBlock2(new object::cube(true, false, 1.0f, glm::vec3(7.5f, 0.0f, 0.0f), glm::vec3(-2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
-        //currentSimulation.addObject(physBlock2);
+        std::shared_ptr<object::cube> physBlock2(new object::cube(true, false, 1.0f, glm::vec3(-7.5f, 7.5f, 0.0f), glm::vec3(2.5f, -2.5f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+        currentSimulation.addObject(physBlock2);
         
         
         /*

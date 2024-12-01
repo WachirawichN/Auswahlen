@@ -82,7 +82,7 @@ void simulation::updateSimulation(float deltaTime)
         float collisionTime = deltaTime;
         if (currentObject->canCollide() && !(currentObject->isAnchored()) && objects.size() > 1)
         {
-            while (collisionTime > 0.0f)
+            while (collisionTime != 0.0f)
             {
                 float beforeTime = collisionTime;
 
@@ -94,14 +94,15 @@ void simulation::updateSimulation(float deltaTime)
                     std::shared_ptr<object::objectBaseClass> targetObject = objects.at(j);
                     if (!targetObject->canCollide()) continue;
 
-                    std::cout << "  Target ID: " << j << std::endl;
+                    std::cout << "  -  Target ID: " << j << std::endl;
                     collisionTime = collision::dstBaseCD(currentObject, targetObject, collisionTime);
                 }
 
+                // There is no collision with any of the target
                 if (beforeTime == collisionTime) break;
             }
         }
-        currentObject->move(fundamental::calculateDistance(currentObject->getVelocity(), deltaTime));
+        currentObject->move(fundamental::calculateDistance(currentObject->getVelocity(), collisionTime));
     }
 
     // Logging objects velocity
