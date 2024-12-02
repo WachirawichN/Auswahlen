@@ -6,6 +6,7 @@
 ### Possible cause
 - The formular for calculating the time for the object and the target to hit each other is wrong.
     - When the object and the target is moving in the opposite direction, the formular still count it as the same direction.
+    - Using time that come from pythagoras to calculate the distance the object / target need to move, the distance may be a bit too much.
 
 ## Manual physic stepping
 ### Symptom
