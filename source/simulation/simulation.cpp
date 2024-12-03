@@ -66,7 +66,7 @@ void simulation::updateSimulation(float deltaTime)
         
         if (!currentObject->isAnchored())
         {
-            glm::vec3 deltaVelocity = fundamental::calculateVelocity(glm::vec3(0.0f, gravity, 0.0f), deltaTime);
+            glm::vec3 deltaVelocity = fundamental::calculateVel(glm::vec3(0.0f, gravity, 0.0f), deltaTime);
             currentObject->changeVelocity(deltaVelocity);
         }
     }
@@ -102,7 +102,7 @@ void simulation::updateSimulation(float deltaTime)
                 if (beforeTime == collisionTime) break;
             }
         }
-        currentObject->move(fundamental::calculateDistance(currentObject->getVelocity(), collisionTime));
+        currentObject->move(fundamental::calculateDst(currentObject->getVelocity(), collisionTime));
     }
 
     // Logging objects velocity

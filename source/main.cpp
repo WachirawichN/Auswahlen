@@ -44,7 +44,7 @@ float deltaTimeStep = 0.008f;
 // Camera
 glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 5.0f);
 float cameraSpeed = 50.0f;
-camera worldCamera(cameraPos);
+camera worldCamera(cameraPos, glm::vec3(0.0f, 1.0f, 0.0f), 90.0f, (float)16/(float)9, 0.001f, 100.0f);
 
 // Mouse input
 float sensitivity = 0.1f;
@@ -85,6 +85,19 @@ void keyboardCallbackHandler(GLFWwindow* window, int key, int scancode, int acti
 
             case GLFW_KEY_D:
                 worldCamera.move(cameraSpeed, deltaTime, true, false);
+                break;
+
+            // Chaning camera speed
+            case GLFW_KEY_V:
+                cameraSpeed += 1.0f;
+                std::cout << "Camera speed: " << cameraSpeed << std::endl;
+                break;
+            case GLFW_KEY_C:
+                if (cameraSpeed > 0.0f)
+                {
+                    cameraSpeed -= 1.0f;
+                    std::cout << "Camera speed: " << cameraSpeed << std::endl;
+                }
                 break;
 
             // Manual simulation step
@@ -172,7 +185,7 @@ int main()
         //std::shared_ptr<object::sphere> spherePtr1(new object::sphere(3, true, false, 0.5f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
         //currentSimulation.addObject(spherePtr1);
 
-        std::shared_ptr<object::cube> physBlock0(new object::cube(true, false, 5.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(-2.5f, 2.5f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.5f, 1.5f, 1.5f)));
+        std::shared_ptr<object::cube> physBlock0(new object::cube(true, false, 5.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(-2.5f, 2.5f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(2.0f, 2.0f, 2.0f)));
         currentSimulation.addObject(physBlock0);
         std::shared_ptr<object::cube> physBlock1(new object::cube(true, false, 0.5f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.5f, 0.5f, 0.5f)));
         currentSimulation.addObject(physBlock1);
@@ -225,7 +238,7 @@ int main()
         glfwSetKeyCallback(window, keyboardCallbackHandler);
 
         // Toggle wireframe
-        glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+        //glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
         
         float lastFrame = glfwGetTime();
         while (!glfwWindowShouldClose(window))

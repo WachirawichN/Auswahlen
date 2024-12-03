@@ -9,39 +9,47 @@ float pythagoras(glm::vec3 dstVector)
 }
 float timeToMove(float aPosition, float bPosition, float aVelocity, float bVelocity)
 {
-    float totalVelocity = bVelocity - aVelocity;
-    return (totalVelocity == 0.0f) ? 0.0f : ((aPosition - bPosition) / totalVelocity);
+    float totalVelocity = aVelocity - bVelocity;
+    float dst = bPosition - aPosition;
+    if (totalVelocity == 0.0f) return 0.0f;
+    return dst / totalVelocity;
+    //return (totalVelocity > 0.0f) ? dst / totalVelocity : ((aPosition - bPosition)) / totalVelocity;
 }
-float timeToMove3D(glm::vec3 objAPos, glm::vec3 objAVel, glm::vec3 objBPos, glm::vec3 objBVel)
+glm::vec3 timeToMove3D(glm::vec3 objAPos, glm::vec3 objAVel, glm::vec3 objBPos, glm::vec3 objBVel)
 {
     std::vector<float> axisTimes = {};
-    int negativeCount = 0;
+    unsigned int negativeCount = 0;
+    unsigned int maxNegative = 3;
     std::cout << "      -  Distance and velocity:" << std::endl;
     for (int axis = 0; axis < 3; axis++)
     {
-        std::cout << "           -  Distance: " << objBPos[axis] - objAPos[axis] << ", Total velocity: " << objBVel[axis] - objAVel[axis] << std::endl;
+        std::cout << "           -  Distance: " << objBPos[axis] - objAPos[axis] << ", Total velocity: " << objAVel[axis] - objBVel[axis] << std::endl;
 
         // If the time is below zero will mean the object and the target will hit each other in the past in that axis
         float time = timeToMove(objAPos[axis], objBPos[axis], objAVel[axis], objBVel[axis]);
         if (time < 0.0f) negativeCount++;
+        if (time == 0.0f) maxNegative--;
         
         axisTimes.push_back(time);
     }
 
     std::cout << "      -  Negative count: " << negativeCount << std::endl;
-    std::cout << "           -  axisTime: " << axisTimes[0] << ", " << axisTimes[1] << ", " << axisTimes[2] << std::endl;
+    std::cout << "      -  Max negative count: " << maxNegative << std::endl;
+    std::cout << "      -  axisTime: " << axisTimes[0] << ", " << axisTimes[1] << ", " << axisTimes[2] << std::endl;
     if (negativeCount == 0)
     {
         // Object and target will hit each other in the future
-        return pythagoras(glm::vec3(axisTimes[0], axisTimes[1], axisTimes[2]));
+        return glm::vec3(axisTimes[0], axisTimes[1], axisTimes[2]);
+        //return pythagoras(glm::vec3(axisTimes[0], axisTimes[1], axisTimes[2]));
     }
-    else if (negativeCount == 3)
+    else if (negativeCount == maxNegative)
     {   
         // Object and target hit each other in the past
-        return -pythagoras(glm::vec3(axisTimes[0], axisTimes[1], axisTimes[2]));
+        return glm::vec3(axisTimes[0], axisTimes[1], axisTimes[2]) * -1.0f;
+        //return -pythagoras(glm::vec3(axisTimes[0], axisTimes[1], axisTimes[2]));
     }
     // Object and the target will never hit each other
-    return 0.0f;
+    return glm::vec3(0.0f, 0.0f, 0.0f);
 }
 
 float collision::dstBaseCD(std::shared_ptr<object::objectBaseClass> object, std::shared_ptr<object::objectBaseClass> target, float deltaTime)
@@ -76,27 +84,60 @@ float collision::dstBaseCD(std::shared_ptr<object::objectBaseClass> object, std:
         
     }
 
-    float travelTime = timeToMove3D(objPos, objVel, tarPos, tarVel);
+    glm::vec3 travelTimes = timeToMove3D(objPos, objVel, tarPos, tarVel);
+    std::cout << "      -  Time comparison: " << std::endl;
+    unsigned int collideAxis = 0;
+    for (int axis = 0; axis < 3; axis++)
+    {
+        std::cout << "           -  Axis: " << axis << std::endl;
+        std::cout << "                -  deltaTime > 0.0f: " << (deltaTime > 0.0f) << ", travelTimes > 0.0f: " << (travelTimes[axis] > 0.0f) << ", travelTimes < deltaTime: " << (travelTimes[axis] < deltaTime) << ", travelTimes == 0.0f: " << (travelTimes[axis] == 0.0f) << std::endl;
+        std::cout << "                -  deltaTime < 0.0f: " << (deltaTime < 0.0f) << ", travelTimes < 0.0f: " << (travelTimes[axis] < 0.0f) << ", travelTimes > deltaTime: " << (travelTimes[axis] > deltaTime) << ", travelTimes == 0.0f: " << (travelTimes[axis] == 0.0f) << std::endl;
+        if (travelTimes[axis] == 0.0f)
+        {
+            collideAxis++;
+            std::cout << "                -  contact: " << collideAxis << std::endl;
+            std::cout << "                -  travelTimes: " << travelTimes[axis] << std::endl;
+            continue;
+        }
+        if ((deltaTime > 0.0f && travelTimes[axis] < deltaTime && travelTimes[axis] > 0.0f) || (deltaTime < 0.0f && travelTimes[axis] > deltaTime && travelTimes[axis] < 0.0f))
+        {
+            collideAxis++;
+        }
+        std::cout << "                -  contact: " << collideAxis << std::endl;
+    }
+
+    float travelTime = pythagoras(travelTimes);
+
+    std::cout << "      -  Before:" << std::endl;
+    std::cout << "           -  Object border position: " << objPos.x << ", " << objPos.y << ", " << objPos.z << ", target border position: " << tarPos.x << ", " << tarPos.y << ", " << tarPos.z << std::endl;
+    std::cout << "           -  Object velocity: " << objVel.x << ", " << objVel.y << ", " << objVel.z << ", target velocity: " << tarVel.x << ", " << tarVel.y << ", " << tarVel.z << std::endl;
+
+    if (collideAxis == 3)
+    {
+        std::cout << "      -  Very collided" << std::endl;
+    }
+    else
+    {
+        std::cout << "      -  Not so collided" << std::endl;
+    }
+    
 
     // Object did collide with target
     if ((deltaTime > 0.0f && travelTime < deltaTime && travelTime > 0.0f) || (deltaTime < 0.0f && travelTime > deltaTime && travelTime < 0.0f))
     {
         std::cout << "      -  Got collided, Time took: " << std::fixed << std::setprecision(5) << travelTime << ", Delta time: " << deltaTime << std::endl;
-        std::cout << "      -  Before:" << std::endl;
-        std::cout << "           -  Object border position: " << objPos.x << ", " << objPos.y << ", " << objPos.z << ", target border position: " << tarPos.x << ", " << tarPos.y << ", " << tarPos.z << std::endl;
-        std::cout << "           -  Object velocity: " << objVel.x << ", " << objVel.y << ", " << objVel.z << ", target velocity: " << tarVel.x << ", " << tarVel.y << ", " << tarVel.z << std::endl;
 
         // Move both object to the position that it only contact each other
-        object->move(fundamental::calculateDistance(objVel, travelTime));
-        target->move(fundamental::calculateDistance(tarVel, travelTime));
+        object->move(fundamental::calculateDstVecT(objVel, travelTimes));
+        target->move(fundamental::calculateDstVecT(tarVel, travelTimes));
 
         glm::vec3 objNewVel = momentum::elasticCollision(object, target);
         glm::vec3 tarNewVel = momentum::elasticCollision(target, object);
         object->changeVelocity(objNewVel - objVel);
         target->changeVelocity(tarNewVel - tarVel);
 
-        //object->move(fundamental::calculateDistance(objNewVel, deltaTime - travelTime));
-        //target->move(fundamental::calculateDistance(tarNewVel, deltaTime - travelTime));
+        //object->move(fundamental::calculateDst(objNewVel, deltaTime - travelTime));
+        //target->move(fundamental::calculateDst(tarNewVel, deltaTime - travelTime));
 
         std::cout << "      -  After:" << std::endl;
         std::cout << "           -  Object position: " << object->getPosition().x << ", " << object->getPosition().y << ", " << object->getPosition().z << ", target position: " << target->getPosition().x << ", " << target->getPosition().y << ", " << target->getPosition().z << std::endl;
@@ -107,6 +148,7 @@ float collision::dstBaseCD(std::shared_ptr<object::objectBaseClass> object, std:
         std::cout << "           -  New target velocity: " << tarNewVel.x << ", " << tarNewVel.y << ", " << tarNewVel.z << std::endl;
         std::cout << "           -  Time remaining: " << deltaTime - travelTime << std::endl;
 
+        //return 0.0f;
         return deltaTime - travelTime;
     }
     else
