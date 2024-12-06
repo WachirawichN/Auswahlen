@@ -71,7 +71,54 @@ void simulation::updateSimulation(float deltaTime)
         }
     }
 
-    //float collisionTime;
+    // Remove calculation between object that has been calculate before
+    std::vector<std::vector<unsigned int>> pairs = collision::collisionPairing(objects);
+    /*
+    for (int i = 0; i < pairs.size(); i++)
+    {
+        std::vector<unsigned int> currentPair = pairs.at(i);
+        for (int j = 0; j < currentPair.size(); j++)
+        {
+            std::cout << currentPair.at(j) << ", ";
+        }
+        std::cout << std::endl;
+    }
+    */
+    
+    for (int i = 0; i < pairs.size(); i++)
+    {
+        std::vector<unsigned int> currentPair = pairs.at(i);
+
+        std::shared_ptr<object::objectBaseClass> currentObject = objects.at(currentPair.at(0));
+        std::cout << "Object ID: " << currentPair.at(0) << std::endl;
+        glm::vec3 remainingTime(deltaTime);
+
+        while (mathExt::pythagoras(remainingTime) != 0.0f && currentPair.size() > 1)
+        {
+            glm::vec3 beforeTime = remainingTime;
+            for (int j = 1; j < currentPair.size(); j++)
+            {
+                std::shared_ptr<object::objectBaseClass> targetObject = objects.at(currentPair.at(j));
+                std::cout << "  -  Target ID: " << currentPair.at(j) << std::endl;
+                glm::vec3 timeToCollide = collision::dstBaseCD(currentObject, targetObject, deltaTime);
+
+                if (mathExt::pythagoras(timeToCollide) != 0.0f)
+                {
+                    collision::collsionResolver(currentObject, targetObject, timeToCollide);
+                    remainingTime -= timeToCollide;
+                }
+                std::cout << "      -  After resolving" << std::endl;
+                std::cout << "         -  Object velocity: " << currentObject->getVelocity().x << ", " << currentObject->getVelocity().y << ", " << currentObject->getVelocity().z << std::endl;
+                std::cout << "         -  Target velocity: " << targetObject->getVelocity().x << ", " << targetObject->getVelocity().y << ", " << targetObject->getVelocity().z << std::endl;
+            }
+            if (beforeTime == remainingTime) break;
+        }
+        std::cout << currentObject->getPosition().x << ", " << currentObject->getPosition().y << ", " << currentObject->getPosition().z << std::endl;
+        currentObject->move(fundamental::calculateDstVecT(currentObject->getVelocity(), remainingTime));
+        std::cout << currentObject->getPosition().x << ", " << currentObject->getPosition().y << ", " << currentObject->getPosition().z << std::endl;
+    }
+
+    /*
     for (int i = 0; i < objects.size(); i++)
     {
         std::shared_ptr<object::objectBaseClass> currentObject = objects.at(i);
@@ -79,12 +126,12 @@ void simulation::updateSimulation(float deltaTime)
         std::cout << "Object ID: " << i << std::endl;
 
         // Collision detection
-        float collisionTime = deltaTime;
+        glm::vec3 remainingTime(deltaTime);
         if (currentObject->canCollide() && !(currentObject->isAnchored()) && objects.size() > 1)
         {
-            while (collisionTime != 0.0f)
+            while (mathExt::pythagoras(remainingTime) != 0.0f)
             {
-                float beforeTime = collisionTime;
+                glm::vec3 beforeTime = remainingTime;
 
                 // Loop through every target objects
                 for (int j = 0; j < objects.size(); j++)
@@ -95,24 +142,22 @@ void simulation::updateSimulation(float deltaTime)
                     if (!targetObject->canCollide()) continue;
 
                     std::cout << "  -  Target ID: " << j << std::endl;
-                    collisionTime = collision::dstBaseCD(currentObject, targetObject, collisionTime);
+                    glm::vec3 timeToCollide = collision::dstBaseCD(currentObject, targetObject, deltaTime);
+
+                    std::cout << mathExt::pythagoras(timeToCollide) << std::endl;
+                    if (mathExt::pythagoras(timeToCollide) != 0.0f)
+                    {
+                        collision::collsionResolver(currentObject, targetObject, timeToCollide);
+                        remainingTime -= timeToCollide;
+                        std::cout << "Resolve" << std::endl;
+                    }
                 }
 
                 // There is no collision with any of the target
-                if (beforeTime == collisionTime) break;
+                if (beforeTime == remainingTime) break;
             }
         }
-        currentObject->move(fundamental::calculateDst(currentObject->getVelocity(), collisionTime));
-    }
-
-    // Logging objects velocity
-    /*
-    std::cout << "Frame velocity:" << std::endl;
-    for (int i = 0; i < objects.size(); i++)
-    {
-        std::shared_ptr<object::objectBaseClass> currentObject = objects.at(i);
-        glm::vec3 objectVelocity = currentObject->getVelocity();
-        std::cout << " Object ID: " << i << std::fixed << std::setprecision(5) << " Velocity: " << objectVelocity.x << ", " << objectVelocity.y << ", " << objectVelocity.z << std::endl;
+        currentObject->move(fundamental::calculateDstVecT(currentObject->getVelocity(), remainingTime));
     }
     */
     std::cout << std::endl;

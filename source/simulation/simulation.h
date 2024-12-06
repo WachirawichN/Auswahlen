@@ -7,6 +7,8 @@
 #include "physic/fundamental.h"
 #include "physic/collision.h"
 
+#include "math/mathExt.h"
+
 #include "../graphic/graphic.h"
 #include "../graphic/geometry/shape.h"
 
