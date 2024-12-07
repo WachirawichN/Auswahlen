@@ -60,26 +60,19 @@ std::vector<std::vector<unsigned int>> collision::collisionPairing(std::vector<s
 {
     // The algorithm should sort the pairing base on the distance of each pair
 
+    // Object at index 0 is the current object then after that is all the target object
     std::vector<std::vector<unsigned int>> pairs;
 
     for (unsigned int i = 0; i < objects.size(); i++)
     {
         std::shared_ptr<object::objectBaseClass> currentObject = objects.at(i);
-        if (!currentObject->canCollide())
-        {
-            std::cout << "Object skip" << std::endl;
-            continue;
-        }
+        if (!currentObject->canCollide()) continue;
         std::vector<unsigned int> currentPair = {i};
 
         for (unsigned int j = i + 1; j < objects.size(); j++)
         {
             std::shared_ptr<object::objectBaseClass> targetObject = objects.at(j);
-            if (!targetObject->canCollide())
-            {
-                std::cout << "Target skip" << std::endl;
-                continue;
-            }
+            if (!targetObject->canCollide()) continue;
             currentPair.push_back(j);
         }
 
@@ -106,6 +99,7 @@ glm::vec3 collision::dstBaseCD(std::shared_ptr<object::objectBaseClass> object, 
    glm::vec3 objBorder = borders[0];
    glm::vec3 tarBorder = borders[1];
 
+    // Actual collision detection on each axis
     unsigned int collideAxis = 0;
     glm::vec3 travelTimes(0.0f, 0.0f, 0.0f);
     for (int axis = 0; axis < 3; axis++)
@@ -130,6 +124,7 @@ glm::vec3 collision::dstBaseCD(std::shared_ptr<object::objectBaseClass> object, 
         }
     }
 
+    // Collision have been detected
     if (collideAxis == 3)
     {
         return travelTimes;
@@ -140,13 +135,6 @@ glm::vec3 collision::dstBaseCD(std::shared_ptr<object::objectBaseClass> object, 
 }
 void collision::collsionResolver(std::shared_ptr<object::objectBaseClass> currentObject, std::shared_ptr<object::objectBaseClass> target, glm::vec3 travelTime)
 {
-    std::cout << "      -  Resolving collision:" << std::endl;
-    std::cout << "         -  Travel time: " << mathExt::roundToDecimal(travelTime.x, 5) << ", " << mathExt::roundToDecimal(travelTime.y, 5) << ", " << mathExt::roundToDecimal(travelTime.z, 5) << std::endl;
-    std::cout << "         -  Old object position: " << currentObject->getPosition().x << ", " << currentObject->getPosition().y << ", " << currentObject->getPosition().z << std::endl;
-    std::cout << "         -  Old target position: " << target->getPosition().x << ", " << target->getPosition().y << ", " << target->getPosition().z << std::endl;
-    std::cout << "         -  Old object velocity: " << currentObject->getVelocity().x << ", " << currentObject->getVelocity().y << ", " << currentObject->getVelocity().z << std::endl;
-    std::cout << "         -  Old target velocity: " << target->getVelocity().x << ", " << target->getVelocity().y << ", " << target->getVelocity().z << std::endl;
-
     // Move to collision site
     currentObject->move(fundamental::calculateDstVecT(currentObject->getVelocity(), travelTime));
     target->move(fundamental::calculateDstVecT(target->getVelocity(), travelTime));
@@ -154,12 +142,6 @@ void collision::collsionResolver(std::shared_ptr<object::objectBaseClass> curren
     // Update new velocity
     glm::vec3 objNewVel = momentum::elasticCollision(currentObject, target);
     glm::vec3 tarNewVel = momentum::elasticCollision(target, currentObject);
-
     currentObject->changeVelocity(objNewVel - currentObject->getVelocity());
     target->changeVelocity(tarNewVel - target->getVelocity());
-
-    std::cout << "         -  New object position: " << currentObject->getPosition().x << ", " << currentObject->getPosition().y << ", " << currentObject->getPosition().z << std::endl;
-    std::cout << "         -  New target position: " << target->getPosition().x << ", " << target->getPosition().y << ", " << target->getPosition().z << std::endl;
-    std::cout << "         -  New object velocity: " << currentObject->getVelocity().x << ", " << currentObject->getVelocity().y << ", " << currentObject->getVelocity().z << std::endl;
-    std::cout << "         -  New target velocity: " << target->getVelocity().x << ", " << target->getVelocity().y << ", " << target->getVelocity().z << std::endl;
 }

@@ -39,9 +39,7 @@ float deltaTime = 0.0f;
 
 bool manualStep = true;
 float manualDeltaTime = 0.0f;
-float deltaTimeStep = 0.007f;
-//float deltaTimeStep = 0.00733f;
-//float deltaTimeStep = 0.008f;
+float deltaTimeStep = 0.008f;
 
 // Camera
 glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 5.0f);
