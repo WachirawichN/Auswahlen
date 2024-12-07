@@ -13,12 +13,13 @@ namespace object
 
             float mass;
             glm::vec3 velocity;
+            glm::vec3 collisionTime;
 
             glm::vec3 position;
             glm::vec3 rotation;
             glm::vec3 scale;
         public:
-            objectBaseClass(bool collision = true, // Determine if the object will be affected by collision resolver
+            objectBaseClass(bool collision = true,
                             bool anchored = false,
                             float mass = 1,
                             glm::vec3 velocity = glm::vec3(0.0f, 0.0f, 0.0f),
@@ -34,12 +35,16 @@ namespace object
             void setAnchored(bool newValue);
 
             void changeVelocity(glm::vec3 deltaVelocity);
+            void changeCollisionTime(glm::vec3 deltaTime);
+
             void move(glm::vec3 distance);
             void rotate(glm::vec3 degree);
             void rescale(glm::vec3 deltaScale);
 
             float getMass() const;
             glm::vec3 getVelocity() const;
+            glm::vec3 getCollisionTime() const;
+
             glm::vec3 getPosition() const;
             glm::vec3 getRotation() const;
             glm::vec3 getScale() const;

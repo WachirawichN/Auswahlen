@@ -17,10 +17,8 @@ glm::vec3 normalizeRotation(glm::vec3 objectRotation)
 }
 
 object::objectBaseClass::objectBaseClass(bool collision, bool anchored, float mass, glm::vec3 velocity, glm::vec3 position, glm::vec3 rotation, glm::vec3 scale)
-    : collision(collision), anchored(anchored), mass(mass), velocity(velocity), position(position), rotation(normalizeRotation(rotation)), scale(scale)
+    : collision(collision), anchored(anchored), mass(mass), velocity(velocity), collisionTime(glm::vec3(0.0f)), position(position), rotation(normalizeRotation(rotation)), scale(scale)
 {
-    //std::cout << gravity << std::endl;
-    //std::cout << "Set rotation: " << getRotation().x << ", " << getRotation().y << ", " << getRotation().z << std::endl;
 }
 
 bool object::objectBaseClass::canCollide()
@@ -45,6 +43,11 @@ void object::objectBaseClass::changeVelocity(glm::vec3 deltaVelocity)
 {
     velocity += deltaVelocity;
 }
+void object::objectBaseClass::changeCollisionTime(glm::vec3 deltaTime)
+{
+    collisionTime += deltaTime;
+}
+
 void object::objectBaseClass::move(glm::vec3 distance)
 {
     position += distance;
@@ -53,7 +56,6 @@ void object::objectBaseClass::rotate(glm::vec3 degree)
 {
     rotation += degree;
     rotation = normalizeRotation(rotation); // Make the rotation be within 360 degree
-    //std::cout << "New rotation: " << getRotation().x << ", " << getRotation().y << ", " << getRotation().z << std::endl;
 }
 void object::objectBaseClass::rescale(glm::vec3 deltaScale)
 {
@@ -68,6 +70,11 @@ glm::vec3 object::objectBaseClass::getVelocity() const
 {
     return velocity;
 }
+glm::vec3 object::objectBaseClass::getCollisionTime() const
+{
+    return collisionTime;
+}
+
 glm::vec3 object::objectBaseClass::getPosition() const
 {
     return position;

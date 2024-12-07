@@ -9,11 +9,10 @@
 #include <iostream>
 #include <vector>
 #include <memory>
-#include <iomanip>
 
 namespace collision
 {
     std::vector<std::vector<unsigned int>> collisionPairing(std::vector<std::shared_ptr<object::objectBaseClass>> objects);
-    glm::vec3 dstBaseCD(std::shared_ptr<object::objectBaseClass> object, std::shared_ptr<object::objectBaseClass> target, float deltaTime);
+    glm::vec3 dstBaseCD(std::shared_ptr<object::objectBaseClass> object, std::shared_ptr<object::objectBaseClass> target, glm::vec3 deltaTime);
     void collsionResolver(std::shared_ptr<object::objectBaseClass> object, std::shared_ptr<object::objectBaseClass> target, glm::vec3 travelTime);
 }

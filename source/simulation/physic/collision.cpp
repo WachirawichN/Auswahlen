@@ -6,34 +6,6 @@ float timeToMove(float aPosition, float bPosition, float aVelocity, float bVeloc
     float dst = bPosition - aPosition;
     return (dst / totalVelocity);
 }
-glm::vec3 timeToMove3D(glm::vec3 objAPos, glm::vec3 objAVel, glm::vec3 objBPos, glm::vec3 objBVel)
-{
-    std::vector<float> axisTimes = {};
-    
-    // if the time is negative then ofc the object will hit each other in the pass
-    unsigned int negativeCount = 0;
-    unsigned int maxNegative = 3;
-    for (int axis = 0; axis < 3; axis++)
-    {
-        float time = timeToMove(objAPos[axis], objBPos[axis], objAVel[axis], objBVel[axis]);
-        
-        axisTimes.push_back(time);
-
-        // Objcet will never reach each other
-        if ((objAVel[axis] - objBVel[axis]) == 0.0f) continue;
-
-        if (time < 0.0f) negativeCount++;
-        else if (time == 0.0f) maxNegative--;
-    }
-
-    if (negativeCount == 0 || negativeCount == maxNegative)
-    {
-        // Object and target will hit each other in the future
-        return glm::vec3(axisTimes[0], axisTimes[1], axisTimes[2]);
-    }
-    // Object and the target will never hit each other
-    return glm::vec3(NULL);
-}
 std::vector<glm::vec3> borderPos(glm::vec3 objPos, glm::vec3 objScale, glm::vec3 tarPos, glm::vec3 tarScale)
 {
     std::vector<glm::vec3> borders;
@@ -108,7 +80,6 @@ std::vector<std::vector<unsigned int>> collision::collisionPairing(std::vector<s
                 std::cout << "Target skip" << std::endl;
                 continue;
             }
-            //pairs.push_back(std::vector<unsigned int>({i, j}));
             currentPair.push_back(j);
         }
 
@@ -120,7 +91,7 @@ std::vector<std::vector<unsigned int>> collision::collisionPairing(std::vector<s
 
     return pairs;
 }
-glm::vec3 collision::dstBaseCD(std::shared_ptr<object::objectBaseClass> object, std::shared_ptr<object::objectBaseClass> target, float deltaTime)
+glm::vec3 collision::dstBaseCD(std::shared_ptr<object::objectBaseClass> object, std::shared_ptr<object::objectBaseClass> target, glm::vec3 deltaTime)
 {
     glm::vec3 objPos = object->getPosition();
     glm::vec3 objScale = object->getScale();
@@ -143,7 +114,7 @@ glm::vec3 collision::dstBaseCD(std::shared_ptr<object::objectBaseClass> object, 
 
         if (objVel[axis] == tarVel[axis])
         {
-            if ((tarBorder[axis] - objBorder[axis]) == 0.0f)
+            if (tarBorder[axis] == objBorder[axis])
             {
                 collideAxis++;
             }
@@ -151,8 +122,8 @@ glm::vec3 collision::dstBaseCD(std::shared_ptr<object::objectBaseClass> object, 
         }
 
         // If the travelTime is 0 then both border of the object and the target is on the same spot
-        float travelTime = timeToMove(objBorder[axis], tarBorder[axis], objVel[axis], tarVel[axis]);
-        if ((deltaTime > 0.0f && travelTime <= deltaTime && travelTime > 0.0f) || (deltaTime < 0.0f && travelTime >= deltaTime && travelTime < 0.0f) || travelTime == 0.0f)
+        float travelTime = mathExt::roundToDecimal(timeToMove(objBorder[axis], tarBorder[axis], objVel[axis], tarVel[axis]), 5);
+        if ((deltaTime[axis] > 0.0f && travelTime <= deltaTime[axis] && travelTime > 0.0f) || (deltaTime[axis] < 0.0f && travelTime >= deltaTime[axis] && travelTime < 0.0f) || travelTime == 0.0f)
         {
             collideAxis++;
             travelTimes[axis] = travelTime;
@@ -169,7 +140,10 @@ glm::vec3 collision::dstBaseCD(std::shared_ptr<object::objectBaseClass> object, 
 }
 void collision::collsionResolver(std::shared_ptr<object::objectBaseClass> currentObject, std::shared_ptr<object::objectBaseClass> target, glm::vec3 travelTime)
 {
-    std::cout << "      -  Resolving" << std::endl;
+    std::cout << "      -  Resolving collision:" << std::endl;
+    std::cout << "         -  Travel time: " << mathExt::roundToDecimal(travelTime.x, 5) << ", " << mathExt::roundToDecimal(travelTime.y, 5) << ", " << mathExt::roundToDecimal(travelTime.z, 5) << std::endl;
+    std::cout << "         -  Old object position: " << currentObject->getPosition().x << ", " << currentObject->getPosition().y << ", " << currentObject->getPosition().z << std::endl;
+    std::cout << "         -  Old target position: " << target->getPosition().x << ", " << target->getPosition().y << ", " << target->getPosition().z << std::endl;
     std::cout << "         -  Old object velocity: " << currentObject->getVelocity().x << ", " << currentObject->getVelocity().y << ", " << currentObject->getVelocity().z << std::endl;
     std::cout << "         -  Old target velocity: " << target->getVelocity().x << ", " << target->getVelocity().y << ", " << target->getVelocity().z << std::endl;
 
@@ -184,6 +158,8 @@ void collision::collsionResolver(std::shared_ptr<object::objectBaseClass> curren
     currentObject->changeVelocity(objNewVel - currentObject->getVelocity());
     target->changeVelocity(tarNewVel - target->getVelocity());
 
+    std::cout << "         -  New object position: " << currentObject->getPosition().x << ", " << currentObject->getPosition().y << ", " << currentObject->getPosition().z << std::endl;
+    std::cout << "         -  New target position: " << target->getPosition().x << ", " << target->getPosition().y << ", " << target->getPosition().z << std::endl;
     std::cout << "         -  New object velocity: " << currentObject->getVelocity().x << ", " << currentObject->getVelocity().y << ", " << currentObject->getVelocity().z << std::endl;
     std::cout << "         -  New target velocity: " << target->getVelocity().x << ", " << target->getVelocity().y << ", " << target->getVelocity().z << std::endl;
 }

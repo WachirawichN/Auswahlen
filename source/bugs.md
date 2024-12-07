@@ -1,15 +1,16 @@
 # Currently know bug inside the program
 
-## Distance base collision detection
+## Distance base collision detection (FIXED)
 ### Symptom
 - Object clipping
 ### Possible cause
+- The travel time might be so little, but is never 0 which will cause the bug (CAUSE)
 - After the object collision has been resolved from one object pair, the target object velocity will be change but the time to calculate the new position will still be delta time which will mostly be too much.
 - The formular for calculating the time for the object and the target to hit each other is wrong.
     - When the object and the target is moving in the opposite direction, the formular still count it as the same direction.
     - Using time that come from pythagoras to calculate the distance the object / target need to move, the distance may be a bit too much.
 
-## Manual physic stepping
+## Manual physic stepping (FIXED)
 ### Symptom
 - No collision detection when stepping backward
 ### Possible cause
