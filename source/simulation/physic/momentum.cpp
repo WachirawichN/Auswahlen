@@ -18,9 +18,12 @@ glm::vec3 momentum::elasticCollision(std::shared_ptr<object::objectBaseClass> ob
 {
     glm::vec3 objectVelocity = object->getVelocity();
     float objectMass = object->getMass();
+    if (object->isAnchored()) objectMass = 999999999;
 
     glm::vec3 targetVelocity = target->getVelocity();
     float targetMass = target->getMass();
+    if (target->isAnchored()) targetMass = 999999999;
 
-    return calculateNewObjectVelocity(objectVelocity, objectMass, targetVelocity, targetMass);
+    glm::vec3 newObjVel = calculateNewObjectVelocity(objectVelocity, objectMass, targetVelocity, targetMass);
+    return newObjVel;
 }

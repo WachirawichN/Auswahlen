@@ -22,12 +22,12 @@ std::vector<glm::vec3> borderPos(glm::vec3 objPos, glm::vec3 objScale, glm::vec3
             tarBorder[axis] += tarScale[axis] / 2;
 
             // Calculate object border according to if the object is within target border or not
-            side = objPos[axis] - tarBorder[axis];
-            if (side > 0)
+            float subSide = objPos[axis] - tarBorder[axis];
+            if (subSide > 0)
             {
                 objBorder[axis] -= objScale[axis] / 2;
             }
-            else if (side < 0)
+            else if (subSide < 0)
             {
                 objBorder[axis] += objScale[axis] / 2;
             }
@@ -38,12 +38,12 @@ std::vector<glm::vec3> borderPos(glm::vec3 objPos, glm::vec3 objScale, glm::vec3
             tarBorder[axis] -= tarScale[axis] / 2;
 
             // Calculate object border according to if the object is within target border or not
-            side = objPos[axis] - tarBorder[axis];
-            if (side > 0)
+            float subSide = objPos[axis] - tarBorder[axis];
+            if (subSide > 0)
             {
                 objBorder[axis] -= objScale[axis] / 2;
             }
-            else if (side < 0)
+            else if (subSide < 0)
             {
                 objBorder[axis] += objScale[axis] / 2;
             }
@@ -98,6 +98,9 @@ glm::vec3 collision::dstBaseCD(std::shared_ptr<object::objectBaseClass> object, 
    std::vector<glm::vec3> borders = borderPos(objPos, objScale, tarPos, tarScale);
    glm::vec3 objBorder = borders[0];
    glm::vec3 tarBorder = borders[1];
+
+   std::cout << "   -  Current object border: " << objBorder.x << ", " << objBorder.y << ", " << objBorder.z << std::endl;
+   std::cout << "   -  Target object border: " << tarBorder.x << ", " << tarBorder.y << ", " << tarBorder.z << std::endl;
 
     // Actual collision detection on each axis
     unsigned int collideAxis = 0;

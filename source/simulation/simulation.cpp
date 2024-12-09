@@ -86,6 +86,7 @@ void simulation::updateSimulation(float deltaTime)
     {
         std::vector<unsigned int> currentPair = pairs.at(i);
 
+        std::cout << "Current object ID: " << currentPair.at(0) << std::endl;
         std::shared_ptr<object::objectBaseClass> currentObject = objects.at(currentPair.at(0));
         glm::vec3 remainingTime = currentObject->getCollisionTime();
 
@@ -94,6 +95,7 @@ void simulation::updateSimulation(float deltaTime)
             glm::vec3 beforeTime = remainingTime;
             for (int j = 1; j < currentPair.size(); j++)
             {
+                std::cout << "-  Target object ID: " << currentPair.at(j) << std::endl;
                 std::shared_ptr<object::objectBaseClass> targetObject = objects.at(currentPair.at(j));
                 glm::vec3 timeToCollide = collision::dstBaseCD(currentObject, targetObject, remainingTime);
 
@@ -110,4 +112,5 @@ void simulation::updateSimulation(float deltaTime)
         currentObject->move(fundamental::calculateDstVecT(currentObject->getVelocity(), remainingTime));
         currentObject->changeCollisionTime(currentObject->getCollisionTime() * -1.0f);
     }
+    std::cout << std::endl;
 }
