@@ -8,51 +8,94 @@ float timeToMove(float aPosition, float bPosition, float aVelocity, float bVeloc
 }
 std::vector<glm::vec3> borderPos(glm::vec3 objPos, glm::vec3 objScale, glm::vec3 tarPos, glm::vec3 tarScale)
 {
-    std::vector<glm::vec3> borders;
-
+    // Could use object and target's velocity for more accurate calculation
+    // Need more optimization
     glm::vec3 objBorder = objPos;
     glm::vec3 tarBorder = tarPos;
 
+    std::cout << "   -  Inside or not" << std::endl;
     for (int axis = 0; axis < 3; axis++)
     {
+        float objMaxBorder = objBorder[axis] + (objScale[axis] / 2.0f);
+        float objMinBorder = objBorder[axis] - (objScale[axis] / 2.0f);
+
+        float tarMaxBorder = tarBorder[axis] + (tarScale[axis] / 2.0f);
+        float tarMinBorder = tarBorder[axis] - (tarScale[axis] / 2.0f);
+
         float side = objPos[axis] - tarPos[axis];
+
+        // Check if target is inside object or vice versa
+        if (tarPos[axis] < objMaxBorder && tarPos[axis] > objMinBorder)
+        {
+            // Target is inside object
+            if (side > 0.0f)
+            {
+                objBorder[axis] = objMinBorder;
+                tarBorder[axis] = tarMinBorder;
+            }
+            else
+            {
+                objBorder[axis] = objMaxBorder;
+                tarBorder[axis] = tarMaxBorder;
+            }
+            std::cout << "      -  Target is inside object" << std::endl;
+            continue;
+        }
+        else if (objPos[axis] < tarMaxBorder && objPos[axis] > tarMinBorder)
+        {
+            // Object is inside target
+            if (side > 0.0f)
+            {
+                objBorder[axis] = objMaxBorder;
+                tarBorder[axis] = tarMaxBorder;
+            }
+            else
+            {
+                objBorder[axis] = objMinBorder;
+                tarBorder[axis] = tarMinBorder;
+            }
+            std::cout << "      -  Object is inside target" << std::endl;
+            continue;
+        }
+        std::cout << "      -  Not inside " << std::endl;
+
+        // The object and the target is not within each other border
         if (side > 0)
         {
             // Object is on positive side compare to target position
-            tarBorder[axis] += tarScale[axis] / 2;
+            tarBorder[axis] = tarMaxBorder;
 
             // Calculate object border according to if the object is within target border or not
             float subSide = objPos[axis] - tarBorder[axis];
             if (subSide > 0)
             {
-                objBorder[axis] -= objScale[axis] / 2;
+                objBorder[axis] = objMinBorder;
             }
             else if (subSide < 0)
             {
-                objBorder[axis] += objScale[axis] / 2;
+                objBorder[axis] = objMaxBorder;
             }
         }
         else if (side < 0)
         {
             // Object is on negative side compare to target position
-            tarBorder[axis] -= tarScale[axis] / 2;
+            tarBorder[axis] = tarMinBorder;
 
             // Calculate object border according to if the object is within target border or not
             float subSide = objPos[axis] - tarBorder[axis];
             if (subSide > 0)
             {
-                objBorder[axis] -= objScale[axis] / 2;
+                objBorder[axis] = objMinBorder;
             }
             else if (subSide < 0)
             {
-                objBorder[axis] += objScale[axis] / 2;
+                objBorder[axis] = objMaxBorder;
             }
         }
         
     }
 
-    borders.push_back(objBorder);
-    borders.push_back(tarBorder);
+    std::vector<glm::vec3> borders = {objBorder, tarBorder};
     return borders;
 }
 
