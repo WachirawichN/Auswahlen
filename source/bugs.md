@@ -4,7 +4,7 @@
 ### Object clipping
 #### Symptom
 - Object clipping when having high velocity.
-- Object clipping when moving in only 1 axis.
+- Object clipping when not moving completely diagonal compare to other object.
 #### Possible cause
 - Need more debugging.
 ### Border extending bug (FIXED)
