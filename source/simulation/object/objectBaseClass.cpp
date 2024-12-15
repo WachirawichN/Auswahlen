@@ -17,7 +17,7 @@ glm::vec3 normalizeRotation(glm::vec3 objectRotation)
 }
 
 object::objectBaseClass::objectBaseClass(bool collision, bool anchored, float mass, glm::vec3 velocity, glm::vec3 position, glm::vec3 rotation, glm::vec3 scale)
-    : collision(collision), anchored(anchored), mass(mass), velocity(velocity), collisionTime(glm::vec3(0.0f)), position(position), rotation(normalizeRotation(rotation)), scale(scale)
+    : collision(collision), anchored(anchored), mass(mass), velocity(velocity), collisionTime(float(0.0f)), position(position), rotation(normalizeRotation(rotation)), scale(scale)
 {
 }
 
@@ -43,7 +43,7 @@ void object::objectBaseClass::changeVelocity(glm::vec3 deltaVelocity)
 {
     velocity += deltaVelocity;
 }
-void object::objectBaseClass::changeCollisionTime(glm::vec3 deltaTime)
+void object::objectBaseClass::changeCollisionTime(float deltaTime)
 {
     collisionTime += deltaTime;
 }
@@ -70,7 +70,7 @@ glm::vec3 object::objectBaseClass::getVelocity() const
 {
     return velocity;
 }
-glm::vec3 object::objectBaseClass::getCollisionTime() const
+float object::objectBaseClass::getCollisionTime() const
 {
     return collisionTime;
 }

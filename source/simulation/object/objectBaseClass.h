@@ -13,7 +13,7 @@ namespace object
 
             float mass;
             glm::vec3 velocity;
-            glm::vec3 collisionTime;
+            float collisionTime;
 
             glm::vec3 position;
             glm::vec3 rotation;
@@ -35,7 +35,7 @@ namespace object
             void setAnchored(bool newValue);
 
             void changeVelocity(glm::vec3 deltaVelocity);
-            void changeCollisionTime(glm::vec3 deltaTime);
+            void changeCollisionTime(float deltaTime);
 
             void move(glm::vec3 distance);
             void rotate(glm::vec3 degree);
@@ -43,7 +43,7 @@ namespace object
 
             float getMass() const;
             glm::vec3 getVelocity() const;
-            glm::vec3 getCollisionTime() const;
+            float getCollisionTime() const;
 
             glm::vec3 getPosition() const;
             glm::vec3 getRotation() const;
