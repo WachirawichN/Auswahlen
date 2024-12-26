@@ -16,6 +16,7 @@
 #include <memory>
 #include <typeinfo>
 #include <iomanip>
+#include <algorithm>
 
 // Handle all the rendering and the physic in the scene
 class simulation

@@ -79,7 +79,7 @@ void simulation::updateSimulation(float deltaTime)
         std::vector<unsigned int> currentPair = pairs.at(i);
 
         std::shared_ptr<object::objectBaseClass> currentObject = objects.at(currentPair.at(0));
-        currentObject->changeCollisionTime(glm::vec3(deltaTime));
+        currentObject->changeCollisionTime(deltaTime);
     }
 
     for (int i = 0; i < pairs.size(); i++)
@@ -88,28 +88,60 @@ void simulation::updateSimulation(float deltaTime)
 
         std::cout << "Current object ID: " << currentPair.at(0) << std::endl;
         std::shared_ptr<object::objectBaseClass> currentObject = objects.at(currentPair.at(0));
-        glm::vec3 remainingTime = currentObject->getCollisionTime();
+        float objRemainingTime = currentObject->getCollisionTime();
 
-        while (mathExt::pythagoras(remainingTime) != 0.0f && currentPair.size() > 1)
+        while (objRemainingTime != 0.0f && currentPair.size() > 1)
         {
-            glm::vec3 beforeTime = remainingTime;
+            float beforeTime = objRemainingTime;
             for (int j = 1; j < currentPair.size(); j++)
             {
                 std::cout << "-  Target object ID: " << currentPair.at(j) << std::endl;
                 std::shared_ptr<object::objectBaseClass> targetObject = objects.at(currentPair.at(j));
-                glm::vec3 timeToCollide = collision::dstBaseCD(currentObject, targetObject, remainingTime);
+                float tarRemainingTime = targetObject->getCollisionTime();
+                if (tarRemainingTime == 0.0f) continue;
 
-                if (mathExt::pythagoras(timeToCollide) != 0.0f)
+                //float remainingTime = (objRemainingTime < tarRemainingTime) ? objRemainingTime : tarRemainingTime;
+                std::vector<collision::collisionType> collisionResults = collision::dstBaseCD(currentObject, targetObject, deltaTime);
+
+                unsigned int collideAxis = 0;
+                std::vector<unsigned int> newlyCollideAxis;
+                std::cout << "   -  Collision result: " << std::endl;
+                for (unsigned int axis = 0; axis < 3; axis++)
                 {
-                    collision::collsionResolver(currentObject, targetObject, timeToCollide);
-                    remainingTime -= timeToCollide;
-                    targetObject->changeCollisionTime(timeToCollide * -1.0f);
+                    std::cout << "      -  Axis: " << axis << ", Collision type: ";
+                    switch (collisionResults[axis])
+                    {
+                        case collision::collisionType::ALREADY:
+                            collideAxis++;
+                            std::cout << "Already" << std::endl;
+                            break;
+                        case collision::collisionType::INSIDE:
+                            collideAxis++;
+                            std::cout << "Inside" << std::endl;
+                            break;
+                        case collision::collisionType::NEWLY:
+                            collideAxis++;
+                            std::cout << "Newly" << std::endl;
+                            break;
+                        case collision::collisionType::NO:
+                            std::cout << "No" << std::endl;
+                            break;
+                    }
+                }
+
+                if (collideAxis == 3)
+                {
+                    std::cout << "   -  Collide" << std::endl;
+                }
+                else
+                {
+                    std::cout << "   -  Not collide" << std::endl;
                 }
             }
             // No collision
-            if (beforeTime == remainingTime) break;
+            if (beforeTime == objRemainingTime) break;
         }
-        currentObject->move(fundamental::calculateDstVecT(currentObject->getVelocity(), remainingTime));
+        currentObject->move(fundamental::calculateDst(currentObject->getVelocity(), objRemainingTime));
         currentObject->changeCollisionTime(currentObject->getCollisionTime() * -1.0f);
     }
     std::cout << std::endl;

@@ -22,5 +22,5 @@ namespace collision
 
     std::vector<std::vector<unsigned int>> collisionPairing(std::vector<std::shared_ptr<object::objectBaseClass>> objects);
     std::vector<collisionType> dstBaseCD(std::shared_ptr<object::objectBaseClass> object, std::shared_ptr<object::objectBaseClass> target, float deltaTime);
-    float collsionResolver(std::shared_ptr<object::objectBaseClass> object, std::shared_ptr<object::objectBaseClass> target, float deltaTime, std::vector<unsigned int> axis);
+    std::vector<float> collsionResolver(std::shared_ptr<object::objectBaseClass> object, float objectDeltaTime, std::shared_ptr<object::objectBaseClass> target, float targetDeltaTime, std::vector<unsigned int> axis);
 }
