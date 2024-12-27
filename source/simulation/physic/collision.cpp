@@ -6,6 +6,10 @@ enum side {
     RIGHT = 1
 };
 
+int convertNegative(bool input)
+{
+    return (input == 0) ? -1 : 1;
+}
 float timeToMove(float aPosition, float aVelocity, float bPosition, float bVelocity)
 {
     float totalVelocity = aVelocity - bVelocity;
@@ -46,10 +50,30 @@ std::vector<float> extendBorder(float objPos, float objScale)
 
     return borders;
 }
-
-int convertNegative(bool input)
+std::vector<int> selectBorder(float objPos, float objVel, float tarPos, float tarVel, bool tarInObj, bool objInTar)
 {
-    return (input == 0) ? -1 : 1;
+    int objToTarSide = checkSide(objPos, tarPos);
+    bool isObjFaster = abs(objVel) > abs(tarVel);
+    int objVelDirection = checkDirection(objVel);
+    int tarVelDirection = checkDirection(tarVel);
+
+    if (objInTar)
+    {
+        if (objVelDirection != tarVelDirection)
+        {
+            return std::vector<int>({objVelDirection, objVelDirection});
+        }
+        return std::vector<int>({convertNegative(isObjFaster) * objVelDirection, convertNegative(isObjFaster) * objVelDirection});
+    }
+    else if (tarInObj)
+    {
+        if (objVelDirection != tarVelDirection)
+        {
+            return std::vector<int>({tarVelDirection, tarVelDirection});
+        }
+        return std::vector<int>({convertNegative(isObjFaster) * tarVelDirection, convertNegative(isObjFaster) * tarVelDirection});
+    }
+    return std::vector<int>({objToTarSide, convertNegative(isObjFaster) * objToTarSide * -1});
 }
 
 std::vector<std::vector<unsigned int>> collision::collisionPairing(std::vector<std::shared_ptr<object::objectBaseClass>> objects)
@@ -110,62 +134,20 @@ std::vector<collision::collisionType> collision::dstBaseCD(std::shared_ptr<objec
         std::vector<float> tarBorders = extendBorder(tarPos[axis], tarScale[axis]);
 
         // Choose object border
-        int objToTarSide = checkSide(objPos[axis], tarPos[axis]);
-        int objMultiplier;
-        int tarMultiplier;
+        std::vector<int> selectedBorder = selectBorder(objPos[axis], objVel[axis], tarPos[axis], tarVel[axis], tarInObj, objInTar);
+        int objMultiplier = selectedBorder[0];
+        int tarMultiplier = selectedBorder[1];
         
         // For solid body
         //objMultiplier = objToTarSide;
         //tarMultiplier = objToTarSide * -1;
 
-        // For hollow body
-        bool isObjFaster = abs(objVel[axis]) > abs(tarVel[axis]);
-        int objVelDirection = checkDirection(objVel[axis]);
-        int tarVelDirection = checkDirection(tarVel[axis]);
-        if (objInTar)
-        {
-            if (objVelDirection != tarVelDirection)
-            {
-                std::cout << "Opposite direction: " << objVelDirection << std::endl;
-                objMultiplier = objVelDirection;
-                tarMultiplier = objVelDirection;
-            }
-            else
-            {
-                std::cout << "Same direction: " << objVelDirection << ", obj faster: " << isObjFaster << std::endl;
-                objMultiplier = convertNegative(isObjFaster) * objVelDirection;
-                tarMultiplier = convertNegative(isObjFaster) * objVelDirection;
-            }
-        }
-        else if (tarInObj)
-        {
-            if (objVelDirection != tarVelDirection)
-            {
-                objMultiplier = tarVelDirection;
-                tarMultiplier = tarVelDirection;
-            }
-            else
-            {
-                objMultiplier = convertNegative(isObjFaster) * tarVelDirection;
-                tarMultiplier = convertNegative(isObjFaster) * tarVelDirection;
-            }
-        }
-        else
-        {
-            std::cout << "Not inside" << std::endl;
-            objMultiplier = objToTarSide;
-            tarMultiplier = objToTarSide * -1;
-        }
-
         float objBorder = objBorders[objMultiplier + 1];
         float tarBorder = tarBorders[tarMultiplier + 1];
 
         std::cout << "      -  Axis: " << axis << std::endl;
-        std::cout << "         -  Side: " << objToTarSide << std::endl;
         std::cout << "         -  Object multiplier: " << objMultiplier << std::endl;
         std::cout << "         -  Target multiplier: " << tarMultiplier << std::endl;
-        //std::cout << "         -  Object position: " << objPos[axis] << ", Object border: " << objBorder << std::endl;
-        //std::cout << "         -  Target position: " << tarPos[axis] << ", Target border: " << tarBorder << std::endl;
 
         // Execute the object is inside each other section
         if (tarInObj || objInTar)
@@ -189,8 +171,6 @@ std::vector<collision::collisionType> collision::dstBaseCD(std::shared_ptr<objec
             }
             continue;
         }
-
-
 
 
         // No collision has been occure
