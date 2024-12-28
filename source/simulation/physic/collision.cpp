@@ -23,17 +23,17 @@ std::vector<float> unbalanceTimeToMove(float aPosition, float aVelocity, float a
     return std::vector<float>({0.0f});
 }
 
-bool isInside(float aPos, float aScale, float bPos, float bScale)
+bool isInside(std::vector<float> aBorders, std::vector<float> bBorders)
 {
-    bool positiveSide = ((bPos + bScale / 2.0f) < (aPos + aScale / 2.0f)) && ((bPos - bScale / 2.0f) < (aPos + aScale / 2.0f));
-    bool negativeSide = ((bPos + bScale / 2.0f) > (aPos - aScale / 2.0f)) && ((bPos - bScale / 2.0f) > (aPos - aScale / 2.0f));
+    bool positiveSide = (bBorders[2] < aBorders[2]) && (bBorders[0] < aBorders[2]);
+    bool negativeSide = (bBorders[2] > aBorders[0]) && (bBorders[0] > aBorders[0]);
 
     return (positiveSide && negativeSide);
 }
-bool isCross(float aPos, float aScale, float bPos, float bScale)
+bool isCross(std::vector<float> aBorders, std::vector<float> bBorders)
 {
-    bool positiveSide = (bPos - bScale / 2.0f) < (aPos + aScale / 2.0f);
-    bool negativeSide = (bPos + bScale / 2.0f) < (aPos - aScale / 2.0f);
+    bool positiveSide = ((bBorders[0] < aBorders[2]) && !(bBorders[2] < aBorders[2])) || (!(bBorders[0] < aBorders[2]) && (bBorders[2] < aBorders[2]));
+    bool negativeSide = ((bBorders[2] < aBorders[0]) && !(bBorders[0] < aBorders[0])) || (!(bBorders[2] < aBorders[0]) && (bBorders[0] < aBorders[0]));
 
     return (positiveSide || negativeSide);
 }
@@ -68,27 +68,22 @@ std::vector<int> selectBorder(float objPos, float objVel, float tarPos, float ta
     // Hollow body
     if (objInTar)
     {
-        //std::cout << "Hollow body" << std::endl;
         if (objVelDirection != tarVelDirection)
         {
-            //std::cout << "Same direction" << std::endl;
             return std::vector<int>({objVelDirection, objVelDirection});
         }
         return std::vector<int>({convertNegative(isObjFaster) * objVelDirection, convertNegative(isObjFaster) * objVelDirection});
     }
     else if (tarInObj)
     {
-        //std::cout << "Hollow body" << std::endl;
         if (objVelDirection != tarVelDirection)
         {
-            //std::cout << "Same direction" << std::endl;
             return std::vector<int>({tarVelDirection, tarVelDirection});
         }
         return std::vector<int>({convertNegative(isObjFaster) * tarVelDirection, convertNegative(isObjFaster) * tarVelDirection});
     }
 
     // Solid body
-    //std::cout << "Solid body" << std::endl;
     return std::vector<int>({objToTarSide, objToTarSide * -1});
 }
 
@@ -135,19 +130,16 @@ std::vector<collision::collisionType> collision::dstBaseCD(std::shared_ptr<objec
     glm::vec3 tarVel = target->getVelocity();
     float targetDeltaTime = object->getCollisionTime();
 
-
-    std::cout << "   -  Position / Border: " << std::endl;
     for (int axis = 0; axis < 3; axis++)
     {
-        // Check if the object is inside each other or not
-        // Inside mean the center of the object is within the border of the other object
-        bool tarInObj = isInside(objPos[axis], objScale[axis], tarPos[axis], tarScale[axis]);
-        bool objInTar = isInside(tarPos[axis], tarScale[axis], objPos[axis], objScale[axis]);
-
-
         // Calculate the border of both object
         std::vector<float> objBorders = extendBorder(objPos[axis], objScale[axis]);
         std::vector<float> tarBorders = extendBorder(tarPos[axis], tarScale[axis]);
+
+        // Check if the object is inside each other or not
+        bool tarInObj = isInside(objBorders, tarBorders);
+        bool objInTar = isInside(tarBorders, objBorders);
+
 
         // Choose object border
         std::vector<int> selectedBorder = selectBorder(objPos[axis], objVel[axis], tarPos[axis], tarVel[axis], tarInObj, objInTar, timeMultiplier);
@@ -157,20 +149,10 @@ std::vector<collision::collisionType> collision::dstBaseCD(std::shared_ptr<objec
         float objBorder = objBorders[objMultiplier];
         float tarBorder = tarBorders[tarMultiplier];
 
-        std::cout << "      -  Axis: " << axis << std::endl;
-        std::cout << "         -  Object multiplier: " << objMultiplier - 1 << std::endl;
-        std::cout << "         -  Target multiplier: " << tarMultiplier - 1 << std::endl;
-        std::cout << "         -  Target inside object: " << tarInObj << std::endl;
-        std::cout << "         -  Object inside Target: " << objInTar << std::endl;
-
-
-        // Check for collision
         // Check for NEWLY collision type
-        // Calculate time that the object and the target will use to collide each other
         float travelTime = timeToMove(objBorder, objVel[axis], tarBorder, tarVel[axis]);
         if ((deltaTime > 0.0f && deltaTime > travelTime) || (deltaTime < 0.0f && deltaTime < travelTime) || (travelTime == 0.0f))
         {
-            std::cout << "Delta time: " << deltaTime << ", Travel time: " << travelTime << std::endl;
             if (checkDirection(deltaTime) == checkDirection(travelTime))
             {
                 collisionResults.push_back(collision::collisionType::NEWLY);
@@ -178,18 +160,17 @@ std::vector<collision::collisionType> collision::dstBaseCD(std::shared_ptr<objec
             }
         }
 
-        // Check for CROSS colision type
+        // Check for CROSS and INSIDE colision type
         if (objInTar || tarInObj)
         {
             collisionResults.push_back(collision::collisionType::INSIDE);
             continue;
         }
-        else if (isCross(objPos[axis], objScale[axis], tarPos[axis], tarScale[axis]))
+        else if (isCross(objBorders, tarBorders))
         {
             collisionResults.push_back(collision::collisionType::CROSS);
             continue;
         }
-
 
         // No collision has been occure
         collisionResults.push_back(collision::collisionType::NO);
