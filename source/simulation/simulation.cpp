@@ -111,13 +111,13 @@ void simulation::updateSimulation(float deltaTime)
                     std::cout << "      -  Axis: " << axis << ", Collision type: ";
                     switch (collisionResults[axis])
                     {
-                        case collision::collisionType::ALREADY:
-                            collideAxis++;
-                            std::cout << "Already" << std::endl;
-                            break;
                         case collision::collisionType::INSIDE:
                             collideAxis++;
                             std::cout << "Inside" << std::endl;
+                            break;
+                        case collision::collisionType::CROSS:
+                            collideAxis++;
+                            std::cout << "Cross" << std::endl;
                             break;
                         case collision::collisionType::NEWLY:
                             collideAxis++;

@@ -16,7 +16,7 @@ namespace collision
     enum collisionType {
         NO,
         NEWLY,
-        ALREADY,
+        CROSS,
         INSIDE
     };
 
