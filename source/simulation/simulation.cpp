@@ -121,6 +121,7 @@ void simulation::updateSimulation(float deltaTime)
                             break;
                         case collision::collisionType::NEWLY:
                             collideAxis++;
+                            newlyCollideAxis.push_back(axis);
                             std::cout << "Newly" << std::endl;
                             break;
                         case collision::collisionType::NO:
@@ -129,9 +130,14 @@ void simulation::updateSimulation(float deltaTime)
                     }
                 }
 
-                if (collideAxis == 3)
+                if (collideAxis == 3 && newlyCollideAxis.size() > 0)
                 {
                     std::cout << "   -  Collide" << std::endl;
+                    std::vector<float> usageTime = collision::collisionResolver(currentObject, targetObject, deltaTime, newlyCollideAxis);
+                    currentObject->changeCollisionTime(-usageTime[0]);
+                    targetObject->changeCollisionTime(-usageTime[1]);
+
+                    objRemainingTime = currentObject->getCollisionTime();
                 }
                 else
                 {

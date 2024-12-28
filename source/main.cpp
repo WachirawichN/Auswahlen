@@ -186,13 +186,15 @@ int main()
         //currentSimulation.addObject(spherePtr1);
 
 
-        //std::shared_ptr<object::cube> bigBlock(new object::cube(true, true, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 10.0f, 10.0f)));
-        //currentSimulation.addObject(bigBlock);
+        std::shared_ptr<object::cube> bigBlock(new object::cube(true, true, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 10.0f, 10.0f)));
+        currentSimulation.addObject(bigBlock);
 
         std::shared_ptr<object::cube> physBlock0(new object::cube(true, false, 1.0f, glm::vec3(1.0f, 0.5f, 0.5f), glm::vec3(-3.5f, -1.5f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
         currentSimulation.addObject(physBlock0);
-        std::shared_ptr<object::cube> physBlock1(new object::cube(true, false, 1.0f, glm::vec3(-2.0f, 0.0f, 0.1f), glm::vec3(2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 5.0f, 1.5f)));
+        std::shared_ptr<object::cube> physBlock1(new object::cube(true, false, 1.0f, glm::vec3(1.0f, 0.5f, 1.0f), glm::vec3(-1.0f, -1.5f, -1.5f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
         currentSimulation.addObject(physBlock1);
+        std::shared_ptr<object::cube> physBlock2(new object::cube(true, false, 1.0f, glm::vec3(-2.0f, 0.0f, 0.1f), glm::vec3(2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(3.0f, 5.0f, 1.5f)));
+        currentSimulation.addObject(physBlock2);
 
         //std::shared_ptr<object::cube> physBlock0(new object::cube(true, false, 5.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(-2.5f, 2.5f, -2.5f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(2.0f, 2.0f, 2.0f)));
         //currentSimulation.addObject(physBlock0);

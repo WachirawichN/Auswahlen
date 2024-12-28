@@ -130,6 +130,7 @@ std::vector<collision::collisionType> collision::dstBaseCD(std::shared_ptr<objec
     glm::vec3 tarVel = target->getVelocity();
     float targetDeltaTime = object->getCollisionTime();
 
+    std::cout << "   -  Selected border:" << std::endl;
     for (int axis = 0; axis < 3; axis++)
     {
         // Calculate the border of both object
@@ -143,11 +144,12 @@ std::vector<collision::collisionType> collision::dstBaseCD(std::shared_ptr<objec
 
         // Choose object border
         std::vector<int> selectedBorder = selectBorder(objPos[axis], objVel[axis], tarPos[axis], tarVel[axis], tarInObj, objInTar, timeMultiplier);
-        int objMultiplier = selectedBorder[0] + 1;
-        int tarMultiplier = selectedBorder[1] + 1;
+        int objBorderIndex = selectedBorder[0] + 1;
+        int tarBorderIndex = selectedBorder[1] + 1;
 
-        float objBorder = objBorders[objMultiplier];
-        float tarBorder = tarBorders[tarMultiplier];
+        float objBorder = objBorders[objBorderIndex];
+        float tarBorder = tarBorders[tarBorderIndex];
+        std::cout << "      -  Axis: " << axis << ", object's: " << objBorderIndex << ", target's: " << tarBorderIndex << std::endl;
 
         // Check for NEWLY collision type
         float travelTime = timeToMove(objBorder, objVel[axis], tarBorder, tarVel[axis]);
@@ -178,7 +180,7 @@ std::vector<collision::collisionType> collision::dstBaseCD(std::shared_ptr<objec
 
     return collisionResults;
 }
-std::vector<float> collision::collsionResolver(std::shared_ptr<object::objectBaseClass> object, float objectDeltaTime, std::shared_ptr<object::objectBaseClass> target, float targetDeltaTime, std::vector<unsigned int> axis)
+std::vector<float> collision::collisionResolver(std::shared_ptr<object::objectBaseClass> object, std::shared_ptr<object::objectBaseClass> target, float deltaTime, std::vector<unsigned int> newlyAxis)
 {
     // Working instruction:
     // -  Step 1:
@@ -193,6 +195,8 @@ std::vector<float> collision::collsionResolver(std::shared_ptr<object::objectBas
     // -  Step 4:
     //    -  Calculate new momentum of two object in the axis that is NEWLY collide axis
 
+    int timeMultiplier = (deltaTime > 0.0f) ? 1 : -1;
+
     glm::vec3 objPos = object->getPosition();
     glm::vec3 objScale = object->getScale();
     glm::vec3 objVel = object->getVelocity();
@@ -203,32 +207,74 @@ std::vector<float> collision::collsionResolver(std::shared_ptr<object::objectBas
 
     // Step 1.
     std::vector<float> travelTimes;
-    for (unsigned int i : axis)
+    for (unsigned int axis : newlyAxis)
     {
-        side objToTarSide = checkSide(objPos[i], tarPos[i]);
-        float objBorder = objPos[i] + objScale[i] / 2.0f * (objToTarSide * -2 + 1);
-        float tarBorder = tarPos[i] + tarScale[i] / 2.0f * (objToTarSide * 2 - 1);
-        float travelTime = mathExt::roundToDec(timeToMove(objBorder, objVel[i], tarBorder, tarVel[i]), 6);
+        // Calculate the border of both object
+        std::vector<float> objBorders = extendBorder(objPos[axis], objScale[axis]);
+        std::vector<float> tarBorders = extendBorder(tarPos[axis], tarScale[axis]);
+
+        // Check if the object is inside each other or not
+        bool tarInObj = isInside(objBorders, tarBorders);
+        bool objInTar = isInside(tarBorders, objBorders);
+
+        // Choose object border
+        std::vector<int> selectedBorder = selectBorder(objPos[axis], objVel[axis], tarPos[axis], tarVel[axis], tarInObj, objInTar, timeMultiplier);
+        int objMultiplier = selectedBorder[0] + 1;
+        int tarMultiplier = selectedBorder[1] + 1;
+
+        float objBorder = objBorders[objMultiplier];
+        float tarBorder = tarBorders[tarMultiplier];
+
+        float travelTime = timeToMove(objBorder, objVel[axis], tarBorder, tarVel[axis]);
         travelTimes.push_back(travelTime);
     }
 
     // Step 2.
     float highestTime = *std::max_element(travelTimes.begin(), travelTimes.end());
-    std::vector<unsigned int> newlyCollideAxis;
-    for (unsigned int i : axis)
+    //std::cout << "      -  Highest time: " << highestTime << std::endl;
+
+    for (unsigned int counted = 0; counted < newlyAxis.size(); counted++)
     {
-        if (travelTimes[i] == highestTime) newlyCollideAxis.push_back(i);
+        std::cout << "         -  Axis: " << newlyAxis[counted] << ", Usage time: " << travelTimes[counted] << std::endl;
     }
+
+    std::vector<unsigned int> newlyCollideAxis;
+    for (unsigned int counted = 0; counted < newlyAxis.size(); counted++)
+    {
+        if (travelTimes[counted] == highestTime)
+        {
+            newlyCollideAxis.push_back(newlyAxis[counted]);
+            std::cout << "      -  Push axis: " << newlyAxis[counted] << std::endl;
+        }
+        else
+        {
+            //std::cout << "      -  Ain't pushing axis: " << newlyAxis[counted] << ", highest: " << highestTime << ", usage: " << travelTimes[counted] << ", delta" << highestTime - travelTimes[counted] << std::endl;
+        }
+    }
+    //std::cout << "      -  Newly collided vector size: " << newlyCollideAxis.size() << std::endl;
 
     // Step 3.
     object->move(fundamental::calculateDst(objVel, highestTime));
     target->move(fundamental::calculateDst(tarVel, highestTime));
 
     // Step 4.
-    for (unsigned int i : newlyCollideAxis)
+    for (unsigned int axis : newlyCollideAxis)
     {
-        object->changeVelocity(momentum::elasticCollision1D(object, target, i) - objVel);
-        target->changeVelocity(momentum::elasticCollision1D(target, object, i) - tarVel);
+        float objNewVel = momentum::elasticCollision1D(object, target, axis);
+        float tarNewVel = momentum::elasticCollision1D(target, object, axis);
+
+        glm::vec3 objDeltaVel(0.0f);
+        glm::vec3 tarDeltaVel(0.0f);
+
+        objDeltaVel[axis] = objNewVel - objVel[axis];
+        tarDeltaVel[axis] = tarNewVel - tarVel[axis];
+
+        object->changeVelocity(objDeltaVel);
+        target->changeVelocity(tarDeltaVel);
+
+        std::cout << "      -  Resolved, Axis: " << axis << std::endl;
+        std::cout << "         -  Object new axis vel: " << objNewVel << ", og axis vel: " << objVel[axis] << std::endl;
+        std::cout << "         -  Target new axis vel: " << tarNewVel << ", og axis vel: " << tarVel[axis] << std::endl;
     }
 
     // Return the time that has been use
