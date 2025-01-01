@@ -90,6 +90,11 @@ void simulation::updateSimulation(float deltaTime)
         std::shared_ptr<object::objectBaseClass> currentObject = objects.at(currentPair.at(0));
         float objRemainingTime = currentObject->getCollisionTime();
 
+        std::cout << "-  Brfore collision stat:" << std::endl;
+        std::cout << "   -  Remaining time: " << objRemainingTime << std::endl;
+        std::cout << "   -  Velocity: " << currentObject->getVelocity().x << ", " << currentObject->getVelocity().y << ", " << currentObject->getVelocity().z << std::endl;
+        std::cout << "   -  Position: " << currentObject->getPosition().x << ", " << currentObject->getPosition().y << ", " << currentObject->getPosition().z << std::endl;
+
         while (objRemainingTime != 0.0f && currentPair.size() > 1)
         {
             float beforeTime = objRemainingTime;
@@ -133,9 +138,9 @@ void simulation::updateSimulation(float deltaTime)
                 if (collideAxis == 3 && newlyCollideAxis.size() > 0)
                 {
                     std::cout << "   -  Collide" << std::endl;
-                    std::vector<float> usageTime = collision::collisionResolver(currentObject, targetObject, deltaTime, newlyCollideAxis);
-                    currentObject->changeCollisionTime(-usageTime[0]);
-                    targetObject->changeCollisionTime(-usageTime[1]);
+                    float usageTime = collision::collisionResolver(currentObject, targetObject, deltaTime, newlyCollideAxis, 0.999f);
+                    currentObject->changeCollisionTime(-usageTime);
+                    targetObject->changeCollisionTime(-usageTime);
 
                     objRemainingTime = currentObject->getCollisionTime();
                 }
@@ -148,7 +153,12 @@ void simulation::updateSimulation(float deltaTime)
             if (beforeTime == objRemainingTime) break;
         }
         currentObject->move(fundamental::calculateDst(currentObject->getVelocity(), objRemainingTime));
-        currentObject->changeCollisionTime(currentObject->getCollisionTime() * -1.0f);
+        currentObject->changeCollisionTime(-objRemainingTime);
+
+        std::cout << "-  End of collision stat:" << std::endl;
+        std::cout << "   -  Remaining time: " << objRemainingTime << std::endl;
+        std::cout << "   -  Velocity: " << currentObject->getVelocity().x << ", " << currentObject->getVelocity().y << ", " << currentObject->getVelocity().z << std::endl;
+        std::cout << "   -  Position: " << currentObject->getPosition().x << ", " << currentObject->getPosition().y << ", " << currentObject->getPosition().z << std::endl;
     }
     std::cout << std::endl;
 }

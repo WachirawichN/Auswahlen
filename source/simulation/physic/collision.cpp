@@ -15,7 +15,7 @@ float timeToMove(float aPosition, float aVelocity, float bPosition, float bVeloc
 {
     float totalVelocity = aVelocity - bVelocity;
     float dst = bPosition - aPosition;
-    return (dst / totalVelocity);
+    return (totalVelocity != 0.0f) ? (dst / totalVelocity) : 999999.99f;
 }
 std::vector<float> unbalanceTimeToMove(float aPosition, float aVelocity, float aRemainTime, float bPosition, float bVelocity, float bRemainTime)
 {
@@ -153,11 +153,12 @@ std::vector<collision::collisionType> collision::CCD(std::shared_ptr<object::obj
 
         // Check for NEWLY collision type
         float travelTime = timeToMove(objBorder, objVel[axis], tarBorder, tarVel[axis]);
-        if ((deltaTime > 0.0f && deltaTime > travelTime) || (deltaTime < 0.0f && deltaTime < travelTime) || (travelTime == 0.0f))
+        if ((abs(deltaTime) > 0.0f && abs(deltaTime) > abs(travelTime)) || travelTime == 0.0f)
         {
             if (checkDirection(deltaTime) == checkDirection(travelTime))
             {
                 collisionResults.push_back(collision::collisionType::NEWLY);
+                std::cout << "         -  Distance: " << tarBorder - objBorder << ", Velocity: " << objVel[axis] - tarVel[axis] << std::endl;
                 continue;
             }
         }
@@ -180,7 +181,7 @@ std::vector<collision::collisionType> collision::CCD(std::shared_ptr<object::obj
 
     return collisionResults;
 }
-std::vector<float> collision::collisionResolver(std::shared_ptr<object::objectBaseClass> object, std::shared_ptr<object::objectBaseClass> target, float deltaTime, std::vector<unsigned int> newlyAxis)
+float collision::collisionResolver(std::shared_ptr<object::objectBaseClass> obj, std::shared_ptr<object::objectBaseClass> tar, float deltaTime, std::vector<unsigned int> newlyAxis, float collisionHeadroom)
 {
     // Working instruction:
     // -  Step 1:
@@ -197,13 +198,13 @@ std::vector<float> collision::collisionResolver(std::shared_ptr<object::objectBa
 
     int timeMultiplier = (deltaTime > 0.0f) ? 1 : -1;
 
-    glm::vec3 objPos = object->getPosition();
-    glm::vec3 objScale = object->getScale();
-    glm::vec3 objVel = object->getVelocity();
+    glm::vec3 objPos = obj->getPosition();
+    glm::vec3 objScale = obj->getScale();
+    glm::vec3 objVel = obj->getVelocity();
 
-    glm::vec3 tarPos = target->getPosition();
-    glm::vec3 tarScale = target->getScale();
-    glm::vec3 tarVel = target->getVelocity();
+    glm::vec3 tarPos = tar->getPosition();
+    glm::vec3 tarScale = tar->getScale();
+    glm::vec3 tarVel = tar->getVelocity();
 
     // Step 1.
     std::vector<float> travelTimes;
@@ -231,6 +232,7 @@ std::vector<float> collision::collisionResolver(std::shared_ptr<object::objectBa
 
     // Step 2.
     float highestTime = *std::max_element(travelTimes.begin(), travelTimes.end());
+    float lowestTime = *std::min_element(travelTimes.begin(), travelTimes.end());
     //std::cout << "      -  Highest time: " << highestTime << std::endl;
 
     for (unsigned int counted = 0; counted < newlyAxis.size(); counted++)
@@ -241,7 +243,7 @@ std::vector<float> collision::collisionResolver(std::shared_ptr<object::objectBa
     std::vector<unsigned int> newlyCollideAxis;
     for (unsigned int counted = 0; counted < newlyAxis.size(); counted++)
     {
-        if (travelTimes[counted] == highestTime)
+        if (travelTimes[counted] >= highestTime * collisionHeadroom)
         {
             newlyCollideAxis.push_back(newlyAxis[counted]);
             std::cout << "      -  Push axis: " << newlyAxis[counted] << std::endl;
@@ -254,29 +256,30 @@ std::vector<float> collision::collisionResolver(std::shared_ptr<object::objectBa
     //std::cout << "      -  Newly collided vector size: " << newlyCollideAxis.size() << std::endl;
 
     // Step 3.
-    object->move(fundamental::calculateDst(objVel, highestTime));
-    target->move(fundamental::calculateDst(tarVel, highestTime));
+    obj->move(fundamental::calculateDst(objVel, highestTime));
+    tar->move(fundamental::calculateDst(tarVel, highestTime));
 
     // Step 4.
+    glm::vec3 objDeltaVel(0.0f);
+    glm::vec3 tarDeltaVel(0.0f);
+    std::cout << "      -  Resolving collision" << std::endl;
     for (unsigned int axis : newlyCollideAxis)
     {
-        float objNewVel = momentum::elasticCollision1D(object, target, axis);
-        float tarNewVel = momentum::elasticCollision1D(target, object, axis);
+        float objNewVel = momentum::elasticCollision1D(obj, tar, axis);
+        float tarNewVel = momentum::elasticCollision1D(tar, obj, axis);
 
-        glm::vec3 objDeltaVel(0.0f);
-        glm::vec3 tarDeltaVel(0.0f);
-
-        objDeltaVel[axis] = objNewVel - objVel[axis];
         tarDeltaVel[axis] = tarNewVel - tarVel[axis];
+        objDeltaVel[axis] = objNewVel - objVel[axis];
 
-        object->changeVelocity(objDeltaVel);
-        target->changeVelocity(tarDeltaVel);
-
-        std::cout << "      -  Resolved, Axis: " << axis << std::endl;
-        std::cout << "         -  Object new axis vel: " << objNewVel << ", og axis vel: " << objVel[axis] << std::endl;
-        std::cout << "         -  Target new axis vel: " << tarNewVel << ", og axis vel: " << tarVel[axis] << std::endl;
+        std::cout << "         -  Axis: " << axis << std::endl;
+        std::cout << "            -  Object original axis vel: " << objVel[axis] << ", new axis vel: " << objNewVel << std::endl;
+        std::cout << "            -  Target original axis vel: " << tarVel[axis] << ", new axis vel: " << tarNewVel << std::endl;
+        std::cout << "            -  Object original axis pos: " << objPos[axis] << ", new axis pos: " << obj->getPosition()[axis] << std::endl;
+        std::cout << "            -  Target original axis pos: " << tarPos[axis] << ", new axis pos: " << tar->getPosition()[axis] << std::endl;
     }
+    obj->changeVelocity(objDeltaVel);
+    tar->changeVelocity(tarDeltaVel);
 
     // Return the time that has been use
-    return std::vector<float>({highestTime, highestTime});
+    return highestTime;
 }

@@ -13,6 +13,7 @@
 #include "simulation/object/cube.h"
 
 #include <iostream>
+#include <iomanip>
 
 // OpenGL Logging
 void GLAPIENTRY MessageCallback(GLenum source,
@@ -165,6 +166,7 @@ int main()
     //lDebugMessageCallback(MessageCallback, 0);
 
     glEnable(GL_DEPTH_TEST);
+    std::cout << std::fixed << std::setprecision(6);
 
     // Create object, shader, variable, blah blah blah here
     {
