@@ -101,7 +101,7 @@ void simulation::updateSimulation(float deltaTime)
                 if (tarRemainingTime == 0.0f) continue;
 
                 //float remainingTime = (objRemainingTime < tarRemainingTime) ? objRemainingTime : tarRemainingTime;
-                std::vector<collision::collisionType> collisionResults = collision::dstBaseCD(currentObject, targetObject, deltaTime);
+                std::vector<collision::collisionType> collisionResults = collision::CCD(currentObject, targetObject, deltaTime);
 
                 unsigned int collideAxis = 0;
                 std::vector<unsigned int> newlyCollideAxis;

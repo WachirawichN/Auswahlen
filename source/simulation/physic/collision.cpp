@@ -115,7 +115,7 @@ std::vector<std::vector<unsigned int>> collision::collisionPairing(std::vector<s
 
     return pairs;
 }
-std::vector<collision::collisionType> collision::dstBaseCD(std::shared_ptr<object::objectBaseClass> object, std::shared_ptr<object::objectBaseClass> target, float deltaTime)
+std::vector<collision::collisionType> collision::CCD(std::shared_ptr<object::objectBaseClass> object, std::shared_ptr<object::objectBaseClass> target, float deltaTime)
 {
     std::vector<collision::collisionType> collisionResults;
     int timeMultiplier = (deltaTime > 0.0f) ? 1 : -1;
