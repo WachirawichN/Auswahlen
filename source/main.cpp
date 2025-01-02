@@ -197,6 +197,10 @@ int main()
         currentSimulation.addObject(physBlock1);
         std::shared_ptr<object::cube> physBlock2(new object::cube(true, false, 1.0f, glm::vec3(-2.0f, 0.0f, 0.1f), glm::vec3(2.5f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
         currentSimulation.addObject(physBlock2);
+        std::shared_ptr<object::cube> physBlock3(new object::cube(true, false, 1.0f, glm::vec3(3.0f, 2.0f, -1.0f), glm::vec3(-2.0f, -2.0f, 4.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+        currentSimulation.addObject(physBlock3);
+        std::shared_ptr<object::cube> physBlock4(new object::cube(true, false, 1.0f, glm::vec3(1.0f, -2.0f, -3.0f), glm::vec3(3.0f, -4.0f, -3.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+        currentSimulation.addObject(physBlock4);
 
         //std::shared_ptr<object::cube> physBlock0(new object::cube(true, false, 5.0f, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(-2.5f, 2.5f, -2.5f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(2.0f, 2.0f, 2.0f)));
         //currentSimulation.addObject(physBlock0);
