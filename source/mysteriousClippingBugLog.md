@@ -1,0 +1,9050 @@
+# Terminal logging for mysterious clipping bug.
+The only session that this bug has been occur
+
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025222778
+   -  Velocity: -0.000000002, 0.000000006, -0.000000005
+   -  Position: 0.000000192, 0.000000032, -0.000000127
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.025222778
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -4.193866253, -2.000000000, 2.019390106
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025222778
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -4.168643475, -2.000000000, 2.016867876
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.025222778
+   -  Velocity: 3.000000000, -0.500000000, 1.000000000
+   -  Position: 4.418415546, 2.596930504, -0.193861008
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025222778
+   -  Velocity: 3.000000000, -0.500000000, 1.000000000
+   -  Position: 4.494083881, 2.584319115, -0.168638229
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.025222778
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.806138039, 2.596931458, -0.306137085
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025222778
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.831360817, 2.584320068, -0.331359863
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.025222778
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.306135178, 1.387725353, 3.096931458
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025222778
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.331357956, 1.337279797, 3.084320068
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.025222778
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.112277031, 4.387724876, 2.418411255
+-  End of collision stat:
+   -  Remaining time: 0.025222778
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.162722588, 4.337279320, 2.494079590
+
+Delta time: 0.025272369
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.025272369
+   -  Velocity: -0.000000002, 0.000000006, -0.000000005
+   -  Position: 0.000000192, 0.000000032, -0.000000127
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+         -  Distance: -0.005916119, Velocity: -3.000000000
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Newly
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Collide
+      -  Pythagoras time: 0.001972039
+      -  Resolving collision
+         -  Axis: 0
+            -  Axis travel time: 0.001972039
+            -  Object original axis vel: -0.000000002, new axis vel: 0.000000004
+            -  Target original axis vel: 3.000000000, new axis vel: -3.000000000
+            -  Object original axis pos: 0.000000192, new axis pos: 0.000000192
+            -  Target original axis pos: 4.494083881, new axis pos: 4.500000000
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023300329
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000192, 0.000000032, -0.000000127
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.025272369
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -4.168643475, -2.000000000, 2.016867876
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025272369
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -4.143371105, -2.000000000, 2.014340639
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.023300329
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 4.500000000, 2.583333015, -0.166666195
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023300329
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 4.430099010, 2.571682930, -0.143365860
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.025272369
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.831360817, 2.584320068, -0.331359863
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025272369
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.856633186, 2.571683884, -0.356632233
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.025272369
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.331357956, 1.337279797, 3.084320068
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025272369
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.356630325, 1.286735058, 3.071683884
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.025272369
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.162722588, 4.337279320, 2.494079590
+-  End of collision stat:
+   -  Remaining time: 0.025272369
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.213267326, 4.286734581, 2.569896698
+
+Delta time: 0.029327393
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.029327393
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000192, 0.000000032, -0.000000127
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.029327393
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000193, 0.000000032, -0.000000128
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.029327393
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -4.143371105, -2.000000000, 2.014340639
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.029327393
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -4.114043713, -2.000000000, 2.011407852
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.029327393
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 4.430099010, 2.571682930, -0.143365860
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.029327393
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 4.342116833, 2.557019234, -0.114038467
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.029327393
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.856633186, 2.571683884, -0.356632233
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.029327393
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.885960579, 2.557020187, -0.385959625
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.029327393
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.356630325, 1.286735058, 3.071683884
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.029327393
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.385957718, 1.228080273, 3.057020187
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.029327393
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.213267326, 4.286734581, 2.569896698
+-  End of collision stat:
+   -  Remaining time: 0.029327393
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.271922112, 4.228079796, 2.657878876
+
+Delta time: 0.025314331
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.025314331
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000193, 0.000000032, -0.000000128
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025314331
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000193, 0.000000032, -0.000000128
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.025314331
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -4.114043713, -2.000000000, 2.011407852
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025314331
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -4.088729382, -2.000000000, 2.008876324
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.025314331
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 4.342116833, 2.557019234, -0.114038467
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025314331
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 4.266173840, 2.544362068, -0.088724136
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.025314331
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.885960579, 2.557020187, -0.385959625
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025314331
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.911274910, 2.544363022, -0.411273956
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.025314331
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.385957718, 1.228080273, 3.057020187
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025314331
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.411272049, 1.177451611, 3.044363022
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.025314331
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.271922112, 4.228079796, 2.657878876
+-  End of collision stat:
+   -  Remaining time: 0.025314331
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.322550774, 4.177451134, 2.733821869
+
+Delta time: 0.024471283
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.024471283
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000193, 0.000000032, -0.000000128
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024471283
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000193, 0.000000033, -0.000000128
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.024471283
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -4.088729382, -2.000000000, 2.008876324
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024471283
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -4.064258099, -2.000000000, 2.006429195
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.024471283
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 4.266173840, 2.544362068, -0.088724136
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024471283
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 4.192759991, 2.532126427, -0.064252853
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.024471283
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.911274910, 2.544363022, -0.411273956
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024471283
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.935746193, 2.532127380, -0.435745239
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.024471283
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.411272049, 1.177451611, 3.044363022
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024471283
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.435743332, 1.128509045, 3.032127380
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.024471283
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.322550774, 4.177451134, 2.733821869
+-  End of collision stat:
+   -  Remaining time: 0.024471283
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.371493340, 4.128508568, 2.807235718
+
+Delta time: 0.023891449
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.023891449
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000193, 0.000000033, -0.000000128
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023891449
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000193, 0.000000033, -0.000000128
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.023891449
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -4.064258099, -2.000000000, 2.006429195
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023891449
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -4.040366650, -2.000000000, 2.004040003
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.023891449
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 4.192759991, 2.532126427, -0.064252853
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023891449
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 4.121085644, 2.520180702, -0.040361404
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.023891449
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.935746193, 2.532127380, -0.435745239
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023891449
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.959637642, 2.520181656, -0.459636688
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.023891449
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.435743332, 1.128509045, 3.032127380
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023891449
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.459634781, 1.080726147, 3.020181656
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.023891449
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.371493340, 4.128508568, 2.807235718
+-  End of collision stat:
+   -  Remaining time: 0.023891449
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.419276237, 4.080725670, 2.878910065
+
+Delta time: 0.025028229
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.025028229
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000193, 0.000000033, -0.000000128
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025028229
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000193, 0.000000033, -0.000000128
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.025028229
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -4.040366650, -2.000000000, 2.004040003
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025028229
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -4.015338421, -2.000000000, 2.001537085
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.025028229
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 4.121085644, 2.520180702, -0.040361404
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025028229
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 4.046000957, 2.507666588, -0.015333176
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.025028229
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.959637642, 2.520181656, -0.459636688
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025028229
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.984665871, 2.507667542, -0.484664917
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.025028229
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.459634781, 1.080726147, 3.020181656
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025028229
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.484663010, 1.030669689, 3.007667542
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.025028229
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.419276237, 4.080725670, 2.878910065
+-  End of collision stat:
+   -  Remaining time: 0.025028229
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.469332695, 4.030669212, 2.953994751
+
+Delta time: 0.024608612
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.024608612
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000193, 0.000000033, -0.000000128
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024608612
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000193, 0.000000033, -0.000000128
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.024608612
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -4.015338421, -2.000000000, 2.001537085
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+         -  Distance: 0.006130457, Velocity: 0.400000095
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Newly
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+         -  Distance: -0.047542334, Velocity: -3.099999905
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Newly
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024608612
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.990729809, -2.000000000, 1.999076247
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.024608612
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 4.046000957, 2.507666588, -0.015333176
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024608612
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.972175121, 2.495362282, 0.009275436
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.024608612
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.984665871, 2.507667542, -0.484664917
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024608612
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 4.009274483, 2.495363235, -0.509273529
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.024608612
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.484663010, 1.030669689, 3.007667542
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024608612
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.509271622, 0.981452465, 2.995363235
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.024608612
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.469332695, 4.030669212, 2.953994751
+-  End of collision stat:
+   -  Remaining time: 0.024608612
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.518549919, 3.981451988, 3.027820587
+
+Delta time: 0.025699615
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.025699615
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000193, 0.000000033, -0.000000128
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025699615
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000193, 0.000000033, -0.000000128
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.025699615
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.990729809, -2.000000000, 1.999076247
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025699615
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.965030193, -2.000000000, 1.996506333
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.025699615
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.972175121, 2.495362282, 0.009275436
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025699615
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.895076275, 2.482512474, 0.034975052
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.025699615
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 4.009274483, 2.495363235, -0.509273529
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025699615
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 4.034974098, 2.482513428, -0.534973145
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.025699615
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.509271622, 0.981452465, 2.995363235
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025699615
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.534971237, 0.930053234, 2.982513428
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.025699615
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.518549919, 3.981451988, 3.027820587
+-  End of collision stat:
+   -  Remaining time: 0.025699615
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.569949150, 3.930052757, 3.104919434
+
+Delta time: 0.023548126
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.023548126
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000193, 0.000000033, -0.000000128
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023548126
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000193, 0.000000033, -0.000000128
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.023548126
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.965030193, -2.000000000, 1.996506333
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023548126
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.941482067, -2.000000000, 1.994151473
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.023548126
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.895076275, 2.482512474, 0.034975052
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023548126
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.824431896, 2.470738411, 0.058523178
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.023548126
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 4.034974098, 2.482513428, -0.534973145
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023548126
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 4.058522224, 2.470739365, -0.558521271
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.023548126
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.534971237, 0.930053234, 2.982513428
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023548126
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.558519363, 0.882956982, 2.970739365
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.023548126
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.569949150, 3.930052757, 3.104919434
+-  End of collision stat:
+   -  Remaining time: 0.023548126
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.617045403, 3.882956505, 3.175563812
+
+Delta time: 0.024208069
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.024208069
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000193, 0.000000033, -0.000000128
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024208069
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000193, 0.000000033, -0.000000128
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.024208069
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.941482067, -2.000000000, 1.994151473
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024208069
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.917273998, -2.000000000, 1.991730690
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.024208069
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.824431896, 2.470738411, 0.058523178
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024208069
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.751807690, 2.458634377, 0.082731247
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.024208069
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 4.058522224, 2.470739365, -0.558521271
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024208069
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 4.082730293, 2.458635330, -0.582729340
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.024208069
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.558519363, 0.882956982, 2.970739365
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024208069
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.582727432, 0.834540844, 2.958635330
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.024208069
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.617045403, 3.882956505, 3.175563812
+-  End of collision stat:
+   -  Remaining time: 0.024208069
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.665461540, 3.834540367, 3.248188019
+
+Delta time: 0.025451660
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.025451660
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000193, 0.000000033, -0.000000128
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025451660
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000193, 0.000000034, -0.000000129
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.025451660
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.917273998, -2.000000000, 1.991730690
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025451660
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.891822338, -2.000000000, 1.989185572
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.025451660
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.751807690, 2.458634377, 0.082731247
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+         -  Distance: -0.086346149, Velocity: -5.000000000
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Newly
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025451660
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.675452709, 2.445908546, 0.108182907
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.025451660
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 4.082730293, 2.458635330, -0.582729340
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025451660
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 4.108181953, 2.445909500, -0.608181000
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.025451660
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.582727432, 0.834540844, 2.958635330
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025451660
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.608179092, 0.783637524, 2.945909500
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.025451660
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.665461540, 3.834540367, 3.248188019
+-  End of collision stat:
+   -  Remaining time: 0.025451660
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.716364861, 3.783637047, 3.324542999
+
+Delta time: 0.026557922
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.026557922
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000193, 0.000000034, -0.000000129
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.026557922
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000194, 0.000000034, -0.000000129
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.026557922
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.891822338, -2.000000000, 1.989185572
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.026557922
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.865264416, -2.000000000, 1.986529827
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.026557922
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.675452709, 2.445908546, 0.108182907
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.026557922
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.595778942, 2.432629585, 0.134740829
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.026557922
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 4.108181953, 2.445909500, -0.608181000
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.026557922
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 4.134739876, 2.432630539, -0.634738922
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.026557922
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.608179092, 0.783637524, 2.945909500
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.026557922
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.634737015, 0.730521679, 2.932630539
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.026557922
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.716364861, 3.783637047, 3.324542999
+-  End of collision stat:
+   -  Remaining time: 0.026557922
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.769480705, 3.730521202, 3.404216766
+
+Delta time: 0.023960114
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.023960114
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000194, 0.000000034, -0.000000129
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023960114
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000194, 0.000000034, -0.000000129
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.023960114
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.865264416, -2.000000000, 1.986529827
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023960114
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.841304302, -2.000000000, 1.984133840
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.023960114
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.595778942, 2.432629585, 0.134740829
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023960114
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.523898602, 2.420649529, 0.158700943
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.023960114
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 4.134739876, 2.432630539, -0.634738922
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023960114
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 4.158699989, 2.420650482, -0.658699036
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.023960114
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.634737015, 0.730521679, 2.932630539
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023960114
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.658697128, 0.682601452, 2.920650482
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.023960114
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.769480705, 3.730521202, 3.404216766
+-  End of collision stat:
+   -  Remaining time: 0.023960114
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.817400932, 3.682600975, 3.476097107
+
+Delta time: 0.025985718
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.025985718
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000194, 0.000000034, -0.000000129
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025985718
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000194, 0.000000034, -0.000000129
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.025985718
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.841304302, -2.000000000, 1.984133840
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025985718
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.815318584, -2.000000000, 1.981535316
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.025985718
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.523898602, 2.420649529, 0.158700943
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025985718
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.445941448, 2.407656670, 0.184686661
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.025985718
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 4.158699989, 2.420650482, -0.658699036
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025985718
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 4.184685707, 2.407657623, -0.684684753
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.025985718
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.658697128, 0.682601452, 2.920650482
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025985718
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.684682846, 0.630630016, 2.907657623
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.025985718
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.817400932, 3.682600975, 3.476097107
+-  End of collision stat:
+   -  Remaining time: 0.025985718
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.869372368, 3.630629539, 3.554054260
+
+Delta time: 0.026359558
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.026359558
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000194, 0.000000034, -0.000000129
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.026359558
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000194, 0.000000034, -0.000000129
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.026359558
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.815318584, -2.000000000, 1.981535316
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.026359558
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.788959026, -2.000000000, 1.978899360
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.026359558
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.445941448, 2.407656670, 0.184686661
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.026359558
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.366862774, 2.394476891, 0.211046219
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.026359558
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 4.184685707, 2.407657623, -0.684684753
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.026359558
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 4.211045265, 2.394477844, -0.711044312
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.026359558
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.684682846, 0.630630016, 2.907657623
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.026359558
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.711042404, 0.577910900, 2.894477844
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.026359558
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.869372368, 3.630629539, 3.554054260
+-  End of collision stat:
+   -  Remaining time: 0.026359558
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.922091484, 3.577910423, 3.633132935
+
+Delta time: 0.025722504
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.025722504
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000194, 0.000000034, -0.000000129
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025722504
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000194, 0.000000034, -0.000000129
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.025722504
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.788959026, -2.000000000, 1.978899360
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025722504
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.763236523, -2.000000000, 1.976327062
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.025722504
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.366862774, 2.394476891, 0.211046219
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025722504
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.289695263, 2.381615639, 0.236768723
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.025722504
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 4.211045265, 2.394477844, -0.711044312
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025722504
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 4.236767769, 2.381616592, -0.736766815
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.025722504
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.711042404, 0.577910900, 2.894477844
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025722504
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.736764908, 0.526465893, 2.881616592
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.025722504
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.922091484, 3.577910423, 3.633132935
+-  End of collision stat:
+   -  Remaining time: 0.025722504
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.973536491, 3.526465416, 3.710300446
+
+Delta time: 0.026084900
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.026084900
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000194, 0.000000034, -0.000000129
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.026084900
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000194, 0.000000035, -0.000000129
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.026084900
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.763236523, -2.000000000, 1.976327062
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.026084900
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.737151623, -2.000000000, 1.973718524
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.026084900
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.289695263, 2.381615639, 0.236768723
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+         -  Distance: -0.052927494, Velocity: -4.000000000
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+         -  Distance: 0.026464462, Velocity: 2.000000000
+   -  Collision result:
+      -  Axis: 0, Collision type: Newly
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Newly
+   -  Collide
+      -  Pythagoras time: 0.013231874
+      -  Resolving collision
+         -  Axis: 0
+            -  Axis travel time: 0.013231874
+            -  Object original axis vel: -3.000000000, new axis vel: 1.000000000
+            -  Target original axis vel: 1.000000000, new axis vel: -3.000000000
+            -  Object original axis pos: 3.289695263, new axis pos: 3.249999523
+            -  Target original axis pos: 4.236767769, new axis pos: 4.249999523
+         -  Axis: 2
+            -  Axis travel time: -97325.164062500
+            -  Object original axis vel: 1.000000000, new axis vel: -1.000000000
+            -  Target original axis vel: -1.000000000, new axis vel: 1.000000000
+            -  Object original axis pos: 0.236768723, new axis pos: 0.250000596
+            -  Target original axis pos: -0.736766815, new axis pos: -0.749998689
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.012853026
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.262852669, 2.368573189, 0.237147570
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.012853026
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 4.249999523, 2.375000715, -0.749998689
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.012853026
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 4.211440563, 2.368574142, -0.737145662
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.026084900
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.736764908, 0.526465893, 2.881616592
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.026084900
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.762849808, 0.474296093, 2.868574142
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.026084900
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 2.973536491, 3.526465416, 3.710300446
+-  End of collision stat:
+   -  Remaining time: 0.026084900
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 3.025706291, 3.474295616, 3.788555145
+
+Delta time: 0.030113220
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.030113220
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000194, 0.000000035, -0.000000129
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.030113220
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000194, 0.000000035, -0.000000129
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.030113220
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.737151623, -2.000000000, 1.973718524
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.030113220
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.707038403, -2.000000000, 1.970707178
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.030113220
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.262852669, 2.368573189, 0.237147570
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.030113220
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.292965889, 2.353516579, 0.207034349
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.030113220
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 4.211440563, 2.368574142, -0.737145662
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.030113220
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 4.121100903, 2.353517532, -0.707032442
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.030113220
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.762849808, 0.474296093, 2.868574142
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+         -  Distance: -0.080018997, Velocity: -3.500000000
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Newly
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.030113220
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.792963028, 0.414069653, 2.853517532
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.030113220
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 3.025706291, 3.474295616, 3.788555145
+-  End of collision stat:
+   -  Remaining time: 0.030113220
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 3.085932732, 3.414069176, 3.878894806
+
+Delta time: 0.024375916
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.024375916
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000194, 0.000000035, -0.000000129
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024375916
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000194, 0.000000035, -0.000000130
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.024375916
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.707038403, -2.000000000, 1.970707178
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024375916
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.682662487, -2.000000000, 1.968269587
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.024375916
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.292965889, 2.353516579, 0.207034349
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024375916
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.317341805, 2.341328621, 0.182658434
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.024375916
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 4.121100903, 2.353517532, -0.707032442
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+         -  Distance: -0.035168171, Velocity: -5.000000000
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Newly
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024375916
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 4.047973156, 2.341329575, -0.682656527
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.024375916
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.792963028, 0.414069653, 2.853517532
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024375916
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.817338943, 0.365317822, 2.841329575
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.024375916
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 3.085932732, 3.414069176, 3.878894806
+-  End of collision stat:
+   -  Remaining time: 0.024375916
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 3.134684563, 3.365317345, 3.952022552
+
+Delta time: 0.026222229
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.026222229
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000194, 0.000000035, -0.000000130
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.026222229
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000194, 0.000000035, -0.000000130
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.026222229
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.682662487, -2.000000000, 1.968269587
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.026222229
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.656440258, -2.000000000, 1.965647340
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.026222229
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.317341805, 2.341328621, 0.182658434
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+         -  Distance: 0.023988724, Velocity: 1.500000000
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Newly
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.026222229
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.343564034, 2.328217506, 0.156436205
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.026222229
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 4.047973156, 2.341329575, -0.682656527
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+         -  Distance: 0.023987770, Velocity: 1.500000000
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Newly
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.026222229
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.969306469, 2.328218460, -0.656434298
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.026222229
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.817338943, 0.365317822, 2.841329575
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.026222229
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.843561172, 0.312873363, 2.828218460
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.026222229
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 3.134684563, 3.365317345, 3.952022552
+-  End of collision stat:
+   -  Remaining time: 0.026222229
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 3.187129021, 3.312872887, 4.030689240
+
+Delta time: 0.025165558
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.025165558
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000194, 0.000000035, -0.000000130
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025165558
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000195, 0.000000035, -0.000000130
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.025165558
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.656440258, -2.000000000, 1.965647340
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025165558
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.631274700, -2.000000000, 1.963130832
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.025165558
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.343564034, 2.328217506, 0.156436205
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025165558
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.368729591, 2.315634727, 0.131270647
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.025165558
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.969306469, 2.328218460, -0.656434298
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025165558
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.893809795, 2.315635681, -0.631268740
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.025165558
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.843561172, 0.312873363, 2.828218460
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025165558
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.868726730, 0.262542248, 2.815635681
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.025165558
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 3.187129021, 3.312872887, 4.030689240
+-  End of collision stat:
+   -  Remaining time: 0.025165558
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 3.237460136, 3.262541771, 4.106185913
+
+Delta time: 0.025360107
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.025360107
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000195, 0.000000035, -0.000000130
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025360107
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000195, 0.000000035, -0.000000130
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.025360107
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.631274700, -2.000000000, 1.963130832
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025360107
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.605914593, -2.000000000, 1.960594773
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.025360107
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.368729591, 2.315634727, 0.131270647
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025360107
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.394089699, 2.302954674, 0.105910540
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.025360107
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.893809795, 2.315635681, -0.631268740
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025360107
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.817729473, 2.302955627, -0.605908632
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.025360107
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.868726730, 0.262542248, 2.815635681
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025360107
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.894086838, 0.211822033, 2.802955627
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.025360107
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 3.237460136, 3.262541771, 4.106185913
+-  End of collision stat:
+   -  Remaining time: 0.025360107
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 3.288180351, 3.211821556, 4.182266235
+
+Delta time: 0.023914337
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.023914337
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000195, 0.000000035, -0.000000130
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023914337
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000195, 0.000000036, -0.000000130
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.023914337
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.605914593, -2.000000000, 1.960594773
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023914337
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.582000256, -2.000000000, 1.958203316
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.023914337
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.394089699, 2.302954674, 0.105910540
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023914337
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.418004036, 2.290997505, 0.081996202
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.023914337
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.817729473, 2.302955627, -0.605908632
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023914337
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.745986462, 2.290998459, -0.581994295
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.023914337
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.894086838, 0.211822033, 2.802955627
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023914337
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.918001175, 0.163993359, 2.790998459
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.023914337
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 3.288180351, 3.211821556, 4.182266235
+-  End of collision stat:
+   -  Remaining time: 0.023914337
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 3.336009026, 3.163992882, 4.254009247
+
+Delta time: 0.023647308
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.023647308
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000195, 0.000000036, -0.000000130
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023647308
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000195, 0.000000036, -0.000000130
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.023647308
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.582000256, -2.000000000, 1.958203316
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023647308
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.558352947, -2.000000000, 1.955838561
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.023647308
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.418004036, 2.290997505, 0.081996202
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023647308
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.441651344, 2.279173851, 0.058348894
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.023647308
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.745986462, 2.290998459, -0.581994295
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023647308
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.675044537, 2.279174805, -0.558346987
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.023647308
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.918001175, 0.163993359, 2.790998459
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023647308
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.941648483, 0.116698742, 2.779174805
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.023647308
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 3.336009026, 3.163992882, 4.254009247
+-  End of collision stat:
+   -  Remaining time: 0.023647308
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 3.383303642, 3.116698265, 4.324951172
+
+Delta time: 0.023715973
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.023715973
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000195, 0.000000036, -0.000000130
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023715973
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000195, 0.000000036, -0.000000130
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.023715973
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.558352947, -2.000000000, 1.955838561
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023715973
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.534636974, -2.000000000, 1.953467011
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.023715973
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.441651344, 2.279173851, 0.058348894
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023715973
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.465367317, 2.267315865, 0.034632921
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.023715973
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.675044537, 2.279174805, -0.558346987
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023715973
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.603896618, 2.267316818, -0.534631014
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.023715973
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.941648483, 0.116698742, 2.779174805
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023715973
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.965364456, 0.069266796, 2.767316818
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.023715973
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 3.383303642, 3.116698265, 4.324951172
+-  End of collision stat:
+   -  Remaining time: 0.023715973
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 3.430735588, 3.069266319, 4.396099091
+
+Delta time: 0.024047852
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.024047852
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000195, 0.000000036, -0.000000130
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024047852
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000195, 0.000000036, -0.000000130
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.024047852
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.534636974, -2.000000000, 1.953467011
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024047852
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.510589123, -2.000000000, 1.951062202
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.024047852
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.465367317, 2.267315865, 0.034632921
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024047852
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.489415169, 2.255291939, 0.010585070
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.024047852
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.603896618, 2.267316818, -0.534631014
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024047852
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.531753063, 2.255292892, -0.510583162
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.024047852
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.965364456, 0.069266796, 2.767316818
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024047852
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.989412308, 0.021171093, 2.755292892
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.024047852
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 3.430735588, 3.069266319, 4.396099091
+-  End of collision stat:
+   -  Remaining time: 0.024047852
+   -  Velocity: 2.000000000, -2.000000000, 3.000000000
+   -  Position: 3.478831291, 3.021170616, 4.468242645
+
+Delta time: 0.025070190
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.025070190
+   -  Velocity: 0.000000004, 0.000000006, -0.000000005
+   -  Position: 0.000000195, 0.000000036, -0.000000130
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+         -  Distance: -0.031757355, Velocity: -3.000000000
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Newly
+   -  Collide
+      -  Pythagoras time: 0.010585785
+      -  Resolving collision
+         -  Axis: 2
+            -  Axis travel time: -77357.484375000
+            -  Object original axis vel: -0.000000005, new axis vel: 0.000000001
+            -  Target original axis vel: 3.000000000, new axis vel: -3.000000000
+            -  Object original axis pos: -0.000000130, new axis pos: -0.000000130
+            -  Target original axis pos: 4.468242645, new axis pos: 4.500000000
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.014484406
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000195, 0.000000036, -0.000000130
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.025070190
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.510589123, -2.000000000, 1.951062202
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025070190
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.485518932, -2.000000000, 1.948555231
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.025070190
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.489415169, 2.255291939, 0.010585070
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025070190
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.514485359, 2.242756844, -0.014485121
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.025070190
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.531753063, 2.255292892, -0.510583162
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025070190
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.456542492, 2.242757797, -0.485512972
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.025070190
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -0.989412308, 0.021171093, 2.755292892
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025070190
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.014482498, -0.028969288, 2.742757797
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.014484406
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 3.500002861, 2.999999046, 4.500000000
+-  End of collision stat:
+   -  Remaining time: 0.014484406
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 3.528971672, 2.971030235, 4.456546783
+
+Delta time: 0.031814575
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.031814575
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000195, 0.000000036, -0.000000130
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.031814575
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000195, 0.000000036, -0.000000130
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.031814575
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.485518932, -2.000000000, 1.948555231
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.031814575
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.453704357, -2.000000000, 1.945373774
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.031814575
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.514485359, 2.242756844, -0.014485121
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.031814575
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.546299934, 2.226849556, -0.046299696
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.031814575
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.456542492, 2.242757797, -0.485512972
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.031814575
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.361098766, 2.226850510, -0.453698397
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.031814575
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.014482498, -0.028969288, 2.742757797
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.031814575
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.046297073, -0.092598438, 2.726850510
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.031814575
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 3.528971672, 2.971030235, 4.456546783
+-  End of collision stat:
+   -  Remaining time: 0.031814575
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 3.592600822, 2.907401085, 4.361103058
+
+Delta time: 0.025985718
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.025985718
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000195, 0.000000036, -0.000000130
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025985718
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000195, 0.000000036, -0.000000130
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.025985718
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.453704357, -2.000000000, 1.945373774
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025985718
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.427718639, -2.000000000, 1.942775249
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.025985718
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.546299934, 2.226849556, -0.046299696
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025985718
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.572285652, 2.213856697, -0.072285414
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.025985718
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.361098766, 2.226850510, -0.453698397
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025985718
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.283141613, 2.213857651, -0.427712679
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.025985718
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.046297073, -0.092598438, 2.726850510
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025985718
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.072282791, -0.144569874, 2.713857651
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.025985718
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 3.592600822, 2.907401085, 4.361103058
+-  End of collision stat:
+   -  Remaining time: 0.025985718
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 3.644572258, 2.855429649, 4.283145905
+
+Delta time: 0.026443481
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.026443481
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000195, 0.000000036, -0.000000130
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.026443481
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000195, 0.000000037, -0.000000130
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.026443481
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.427718639, -2.000000000, 1.942775249
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.026443481
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.401275158, -2.000000000, 1.940130949
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.026443481
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.572285652, 2.213856697, -0.072285414
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.026443481
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.598729134, 2.200634956, -0.098728895
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.026443481
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.283141613, 2.213857651, -0.427712679
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.026443481
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.203811169, 2.200635910, -0.401269197
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.026443481
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.072282791, -0.144569874, 2.713857651
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.026443481
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.098726273, -0.197456837, 2.700635910
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.026443481
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 3.644572258, 2.855429649, 4.283145905
+-  End of collision stat:
+   -  Remaining time: 0.026443481
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 3.697459221, 2.802542686, 4.203815460
+
+Delta time: 0.025180817
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.025180817
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000195, 0.000000037, -0.000000130
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025180817
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000196, 0.000000037, -0.000000130
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.025180817
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.401275158, -2.000000000, 1.940130949
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025180817
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.376094341, -2.000000000, 1.937612891
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.025180817
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.598729134, 2.200634956, -0.098728895
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025180817
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.623909950, 2.188044548, -0.123909712
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.025180817
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.203811169, 2.200635910, -0.401269197
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025180817
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.128268719, 2.188045502, -0.376088381
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.025180817
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.098726273, -0.197456837, 2.700635910
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025180817
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.123907089, -0.247818470, 2.688045502
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.025180817
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 3.697459221, 2.802542686, 4.203815460
+-  End of collision stat:
+   -  Remaining time: 0.025180817
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 3.747820854, 2.752181053, 4.128273010
+
+Delta time: 0.024047852
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.024047852
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000196, 0.000000037, -0.000000130
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024047852
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000196, 0.000000037, -0.000000130
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.024047852
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.376094341, -2.000000000, 1.937612891
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024047852
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.352046490, -2.000000000, 1.935208082
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.024047852
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.623909950, 2.188044548, -0.123909712
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024047852
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.647957802, 2.176020622, -0.147957563
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.024047852
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.128268719, 2.188045502, -0.376088381
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024047852
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.056125164, 2.176021576, -0.352040529
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.024047852
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.123907089, -0.247818470, 2.688045502
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024047852
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.147954941, -0.295914173, 2.676021576
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.024047852
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 3.747820854, 2.752181053, 4.128273010
+-  End of collision stat:
+   -  Remaining time: 0.024047852
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 3.795916557, 2.704085350, 4.056129456
+
+Delta time: 0.024600983
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.024600983
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000196, 0.000000037, -0.000000130
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024600983
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000196, 0.000000037, -0.000000130
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.024600983
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.352046490, -2.000000000, 1.935208082
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024600983
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.327445507, -2.000000000, 1.932747960
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.024600983
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.647957802, 2.176020622, -0.147957563
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024600983
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.672558784, 2.163720131, -0.172558546
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.024600983
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 3.056125164, 2.176021576, -0.352040529
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024600983
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 2.982322216, 2.163721085, -0.327439547
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.024600983
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.147954941, -0.295914173, 2.676021576
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024600983
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.172555923, -0.345116138, 2.663721085
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.024600983
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 3.795916557, 2.704085350, 4.056129456
+-  End of collision stat:
+   -  Remaining time: 0.024600983
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 3.845118523, 2.654883385, 3.982326508
+
+Delta time: 0.023784637
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.023784637
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000196, 0.000000037, -0.000000130
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023784637
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000196, 0.000000037, -0.000000130
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.023784637
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.327445507, -2.000000000, 1.932747960
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023784637
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.303660870, -2.000000000, 1.930369496
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.023784637
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.672558784, 2.163720131, -0.172558546
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023784637
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.696343422, 2.151827812, -0.196343184
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.023784637
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 2.982322216, 2.163721085, -0.327439547
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023784637
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 2.910968304, 2.151828766, -0.303654909
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.023784637
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.172555923, -0.345116138, 2.663721085
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023784637
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.196340561, -0.392685413, 2.651828766
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.023784637
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 3.845118523, 2.654883385, 3.982326508
+-  End of collision stat:
+   -  Remaining time: 0.023784637
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 3.892687798, 2.607314110, 3.910972595
+
+Delta time: 0.023815155
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.023815155
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000196, 0.000000037, -0.000000130
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023815155
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000196, 0.000000037, -0.000000130
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.023815155
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.303660870, -2.000000000, 1.930369496
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023815155
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.279845715, -2.000000000, 1.927987933
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.023815155
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.696343422, 2.151827812, -0.196343184
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023815155
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.720158577, 2.139920235, -0.220158339
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.023815155
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 2.910968304, 2.151828766, -0.303654909
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+         -  Distance: -0.018280506, Velocity: -5.000000000
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Newly
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023815155
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 2.839522839, 2.139921188, -0.279839754
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.023815155
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.196340561, -0.392685413, 2.651828766
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023815155
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.220155716, -0.440315723, 2.639921188
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.023815155
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 3.892687798, 2.607314110, 3.910972595
+-  End of collision stat:
+   -  Remaining time: 0.023815155
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 3.940318108, 2.559683800, 3.839527130
+
+Delta time: 0.024642944
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.024642944
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000196, 0.000000037, -0.000000130
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024642944
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000196, 0.000000037, -0.000000130
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.024642944
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.279845715, -2.000000000, 1.927987933
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024642944
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.255202770, -2.000000000, 1.925523639
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.024642944
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.720158577, 2.139920235, -0.220158339
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024642944
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.744801521, 2.127598763, -0.244801283
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.024642944
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 2.839522839, 2.139921188, -0.279839754
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024642944
+   -  Velocity: -3.000000000, -0.500000000, 1.000000000
+   -  Position: 2.765594006, 2.127599716, -0.255196810
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.024642944
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.220155716, -0.440315723, 2.639921188
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024642944
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.244798660, -0.489601612, 2.627599716
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.024642944
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 3.940318108, 2.559683800, 3.839527130
+-  End of collision stat:
+   -  Remaining time: 0.024642944
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 3.989603996, 2.510397911, 3.765598297
+
+Delta time: 0.025333405
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.025333405
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000196, 0.000000037, -0.000000130
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025333405
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000196, 0.000000038, -0.000000130
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.025333405
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.255202770, -2.000000000, 1.925523639
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025333405
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.229869366, -2.000000000, 1.922990322
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.025333405
+   -  Velocity: 1.000000000, -0.500000000, -1.000000000
+   -  Position: 3.744801521, 2.127598763, -0.244801283
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+         -  Distance: 0.020792484, Velocity: 4.000000000
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Newly
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Collide
+      -  Pythagoras time: 0.005198121
+      -  Resolving collision
+         -  Axis: 0
+            -  Axis travel time: 0.005198121
+            -  Object original axis vel: 1.000000000, new axis vel: -3.000000000
+            -  Target original axis vel: -3.000000000, new axis vel: 1.000000000
+            -  Object original axis pos: 3.744801521, new axis pos: 3.749999523
+            -  Target original axis pos: 2.765594006, new axis pos: 2.749999523
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.020135283
+   -  Velocity: -3.000000000, -0.500000000, -1.000000000
+   -  Position: 3.689593792, 2.114932060, -0.270134687
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.020135283
+   -  Velocity: 1.000000000, -0.500000000, 1.000000000
+   -  Position: 2.749999523, 2.125000715, -0.249998689
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.020135283
+   -  Velocity: 1.000000000, -0.500000000, 1.000000000
+   -  Position: 2.770134926, 2.114933014, -0.229863405
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.025333405
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.244798660, -0.489601612, 2.627599716
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025333405
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.270132065, -0.540268421, 2.614933014
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.025333405
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 3.989603996, 2.510397911, 3.765598297
+-  End of collision stat:
+   -  Remaining time: 0.025333405
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 4.040270805, 2.459731102, 3.689598083
+
+Delta time: 0.029079437
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.029079437
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000196, 0.000000038, -0.000000130
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.029079437
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000196, 0.000000038, -0.000000130
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.029079437
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.229869366, -2.000000000, 1.922990322
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.029079437
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.200789928, -2.000000000, 1.920082331
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.029079437
+   -  Velocity: -3.000000000, -0.500000000, -1.000000000
+   -  Position: 3.689593792, 2.114932060, -0.270134687
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.029079437
+   -  Velocity: -3.000000000, -0.500000000, -1.000000000
+   -  Position: 3.602355480, 2.100392342, -0.299214125
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.029079437
+   -  Velocity: 1.000000000, -0.500000000, 1.000000000
+   -  Position: 2.770134926, 2.114933014, -0.229863405
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.029079437
+   -  Velocity: 1.000000000, -0.500000000, 1.000000000
+   -  Position: 2.799214363, 2.100393295, -0.200783968
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.029079437
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.270132065, -0.540268421, 2.614933014
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.029079437
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.299211502, -0.598427296, 2.600393295
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.029079437
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 4.040270805, 2.459731102, 3.689598083
+-  End of collision stat:
+   -  Remaining time: 0.029079437
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 4.098429680, 2.401572227, 3.602359772
+
+Delta time: 0.025043488
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.025043488
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000196, 0.000000038, -0.000000130
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025043488
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000196, 0.000000038, -0.000000130
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.025043488
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.200789928, -2.000000000, 1.920082331
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025043488
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.175746441, -2.000000000, 1.917577982
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.025043488
+   -  Velocity: -3.000000000, -0.500000000, -1.000000000
+   -  Position: 3.602355480, 2.100392342, -0.299214125
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025043488
+   -  Velocity: -3.000000000, -0.500000000, -1.000000000
+   -  Position: 3.527225018, 2.087870598, -0.324257612
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.025043488
+   -  Velocity: 1.000000000, -0.500000000, 1.000000000
+   -  Position: 2.799214363, 2.100393295, -0.200783968
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025043488
+   -  Velocity: 1.000000000, -0.500000000, 1.000000000
+   -  Position: 2.824257851, 2.087871552, -0.175740480
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.025043488
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.299211502, -0.598427296, 2.600393295
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+         -  Distance: 0.001966476, Velocity: 2.500000000
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Newly
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025043488
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.324254990, -0.648514271, 2.587871552
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.025043488
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 4.098429680, 2.401572227, 3.602359772
+-  End of collision stat:
+   -  Remaining time: 0.025043488
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 4.148516655, 2.351485252, 3.527229309
+
+Delta time: 0.025123596
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.025123596
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000196, 0.000000038, -0.000000130
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025123596
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000196, 0.000000038, -0.000000130
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.025123596
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.175746441, -2.000000000, 1.917577982
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025123596
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.150622845, -2.000000000, 1.915065646
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.025123596
+   -  Velocity: -3.000000000, -0.500000000, -1.000000000
+   -  Position: 3.527225018, 2.087870598, -0.324257612
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025123596
+   -  Velocity: -3.000000000, -0.500000000, -1.000000000
+   -  Position: 3.451854229, 2.075308800, -0.349381208
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.025123596
+   -  Velocity: 1.000000000, -0.500000000, 1.000000000
+   -  Position: 2.824257851, 2.087871552, -0.175740480
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025123596
+   -  Velocity: 1.000000000, -0.500000000, 1.000000000
+   -  Position: 2.849381447, 2.075309753, -0.150616884
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.025123596
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.324254990, -0.648514271, 2.587871552
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.025123596
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.349378586, -0.698761463, 2.575309753
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.025123596
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 4.148516655, 2.351485252, 3.527229309
+-  End of collision stat:
+   -  Remaining time: 0.025123596
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 4.198763847, 2.301238060, 3.451858521
+
+Delta time: 0.023529053
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.023529053
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000196, 0.000000038, -0.000000130
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023529053
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000197, 0.000000038, -0.000000130
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.023529053
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.150622845, -2.000000000, 1.915065646
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023529053
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.127093792, -2.000000000, 1.912712693
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.023529053
+   -  Velocity: -3.000000000, -0.500000000, -1.000000000
+   -  Position: 3.451854229, 2.075308800, -0.349381208
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023529053
+   -  Velocity: -3.000000000, -0.500000000, -1.000000000
+   -  Position: 3.381267071, 2.063544273, -0.372910261
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.023529053
+   -  Velocity: 1.000000000, -0.500000000, 1.000000000
+   -  Position: 2.849381447, 2.075309753, -0.150616884
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023529053
+   -  Velocity: 1.000000000, -0.500000000, 1.000000000
+   -  Position: 2.872910500, 2.063545227, -0.127087831
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.023529053
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.349378586, -0.698761463, 2.575309753
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.023529053
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.372907639, -0.745819569, 2.563545227
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.023529053
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 4.198763847, 2.301238060, 3.451858521
+-  End of collision stat:
+   -  Remaining time: 0.023529053
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 4.245821953, 2.254179955, 3.381271362
+
+Delta time: 0.024005890
+Current object ID: 0
+-  Before collision stat:
+   -  Remaining time: 0.024005890
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000197, 0.000000038, -0.000000130
+-  Target object ID: 1
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 2, target's: 2
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 2, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 0
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 2
+      -  Axis: 1, object's: 0, target's: 0
+      -  Axis: 2, object's: 0, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Inside
+      -  Axis: 1, Collision type: Inside
+      -  Axis: 2, Collision type: Inside
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024005890
+   -  Velocity: 0.000000004, 0.000000006, 0.000000001
+   -  Position: 0.000000197, 0.000000038, -0.000000130
+Current object ID: 1
+-  Before collision stat:
+   -  Remaining time: 0.024005890
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.127093792, -2.000000000, 1.912712693
+-  Target object ID: 2
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 0, target's: 2
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024005890
+   -  Velocity: 1.000000000, 0.000000000, -0.099999905
+   -  Position: -3.103087902, -2.000000000, 1.910312057
+Current object ID: 2
+-  Before collision stat:
+   -  Remaining time: 0.024005890
+   -  Velocity: -3.000000000, -0.500000000, -1.000000000
+   -  Position: 3.381267071, 2.063544273, -0.372910261
+-  Target object ID: 3
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: Cross
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024005890
+   -  Velocity: -3.000000000, -0.500000000, -1.000000000
+   -  Position: 3.309249401, 2.051541328, -0.396916151
+Current object ID: 3
+-  Before collision stat:
+   -  Remaining time: 0.024005890
+   -  Velocity: 1.000000000, -0.500000000, 1.000000000
+   -  Position: 2.872910500, 2.063545227, -0.127087831
+-  Target object ID: 4
+   -  Selected border:
+      -  Axis: 0, object's: 0, target's: 2
+      -  Axis: 1, object's: 0, target's: 2
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: Cross
+      -  Axis: 2, Collision type: No
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024005890
+   -  Velocity: 1.000000000, -0.500000000, 1.000000000
+   -  Position: 2.896916389, 2.051542282, -0.103081942
+Current object ID: 4
+-  Before collision stat:
+   -  Remaining time: 0.024005890
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.372907639, -0.745819569, 2.563545227
+-  Target object ID: 5
+   -  Selected border:
+      -  Axis: 0, object's: 2, target's: 0
+      -  Axis: 1, object's: 2, target's: 0
+      -  Axis: 2, object's: 2, target's: 0
+   -  Collision result:
+      -  Axis: 0, Collision type: No
+      -  Axis: 1, Collision type: No
+      -  Axis: 2, Collision type: Cross
+   -  Not collide
+-  End of collision stat:
+   -  Remaining time: 0.024005890
+   -  Velocity: -1.000000000, -2.000000000, -0.500000000
+   -  Position: -1.396913528, -0.793831348, 2.551542282
+Current object ID: 5
+-  Before collision stat:
+   -  Remaining time: 0.024005890
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 4.245821953, 2.254179955, 3.381271362
+-  End of collision stat:
+   -  Remaining time: 0.024005890
+   -  Velocity: 2.000000000, -2.000000000, -3.000000000
+   -  Position: 4.293833733, 2.206168175, 3.309253693
+
+PS G:\Code_saves\Auswahlen\source>
