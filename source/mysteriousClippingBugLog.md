@@ -1,5 +1,5 @@
 # Terminal logging for mysterious clipping bug.
-The only session that this bug has been occur
+The only session that this bug has been occur. The object ID is 2 and 3 (green and red).
 
       -  Axis: 2, Collision type: Inside
    -  Not collide
