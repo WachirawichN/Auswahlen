@@ -232,7 +232,7 @@ float collision::collisionResolver(std::shared_ptr<object::objectBaseClass> obj,
     glm::vec3 tarVel = tar->getVelocity();
 
     // Step 1.
-    glm::vec3 travelTimes(0.0f);
+    std::vector<float> travelTimes;
     for (unsigned int axis : newlyAxis)
     {
         // Calculate the border of both object
@@ -252,20 +252,20 @@ float collision::collisionResolver(std::shared_ptr<object::objectBaseClass> obj,
         float tarBorder = tarBorders[tarMultiplier];
 
         float travelTime = timeToMove(objBorder, objVel[axis], tarBorder, tarVel[axis]);
-        travelTimes[axis] = travelTime;
+        travelTimes.push_back(travelTime);
     }
 
     // Step 2.
-    float pythaTime = mathExt::pythagoras(travelTimes);
+    float lowestTime = *std::min_element(travelTimes.begin(), travelTimes.end());
 
     // Step 3.
-    obj->move(fundamental::calculateDst(objVel, pythaTime));
-    tar->move(fundamental::calculateDst(tarVel, pythaTime));
+    obj->move(fundamental::calculateDst(objVel, lowestTime));
+    tar->move(fundamental::calculateDst(tarVel, lowestTime));
 
     // Step 4.
     glm::vec3 objDeltaVel(0.0f);
     glm::vec3 tarDeltaVel(0.0f);
-    std::cout << "      -  Pythagoras time: " << pythaTime << std::endl;
+    std::cout << "      -  Pythagoras time: " << lowestTime << std::endl;
     std::cout << "      -  Resolving collision" << std::endl;
     for (unsigned int axis : newlyAxis)
     {
@@ -285,5 +285,5 @@ float collision::collisionResolver(std::shared_ptr<object::objectBaseClass> obj,
     obj->changeVelocity(objDeltaVel);
     tar->changeVelocity(tarDeltaVel);
 
-    return pythaTime;
+    return lowestTime;
 }
