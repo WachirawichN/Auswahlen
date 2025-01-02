@@ -138,7 +138,7 @@ void simulation::updateSimulation(float deltaTime)
                 if (collideAxis == 3 && newlyCollideAxis.size() > 0)
                 {
                     std::cout << "   -  Collide" << std::endl;
-                    float usageTime = collision::collisionResolver(currentObject, targetObject, deltaTime, newlyCollideAxis, 0.999f);
+                    float usageTime = collision::collisionResolver(currentObject, targetObject, deltaTime, newlyCollideAxis);
                     currentObject->changeCollisionTime(-usageTime);
                     targetObject->changeCollisionTime(-usageTime);
 
