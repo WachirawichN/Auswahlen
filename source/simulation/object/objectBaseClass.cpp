@@ -16,8 +16,8 @@ glm::vec3 normalizeRotation(glm::vec3 objectRotation)
     return newRotation;
 }
 
-object::objectBaseClass::objectBaseClass(bool collision, bool anchored, float mass, glm::vec3 velocity, glm::vec3 position, glm::vec3 rotation, glm::vec3 scale)
-    : collision(collision), anchored(anchored), mass(mass), velocity(velocity), collisionTime(float(0.0f)), position(position), rotation(normalizeRotation(rotation)), scale(scale)
+object::objectBaseClass::objectBaseClass(bool collision, bool anchored, float mass, glm::vec3 velocity, glm::vec3 position, glm::vec3 rotation, glm::vec3 scale, glm::vec4 color)
+    : collision(collision), anchored(anchored), mass(mass), velocity(velocity), collisionTime(float(0.0f)), position(position), rotation(normalizeRotation(rotation)), scale(scale), color(color)
 {
 }
 
@@ -62,6 +62,11 @@ void object::objectBaseClass::rescale(glm::vec3 deltaScale)
     scale = deltaScale;
 }
 
+void object::objectBaseClass::setColor(glm::vec4 newColor)
+{
+    color = newColor;
+}
+
 float object::objectBaseClass::getMass() const
 {
     return mass;
@@ -86,4 +91,9 @@ glm::vec3 object::objectBaseClass::getRotation() const
 glm::vec3 object::objectBaseClass::getScale() const
 {
     return scale;
+}
+
+glm::vec4 object::objectBaseClass::getColor() const
+{
+    return color;
 }

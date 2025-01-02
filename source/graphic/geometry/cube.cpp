@@ -4,16 +4,16 @@ geometry::cube::cube(float width, float height, float depth)
     : width(width), height(height), depth(depth)
 {
     vertices = {
-    //                   Vertices                   ,   Texture coordinates
-        -(width / 2), -(height / 2), -(depth / 2),          0.0f, 0.0f, // Back bottom left
-         (width / 2), -(height / 2), -(depth / 2),          1.0f, 0.0f, // Back bottom right
-         (width / 2),  (height / 2), -(depth / 2),          1.0f, 1.0f, // Back top right
-        -(width / 2),  (height / 2), -(depth / 2),          0.0f, 1.0f, // Back top left
+    //                   Vertices
+        -(width / 2), -(height / 2), -(depth / 2),
+         (width / 2), -(height / 2), -(depth / 2),
+         (width / 2),  (height / 2), -(depth / 2),
+        -(width / 2),  (height / 2), -(depth / 2),
         
-        -(width / 2), -(height / 2),  (depth / 2),          0.0f, 0.0f,// Front bottom left
-         (width / 2), -(height / 2),  (depth / 2),          1.0f, 0.0f,// Front bottom right
-         (width / 2),  (height / 2),  (depth / 2),          1.0f, 1.0f,// Front top right
-        -(width / 2),  (height / 2),  (depth / 2),          0.0f, 1.0f,// Front top left
+        -(width / 2), -(height / 2),  (depth / 2),
+         (width / 2), -(height / 2),  (depth / 2),
+         (width / 2),  (height / 2),  (depth / 2),
+        -(width / 2),  (height / 2),  (depth / 2),
     };
     indices = {
         // Front

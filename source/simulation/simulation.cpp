@@ -22,6 +22,7 @@ void simulation::drawSimulation()
         geometry::shape* shapePtr = dynamic_cast<geometry::shape*>(currentObject.get());
         if (shapePtr) // Check if object is inheritance of shape class
         {
+            // Setting up all the vertices
             std::vector<float> vertices = shapePtr->getVertices();
             std::vector<unsigned int> indices = shapePtr->getIndices();
 
@@ -30,7 +31,6 @@ void simulation::drawSimulation()
             vertexBuffer vb(vertices.size(), vertices.data());
             vertexBufferLayout layout;
             layout.addLayout(3);
-            layout.addLayout(2);
             indexBuffer ib(indices.size(), indices.data());
             va.addBuffer(vb, layout);
 
@@ -46,6 +46,11 @@ void simulation::drawSimulation()
             }
 
             programShader.setUniformMat4fv("model", GL_FALSE, modelMatrix);
+
+            // Set color
+            glm::vec4 color = currentObject->getColor();
+            programShader.setUniform4f("uColor", color[0], color[1], color[2], color[3]);
+
             workspaceRenderer.drawScreen(va, ib, programShader);
 
             va.unbind();
