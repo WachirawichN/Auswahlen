@@ -90,7 +90,7 @@ void simulation::updateSimulation(float deltaTime)
         std::shared_ptr<object::objectBaseClass> currentObject = objects.at(currentPair.at(0));
         float objRemainingTime = currentObject->getCollisionTime();
 
-        std::cout << "-  Brfore collision stat:" << std::endl;
+        std::cout << "-  Before collision stat:" << std::endl;
         std::cout << "   -  Remaining time: " << objRemainingTime << std::endl;
         std::cout << "   -  Velocity: " << currentObject->getVelocity().x << ", " << currentObject->getVelocity().y << ", " << currentObject->getVelocity().z << std::endl;
         std::cout << "   -  Position: " << currentObject->getPosition().x << ", " << currentObject->getPosition().y << ", " << currentObject->getPosition().z << std::endl;

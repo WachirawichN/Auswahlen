@@ -73,17 +73,17 @@ std::vector<int> selectBorder(float objPos, float objVel, float tarPos, float ta
         {
             if (objVelDirection == MIDDLE)
             {
-                std::cout << "Obj velocity is middle" << std::endl;
+                //std::cout << "Obj velocity is middle" << std::endl;
                 return std::vector<int>({tarVelDirection, tarVelDirection});
             }
-            std::cout << "Obj velocity is not middle" << std::endl;
+            //std::cout << "Obj velocity is not middle" << std::endl;
             return std::vector<int>({objVelDirection, objVelDirection});
         }
 
         // Same direction
         if (objVelDirection != MIDDLE)
         {
-            std::cout << "None is middle: " << convertNegative(isObjFaster) << ", " << tarVelDirection << std::endl;
+            //std::cout << "None is middle: " << convertNegative(isObjFaster) << ", " << tarVelDirection << std::endl;
             return std::vector<int>({convertNegative(isObjFaster) * objVelDirection, convertNegative(isObjFaster) * objVelDirection});
         }
     }
@@ -94,23 +94,23 @@ std::vector<int> selectBorder(float objPos, float objVel, float tarPos, float ta
         {
             if (tarVelDirection == MIDDLE)
             {
-                std::cout << "Tar velocity is middle" << std::endl;
+                //std::cout << "Tar velocity is middle" << std::endl;
                 return std::vector<int>({objVelDirection, objVelDirection});
             }
-            std::cout << "Tar velocity is not middle" << std::endl;
+            //std::cout << "Tar velocity is not middle" << std::endl;
             return std::vector<int>({tarVelDirection, tarVelDirection});
         }
 
         // Same direction
         if (tarVelDirection != MIDDLE)
         {
-            std::cout << "None is middle: " << convertNegative(isObjFaster) << ", " << tarVelDirection << std::endl;
+            //std::cout << "None is middle: " << convertNegative(isObjFaster) << ", " << tarVelDirection << std::endl;
             return std::vector<int>({convertNegative(!isObjFaster) * tarVelDirection, convertNegative(!isObjFaster) * tarVelDirection});
         }
     }
 
     // Solid body
-    std::cout << "Solid body" << std::endl;
+    //std::cout << "Solid body" << std::endl;
     return std::vector<int>({objToTarSide, objToTarSide * -1});
 }
 
@@ -180,10 +180,11 @@ std::vector<collision::collisionType> collision::CCD(std::shared_ptr<object::obj
 
         // Check for NEWLY collision type
         float travelTime = timeToMove(objBorder, objVel[axis], tarBorder, tarVel[axis]);
-        if ((abs(deltaTime) > 0.0f && abs(deltaTime) > abs(travelTime)) || travelTime == 0.0f)
+        if (abs(deltaTime) > 0.0f && mathExt::roundToDec(abs(travelTime), 6) > 0.0f && abs(deltaTime) > abs(travelTime))
         {
             if (checkDirection(deltaTime) == checkDirection(travelTime))
             {
+                //std::cout << "Travel time: " << mathExt::roundToDec(travelTime, 6) << ", " << (abs(travelTime) > 0.0f) << std::endl;
                 collisionResults.push_back(collision::collisionType::NEWLY);
                 std::cout << "         -  Distance: " << tarBorder - objBorder << ", Velocity: " << objVel[axis] - tarVel[axis] << std::endl;
                 continue;
