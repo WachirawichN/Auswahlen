@@ -17,26 +17,12 @@ glm::vec3 calculateNewObjectVelocity3D(glm::vec3 aVelocity, float aMass, glm::ve
 float momentum::elasticCollision1D(std::shared_ptr<object::objectBaseClass> object, std::shared_ptr<object::objectBaseClass> target, unsigned int axis)
 {
     float objectVelocity = object->getVelocity()[axis];
+    if (object->isAnchored()) return objectVelocity;
     float objectMass = object->getMass();
-    if (object->isAnchored()) objectMass = 999999999;
 
     float targetVelocity = target->getVelocity()[axis];
-    float targetMass = target->getMass();
-    if (target->isAnchored()) targetMass = 999999999;
+    float targetMass = (!target->isAnchored()) ? target->getMass() : 999999999;
 
     float newObjVel = calculateAxisVelocity(objectVelocity, objectMass, targetVelocity, targetMass);
-    return newObjVel;
-}
-glm::vec3 momentum::elasticCollision3D(std::shared_ptr<object::objectBaseClass> object, std::shared_ptr<object::objectBaseClass> target)
-{
-    glm::vec3 objectVelocity = object->getVelocity();
-    float objectMass = object->getMass();
-    if (object->isAnchored()) objectMass = 999999999;
-
-    glm::vec3 targetVelocity = target->getVelocity();
-    float targetMass = target->getMass();
-    if (target->isAnchored()) targetMass = 999999999;
-
-    glm::vec3 newObjVel = calculateNewObjectVelocity3D(objectVelocity, objectMass, targetVelocity, targetMass);
     return newObjVel;
 }

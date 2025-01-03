@@ -1,16 +1,5 @@
 #include "collision.h"
 
-enum side {
-    LEFT = -1,
-    MIDDLE = 0,
-    RIGHT = 1
-};
-
-int convertNegative(bool input)
-{
-    return (input == 0) ? -1 : 1;
-}
-
 float timeToMove(float aPosition, float aVelocity, float bPosition, float bVelocity)
 {
     float totalVelocity = aVelocity - bVelocity;
@@ -36,82 +25,6 @@ bool isCross(std::vector<float> aBorders, std::vector<float> bBorders)
     bool negativeSide = ((bBorders[2] < aBorders[0]) && !(bBorders[0] < aBorders[0])) || (!(bBorders[2] < aBorders[0]) && (bBorders[0] < aBorders[0]));
 
     return (positiveSide || negativeSide);
-}
-side checkSide(float aPos, float bPos)
-{
-    float delta = aPos - bPos;
-    return (delta == 0.0f) ? MIDDLE : (delta > 0.0f) ? LEFT : RIGHT;
-}
-side checkDirection(float input)
-{
-    return (input == 0.0f) ? MIDDLE : (input > 0.0f) ? RIGHT : LEFT;
-}
-
-std::vector<float> extendBorder(float objPos, float objScale)
-{
-    // Return format: {-Axis, Origin, +Axis}
-    std::vector<float> borders;
-    borders.push_back(objPos - objScale / 2.0f);
-    borders.push_back(objPos);
-    borders.push_back(objPos + objScale / 2.0f);
-
-    return borders;
-}
-std::vector<int> selectBorder(float objPos, float objVel, float tarPos, float tarVel, bool tarInObj, bool objInTar, float timeMultiplier)
-{
-    // Function will return -1, 1 so its need to be +1 before use
-    int objToTarSide = checkSide(objPos, tarPos);
-    bool isObjFaster = abs(objVel) > abs(tarVel);
-    int objVelDirection = checkDirection(objVel * timeMultiplier);
-    int tarVelDirection = checkDirection(tarVel * timeMultiplier);
-
-    // Hollow body
-    if (objInTar)
-    {
-        // Opposite direction
-        if (objVelDirection != tarVelDirection)
-        {
-            if (objVelDirection == MIDDLE)
-            {
-                //std::cout << "Obj velocity is middle" << std::endl;
-                return std::vector<int>({tarVelDirection, tarVelDirection});
-            }
-            //std::cout << "Obj velocity is not middle" << std::endl;
-            return std::vector<int>({objVelDirection, objVelDirection});
-        }
-
-        // Same direction
-        if (objVelDirection != MIDDLE)
-        {
-            //std::cout << "None is middle: " << convertNegative(isObjFaster) << ", " << tarVelDirection << std::endl;
-            return std::vector<int>({convertNegative(isObjFaster) * objVelDirection, convertNegative(isObjFaster) * objVelDirection});
-        }
-    }
-    else if (tarInObj)
-    {
-        // Opposite direction
-        if (objVelDirection != tarVelDirection)
-        {
-            if (tarVelDirection == MIDDLE)
-            {
-                //std::cout << "Tar velocity is middle" << std::endl;
-                return std::vector<int>({objVelDirection, objVelDirection});
-            }
-            //std::cout << "Tar velocity is not middle" << std::endl;
-            return std::vector<int>({tarVelDirection, tarVelDirection});
-        }
-
-        // Same direction
-        if (tarVelDirection != MIDDLE)
-        {
-            //std::cout << "None is middle: " << convertNegative(isObjFaster) << ", " << tarVelDirection << std::endl;
-            return std::vector<int>({convertNegative(!isObjFaster) * tarVelDirection, convertNegative(!isObjFaster) * tarVelDirection});
-        }
-    }
-
-    // Solid body
-    //std::cout << "Solid body" << std::endl;
-    return std::vector<int>({objToTarSide, objToTarSide * -1});
 }
 
 std::vector<std::vector<unsigned int>> collision::collisionPairing(std::vector<std::shared_ptr<object::objectBaseClass>> objects)
@@ -161,8 +74,8 @@ std::vector<collision::collisionType> collision::CCD(std::shared_ptr<object::obj
     for (int axis = 0; axis < 3; axis++)
     {
         // Calculate the border of both object
-        std::vector<float> objBorders = extendBorder(objPos[axis], objScale[axis]);
-        std::vector<float> tarBorders = extendBorder(tarPos[axis], tarScale[axis]);
+        std::vector<float> objBorders = hitbox::cubeHitbox(objPos[axis], objScale[axis]);
+        std::vector<float> tarBorders = hitbox::cubeHitbox(tarPos[axis], tarScale[axis]);
 
         // Check if the object is inside each other or not
         bool tarInObj = isInside(objBorders, tarBorders);
@@ -170,7 +83,7 @@ std::vector<collision::collisionType> collision::CCD(std::shared_ptr<object::obj
 
 
         // Choose object border
-        std::vector<int> selectedBorder = selectBorder(objPos[axis], objVel[axis], tarPos[axis], tarVel[axis], tarInObj, objInTar, timeMultiplier);
+        std::vector<int> selectedBorder = hitbox::hitboxSide(objPos[axis], objVel[axis], tarPos[axis], tarVel[axis], tarInObj, objInTar, timeMultiplier);
         int objBorderIndex = selectedBorder[0] + 1;
         int tarBorderIndex = selectedBorder[1] + 1;
 
@@ -182,7 +95,7 @@ std::vector<collision::collisionType> collision::CCD(std::shared_ptr<object::obj
         float travelTime = timeToMove(objBorder, objVel[axis], tarBorder, tarVel[axis]);
         if (abs(deltaTime) > 0.0f && mathExt::roundToDec(abs(travelTime), 6) > 0.0f && abs(deltaTime) > abs(travelTime))
         {
-            if (checkDirection(deltaTime) == checkDirection(travelTime))
+            if (mathExt::direction(deltaTime) == mathExt::direction(travelTime))
             {
                 //std::cout << "Travel time: " << mathExt::roundToDec(travelTime, 6) << ", " << (abs(travelTime) > 0.0f) << std::endl;
                 collisionResults.push_back(collision::collisionType::NEWLY);
@@ -236,15 +149,15 @@ float collision::collisionResolver(std::shared_ptr<object::objectBaseClass> obj,
     for (unsigned int axis : newlyAxis)
     {
         // Calculate the border of both object
-        std::vector<float> objBorders = extendBorder(objPos[axis], objScale[axis]);
-        std::vector<float> tarBorders = extendBorder(tarPos[axis], tarScale[axis]);
+        std::vector<float> objBorders = hitbox::cubeHitbox(objPos[axis], objScale[axis]);
+        std::vector<float> tarBorders = hitbox::cubeHitbox(tarPos[axis], tarScale[axis]);
 
         // Check if the object is inside each other or not
         bool tarInObj = isInside(objBorders, tarBorders);
         bool objInTar = isInside(tarBorders, objBorders);
 
         // Choose object border
-        std::vector<int> selectedBorder = selectBorder(objPos[axis], objVel[axis], tarPos[axis], tarVel[axis], tarInObj, objInTar, timeMultiplier);
+        std::vector<int> selectedBorder = hitbox::hitboxSide(objPos[axis], objVel[axis], tarPos[axis], tarVel[axis], tarInObj, objInTar, timeMultiplier);
         int objMultiplier = selectedBorder[0] + 1;
         int tarMultiplier = selectedBorder[1] + 1;
 

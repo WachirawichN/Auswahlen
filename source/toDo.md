@@ -1,8 +1,11 @@
 # To do list
-List of feature that will be added in the future.
+List of feature that will be added in the future. Higher ranking is higher priority.
 
-- Object color (Done)
-- Dedicated sphere hitbox
-- Finish unbalance time to move function
-- Control for changing object position / scale / velocity mid simulation
-- Object transparency
+- Add parallelism.
+- Use Cmake instead of MSVC compiler.
+- Fix mysterious clipping bug.
+- Dedicated sphere hitbox.
+- Hitbox calculation for object that has been rotate.
+- Finish unbalance time to move function.
+- Control for changing object position / scale / velocity mid simulation.
+- Object transparency.

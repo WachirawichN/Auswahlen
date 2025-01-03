@@ -4,6 +4,7 @@
 #include "../object/sphere.h"
 #include "fundamental.h"
 #include "momentum.h"
+#include "hitbox.h"
 #include "../math/mathExt.h"
 
 #include <iostream>

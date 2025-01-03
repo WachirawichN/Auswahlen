@@ -4,13 +4,13 @@ geometry::pyramid::pyramid(float width, float height, float depth)
     : width(width), height(height), depth(depth)
 {
     vertices = {
-    //                   Vertices                   ,   Texture coordinates
-          0,           (height / 2),            0,          0.5f, 0.5f,// Tip
+    //                   Vertices                 
+          0,           (height / 2),            0,
 
-        -(width / 2), -(height / 2), -(depth / 2),          0.0f, 0.0f, // Back bottom left
-         (width / 2), -(height / 2), -(depth / 2),          1.0f, 0.0f, // Back bottom right
-         (width / 2), -(height / 2),  (depth / 2),          1.0f, 1.0f, // Front bottom right
-        -(width / 2), -(height / 2),  (depth / 2),          0.0f, 1.0f, // Front bottom left
+        -(width / 2), -(height / 2), -(depth / 2),
+         (width / 2), -(height / 2), -(depth / 2),
+         (width / 2), -(height / 2),  (depth / 2),
+        -(width / 2), -(height / 2),  (depth / 2),
     };
     indices = {
         // Base

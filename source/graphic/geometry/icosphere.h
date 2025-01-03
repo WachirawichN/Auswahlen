@@ -14,7 +14,7 @@ namespace geometry
             float radius;
             int subdivision;
         public:
-            icosphere(float radius, int subdivision = 1);
+            icosphere(float radius, unsigned int subdivision = 1);
             float getRadius() const;
     };
 }
