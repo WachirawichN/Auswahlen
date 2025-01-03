@@ -1,4 +1,4 @@
-#include "fundamental.h"
+#include "fundamental.cuh"
 
 glm::vec3 fundamental::calculateVel(glm::vec3 acceleration, float deltaTime)
 {

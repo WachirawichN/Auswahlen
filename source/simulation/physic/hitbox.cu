@@ -1,4 +1,4 @@
-#include "hitbox.h"
+#include "hitbox.cuh"
 
 std::vector<float> sphereHitbox(float position, float radius)
 {

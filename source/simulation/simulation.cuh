@@ -1,13 +1,13 @@
 #pragma once
 
-#include "object/objectBaseClass.h"
+#include "object/objectBaseClass.cuh"
 #include "object/sphere.h"
 #include "object/cube.h"
 
-#include "physic/fundamental.h"
-#include "physic/collision.h"
+#include "physic/fundamental.cuh"
+#include "physic/collision.cuh"
 
-#include "math/mathExt.h"
+#include "math/mathExt.cuh"
 
 #include "../graphic/graphic.h"
 #include "../graphic/geometry/shape.h"
@@ -22,6 +22,9 @@
 class simulation
 {
     private:
+        std::shared_ptr<object::objectBaseClass> simulationBox;
+        float gridSize;
+
         std::vector<std::shared_ptr<object::objectBaseClass>> objects;
 
         float gravity;
@@ -29,10 +32,12 @@ class simulation
         renderer workspaceRenderer;
         camera* mainCamera;
         shader programShader;
-
-        unsigned int gpuCoreCount;
     public:
-        simulation(camera* mainCamera, shader programShader, float gravity = -9.8f);
+        simulation(std::shared_ptr<object::objectBaseClass> simulationBox,
+                   float gridSize,
+                   camera* mainCamera,
+                   shader programShader,
+                   float gravity = -9.8f);
 
         void addObject(std::shared_ptr<object::objectBaseClass> newObject);
         void drawSimulation();

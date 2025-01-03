@@ -1,7 +1,7 @@
-#include "simulation.h"
+#include "simulation.cuh"
 
-simulation::simulation(camera* mainCamera, shader programShader, float gravity)
-    : mainCamera(mainCamera), programShader(programShader), gravity(gravity)
+simulation::simulation(std::shared_ptr<object::objectBaseClass> simulationBox, float gridSize, camera* mainCamera, shader programShader, float gravity)
+    : simulationBox(simulationBox), gridSize(gridSize), mainCamera(mainCamera), programShader(programShader), gravity(gravity)
 {
     programShader.setUniformMat4fv("projection", GL_FALSE, mainCamera->getProjection());
 }

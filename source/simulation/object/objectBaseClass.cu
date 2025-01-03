@@ -1,4 +1,4 @@
-#include "objectBaseClass.h"
+#include "objectBaseClass.cuh"
 
 #include <iostream>
 
@@ -21,11 +21,11 @@ object::objectBaseClass::objectBaseClass(bool collision, bool anchored, float ma
 {
 }
 
-bool object::objectBaseClass::canCollide()
+__host__ __device__ bool object::objectBaseClass::canCollide()
 {
     return collision;
 }
-bool object::objectBaseClass::isAnchored()
+__host__ __device__ bool object::objectBaseClass::isAnchored()
 {
     return anchored;
 }
@@ -39,25 +39,25 @@ void object::objectBaseClass::setAnchored(bool newValue)
     anchored = newValue;
 }
 
-void object::objectBaseClass::changeVelocity(glm::vec3 deltaVelocity)
+__host__ __device__ void object::objectBaseClass::changeVelocity(glm::vec3 deltaVelocity)
 {
     velocity += deltaVelocity;
 }
-void object::objectBaseClass::changeCollisionTime(float deltaTime)
+__host__ __device__ void object::objectBaseClass::changeCollisionTime(float deltaTime)
 {
     collisionTime += deltaTime;
 }
 
-void object::objectBaseClass::move(glm::vec3 distance)
+__host__ __device__ void object::objectBaseClass::move(glm::vec3 distance)
 {
     position += distance;
 }
-void object::objectBaseClass::rotate(glm::vec3 degree)
+__host__ __device__ void object::objectBaseClass::rotate(glm::vec3 degree)
 {
     rotation += degree;
     rotation = normalizeRotation(rotation); // Make the rotation be within 360 degree
 }
-void object::objectBaseClass::rescale(glm::vec3 deltaScale)
+__host__ __device__ void object::objectBaseClass::rescale(glm::vec3 deltaScale)
 {
     scale = deltaScale;
 }
@@ -67,28 +67,28 @@ void object::objectBaseClass::setColor(glm::vec4 newColor)
     color = newColor;
 }
 
-float object::objectBaseClass::getMass() const
+__host__ __device__ float object::objectBaseClass::getMass() const
 {
     return mass;
 }
-glm::vec3 object::objectBaseClass::getVelocity() const
+__host__ __device__ glm::vec3 object::objectBaseClass::getVelocity() const
 {
     return velocity;
 }
-float object::objectBaseClass::getCollisionTime() const
+__host__ __device__ float object::objectBaseClass::getCollisionTime() const
 {
     return collisionTime;
 }
 
-glm::vec3 object::objectBaseClass::getPosition() const
+__host__ __device__ glm::vec3 object::objectBaseClass::getPosition() const
 {
     return position;
 }
-glm::vec3 object::objectBaseClass::getRotation() const
+__host__ __device__ glm::vec3 object::objectBaseClass::getRotation() const
 {
     return rotation;
 }
-glm::vec3 object::objectBaseClass::getScale() const
+__host__ __device__ glm::vec3 object::objectBaseClass::getScale() const
 {
     return scale;
 }

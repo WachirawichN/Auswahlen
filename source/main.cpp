@@ -7,7 +7,7 @@
 #include "graphic/graphic.h"
 #include "graphic/geometry/geometry.h"
 
-#include "simulation/simulation.h"
+#include "simulation/simulation.cuh"
 
 #include "simulation/object/sphere.h"
 #include "simulation/object/cube.h"
@@ -175,13 +175,11 @@ int main()
         shader yeetShader("graphic/res/shader/3d.shader");
         yeetShader.bind();
 
-        simulation currentSimulation(&worldCamera, yeetShader, 0.0f);
-
-
         // Enclosure
         std::shared_ptr<object::cube> bigBlock(new object::cube(true, true, 1.0f, glm::vec3(0.0f), glm::vec3(0.0f), glm::vec3(0.0f), glm::vec3(10.0f), glm::vec4(0.62f, 0.66f, 0.74f, 1.0f)));
-        currentSimulation.addObject(bigBlock);
+        simulation currentSimulation(bigBlock, 1.0f, &worldCamera, yeetShader, 0.0f);
 
+        currentSimulation.addObject(bigBlock);
 
         // Border
         std::shared_ptr<object::cube> outline0(new object::cube(false, true, 1.0f, glm::vec3(0.0f), glm::vec3(0.0f, -5.0f, -5.0f), glm::vec3(0.0f), glm::vec3(10.0, 0.1, 0.1f), glm::vec4(0.7f, 0.5f, 1.0f, 1.0f)));
@@ -257,6 +255,7 @@ int main()
             {
                 std::cout << "Delta time: " << deltaTime << std::endl;
                 currentSimulation.updateSimulation(deltaTime);
+                std::cout << "Physic update time: " << currentFrame - glfwGetTime() << std::endl;
             }
             currentSimulation.drawSimulation();
 

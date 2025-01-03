@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "../math/mathExt.h"
+#include "../math/mathExt.cuh"
 
 namespace hitbox
 {

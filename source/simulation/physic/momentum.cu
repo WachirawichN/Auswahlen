@@ -1,4 +1,4 @@
-#include "momentum.h"
+#include "momentum.cuh"
 
 float calculateAxisVelocity(float aAxisVelocity, float aMass, float bAxisVelocity, float bMass)
 {
@@ -14,7 +14,7 @@ glm::vec3 calculateNewObjectVelocity3D(glm::vec3 aVelocity, float aMass, glm::ve
     return glm::vec3(velocity[0], velocity[1], velocity[2]);
 }
 
-float momentum::elasticCollision1D(std::shared_ptr<object::objectBaseClass> object, std::shared_ptr<object::objectBaseClass> target, unsigned int axis)
+__device__ float momentum::elasticCollision1D(std::shared_ptr<object::objectBaseClass> object, std::shared_ptr<object::objectBaseClass> target, unsigned int axis)
 {
     float objectVelocity = object->getVelocity()[axis];
     if (object->isAnchored()) return objectVelocity;

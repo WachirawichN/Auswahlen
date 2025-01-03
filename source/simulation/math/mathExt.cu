@@ -1,4 +1,4 @@
-#include "mathExt.h"
+#include "mathExt.cuh"
 
 float mathExt::pythagoras(glm::vec3 input)
 {
