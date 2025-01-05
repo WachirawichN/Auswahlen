@@ -66,5 +66,6 @@
         "xstring": "cpp",
         "xtr1common": "cpp",
         "xutility": "cpp"
-    }
+    },
+    "cmake.sourceDirectory": "G:/Code_saves/Auswahlen"
 }

@@ -178,8 +178,9 @@ float collision::collisionResolver(std::shared_ptr<object::objectBaseClass> obj,
     // Step 4.
     glm::vec3 objDeltaVel(0.0f);
     glm::vec3 tarDeltaVel(0.0f);
-    std::cout << "      -  Pythagoras time: " << lowestTime << std::endl;
+    std::cout << "      -  Lowest time: " << lowestTime << std::endl;
     std::cout << "      -  Resolving collision" << std::endl;
+    int i = 0;
     for (unsigned int axis : newlyAxis)
     {
         float objNewVel = momentum::elasticCollision1D(obj, tar, axis);
@@ -189,11 +190,12 @@ float collision::collisionResolver(std::shared_ptr<object::objectBaseClass> obj,
         objDeltaVel[axis] = objNewVel - objVel[axis];
 
         std::cout << "         -  Axis: " << axis << std::endl;
-        std::cout << "            -  Axis travel time: " << travelTimes[axis] << std::endl;
+        std::cout << "            -  Axis travel time: " << travelTimes[i] << std::endl;
         std::cout << "            -  Object original axis vel: " << objVel[axis] << ", new axis vel: " << objNewVel << std::endl;
         std::cout << "            -  Target original axis vel: " << tarVel[axis] << ", new axis vel: " << tarNewVel << std::endl;
         std::cout << "            -  Object original axis pos: " << objPos[axis] << ", new axis pos: " << obj->getPosition()[axis] << std::endl;
         std::cout << "            -  Target original axis pos: " << tarPos[axis] << ", new axis pos: " << tar->getPosition()[axis] << std::endl;
+        i++;
     }
     obj->changeVelocity(objDeltaVel);
     tar->changeVelocity(tarDeltaVel);

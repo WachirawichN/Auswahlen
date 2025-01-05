@@ -2,7 +2,6 @@
 List of feature that will be added in the future. Higher ranking is higher priority.
 
 - Add parallelism.
-- Use Cmake instead of MSVC compiler.
 - Fix mysterious clipping bug.
 - Dedicated sphere hitbox.
 - Hitbox calculation for object that has been rotate.
