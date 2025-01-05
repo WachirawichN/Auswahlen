@@ -175,7 +175,7 @@ int main()
         shader yeetShader("../graphic/res/shader/3d.shader");
         yeetShader.bind();
 
-        simulation currentSimulation(&worldCamera, yeetShader, 0.0f);
+        simulation currentSimulation(&worldCamera, yeetShader, -9.8f);
 
 
         // Enclosure
