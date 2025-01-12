@@ -172,7 +172,7 @@ int main()
     // Create object, shader, variable, blah blah blah here
     {
         // Shader program
-        shader yeetShader("../graphic/res/shader/3d.shader");
+        shader yeetShader("../graphic/res/3d.shader");
         yeetShader.bind();
 
         simulation currentSimulation(&worldCamera, yeetShader, -9.8f);
@@ -192,7 +192,7 @@ int main()
         currentSimulation.addObject(physBlock2);
         std::shared_ptr<object::cube> physBlock3(new object::cube(true, false, 1.0f, glm::vec3(3.0f, 2.0f, -1.0f), glm::vec3(-2.0f, -2.0f, 4.0f), glm::vec3(0.0f), glm::vec3(1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)));
         currentSimulation.addObject(physBlock3);
-        std::shared_ptr<object::cube> physBlock4(new object::cube(true, false, 1.0f, glm::vec3(1.0f, -2.0f, -3.0f), glm::vec3(3.0f, -4.0f, -3.0f), glm::vec3(0.0f), glm::vec3(1.0f), glm::vec4(0.0f, 0.0f, 0.0f, 1.0f)));
+        std::shared_ptr<object::cube> physBlock4(new object::cube(true, false, 1.0f, glm::vec3(1.0f, -2.0f, -3.0f), glm::vec3(3.0f, -4.0f, -3.0f), glm::vec3(0.0f), glm::vec3(1.0f), glm::vec4(0.75f, 0.75f, 0.75f, 1.0f)));
         currentSimulation.addObject(physBlock4);
         
         std::shared_ptr<object::sphere> physBall(new object::sphere(1, true, false, 1.0f, glm::vec3(0.0f, 3.0f, -4.0f), glm::vec3(0.0f, 2.0f, 0.0f), glm::vec3(0.0f), glm::vec3(1.0f), glm::vec4(1.0f, 0.0f, 1.0f, 1.0f)));

@@ -4,6 +4,8 @@
 A physic engine powered by CUDA. Focus on simulating simulation that benefit from parallel computing, for example fluid simulation, aerodynamic simulation, etc.
 
 ## Changelog
+### v.0.1.1
+- Fix bug that sometime CMake will not copy over the shader file.
 ### v.0.1.0
 - Add a working simulation with
     1. Rendering system.

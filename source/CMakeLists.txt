@@ -47,7 +47,7 @@ target_link_libraries(Auswahlen PUBLIC geometry)
 # Copy shader file into build directory
 set(SHADER_DIR "${CMAKE_SOURCE_DIR}/source/graphic/res/shader")
 set(SHADER_FILE "${SHADER_DIR}/3d.shader")
-set(SHADER_OUT_DIR "$<TARGET_FILE_DIR:${PROJECT_NAME}>/../graphic/res/shader")
+set(SHADER_OUT_DIR "$<TARGET_FILE_DIR:${PROJECT_NAME}>/../graphic/res/3d.shader")
 add_custom_command(
     TARGET ${PROJECT_NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy ${SHADER_FILE} ${SHADER_OUT_DIR}
