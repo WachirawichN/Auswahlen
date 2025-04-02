@@ -4,6 +4,8 @@
 ### Object clipping
 - Object clipping, no information about this has been found yet but has been occur before.
     - Status: Not fix. No information about it.
+    - May cause by object collide with two different object at the same frame, but using a wrong order of checking collision maybe.
+    - Have higher tendency to occure when running at lower FPS.
 - Object clipping when having high velocity.
     - Status: Not fix.
     - When object travel at high velocity the travel time might become very low to the point that it got round to 0.
