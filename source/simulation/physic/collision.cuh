@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../object/objectBaseClass.cuh"
-#include "../object/sphere.h"
+#include "../object/sphere.cuh"
 #include "fundamental.cuh"
 #include "momentum.cuh"
 #include "hitbox.cuh"

@@ -1,6 +1,7 @@
 #include "dependencies/GLEW/include/GL/glew.h"
 #include "dependencies/GLFW/glfw3.h"
 
+#define GLM_FORCE_CUDA
 #include "dependencies/GLM/glm.hpp"
 #include "dependencies/GLM/ext.hpp"
 
@@ -9,8 +10,8 @@
 
 #include "simulation/simulation.cuh"
 
-#include "simulation/object/sphere.h"
-#include "simulation/object/cube.h"
+#include "simulation/object/sphere.cuh"
+#include "simulation/object/cube.cuh"
 
 #include <iostream>
 #include <iomanip>
@@ -175,13 +176,9 @@ int main()
         shader yeetShader("../graphic/res/3d.shader");
         yeetShader.bind();
 
-        simulation currentSimulation(&worldCamera, yeetShader, -9.8f);
-
-
         // Enclosure
         std::shared_ptr<object::cube> bigBlock(new object::cube(true, true, 1.0f, glm::vec3(0.0f), glm::vec3(0.0f), glm::vec3(0.0f), glm::vec3(10.0f), glm::vec4(0.62f, 0.66f, 0.74f, 1.0f)));
         simulation currentSimulation(bigBlock, 1.0f, &worldCamera, yeetShader, 0.0f);
-
         currentSimulation.addObject(bigBlock);
 
 

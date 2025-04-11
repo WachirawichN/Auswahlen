@@ -1,4 +1,4 @@
 add_library(
     object
-    objectBaseClass.cpp
+    objectBaseClass.cu
 )

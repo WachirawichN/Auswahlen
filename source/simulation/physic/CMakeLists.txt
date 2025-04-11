@@ -1,7 +1,7 @@
 add_library(
     physic
-    collision.cpp
-    fundamental.cpp
-    hitbox.cpp
-    momentum.cpp
+    collision.cu
+    fundamental.cu
+    hitbox.cu
+    momentum.cu
 )

@@ -4,5 +4,5 @@ add_subdirectory(physic)
 
 add_library(
     simulation
-    simulation.cpp
+    simulation.cu
 )

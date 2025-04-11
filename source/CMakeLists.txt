@@ -21,7 +21,7 @@ set_target_properties(glfw3 PROPERTIES
 
 
 
-add_executable(Auswahlen main.cpp)
+add_executable(Auswahlen main.cu)
 
 find_package(OpenGL REQUIRED)
 target_link_libraries(Auswahlen PUBLIC OpenGL::GL)

@@ -1,7 +1,7 @@
 # To do list
 List of feature that will be added in the future. Higher ranking = higher priority.
 
-- Add parallelism.
+- Add parallelism. (Release v.1.0.0)
     - Make the homemade linear algebra library fully run on CUDA.
     - Completely move from GLM to homemade linear algebra library.
     - CUDA cannot run GLM on the GPU.
