@@ -1,4 +1,4 @@
-#include "../../include/utility.cuh"
+#include <GLC/utility.cuh>
 
 namespace GLC
 {

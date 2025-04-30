@@ -1,6 +1,6 @@
-#include "pyramid.h"
+#include "geometry/pyramid.cuh"
 
-geometry::pyramid::pyramid(float width, float height, float depth)
+__host__ geometry::pyramid::pyramid(float width, float height, float depth)
     : width(width), height(height), depth(depth)
 {
     vertices = {

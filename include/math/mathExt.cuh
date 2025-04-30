@@ -1,6 +1,8 @@
 #pragma once
 
-#include "../../dependencies/GLM/glm.hpp"
+#include "GLC/matrix.cuh"
+#include "GLC/vector.cuh"
+#include "GLC/utility.cuh"
 
 #include <cmath>
 #include <vector>
@@ -14,7 +16,7 @@ namespace mathExt
     };
 
     // Basic math
-    float pythagoras(glm::vec3 input);
+    float pythagoras(GLC::vec3 input);
     float roundToDec(float input, unsigned int decimal);
 
     // Positioning

@@ -1,5 +1,5 @@
-#include "renderer.h"
-#include "indexBuffer.h"
+#include "graphic/renderer.h"
+#include "graphic/indexBuffer.h"
 
 indexBuffer::indexBuffer(unsigned int count, const void* data)
     : totalIndex(count)

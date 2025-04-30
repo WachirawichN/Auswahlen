@@ -1,4 +1,4 @@
-#include "texture.h"
+#include "graphic/texture.h"
 
 texture::texture(const std::string& filePath)
     : textureID(0), filePath(filePath), rawData(nullptr), width(0), height(0), bpp(0)

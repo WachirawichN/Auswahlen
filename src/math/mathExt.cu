@@ -1,8 +1,8 @@
-#include "mathExt.cuh"
+#include "math/mathExt.cuh"
 
-float mathExt::pythagoras(glm::vec3 input)
+float mathExt::pythagoras(GLC::vec3 input)
 {
-    return sqrt(pow(input.x, 2) + pow(input.y, 2) + pow(input.z, 2));
+    return sqrt(pow(input[0], 2) + pow(input[1], 2) + pow(input[2], 2));
 }
 float mathExt::roundToDec(float input, unsigned int decimal)
 {

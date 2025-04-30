@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cuda_runtime.h>
+
 #include "renderer.h"
 #include "vertexArray.h"
 #include "vertexBuffer.h"

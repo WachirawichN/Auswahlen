@@ -1,20 +1,22 @@
-#include "dependencies/GLEW/include/GL/glew.h"
-#include "dependencies/GLFW/glfw3.h"
+#include <cuda_runtime.h>
+#include <iostream>
+#include <iomanip>
 
-#define GLM_FORCE_CUDA
-#include "dependencies/GLM/glm.hpp"
-#include "dependencies/GLM/ext.hpp"
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
+#include <GLC/matrix.cuh>
+#include <GLC/vector.cuh>
+#include <GLC/utility.cuh>
 
 #include "graphic/graphic.h"
-#include "graphic/geometry/geometry.h"
+#include "geometry/geometry.cuh"
 
 #include "simulation/simulation.cuh"
 
-#include "simulation/object/sphere.cuh"
-#include "simulation/object/cube.cuh"
+#include "object/sphere.cuh"
+#include "object/cube.cuh"
 
-#include <iostream>
-#include <iomanip>
 
 // OpenGL Logging
 void GLAPIENTRY MessageCallback(GLenum source,
@@ -44,9 +46,9 @@ float manualDeltaTime = 0.0f;
 float deltaTimeStep = 0.0126f;
 
 // Camera
-glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 5.0f);
+GLC::vec3 cameraPos = GLC::vec3(0.0f, 0.0f, 5.0f);
 float cameraSpeed = 50.0f;
-camera worldCamera(cameraPos, glm::vec3(0.0f, 1.0f, 0.0f), 90.0f, (float)16/(float)9, 0.001f, 100.0f);
+camera worldCamera(cameraPos, GLC::vec3(0.0f, 1.0f, 0.0f), 90.0f, (float)16/(float)9, 0.001f, 100.0f);
 
 // Mouse input
 float sensitivity = 0.1f;
@@ -157,11 +159,11 @@ int main()
     // Background color
     glClearColor(0.0f, 0.02f, 0.1f, 1.0f);
     
-    // Initiate GLEW
-    if (glewInit() != GLEW_OK)
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
-        std::cout << "Fail to initiate GLEW." << std::endl;
-    }
+        std::cout << "Failed to initialize GLAD" << std::endl;
+        return -1;
+    }  
 
     // Getting error message
     //glEnable(GL_DEBUG_OUTPUT);
@@ -177,52 +179,52 @@ int main()
         yeetShader.bind();
 
         // Enclosure
-        std::shared_ptr<object::cube> bigBlock(new object::cube(true, true, 1.0f, glm::vec3(0.0f), glm::vec3(0.0f), glm::vec3(0.0f), glm::vec3(10.0f), glm::vec4(0.62f, 0.66f, 0.74f, 1.0f)));
+        std::shared_ptr<object::cube> bigBlock(new object::cube(true, true, 1.0f, GLC::vec3(0.0f), GLC::vec3(0.0f), GLC::vec3(0.0f), GLC::vec3(10.0f), GLC::vec4(0.62f, 0.66f, 0.74f, 1.0f)));
         simulation currentSimulation(bigBlock, 1.0f, &worldCamera, yeetShader, 0.0f);
         currentSimulation.addObject(bigBlock);
 
 
         // Physic onject
-        std::shared_ptr<object::cube> physBlock0(new object::cube(true, false, 1.0f, glm::vec3(1.0f, 0.5f, 0.5f), glm::vec3(-3.5f, -1.5f, 0.0f), glm::vec3(0.0f), glm::vec3(1.0f), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f)));
+        std::shared_ptr<object::cube> physBlock0(new object::cube(true, false, 1.0f, GLC::vec3(1.0f, 0.5f, 0.5f), GLC::vec3(-3.5f, -1.5f, 0.0f), GLC::vec3(0.0f), GLC::vec3(1.0f), GLC::vec4(1.0f, 1.0f, 1.0f, 1.0f)));
         currentSimulation.addObject(physBlock0);
-        std::shared_ptr<object::cube> physBlock1(new object::cube(true, false, 1.0f, glm::vec3(1.0f, 0.5f, 1.0f), glm::vec3(-1.0f, -1.5f, -1.5f), glm::vec3(0.0f), glm::vec3(1.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f)));
+        std::shared_ptr<object::cube> physBlock1(new object::cube(true, false, 1.0f, GLC::vec3(1.0f, 0.5f, 1.0f), GLC::vec3(-1.0f, -1.5f, -1.5f), GLC::vec3(0.0f), GLC::vec3(1.0f), GLC::vec4(1.0f, 0.0f, 0.0f, 1.0f)));
         currentSimulation.addObject(physBlock1);
-        std::shared_ptr<object::cube> physBlock2(new object::cube(true, false, 1.0f, glm::vec3(-2.0f, 0.0f, 0.1f), glm::vec3(2.5f, 0.0f, 0.0f), glm::vec3(0.0f), glm::vec3(1.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f)));
+        std::shared_ptr<object::cube> physBlock2(new object::cube(true, false, 1.0f, GLC::vec3(-2.0f, 0.0f, 0.1f), GLC::vec3(2.5f, 0.0f, 0.0f), GLC::vec3(0.0f), GLC::vec3(1.0f), GLC::vec4(0.0f, 1.0f, 0.0f, 1.0f)));
         currentSimulation.addObject(physBlock2);
-        std::shared_ptr<object::cube> physBlock3(new object::cube(true, false, 1.0f, glm::vec3(3.0f, 2.0f, -1.0f), glm::vec3(-2.0f, -2.0f, 4.0f), glm::vec3(0.0f), glm::vec3(1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)));
+        std::shared_ptr<object::cube> physBlock3(new object::cube(true, false, 1.0f, GLC::vec3(3.0f, 2.0f, -1.0f), GLC::vec3(-2.0f, -2.0f, 4.0f), GLC::vec3(0.0f), GLC::vec3(1.0f), GLC::vec4(0.0f, 0.0f, 1.0f, 1.0f)));
         currentSimulation.addObject(physBlock3);
-        std::shared_ptr<object::cube> physBlock4(new object::cube(true, false, 1.0f, glm::vec3(1.0f, -2.0f, -3.0f), glm::vec3(3.0f, -4.0f, -3.0f), glm::vec3(0.0f), glm::vec3(1.0f), glm::vec4(0.75f, 0.75f, 0.75f, 1.0f)));
+        std::shared_ptr<object::cube> physBlock4(new object::cube(true, false, 1.0f, GLC::vec3(1.0f, -2.0f, -3.0f), GLC::vec3(3.0f, -4.0f, -3.0f), GLC::vec3(0.0f), GLC::vec3(1.0f), GLC::vec4(0.75f, 0.75f, 0.75f, 1.0f)));
         currentSimulation.addObject(physBlock4);
         
-        std::shared_ptr<object::sphere> physBall(new object::sphere(1, true, false, 1.0f, glm::vec3(0.0f, 3.0f, -4.0f), glm::vec3(0.0f, 2.0f, 0.0f), glm::vec3(0.0f), glm::vec3(1.0f), glm::vec4(1.0f, 0.0f, 1.0f, 1.0f)));
+        std::shared_ptr<object::sphere> physBall(new object::sphere(1, true, false, 1.0f, GLC::vec3(0.0f, 3.0f, -4.0f), GLC::vec3(0.0f, 2.0f, 0.0f), GLC::vec3(0.0f), GLC::vec3(1.0f), GLC::vec4(1.0f, 0.0f, 1.0f, 1.0f)));
         currentSimulation.addObject(physBall);
 
         // Border
-        std::shared_ptr<object::cube> outline0(new object::cube(false, true, 1.0f, glm::vec3(0.0f), glm::vec3(0.0f, -5.0f, -5.0f), glm::vec3(0.0f), glm::vec3(10.0, 0.1, 0.1f), glm::vec4(0.7f, 0.5f, 1.0f, 1.0f)));
+        std::shared_ptr<object::cube> outline0(new object::cube(false, true, 1.0f, GLC::vec3(0.0f), GLC::vec3(0.0f, -5.0f, -5.0f), GLC::vec3(0.0f), GLC::vec3(10.0, 0.1, 0.1f), GLC::vec4(0.7f, 0.5f, 1.0f, 1.0f)));
         currentSimulation.addObject(outline0);
-        std::shared_ptr<object::cube> outline1(new object::cube(false, true, 1.0f, glm::vec3(0.0f), glm::vec3(0.0f, -5.0f, 5.0f), glm::vec3(0.0f), glm::vec3(10.0, 0.1, 0.1f), glm::vec4(0.7f, 0.5f, 1.0f, 1.0f)));
+        std::shared_ptr<object::cube> outline1(new object::cube(false, true, 1.0f, GLC::vec3(0.0f), GLC::vec3(0.0f, -5.0f, 5.0f), GLC::vec3(0.0f), GLC::vec3(10.0, 0.1, 0.1f), GLC::vec4(0.7f, 0.5f, 1.0f, 1.0f)));
         currentSimulation.addObject(outline1);
-        std::shared_ptr<object::cube> outline2(new object::cube(false, true, 1.0f, glm::vec3(0.0f), glm::vec3(-5.0f, -5.0f, 0.0f), glm::vec3(0.0f), glm::vec3(0.1, 0.1, 10.0f), glm::vec4(0.7f, 0.5f, 1.0f, 1.0f)));
+        std::shared_ptr<object::cube> outline2(new object::cube(false, true, 1.0f, GLC::vec3(0.0f), GLC::vec3(-5.0f, -5.0f, 0.0f), GLC::vec3(0.0f), GLC::vec3(0.1, 0.1, 10.0f), GLC::vec4(0.7f, 0.5f, 1.0f, 1.0f)));
         currentSimulation.addObject(outline2);
-        std::shared_ptr<object::cube> outline3(new object::cube(false, true, 1.0f, glm::vec3(0.0f), glm::vec3(5.0f, -5.0f, 0.0f), glm::vec3(0.0f), glm::vec3(0.1, 0.1, 10.0f), glm::vec4(0.7f, 0.5f, 1.0f, 1.0f)));
+        std::shared_ptr<object::cube> outline3(new object::cube(false, true, 1.0f, GLC::vec3(0.0f), GLC::vec3(5.0f, -5.0f, 0.0f), GLC::vec3(0.0f), GLC::vec3(0.1, 0.1, 10.0f), GLC::vec4(0.7f, 0.5f, 1.0f, 1.0f)));
         currentSimulation.addObject(outline3);
 
-        std::shared_ptr<object::cube> outline4(new object::cube(false, true, 1.0f, glm::vec3(0.0f), glm::vec3(0.0f, 5.0f, -5.0f), glm::vec3(0.0f), glm::vec3(10.0, 0.1, 0.1f), glm::vec4(0.7f, 0.5f, 1.0f, 1.0f)));
+        std::shared_ptr<object::cube> outline4(new object::cube(false, true, 1.0f, GLC::vec3(0.0f), GLC::vec3(0.0f, 5.0f, -5.0f), GLC::vec3(0.0f), GLC::vec3(10.0, 0.1, 0.1f), GLC::vec4(0.7f, 0.5f, 1.0f, 1.0f)));
         currentSimulation.addObject(outline4);
-        std::shared_ptr<object::cube> outline5(new object::cube(false, true, 1.0f, glm::vec3(0.0f), glm::vec3(0.0f, 5.0f, 5.0f), glm::vec3(0.0f), glm::vec3(10.0, 0.1, 0.1f), glm::vec4(0.7f, 0.5f, 1.0f, 1.0f)));
+        std::shared_ptr<object::cube> outline5(new object::cube(false, true, 1.0f, GLC::vec3(0.0f), GLC::vec3(0.0f, 5.0f, 5.0f), GLC::vec3(0.0f), GLC::vec3(10.0, 0.1, 0.1f), GLC::vec4(0.7f, 0.5f, 1.0f, 1.0f)));
         currentSimulation.addObject(outline5);
-        std::shared_ptr<object::cube> outline6(new object::cube(false, true, 1.0f, glm::vec3(0.0f), glm::vec3(-5.0f, 5.0f, 0.0f), glm::vec3(0.0f), glm::vec3(0.1, 0.1, 10.0f), glm::vec4(0.7f, 0.5f, 1.0f, 1.0f)));
+        std::shared_ptr<object::cube> outline6(new object::cube(false, true, 1.0f, GLC::vec3(0.0f), GLC::vec3(-5.0f, 5.0f, 0.0f), GLC::vec3(0.0f), GLC::vec3(0.1, 0.1, 10.0f), GLC::vec4(0.7f, 0.5f, 1.0f, 1.0f)));
         currentSimulation.addObject(outline6);
-        std::shared_ptr<object::cube> outline7(new object::cube(false, true, 1.0f, glm::vec3(0.0f), glm::vec3(5.0f, 5.0f, 0.0f), glm::vec3(0.0f), glm::vec3(0.1, 0.1, 10.0f), glm::vec4(0.7f, 0.5f, 1.0f, 1.0f)));
+        std::shared_ptr<object::cube> outline7(new object::cube(false, true, 1.0f, GLC::vec3(0.0f), GLC::vec3(5.0f, 5.0f, 0.0f), GLC::vec3(0.0f), GLC::vec3(0.1, 0.1, 10.0f), GLC::vec4(0.7f, 0.5f, 1.0f, 1.0f)));
         currentSimulation.addObject(outline7);
 
-        std::shared_ptr<object::cube> outline8(new object::cube(false, true, 1.0f, glm::vec3(0.0f), glm::vec3(-5.0f, 0.0f, -5.0f), glm::vec3(0.0f), glm::vec3(0.1, 10.0, 0.1f), glm::vec4(0.7f, 0.5f, 1.0f, 1.0f)));
+        std::shared_ptr<object::cube> outline8(new object::cube(false, true, 1.0f, GLC::vec3(0.0f), GLC::vec3(-5.0f, 0.0f, -5.0f), GLC::vec3(0.0f), GLC::vec3(0.1, 10.0, 0.1f), GLC::vec4(0.7f, 0.5f, 1.0f, 1.0f)));
         currentSimulation.addObject(outline8);
-        std::shared_ptr<object::cube> outline9(new object::cube(false, true, 1.0f, glm::vec3(0.0f), glm::vec3(-5.0f, 0.0f, 5.0f), glm::vec3(0.0f), glm::vec3(0.1, 10.0, 0.1f), glm::vec4(0.7f, 0.5f, 1.0f, 1.0f)));
+        std::shared_ptr<object::cube> outline9(new object::cube(false, true, 1.0f, GLC::vec3(0.0f), GLC::vec3(-5.0f, 0.0f, 5.0f), GLC::vec3(0.0f), GLC::vec3(0.1, 10.0, 0.1f), GLC::vec4(0.7f, 0.5f, 1.0f, 1.0f)));
         currentSimulation.addObject(outline9);
-        std::shared_ptr<object::cube> outline10(new object::cube(false, true, 1.0f, glm::vec3(0.0f), glm::vec3(5.0f, 0.0f, -5.0f), glm::vec3(0.0f), glm::vec3(0.1, 10.0, 0.1f), glm::vec4(0.7f, 0.5f, 1.0f, 1.0f)));
+        std::shared_ptr<object::cube> outline10(new object::cube(false, true, 1.0f, GLC::vec3(0.0f), GLC::vec3(5.0f, 0.0f, -5.0f), GLC::vec3(0.0f), GLC::vec3(0.1, 10.0, 0.1f), GLC::vec4(0.7f, 0.5f, 1.0f, 1.0f)));
         currentSimulation.addObject(outline10);
-        std::shared_ptr<object::cube> outline11(new object::cube(false, true, 1.0f, glm::vec3(0.0f), glm::vec3(5.0f, 0.0f, 5.0f), glm::vec3(0.0f), glm::vec3(0.1, 10.0, 0.1f), glm::vec4(0.7f, 0.5f, 1.0f, 1.0f)));
+        std::shared_ptr<object::cube> outline11(new object::cube(false, true, 1.0f, GLC::vec3(0.0f), GLC::vec3(5.0f, 0.0f, 5.0f), GLC::vec3(0.0f), GLC::vec3(0.1, 10.0, 0.1f), GLC::vec4(0.7f, 0.5f, 1.0f, 1.0f)));
         currentSimulation.addObject(outline11);
 
 

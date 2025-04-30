@@ -3,9 +3,11 @@
 #include <cmath>
 #include <type_traits>
 #include <concepts>
+#include <numbers>
+#include <math_constants.h>
 
-#include "matrix.cuh"
-#include "vector.cuh"
+#include <GLC/matrix.cuh>
+#include <GLC/vector.cuh>
 
 namespace GLC
 {
@@ -63,6 +65,12 @@ namespace GLC
         }
         return out;
     }
+    /**
+     * @brief Turn degree into radians.
+     * @param degree Degree we want to convert to radians.
+     * @return Degree that has been turned into radians.
+     */
+    __host__ __device__ float radians(float degree);
 
     /*------------------------------------------------------------
         Graphic funtions

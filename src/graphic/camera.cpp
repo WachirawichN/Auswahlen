@@ -1,21 +1,21 @@
-#include "camera.h"
+#include "graphic/camera.h"
 
-camera::camera(glm::vec3 position, glm::vec3 up,
+camera::camera(GLC::vec3 position, GLC::vec3 up,
                float fov, float aspectRatio, float near, float far)
-    :position(position), front(glm::vec3(0.0f, 0.0f, -1.0f)), up(up),
+    :position(position), front(GLC::vec3(0.0f, 0.0f, -1.0f)), up(up),
      fov(fov), aspectRatio(aspectRatio), near(near), far(far)
 {
-    view = glm::lookAt(position, position + front, up);
-    projection = glm::perspective(fov, aspectRatio, near, far);
+    view = GLC::lookAt(position, position + front, up);
+    projection = GLC::perspective(fov, aspectRatio, near, far);
 }
 
 
-glm::mat4 camera::getView() const
+GLC::mat4 camera::getView() const
 {
     return view;
 }
 
-glm::mat4 camera::getProjection() const
+GLC::mat4 camera::getProjection() const
 {
     return projection;
 }
@@ -34,38 +34,38 @@ void camera::rotateCamera(float deltaYaw, float deltaPitch)
         pitch = -89.0f;
     }
 
-    glm::vec3 direction;
-    direction.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-    direction.y = sin(glm::radians(pitch));
-    direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
-    front = glm::normalize(direction);
-    view = glm::lookAt(position, position + front, up);
+    GLC::vec3 direction;
+    direction[0] = cos(GLC::radians(yaw)) * cos(GLC::radians(pitch));
+    direction[1] = sin(GLC::radians(pitch));
+    direction[2] = sin(GLC::radians(yaw)) * cos(GLC::radians(pitch));
+    front = GLC::normalize(direction);
+    view = GLC::lookAt(position, position + front, up);
 }
 
 
 void camera::move(float speed, float deltaTime, bool sideway, bool invert)
 {
-    glm::vec3 distance;
+    GLC::vec3 distance;
     if (sideway)
     {
-        distance = glm::normalize(glm::cross(front, up)) * (speed * deltaTime * (invert * -2 + 1));
+        distance = GLC::normalize(GLC::cross(front, up)) * (speed * deltaTime * (invert * -2 + 1));
     }
     else
     {
         distance = front * (speed * deltaTime * (invert * -2 + 1));
     }
     position += distance;
-    view = glm::lookAt(position, position + front, up);
+    view = GLC::lookAt(position, position + front, up);
 }
 
-void camera::teleportTo(glm::vec3 newPosition)
+void camera::teleportTo(GLC::vec3 newPosition)
 {
     position = newPosition;
-    view = glm::lookAt(position, position + front, up);
+    view = GLC::lookAt(position, position + front, up);
 }
 
 void camera::changeFov(float newFov)
 {
     fov = newFov;
-    projection = glm::perspective(fov, aspectRatio, near, far);
+    projection = GLC::perspective(fov, aspectRatio, near, far);
 }

@@ -1,12 +1,12 @@
-#include "icosphere.h"
+#include "geometry/icosphere.cuh"
 
 #include <iostream>
 
-void generateIcosahedron(float radius, std::vector<float>* vertices, std::vector<unsigned int>* indices)
+__host__ void generateIcosahedron(float radius, std::vector<float>* vertices, std::vector<unsigned int>* indices)
 {
-    const float horizontalAngle = glm::radians(360.0f / 5); // Angle of each verticies pentagon
+    const float horizontalAngle = GLC::radians(360.0f / 5); // Angle of each verticies pentagon
     const float verticalAngle = atanf(1.0f / 2); // Angle from center of the icosahedron to each vertices of pentagon
-    float startAngle[] = {glm::radians(36.0f), glm::radians(72.0f)};
+    float startAngle[] = {GLC::radians(36.0f), GLC::radians(72.0f)};
     int elevationMultiplier = 1;
 
     // Tip / Bottom vertiex
@@ -45,13 +45,13 @@ void generateIcosahedron(float radius, std::vector<float>* vertices, std::vector
     }
 }
 
-std::vector<glm::vec3> getMiddleVertices(int indexA, int indexB, int indexC, std::vector<float> vertices)
+__host__ std::vector<GLC::vec3> getMiddleVertices(int indexA, int indexB, int indexC, std::vector<float> vertices)
 {
-    glm::vec3 vertexA(vertices.at(indexA * 3), vertices.at(indexA * 3 + 1), vertices.at(indexA * 3 + 2));
-    glm::vec3 vertexB(vertices.at(indexB * 3), vertices.at(indexB * 3 + 1), vertices.at(indexB * 3 + 2));
-    glm::vec3 vertexC(vertices.at(indexC * 3), vertices.at(indexC * 3 + 1), vertices.at(indexC * 3 + 2));
+    GLC::vec3 vertexA(vertices.at(indexA * 3), vertices.at(indexA * 3 + 1), vertices.at(indexA * 3 + 2));
+    GLC::vec3 vertexB(vertices.at(indexB * 3), vertices.at(indexB * 3 + 1), vertices.at(indexB * 3 + 2));
+    GLC::vec3 vertexC(vertices.at(indexC * 3), vertices.at(indexC * 3 + 1), vertices.at(indexC * 3 + 2));
 
-    std::vector<glm::vec3> middleVertices = {
+    std::vector<GLC::vec3> middleVertices = {
         (vertexA + vertexB) * 0.5f,
         (vertexA + vertexC) * 0.5f,
         (vertexB + vertexC) * 0.5f,
@@ -59,14 +59,14 @@ std::vector<glm::vec3> getMiddleVertices(int indexA, int indexB, int indexC, std
 
     return middleVertices;
 }
-std::vector<glm::vec2> getMiddleTexture(int indexA, int indexB, int indexC, std::vector<float> vertices)
+__host__ std::vector<GLC::vec2> getMiddleTexture(int indexA, int indexB, int indexC, std::vector<float> vertices)
 {
     // Unused
-    glm::vec2 textureA(vertices.at(indexA * 5 + 3), vertices.at(indexA * 5 + 4));
-    glm::vec2 textureB(vertices.at(indexB * 5 + 3), vertices.at(indexB * 5 + 4));
-    glm::vec2 textureC(vertices.at(indexC * 5 + 3), vertices.at(indexC * 5 + 4));
+    GLC::vec2 textureA(vertices.at(indexA * 5 + 3), vertices.at(indexA * 5 + 4));
+    GLC::vec2 textureB(vertices.at(indexB * 5 + 3), vertices.at(indexB * 5 + 4));
+    GLC::vec2 textureC(vertices.at(indexC * 5 + 3), vertices.at(indexC * 5 + 4));
 
-    std::vector<glm::vec2> middleTextures = {
+    std::vector<GLC::vec2> middleTextures = {
         (textureA + textureB) * 0.5f,
         (textureA + textureC) * 0.5f,
         (textureB + textureC) * 0.5f,
@@ -74,14 +74,14 @@ std::vector<glm::vec2> getMiddleTexture(int indexA, int indexB, int indexC, std:
 
     return middleTextures;
 }
-glm::vec3 calculateNewCoordinate(glm::vec3 vertices, float radius)
+__host__ GLC::vec3 calculateNewCoordinate(GLC::vec3 vertices, float radius)
 {
-    glm::vec3 normalizedVertice(glm::normalize(vertices));
+    GLC::vec3 normalizedVertice(GLC::normalize(vertices));
     normalizedVertice *= radius;
     return normalizedVertice;
 }
 
-void subdivideIcosahedron(std::vector<float>* vertices, std::vector<unsigned int>* indices, float radius)
+__host__ void subdivideIcosahedron(std::vector<float>* vertices, std::vector<unsigned int>* indices, float radius)
 {
     // Adding subdivision into icosahedron to turn it into icosphere
     // Method using may cause more memory to use more than it should because some new vertices maybe duplicate
@@ -98,17 +98,17 @@ void subdivideIcosahedron(std::vector<float>* vertices, std::vector<unsigned int
         // Remove old first three indices
         indices->erase(indices->begin(), indices->begin() + 3);
 
-        std::vector<glm::vec3> middleVertices = getMiddleVertices(indexA, indexB, indexC, *vertices);
+        std::vector<GLC::vec3> middleVertices = getMiddleVertices(indexA, indexB, indexC, *vertices);
 
         // Create three new vertices at each middle point between old vertices
         // Order from left to right, top to bottom
         int startIndex = vertices->size() / 5;
         for (int j = 0; j < 3; j++)
         {
-            glm::vec3 newVertices = calculateNewCoordinate(middleVertices[j], radius);
-            vertices->push_back(newVertices.x);
-            vertices->push_back(newVertices.y);
-            vertices->push_back(newVertices.z);
+            GLC::vec3 newVertices = calculateNewCoordinate(middleVertices[j], radius);
+            vertices->push_back(newVertices[0]);
+            vertices->push_back(newVertices[1]);
+            vertices->push_back(newVertices[2]);
         }
         // Update indices
         // First triangle
@@ -133,7 +133,7 @@ void subdivideIcosahedron(std::vector<float>* vertices, std::vector<unsigned int
     }
 }
 
-geometry::icosphere::icosphere(float radius, unsigned int subdivision)
+__host__ geometry::icosphere::icosphere(float radius, unsigned int subdivision)
     : radius(radius), subdivision(subdivision)
 {
     generateIcosahedron(radius, &vertices, &indices);
@@ -143,7 +143,7 @@ geometry::icosphere::icosphere(float radius, unsigned int subdivision)
         subdivideIcosahedron(&vertices, &indices, radius);
     }
 }
-float geometry::icosphere::getRadius() const
+__host__ __device__ float geometry::icosphere::getRadius() const
 {
     return radius;
 }

@@ -1,16 +1,16 @@
 #pragma once
 
 #include "object/objectBaseClass.cuh"
-#include "object/sphere.h"
-#include "object/cube.h"
+#include "object/sphere.cuh"
+#include "object/cube.cuh"
 
 #include "physic/fundamental.cuh"
 #include "physic/collision.cuh"
 
 #include "math/mathExt.cuh"
 
-#include "../graphic/graphic.h"
-#include "../graphic/geometry/shape.h"
+#include "graphic/graphic.h"
+#include "geometry/geometry.cuh"
 
 #include <vector>
 #include <memory>

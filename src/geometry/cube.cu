@@ -1,6 +1,6 @@
-#include "cube.h"
+#include "geometry/cube.cuh"
 
-geometry::cube::cube(float width, float height, float depth)
+__host__ geometry::cube::cube(float width, float height, float depth)
     : width(width), height(height), depth(depth)
 {
     vertices = {
@@ -37,17 +37,17 @@ geometry::cube::cube(float width, float height, float depth)
     };
 }
 
-float geometry::cube::getWidth() const
+__host__ __device__ float geometry::cube::getWidth() const
 {
     return width;
 }
 
-float geometry::cube::getDepth() const
+__host__ __device__ float geometry::cube::getDepth() const
 {
     return depth;
 }
 
-float geometry::cube::getHeight() const
+__host__ __device__ float geometry::cube::getHeight() const
 {
     return height;
 }

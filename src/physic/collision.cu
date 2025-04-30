@@ -1,4 +1,4 @@
-#include "collision.cuh"
+#include "physic/collision.cuh"
 
 float timeToMove(float aPosition, float aVelocity, float bPosition, float bVelocity)
 {
@@ -60,14 +60,14 @@ std::vector<collision::collisionType> collision::CCD(std::shared_ptr<object::obj
     std::vector<collision::collisionType> collisionResults;
     int timeMultiplier = (deltaTime > 0.0f) ? 1 : -1;
 
-    glm::vec3 objPos = obj->getPosition();
-    glm::vec3 objScale = obj->getScale();
-    glm::vec3 objVel = obj->getVelocity();
+    GLC::vec3 objPos = obj->getPosition();
+    GLC::vec3 objScale = obj->getScale();
+    GLC::vec3 objVel = obj->getVelocity();
     float objectDeltaTime = obj->getCollisionTime();
 
-    glm::vec3 tarPos = tar->getPosition();
-    glm::vec3 tarScale = tar->getScale();
-    glm::vec3 tarVel = tar->getVelocity();
+    GLC::vec3 tarPos = tar->getPosition();
+    GLC::vec3 tarScale = tar->getScale();
+    GLC::vec3 tarVel = tar->getVelocity();
     float targetDeltaTime = obj->getCollisionTime();
 
     std::cout << "   -  Selected border:" << std::endl;
@@ -136,13 +136,13 @@ float collision::collisionResolver(std::shared_ptr<object::objectBaseClass> obj,
 
     int timeMultiplier = (deltaTime > 0.0f) ? 1 : -1;
 
-    glm::vec3 objPos = obj->getPosition();
-    glm::vec3 objScale = obj->getScale();
-    glm::vec3 objVel = obj->getVelocity();
+    GLC::vec3 objPos = obj->getPosition();
+    GLC::vec3 objScale = obj->getScale();
+    GLC::vec3 objVel = obj->getVelocity();
 
-    glm::vec3 tarPos = tar->getPosition();
-    glm::vec3 tarScale = tar->getScale();
-    glm::vec3 tarVel = tar->getVelocity();
+    GLC::vec3 tarPos = tar->getPosition();
+    GLC::vec3 tarScale = tar->getScale();
+    GLC::vec3 tarVel = tar->getVelocity();
 
     // Step 1.
     std::vector<float> travelTimes;
@@ -176,8 +176,8 @@ float collision::collisionResolver(std::shared_ptr<object::objectBaseClass> obj,
     tar->move(fundamental::calculateDst(tarVel, lowestTime));
 
     // Step 4.
-    glm::vec3 objDeltaVel(0.0f);
-    glm::vec3 tarDeltaVel(0.0f);
+    GLC::vec3 objDeltaVel(0.0f);
+    GLC::vec3 tarDeltaVel(0.0f);
     std::cout << "      -  Pythagoras time: " << lowestTime << std::endl;
     std::cout << "      -  Resolving collision" << std::endl;
     for (unsigned int axis : newlyAxis)

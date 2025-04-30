@@ -1,17 +1,17 @@
-#include "momentum.cuh"
+#include "physic/momentum.cuh"
 
 float calculateAxisVelocity(float aAxisVelocity, float aMass, float bAxisVelocity, float bMass)
 {
     return (((aMass - bMass) / (aMass + bMass)) * aAxisVelocity) + (((2 * bMass) / (aMass + bMass)) * bAxisVelocity);
 }
-glm::vec3 calculateNewObjectVelocity3D(glm::vec3 aVelocity, float aMass, glm::vec3 bVelocity, float bMass)
+GLC::vec3 calculateNewObjectVelocity3D(GLC::vec3 aVelocity, float aMass, GLC::vec3 bVelocity, float bMass)
 {
     std::vector<float> velocity;
     for (int axis = 0; axis < 3; axis++)
     {
         velocity.push_back(calculateAxisVelocity(aVelocity[axis], aMass, bVelocity[axis], bMass));
     }
-    return glm::vec3(velocity[0], velocity[1], velocity[2]);
+    return GLC::vec3(velocity[0], velocity[1], velocity[2]);
 }
 
 float momentum::elasticCollision1D(std::shared_ptr<object::objectBaseClass> object, std::shared_ptr<object::objectBaseClass> target, unsigned int axis)

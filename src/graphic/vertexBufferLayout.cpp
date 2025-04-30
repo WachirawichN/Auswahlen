@@ -1,4 +1,4 @@
-#include "vertexBufferLayout.h"
+#include "graphic/vertexBufferLayout.h"
 
 vertexBufferLayout::vertexBufferLayout()
     : stride(0)

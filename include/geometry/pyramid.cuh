@@ -1,6 +1,6 @@
 #pragma once
 
-#include "shape.h"
+#include "shape.cuh"
 
 namespace geometry
 {
@@ -11,6 +11,6 @@ namespace geometry
             float height;
             float depth;
         public:
-            pyramid(float width, float height, float depth); 
+            __host__ pyramid(float width, float height, float depth); 
     };
 }

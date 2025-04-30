@@ -1,4 +1,4 @@
-#include "../../include/vector.cuh"
+#include <GLC/vector.cuh>
 
 namespace GLC
 {

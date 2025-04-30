@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../object/objectBaseClass.cuh"
+#include "object/objectBaseClass.cuh"
 
 #include <memory>
 #include <vector>

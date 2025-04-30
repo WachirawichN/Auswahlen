@@ -1,4 +1,4 @@
-#include "../../include/matrix.cuh"
+#include <GLC/matrix.cuh>
 
 namespace GLC
 {

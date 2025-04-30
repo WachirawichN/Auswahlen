@@ -1,11 +1,11 @@
 #pragma once
 
-#include "../object/objectBaseClass.cuh"
-#include "../object/sphere.cuh"
-#include "fundamental.cuh"
-#include "momentum.cuh"
-#include "hitbox.cuh"
-#include "../math/mathExt.cuh"
+#include "object/objectBaseClass.cuh"
+#include "object/sphere.cuh"
+#include "physic/fundamental.cuh"
+#include "physic/momentum.cuh"
+#include "physic/hitbox.cuh"
+#include "math/mathExt.cuh"
 
 #include <iostream>
 #include <vector>

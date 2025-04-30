@@ -1,11 +1,11 @@
-#include "fundamental.cuh"
+#include "physic/fundamental.cuh"
 
-glm::vec3 fundamental::calculateVel(glm::vec3 acceleration, float deltaTime)
+GLC::vec3 fundamental::calculateVel(GLC::vec3 acceleration, float deltaTime)
 {
     return acceleration * deltaTime;
 }
 
-glm::vec3 fundamental::calculateDst(glm::vec3 velocity, float deltaTime)
+GLC::vec3 fundamental::calculateDst(GLC::vec3 velocity, float deltaTime)
 {
     return velocity * deltaTime;
 }

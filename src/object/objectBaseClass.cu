@@ -1,10 +1,10 @@
-#include "objectBaseClass.cuh"
+#include "object/objectBaseClass.cuh"
 
 #include <iostream>
 
-glm::vec3 normalizeRotation(glm::vec3 objectRotation)
+GLC::vec3 normalizeRotation(GLC::vec3 objectRotation)
 {
-    glm::vec3 newRotation(objectRotation.x, objectRotation.y, objectRotation.z);
+    GLC::vec3 newRotation(objectRotation[0], objectRotation[1], objectRotation[2]);
     for (int i = 0; i < 3; i++)
     {
         if (objectRotation[i] >= 360 || objectRotation[i] < 0)
@@ -16,7 +16,7 @@ glm::vec3 normalizeRotation(glm::vec3 objectRotation)
     return newRotation;
 }
 
-object::objectBaseClass::objectBaseClass(bool collision, bool anchored, float mass, glm::vec3 velocity, glm::vec3 position, glm::vec3 rotation, glm::vec3 scale, glm::vec4 color)
+object::objectBaseClass::objectBaseClass(bool collision, bool anchored, float mass, GLC::vec3 velocity, GLC::vec3 position, GLC::vec3 rotation, GLC::vec3 scale, GLC::vec4 color)
     : collision(collision), anchored(anchored), mass(mass), velocity(velocity), collisionTime(float(0.0f)), position(position), rotation(normalizeRotation(rotation)), scale(scale), color(color)
 {
 }
@@ -39,7 +39,7 @@ void object::objectBaseClass::setAnchored(bool newValue)
     anchored = newValue;
 }
 
-__host__ __device__ void object::objectBaseClass::changeVelocity(glm::vec3 deltaVelocity)
+__host__ __device__ void object::objectBaseClass::changeVelocity(GLC::vec3 deltaVelocity)
 {
     velocity += deltaVelocity;
 }
@@ -48,21 +48,21 @@ __host__ __device__ void object::objectBaseClass::changeCollisionTime(float delt
     collisionTime += deltaTime;
 }
 
-__host__ __device__ void object::objectBaseClass::move(glm::vec3 distance)
+__host__ __device__ void object::objectBaseClass::move(GLC::vec3 distance)
 {
     position += distance;
 }
-__host__ __device__ void object::objectBaseClass::rotate(glm::vec3 degree)
+__host__ __device__ void object::objectBaseClass::rotate(GLC::vec3 degree)
 {
     rotation += degree;
     rotation = normalizeRotation(rotation); // Make the rotation be within 360 degree
 }
-__host__ __device__ void object::objectBaseClass::rescale(glm::vec3 deltaScale)
+__host__ __device__ void object::objectBaseClass::rescale(GLC::vec3 deltaScale)
 {
     scale = deltaScale;
 }
 
-void object::objectBaseClass::setColor(glm::vec4 newColor)
+void object::objectBaseClass::setColor(GLC::vec4 newColor)
 {
     color = newColor;
 }
@@ -71,7 +71,7 @@ __host__ __device__ float object::objectBaseClass::getMass() const
 {
     return mass;
 }
-__host__ __device__ glm::vec3 object::objectBaseClass::getVelocity() const
+__host__ __device__ GLC::vec3 object::objectBaseClass::getVelocity() const
 {
     return velocity;
 }
@@ -80,20 +80,20 @@ __host__ __device__ float object::objectBaseClass::getCollisionTime() const
     return collisionTime;
 }
 
-__host__ __device__ glm::vec3 object::objectBaseClass::getPosition() const
+__host__ __device__ GLC::vec3 object::objectBaseClass::getPosition() const
 {
     return position;
 }
-__host__ __device__ glm::vec3 object::objectBaseClass::getRotation() const
+__host__ __device__ GLC::vec3 object::objectBaseClass::getRotation() const
 {
     return rotation;
 }
-__host__ __device__ glm::vec3 object::objectBaseClass::getScale() const
+__host__ __device__ GLC::vec3 object::objectBaseClass::getScale() const
 {
     return scale;
 }
 
-glm::vec4 object::objectBaseClass::getColor() const
+GLC::vec4 object::objectBaseClass::getColor() const
 {
     return color;
 }

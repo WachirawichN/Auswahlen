@@ -1,4 +1,4 @@
-#include "renderer.h"
+#include "graphic/renderer.h"
 
 void renderer::drawScreen(vertexArray& vertexArray, indexBuffer& indexBuffer, shader& shader) const
 {

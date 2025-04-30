@@ -1,4 +1,4 @@
-#include "simulation.cuh"
+#include "simulation/simulation.cuh"
 
 simulation::simulation(std::shared_ptr<object::objectBaseClass> simulationBox, float gridSize, camera* mainCamera, shader programShader, float gravity)
     : simulationBox(simulationBox), gridSize(gridSize), mainCamera(mainCamera), programShader(programShader), gravity(gravity)
@@ -34,21 +34,20 @@ void simulation::drawSimulation()
             indexBuffer ib(indices.size(), indices.data());
             va.addBuffer(vb, layout);
 
-            glm::mat4 modelMatrix = glm::mat4(1.0f);
-            modelMatrix = glm::translate(modelMatrix, currentObject->getPosition());
-            modelMatrix = glm::scale(modelMatrix, currentObject->getScale());
+            GLC::mat4 modelMatrix = GLC::translate(currentObject->getPosition());
+            modelMatrix = GLC::scale(currentObject->getScale(), modelMatrix);
 
-            glm::vec3 objectRotation = currentObject->getRotation();
-            float degree = std::max(objectRotation.x, std::max(objectRotation.y, objectRotation.z));
+            GLC::vec3 objectRotation = currentObject->getRotation();
+            float degree = std::max(objectRotation[0], std::max(objectRotation[1], objectRotation[2]));
             if (degree != 0.0f)
             {
-                modelMatrix = glm::rotate(modelMatrix, glm::radians(degree), glm::vec3(objectRotation.x / degree, objectRotation.y / degree, objectRotation.z / degree));
+                modelMatrix = GLC::rotate(degree, GLC::vec3(objectRotation[0] / degree, objectRotation[1] / degree, objectRotation[1] / degree), modelMatrix);
             }
 
             programShader.setUniformMat4fv("model", GL_FALSE, modelMatrix);
 
             // Set color
-            glm::vec4 color = currentObject->getColor();
+            GLC::vec4 color = currentObject->getColor();
             programShader.setUniform4f("uColor", color[0], color[1], color[2], color[3]);
 
             workspaceRenderer.drawScreen(va, ib, programShader);
@@ -69,7 +68,7 @@ void simulation::updateSimulation(float deltaTime)
         
         if (!currentObject->isAnchored())
         {
-            glm::vec3 deltaVelocity = fundamental::calculateVel(glm::vec3(0.0f, gravity, 0.0f), deltaTime);
+            GLC::vec3 deltaVelocity = fundamental::calculateVel(GLC::vec3(0.0f, gravity, 0.0f), deltaTime);
             currentObject->changeVelocity(deltaVelocity);
         }
     }
@@ -97,8 +96,8 @@ void simulation::updateSimulation(float deltaTime)
 
         std::cout << "-  Before collision stat:" << std::endl;
         std::cout << "   -  Remaining time: " << objRemainingTime << std::endl;
-        std::cout << "   -  Velocity: " << currentObject->getVelocity().x << ", " << currentObject->getVelocity().y << ", " << currentObject->getVelocity().z << std::endl;
-        std::cout << "   -  Position: " << currentObject->getPosition().x << ", " << currentObject->getPosition().y << ", " << currentObject->getPosition().z << std::endl;
+        std::cout << "   -  Velocity: " << currentObject->getVelocity()[0] << ", " << currentObject->getVelocity()[1] << ", " << currentObject->getVelocity()[2] << std::endl;
+        std::cout << "   -  Position: " << currentObject->getPosition()[0] << ", " << currentObject->getPosition()[1] << ", " << currentObject->getPosition()[2] << std::endl;
 
         while (objRemainingTime != 0.0f && currentPair.size() > 1)
         {
@@ -162,8 +161,8 @@ void simulation::updateSimulation(float deltaTime)
 
         std::cout << "-  End of collision stat:" << std::endl;
         std::cout << "   -  Remaining time: " << objRemainingTime << std::endl;
-        std::cout << "   -  Velocity: " << currentObject->getVelocity().x << ", " << currentObject->getVelocity().y << ", " << currentObject->getVelocity().z << std::endl;
-        std::cout << "   -  Position: " << currentObject->getPosition().x << ", " << currentObject->getPosition().y << ", " << currentObject->getPosition().z << std::endl;
+        std::cout << "   -  Velocity: " << currentObject->getVelocity()[0] << ", " << currentObject->getVelocity()[1] << ", " << currentObject->getVelocity()[2] << std::endl;
+        std::cout << "   -  Position: " << currentObject->getPosition()[0] << ", " << currentObject->getPosition()[1] << ", " << currentObject->getPosition()[2] << std::endl;
     }
     std::cout << std::endl;
 }

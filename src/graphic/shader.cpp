@@ -1,12 +1,10 @@
-#include "shader.h"
-
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <sstream>
 
-#include "renderer.h"
-#include "../dependencies/GLM/gtc/type_ptr.hpp"
+#include "graphic/shader.h"
+#include "graphic/renderer.h"
 
 shader::shader(const std::string& filepath)
     : filePath(filepath), shaderID(0)
@@ -124,9 +122,9 @@ void shader::setUniform4f(const std::string& name, float v0, float v1, float v2,
     glUniform4f(getUniformLocation(name), v0, v1, v2, v3);
 }
 
-void shader::setUniformMat4fv(const std::string& name, unsigned char transpose, glm::mat4 transform)
+void shader::setUniformMat4fv(const std::string& name, unsigned char transpose, GLC::mat4 transform)
 {
-    glUniformMatrix4fv(getUniformLocation(name), 1, transpose, glm::value_ptr(transform));
+    glUniformMatrix4fv(getUniformLocation(name), 1, transpose, GLC::unpack(transform));
 }
 
 int shader::getUniformLocation(const std::string& name)

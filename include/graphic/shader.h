@@ -1,9 +1,12 @@
 #pragma once
 
+#include <cuda_runtime.h>
 #include <string>
 #include <unordered_map>
 
-#include "../dependencies/GLM/glm.hpp"
+#include "GLC/matrix.cuh"
+#include "GLC/vector.cuh"
+#include "GLC/utility.cuh"
 
 struct shaderProgramSource
 {
@@ -33,5 +36,5 @@ class shader
         void setUniform1i(const std::string& name, int value);
         void setUniform1f(const std::string& name, float value);
         void setUniform4f(const std::string& name, float v0, float v1, float v2, float v3);
-        void setUniformMat4fv(const std::string& name, unsigned char transpose, glm::mat4 transform);
+        void setUniformMat4fv(const std::string& name, unsigned char transpose, GLC::mat4 transform);
 };
