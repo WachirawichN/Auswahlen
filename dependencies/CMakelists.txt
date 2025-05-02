@@ -1,17 +1,5 @@
-# GLC library
-file(GLOB_RECURSE GLC_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/src/GLC/*/*.cu)
-add_library(GLC STATIC ${GLC_SOURCE})
-set_property(TARGET GLC PROPERTY CUDA_RESOLVE_DEVICE_SYMBOLS ON)
-target_include_directories(GLC PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-set_target_properties(GLC PROPERTIES
-    LINKER_LANGUAGE CUDA
-    CUDA_SEPARABLE_COMPILATION ON
+add_library(GLFW STATIC IMPORTED GLOBAL)
+set_target_properties(GLFW PROPERTIES
+    IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/dependencies/lib/glfw3.lib
+    INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_SOURCE_DIR}/dependencies/include
 )
-
-# GLAD
-add_library(GLAD STATIC ${CMAKE_CURRENT_SOURCE_DIR}/src/glad/glad.c)
-target_include_directories(GLAD PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-
-# stb
-add_library(stb STATIC ${CMAKE_CURRENT_SOURCE_DIR}/src/stb/stb_image.cpp)
-target_include_directories(stb PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)

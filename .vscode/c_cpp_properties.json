@@ -4,7 +4,9 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.8/include"
+                "${workspaceFolder}/dependencies/include",
+                "${CUDA_PATH}/include",
+                "${VULKAN_SDK}/include"
             ],
             "defines": [
                 "_DEBUG",
@@ -12,7 +14,7 @@
                 "_UNICODE"
             ],
             "windowsSdkVersion": "10.0.26100.0",
-            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.43.34808/bin/Hostx64/x64/cl.exe",
+            "compilerPath": "cl.exe",
             "cStandard": "c17",
             "cppStandard": "c++20",
             "intelliSenseMode": "windows-msvc-x64"
