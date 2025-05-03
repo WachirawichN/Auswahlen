@@ -5,20 +5,17 @@ project(Auswahlen VERSION 0.2.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Vulkan
-find_package(Vulkan REQUIRED)
-
+add_subdirectory(asset)
 add_subdirectory(dependencies)
+add_subdirectory(src)
 
 # Executable
 add_executable(${CMAKE_PROJECT_NAME} ${CMAKE_SOURCE_DIR}/src/main.cpp)
 
 #Library linking
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
-    ${CMAKE_SOURCE_DIR}/dependencies/include
-    $ENV{VULKAN_SDK}/include
+    ${CMAKE_SOURCE_DIR}/include
 )
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
-    GLFW
-    Vulkan::Vulkan
+    AUSWAHLEN_LIB
 )

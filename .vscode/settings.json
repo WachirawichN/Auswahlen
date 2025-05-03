@@ -78,7 +78,12 @@
         "xlocnum": "cpp",
         "xloctime": "cpp",
         "chrono": "cpp",
-        "forward_list": "cpp"
+        "forward_list": "cpp",
+        "expected": "cpp",
+        "map": "cpp",
+        "set": "cpp",
+        "xtree": "cpp",
+        "filesystem": "cpp"
     },
     "cmake.sourceDirectory": "${workspaceFolder}"
 }

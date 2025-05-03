@@ -5,6 +5,7 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/dependencies/include",
+                "${workspaceFolder}/include",
                 "${CUDA_PATH}/include",
                 "${VULKAN_SDK}/include"
             ],
