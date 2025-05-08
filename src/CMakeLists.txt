@@ -1,13 +1,17 @@
 # Graphic source files
-file(GLOB_RECURSE GRAPHIC_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/graphic/*cpp)
+file(GLOB_RECURSE GRAPHIC_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/graphic/*.cpp)
 
 # Simulation source file
 set(SIMULATION_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/simulation/simulation.cpp)
+
+# Application source file
+set(APP_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/app/app.cpp)
 
 # Final library
 add_library(AUSWAHLEN_LIB STATIC
     ${GRAPHIC_SOURCES}
     ${SIMULATION_SOURCE}
+    ${APP_SOURCE}
 )
 target_include_directories(AUSWAHLEN_LIB PUBLIC
     ${CMAKE_SOURCE_DIR}/dependencies/include

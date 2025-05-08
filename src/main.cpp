@@ -1,16 +1,19 @@
-#include <graphic/window.h>
-#include <simulation/simulation.h>
+#include <app/app.h>
+#include <graphic/vulkan.h>
 
 #include <cstdlib>
 #include <iostream>
 #include <stdexcept>
 
+const uint32_t width = 1920;
+const uint32_t height = 1080;
+
 int main()
 {
-	auswahlen::simulation simulation;
+	auswahlen::app application(width, height);
 	try
 	{
-		simulation.run();
+		application.run();
 	}
 	catch(const std::exception& e)
 	{

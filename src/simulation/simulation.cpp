@@ -2,11 +2,16 @@
 
 namespace auswahlen
 {
-    void simulation::run()
+    simulation::simulation()
     {
-        while (!window.shouldClose())
-        {
-            glfwPollEvents();
-        }
+
+    }
+    simulation::~simulation()
+    {
+
+    }
+    void simulation::stepSimulation()
+    {
+        
     }
 }
