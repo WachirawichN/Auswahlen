@@ -7,6 +7,7 @@ namespace auswahlen
         /*------------------------------------------------------------
             Helper functions.
         ------------------------------------------------------------*/
+        // Initializer functions.
         void vulkan::initInstance()
         {
             std::cout << "\t- Initializing Vulkan instance." << std::endl;
@@ -71,7 +72,46 @@ namespace auswahlen
             }
             std::cout << "\t\t- Initialization completed." << std::endl;
         }
+        void vulkan::pickPhysicalDevice()
+        {
+            std::cout << "\t- Picking physical device." << std::endl;
 
+            // Get total devices with Vulkan support.
+            uint32_t deviceCount;
+            vkEnumeratePhysicalDevices(instance, &deviceCount, nullptr);
+            if (deviceCount == 0)
+            {
+                std::runtime_error("No device with Vulkan support found.");
+            }
+
+            // Get devices with Vulkan support.
+            std::vector<VkPhysicalDevice> devicesList(deviceCount);
+            vkEnumeratePhysicalDevices(instance, &deviceCount, devicesList.data());
+
+            // Check for devices that is suitable.
+            //std::vector<VkPhysicalDevice> suitableDevices;
+            for (const VkPhysicalDevice& device : devicesList)
+            {
+                if (isDeviceSuitable(device))
+                {
+                    physicalDevice = device;
+                    break;
+                }
+            }
+
+            if (physicalDevice == VK_NULL_HANDLE)
+            {
+                std::runtime_error("Cannot find sutable device.");
+            }
+
+            // Pick best device.
+
+            VkPhysicalDeviceProperties properties;
+            vkGetPhysicalDeviceProperties(physicalDevice, &properties);
+            std::cout << "\t\t- Pick " << properties.deviceName << " as a physical device." << std::endl;
+        }
+
+        // Debugger functions.
         VkDebugUtilsMessengerCreateInfoEXT vulkan::populateDebugCreateInfo()
         {
             VkDebugUtilsMessengerCreateInfoEXT debugCreateInfo = {
@@ -183,6 +223,40 @@ namespace auswahlen
             }
         }
 
+        // Device functions.
+        bool vulkan::isDeviceSuitable(const VkPhysicalDevice& device)
+        {
+            vulkan::queueFamily indicies = checkCommandSupport(device);
+            return indicies.isComplete();
+        }
+        const vulkan::queueFamily vulkan::checkCommandSupport(const VkPhysicalDevice& device)
+        {
+            vulkan::queueFamily indices;
+
+            // Get all the queue family that are supported.
+            uint32_t supportedQueueFamiliesCount = 0;
+            vkGetPhysicalDeviceQueueFamilyProperties(device, &supportedQueueFamiliesCount, nullptr);
+            
+            std::vector<VkQueueFamilyProperties> supportedQueueFamilies(supportedQueueFamiliesCount);
+            vkGetPhysicalDeviceQueueFamilyProperties(device, &supportedQueueFamiliesCount, supportedQueueFamilies.data());
+
+            // Check if any of those supported queue family support the command we want.
+            for (VkQueueFamilyProperties queueFamily : supportedQueueFamilies)
+            {
+                if (indices.isComplete())
+                {
+                    break;
+                }
+
+                if (queueFamily.queueFlags & VK_QUEUE_GRAPHICS_BIT)
+                {
+                    indices.graphicFamily = 0;
+                }
+            }
+
+            return indices;
+        }
+
         /*------------------------------------------------------------
             Public functions
         ------------------------------------------------------------*/
@@ -207,6 +281,7 @@ namespace auswahlen
             std::cout << "Initializing Vulkan." << std::endl;
             initInstance();
             initDebugCallback();
+            pickPhysicalDevice();
         }
         void vulkan::cleanUp()
         {

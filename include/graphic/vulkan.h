@@ -36,6 +36,20 @@ namespace auswahlen
                 const std::vector<const char*> vulkanExtensions = {
                     VK_EXT_DEBUG_UTILS_EXTENSION_NAME
                 };
+                VkPhysicalDevice physicalDevice = VK_NULL_HANDLE;
+
+                /*------------------------------------------------------------
+                    Queue family.
+                    For checking if all the commands we wanted to use are supported by the queue family that is supported by the device.
+                ------------------------------------------------------------*/
+                struct queueFamily{
+                    std::optional<uint32_t> graphicFamily;
+
+                    bool isComplete()
+                    {
+                        return graphicFamily.has_value();
+                    }
+                };
 
                 /*------------------------------------------------------------
                     Helper funcions.
@@ -43,8 +57,9 @@ namespace auswahlen
                 // Initializer functions.
                 void initInstance();
                 void initDebugCallback();
+                void pickPhysicalDevice();
 
-                // Debugger functions
+                // Debugger functions.
                 VkDebugUtilsMessengerCreateInfoEXT populateDebugCreateInfo();
                 bool checkValidationLayerSupport();
 
@@ -53,6 +68,10 @@ namespace auswahlen
                 static VKAPI_ATTR VkBool32 VKAPI_CALL debugCallback(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity, VkDebugUtilsMessageTypeFlagsEXT messageType, const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData, void* pUserData);
                 VkResult createDebugCallback(const VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator);
                 void cleanUpDebugCallback(const VkAllocationCallbacks* pAllocator);
+
+                // Device functions.
+                bool isDeviceSuitable(const VkPhysicalDevice& device);
+                const queueFamily checkCommandSupport(const VkPhysicalDevice& device);
             public:
                 vulkan() {}
                 vulkan(const std::string& appName, const std::array<uint32_t, 3>& appVersion);
