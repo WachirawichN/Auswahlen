@@ -3,12 +3,18 @@
 namespace auswahlen
 {
     // Helper functions.
-    void app::initWindow()
+    void app::initGLFW()
     {
+        std::cout << "Initializing GLFW." << std::endl;
+
         glfwInit();
         glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
         glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
-
+        
+        std::cout << "\t- Initialization completed." << std::endl;
+    }
+    void app::initWindow()
+    {
         guiWindow = auswahlen::graphic::window(width, height, "Auswahlen");
         guiWindow.createWindow();
     }
@@ -45,13 +51,17 @@ namespace auswahlen
     app::app(int width, int height)
         : width(width), height(height)
     {
+        initGLFW();
         initWindow();
         initVulkan();
+        std::cout << "================================================================" << std::endl;
     }
     app::~app()
     {
+        std::cout << "================================================================" << std::endl;
         vulkan.cleanUp();
         guiWindow.cleanUp();
+
         std::cout << "Cleaning up GLFW." << std::endl;
         glfwTerminate();
     }

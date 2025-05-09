@@ -19,6 +19,7 @@ namespace auswahlen
 
             // Helper functions.
             // For constructor.
+            void initGLFW();
             void initWindow();
             void initVulkan();
 

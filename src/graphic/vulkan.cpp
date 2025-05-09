@@ -4,47 +4,188 @@ namespace auswahlen
 {
     namespace graphic
     {
-        // Helper functions
+        /*------------------------------------------------------------
+            Helper functions.
+        ------------------------------------------------------------*/
         void vulkan::initInstance()
         {
+            std::cout << "\t- Initializing Vulkan instance." << std::endl;
+
             if (!(name.has_value() && version.has_value()))
             {
                 throw std::runtime_error("Either name or version or both is not available to Vulkan class.");
             }
 
-            // App info
-            VkApplicationInfo appInfo{};
-            appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
-            appInfo.pApplicationName = name.value().c_str();
-            appInfo.applicationVersion = VK_MAKE_VERSION(version.value()[0], version.value()[1], version.value()[2]);
-            appInfo.pEngineName = "No engine";
-            appInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
-            appInfo.apiVersion = VK_API_VERSION_1_4;
+            if (!checkValidationLayerSupport())
+            {
+                throw std::runtime_error("One of the validation layers is not supported.");
+            }
 
-            // Create info
-            VkInstanceCreateInfo createInfo{};
-            createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
-            createInfo.pApplicationInfo = &appInfo;
+            // App info.
+            VkApplicationInfo appInfo = {
+                .sType = VK_STRUCTURE_TYPE_APPLICATION_INFO,
+                .pApplicationName = name.value().c_str(),
+                .applicationVersion = VK_MAKE_VERSION(version.value()[0], version.value()[1], version.value()[2]),
+                .pEngineName = "No engine",
+                .engineVersion = VK_MAKE_VERSION(1, 0, 0),
+                .apiVersion = VK_API_VERSION_1_4
+            };
 
-            // Requirement extension
+            // Debug's create info.
+            VkDebugUtilsMessengerCreateInfoEXT debugCreateInfo = populateDebugCreateInfo();
+
+            // GLFW's requirement extensions.
             uint32_t glfwExtensionCount = 0;
-            const char** glfwExtensions;
-            glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
-            createInfo.enabledExtensionCount = glfwExtensionCount;
-            createInfo.ppEnabledExtensionNames = glfwExtensions;
+            const char** glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
 
-            // Validation layers.
-            createInfo.enabledLayerCount = 0;
+            // Copy GLFW's extensions into final vector.
+            std::vector<const char*> finalExtensions(glfwExtensions, glfwExtensions + glfwExtensionCount);
+            // Join GLFW's requirement extensions with Vulkan's extension.
+            finalExtensions.insert(finalExtensions.end(), vulkanExtensions.begin(), vulkanExtensions.end());
+
+            // Instance's create info.
+            VkInstanceCreateInfo createInfo = {
+                .sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO,
+                .pNext = &debugCreateInfo,
+                .pApplicationInfo = &appInfo,
+                .enabledLayerCount = (uint32_t)validationLayers.size(),
+                .ppEnabledLayerNames = validationLayers.data(),
+                .enabledExtensionCount = (uint32_t)finalExtensions.size(),
+                .ppEnabledExtensionNames = finalExtensions.data(),
+            };
 
             // Create the instance itself.
             if (vkCreateInstance(&createInfo, nullptr, &instance) != VK_SUCCESS)
             {
                 throw std::runtime_error("Failed to create Vulkan instance.");
             }
-            std::cout << "Initialized Vulkan instance." << std::endl;
+            std::cout << "\t\t- Initialization completed." << std::endl;
+        }
+        void vulkan::initDebugCallback()
+        {
+            std::cout << "\t- Initializing debug callback." << std::endl;
+            VkDebugUtilsMessengerCreateInfoEXT debugCreateInfo = populateDebugCreateInfo();
+            if (createDebugCallback(&debugCreateInfo, nullptr) != VK_SUCCESS)
+            {
+                throw std::runtime_error("Failed to initialize debug callback.");
+            }
+            std::cout << "\t\t- Initialization completed." << std::endl;
         }
 
-        // Public functions
+        VkDebugUtilsMessengerCreateInfoEXT vulkan::populateDebugCreateInfo()
+        {
+            VkDebugUtilsMessengerCreateInfoEXT debugCreateInfo = {
+                .sType = VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT,
+                .messageSeverity =
+                    VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT
+                    | VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT,
+                .messageType =
+                    VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT
+                    | VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT
+                    | VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT,
+                .pfnUserCallback = debugCallback
+            };
+            return debugCreateInfo;
+        }
+        bool vulkan::checkValidationLayerSupport()
+        {
+            // Total validation layers.
+            uint32_t totalLayers;
+            vkEnumerateInstanceLayerProperties(&totalLayers, nullptr);
+
+            // Actual layers itself.
+            std::vector<VkLayerProperties> availableLayers(totalLayers);
+            vkEnumerateInstanceLayerProperties(&totalLayers, availableLayers.data());
+
+            // Check if layers we want to use is inside the layers that are available vector.
+            for (const char* layer : validationLayers)
+            {
+                bool found = false;
+
+                // Compare the name of layer we wanted to check with every available layer's name.
+                for (VkLayerProperties layerProperties : availableLayers)
+                {
+                    if (strcmp(layer, layerProperties.layerName) == 0)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+
+                // Did not find the layer in available layers.
+                if (!found)
+                {
+                    return false;
+                }
+            }
+
+            // Did find all the layer we wanted to use in available layers.
+            return true;
+        }
+        
+        const std::string vulkan::decodeDebugServerity(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity)
+        {
+            switch (messageSeverity)
+            {
+                case VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT:
+                    return "Verbose.";
+                case VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT:
+                    return "Info.";
+                case VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT:
+                    return "Warning.";
+                case VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT:
+                    return "Error.";
+                default:
+                    return "UNKNOWN SERVERITY.";
+            }
+        }
+        const std::string vulkan::decodeDebugType(VkDebugUtilsMessageTypeFlagsEXT messageType)
+        {
+            switch (messageType)
+            {
+                case VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT:
+                    return "General.";
+                case VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT:
+                    return "Validation.";
+                case VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT:
+                    return "Performance.";
+                default:
+                    return "UNKNOWN TYPE.";
+            }
+        }
+        VKAPI_ATTR VkBool32 VKAPI_CALL vulkan::debugCallback(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity, VkDebugUtilsMessageTypeFlagsEXT messageType, const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData, void* pUserData)
+        {
+            std::cout << "Debug callback: " << pCallbackData->pMessage << std::endl;
+            std::cout << "\t- Serverity: " << decodeDebugServerity(messageSeverity) << std::endl;
+            std::cout << "\t- Type: " << decodeDebugType(messageType) << std::endl;
+            return VK_FALSE;
+        }
+        VkResult vulkan::createDebugCallback(const VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator)
+        {
+            // Find address of a function that create debug callback (Because it's an extension function).
+            PFN_vkCreateDebugUtilsMessengerEXT func = (PFN_vkCreateDebugUtilsMessengerEXT)vkGetInstanceProcAddr(instance, "vkCreateDebugUtilsMessengerEXT");
+            if (func)
+            {
+                return func(instance, pCreateInfo, pAllocator, &debugMessenger);
+            }
+
+            // Cannot find extension
+            return VK_ERROR_EXTENSION_NOT_PRESENT;
+        }
+        void vulkan::cleanUpDebugCallback(const VkAllocationCallbacks* pAllocator)
+        {
+            // Find address of a function that delete debug callback (Because it's an extension function).
+            PFN_vkDestroyDebugUtilsMessengerEXT func = (PFN_vkDestroyDebugUtilsMessengerEXT)vkGetInstanceProcAddr(instance, "vkDestroyDebugUtilsMessengerEXT");
+            if (func)
+            {
+                std::cout << "\t- Destroying debug messenger." << std::endl;
+                func(instance, debugMessenger, pAllocator);
+            }
+        }
+
+        /*------------------------------------------------------------
+            Public functions
+        ------------------------------------------------------------*/
         vulkan::vulkan(const std::string& appName, const std::array<uint32_t, 3>& appVersion)
             : name{appName}, version{appVersion}
         {
@@ -63,11 +204,17 @@ namespace auswahlen
 
         void vulkan::init()
         {
+            std::cout << "Initializing Vulkan." << std::endl;
             initInstance();
+            initDebugCallback();
         }
         void vulkan::cleanUp()
         {
             std::cout << "Cleaning up vulkan." << std::endl;
+
+            cleanUpDebugCallback(nullptr);
+
+            std::cout << "\t- Destroying Vulkan instance." << std::endl;
             vkDestroyInstance(instance, nullptr);
         }
     }

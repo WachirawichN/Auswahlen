@@ -1,6 +1,2 @@
 build
-source/*.obj
-source/*.exe
-
-source/linearAlgebra/*.obj
-source/linearAlgebra/*.exe
+test.*

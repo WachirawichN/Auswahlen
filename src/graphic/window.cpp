@@ -23,7 +23,9 @@ namespace auswahlen
     
         void window::createWindow()
         {
+            std::cout << "Creating window." << std::endl;
             guiWindow = glfwCreateWindow(wWidth, wHeight, wName.c_str(), nullptr, nullptr);
+            std::cout << "\t- Window creating completed." << std::endl;
         }
         void window::cleanUp()
         {
