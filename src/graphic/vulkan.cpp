@@ -90,11 +90,11 @@ namespace auswahlen
 
             // Check for devices that is suitable.
             //std::vector<VkPhysicalDevice> suitableDevices;
-            for (const VkPhysicalDevice& device : devicesList)
+            for (const VkPhysicalDevice& physDevice : devicesList)
             {
-                if (isDeviceSuitable(device))
+                if (isDeviceSuitable(physDevice))
                 {
-                    physicalDevice = device;
+                    physicalDevice = physDevice;
                     break;
                 }
             }
@@ -109,6 +109,38 @@ namespace auswahlen
             VkPhysicalDeviceProperties properties;
             vkGetPhysicalDeviceProperties(physicalDevice, &properties);
             std::cout << "\t\t- Pick " << properties.deviceName << " as a physical device." << std::endl;
+        }
+        void vulkan::initLogicalDevice()
+        {
+            std::cout << "\t- Initializing logical device." << std::endl;
+
+            // Create queue create info for all queue families we wanted.
+            vulkan::queueFamily indices = checkCommandSupport(physicalDevice);
+            std::vector<VkDeviceQueueCreateInfo> queueCreateInfos;
+
+            VkDeviceQueueCreateInfo graphicCreateInfo = generateQueueCreateInfo(indices.graphicFamily.value(), 1, 1.0f);
+            queueCreateInfos.push_back(graphicCreateInfo);
+
+            // Device's create info.
+            VkPhysicalDeviceFeatures deviceFeatures{};
+            VkDeviceCreateInfo deviceCreateInfo = {
+                .sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO,
+                .queueCreateInfoCount = (uint32_t)queueCreateInfos.size(),
+                .pQueueCreateInfos = queueCreateInfos.data(),
+                .enabledExtensionCount = 0,
+                .pEnabledFeatures = &deviceFeatures
+            };
+
+            // Create device itself.
+            if (vkCreateDevice(physicalDevice, &deviceCreateInfo, nullptr, &device) != VK_SUCCESS)
+            {
+                std::runtime_error("Failed to create logical device.");
+            }
+
+            // Assigning queue that have been create along the logical device to each queue's handler.
+            vkGetDeviceQueue(device, indices.graphicFamily.value(), 0, &graphicQueue);
+
+            std::cout << "\t\t- Initialization completed." << std::endl;
         }
 
         // Debugger functions.
@@ -224,37 +256,49 @@ namespace auswahlen
         }
 
         // Device functions.
-        bool vulkan::isDeviceSuitable(const VkPhysicalDevice& device)
+        bool vulkan::isDeviceSuitable(const VkPhysicalDevice& physDevice)
         {
-            vulkan::queueFamily indicies = checkCommandSupport(device);
+            vulkan::queueFamily indicies = checkCommandSupport(physDevice);
             return indicies.isComplete();
         }
-        const vulkan::queueFamily vulkan::checkCommandSupport(const VkPhysicalDevice& device)
+        const vulkan::queueFamily vulkan::checkCommandSupport(const VkPhysicalDevice& physDevice)
         {
             vulkan::queueFamily indices;
 
             // Get all the queue family that are supported.
             uint32_t supportedQueueFamiliesCount = 0;
-            vkGetPhysicalDeviceQueueFamilyProperties(device, &supportedQueueFamiliesCount, nullptr);
+            vkGetPhysicalDeviceQueueFamilyProperties(physDevice, &supportedQueueFamiliesCount, nullptr);
             
             std::vector<VkQueueFamilyProperties> supportedQueueFamilies(supportedQueueFamiliesCount);
-            vkGetPhysicalDeviceQueueFamilyProperties(device, &supportedQueueFamiliesCount, supportedQueueFamilies.data());
+            vkGetPhysicalDeviceQueueFamilyProperties(physDevice, &supportedQueueFamiliesCount, supportedQueueFamilies.data());
 
-            // Check if any of those supported queue family support the command we want.
+            // Check if any of those supported queue family support the commands we want,
+            // and assigning corresponding index to those queue family member variable.
+            int i = 0;
             for (VkQueueFamilyProperties queueFamily : supportedQueueFamilies)
             {
+                if (queueFamily.queueFlags & VK_QUEUE_GRAPHICS_BIT)
+                {
+                    indices.graphicFamily = i;
+                }
                 if (indices.isComplete())
                 {
                     break;
                 }
-
-                if (queueFamily.queueFlags & VK_QUEUE_GRAPHICS_BIT)
-                {
-                    indices.graphicFamily = 0;
-                }
+                i++;
             }
 
             return indices;
+        }
+        VkDeviceQueueCreateInfo vulkan::generateQueueCreateInfo(const uint32_t queueIdx, const uint32_t queueCount, const float priority)
+        {
+            VkDeviceQueueCreateInfo queueCreateInfo = {
+                .sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO,
+                .queueFamilyIndex = queueIdx,
+                .queueCount = queueCount,
+                .pQueuePriorities = &priority
+            };
+            return queueCreateInfo;
         }
 
         /*------------------------------------------------------------
@@ -282,10 +326,14 @@ namespace auswahlen
             initInstance();
             initDebugCallback();
             pickPhysicalDevice();
+            initLogicalDevice();
         }
         void vulkan::cleanUp()
         {
             std::cout << "Cleaning up vulkan." << std::endl;
+
+            std::cout << "\t- Destroying logical device." << std::endl;
+            vkDestroyDevice(device, nullptr);
 
             cleanUpDebugCallback(nullptr);
 

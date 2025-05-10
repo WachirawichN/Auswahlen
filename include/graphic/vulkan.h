@@ -37,10 +37,17 @@ namespace auswahlen
                     VK_EXT_DEBUG_UTILS_EXTENSION_NAME
                 };
                 VkPhysicalDevice physicalDevice = VK_NULL_HANDLE;
+                VkDevice device;
+
+                // Queue family handlers.
+                VkQueue graphicQueue;
 
                 /*------------------------------------------------------------
                     Queue family.
                     For checking if all the commands we wanted to use are supported by the queue family that is supported by the device.
+
+                    Each member variable is index of that queue family correspond to the index of the element of "pQueueFamilyProperties",
+                    this index is from "vkGetPhysicalDeviceQueueFamilyProperties", which is inside "checkCommandSupport" function.
                 ------------------------------------------------------------*/
                 struct queueFamily{
                     std::optional<uint32_t> graphicFamily;
@@ -58,6 +65,7 @@ namespace auswahlen
                 void initInstance();
                 void initDebugCallback();
                 void pickPhysicalDevice();
+                void initLogicalDevice();
 
                 // Debugger functions.
                 VkDebugUtilsMessengerCreateInfoEXT populateDebugCreateInfo();
@@ -70,8 +78,9 @@ namespace auswahlen
                 void cleanUpDebugCallback(const VkAllocationCallbacks* pAllocator);
 
                 // Device functions.
-                bool isDeviceSuitable(const VkPhysicalDevice& device);
-                const queueFamily checkCommandSupport(const VkPhysicalDevice& device);
+                bool isDeviceSuitable(const VkPhysicalDevice& physDevice);
+                const queueFamily checkCommandSupport(const VkPhysicalDevice& physDevice);
+                VkDeviceQueueCreateInfo generateQueueCreateInfo(uint32_t queueIdx, uint32_t queueCount, float priority);
             public:
                 vulkan() {}
                 vulkan(const std::string& appName, const std::array<uint32_t, 3>& appVersion);

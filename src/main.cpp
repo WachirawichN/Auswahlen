@@ -5,8 +5,8 @@
 #include <iostream>
 #include <stdexcept>
 
-const uint32_t width = 1920;
-const uint32_t height = 1080;
+const uint32_t width = 800;
+const uint32_t height = 600;
 
 int main()
 {
