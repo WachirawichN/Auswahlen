@@ -7,6 +7,7 @@
 #include <array>
 #include <optional>
 #include <vector>
+#include <set>
 
 // Debug / Error message
 #include <iostream>
@@ -30,31 +31,37 @@ namespace auswahlen
                 ------------------------------------------------------------*/
                 VkInstance instance = VK_NULL_HANDLE;
                 VkDebugUtilsMessengerEXT debugMessenger = VK_NULL_HANDLE;
+                VkSurfaceKHR surface;
+
                 const std::vector<const char*> validationLayers = {
                     "VK_LAYER_KHRONOS_validation"
                 };
                 const std::vector<const char*> vulkanExtensions = {
                     VK_EXT_DEBUG_UTILS_EXTENSION_NAME
                 };
+                
+                // Device handler.
                 VkPhysicalDevice physicalDevice = VK_NULL_HANDLE;
                 VkDevice device;
 
                 // Queue family handlers.
                 VkQueue graphicQueue;
+                VkQueue presentQueue;
 
                 /*------------------------------------------------------------
                     Queue family.
-                    For checking if all the commands we wanted to use are supported by the queue family that is supported by the device.
+                    For storing index of required queue family.
 
                     Each member variable is index of that queue family correspond to the index of the element of "pQueueFamilyProperties",
                     this index is from "vkGetPhysicalDeviceQueueFamilyProperties", which is inside "checkCommandSupport" function.
                 ------------------------------------------------------------*/
                 struct queueFamily{
-                    std::optional<uint32_t> graphicFamily;
+                    std::optional<uint32_t> graphicFamilyIdx;
+                    std::optional<uint32_t> presentFamilyIdx;
 
                     bool isComplete()
                     {
-                        return graphicFamily.has_value();
+                        return graphicFamilyIdx.has_value() && presentFamilyIdx.has_value();
                     }
                 };
 
@@ -64,6 +71,7 @@ namespace auswahlen
                 // Initializer functions.
                 void initInstance();
                 void initDebugCallback();
+                void initSurface(GLFWwindow* window);
                 void pickPhysicalDevice();
                 void initLogicalDevice();
 
@@ -91,7 +99,7 @@ namespace auswahlen
                 const std::optional<std::string>& getName() const { return name; }
                 const std::optional<std::array<uint32_t, 3>>& getAppVersion() const { return version; }
 
-                void init();
+                void init(GLFWwindow* window);
                 void cleanUp();
         };
     }

@@ -29,6 +29,7 @@ namespace auswahlen
                 int getWidth() const { return wWidth; }
                 int getHeight() const { return wHeight; }
                 const std::string& getName() const { return wName; }
+                GLFWwindow* getWindow() const { return guiWindow; }
                 bool shouldClose() const { return glfwWindowShouldClose(guiWindow); }
     
                 void createWindow();

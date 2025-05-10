@@ -21,7 +21,7 @@ namespace auswahlen
     void app::initVulkan()
     {
         vulkan = auswahlen::graphic::vulkan("Auswahlen", {0, 2, 0});
-        vulkan.init();
+        vulkan.init(guiWindow.getWindow());
     }
 
     void app::mainLoop()

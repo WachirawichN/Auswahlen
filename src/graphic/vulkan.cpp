@@ -72,6 +72,15 @@ namespace auswahlen
             }
             std::cout << "\t\t- Initialization completed." << std::endl;
         }
+        void vulkan::initSurface(GLFWwindow* window)
+        {
+            std::cout << "\t- Initializing window surface." << std::endl;
+            if (glfwCreateWindowSurface(instance, window, nullptr, &surface) != VK_SUCCESS)
+            {
+                std::runtime_error("\t\t- Failed to create window surface.");
+            }
+            std::cout << "\t\t- Initialization completed." << std::endl;
+        }
         void vulkan::pickPhysicalDevice()
         {
             std::cout << "\t- Picking physical device." << std::endl;
@@ -116,10 +125,17 @@ namespace auswahlen
 
             // Create queue create info for all queue families we wanted.
             vulkan::queueFamily indices = checkCommandSupport(physicalDevice);
+            std::set<uint32_t> uniqueQueueFamilyIdx = {
+                indices.graphicFamilyIdx.value(),
+                indices.presentFamilyIdx.value()
+            };
             std::vector<VkDeviceQueueCreateInfo> queueCreateInfos;
 
-            VkDeviceQueueCreateInfo graphicCreateInfo = generateQueueCreateInfo(indices.graphicFamily.value(), 1, 1.0f);
-            queueCreateInfos.push_back(graphicCreateInfo);
+            for (uint32_t queueFamilyIdx : uniqueQueueFamilyIdx)
+            {
+                VkDeviceQueueCreateInfo queueCreateInfo = generateQueueCreateInfo(queueFamilyIdx, 1, 1.0f);
+                queueCreateInfos.push_back(queueCreateInfo);
+            }
 
             // Device's create info.
             VkPhysicalDeviceFeatures deviceFeatures{};
@@ -138,7 +154,8 @@ namespace auswahlen
             }
 
             // Assigning queue that have been create along the logical device to each queue's handler.
-            vkGetDeviceQueue(device, indices.graphicFamily.value(), 0, &graphicQueue);
+            vkGetDeviceQueue(device, indices.graphicFamilyIdx.value(), 0, &graphicQueue);
+            vkGetDeviceQueue(device, indices.presentFamilyIdx.value(), 0, &presentQueue);
 
             std::cout << "\t\t- Initialization completed." << std::endl;
         }
@@ -277,10 +294,17 @@ namespace auswahlen
             int i = 0;
             for (VkQueueFamilyProperties queueFamily : supportedQueueFamilies)
             {
+                VkBool32 surfaceSupport = false;
+                vkGetPhysicalDeviceSurfaceSupportKHR(physDevice, i, surface, &surfaceSupport);
+                if (surfaceSupport)
+                {
+                    indices.presentFamilyIdx = i;
+                }
                 if (queueFamily.queueFlags & VK_QUEUE_GRAPHICS_BIT)
                 {
-                    indices.graphicFamily = i;
+                    indices.graphicFamilyIdx = i;
                 }
+
                 if (indices.isComplete())
                 {
                     break;
@@ -320,11 +344,12 @@ namespace auswahlen
             return *this;
         }
 
-        void vulkan::init()
+        void vulkan::init(GLFWwindow* window)
         {
             std::cout << "Initializing Vulkan." << std::endl;
             initInstance();
             initDebugCallback();
+            initSurface(window);
             pickPhysicalDevice();
             initLogicalDevice();
         }
@@ -335,6 +360,9 @@ namespace auswahlen
             std::cout << "\t- Destroying logical device." << std::endl;
             vkDestroyDevice(device, nullptr);
 
+            std::cout << "\t- Destroying window surface." << std::endl;
+            vkDestroySurfaceKHR(instance, surface, nullptr);
+            
             cleanUpDebugCallback(nullptr);
 
             std::cout << "\t- Destroying Vulkan instance." << std::endl;
