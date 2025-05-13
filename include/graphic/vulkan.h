@@ -3,11 +3,15 @@
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
 
+#include <cstdint>
 #include <string>
 #include <array>
 #include <optional>
 #include <vector>
 #include <set>
+
+#include <limits>
+#include <algorithm>
 
 // Debug / Error message
 #include <iostream>
@@ -40,6 +44,10 @@ namespace auswahlen
                 VkInstance instance = VK_NULL_HANDLE;
                 VkDebugUtilsMessengerEXT debugMessenger = VK_NULL_HANDLE;
                 VkSurfaceKHR surface;
+                VkSwapchainKHR swapChain;
+                std::vector<VkImage> swapChainImages;
+                VkFormat imageFormat;
+                VkExtent2D imageExtent;
 
                 const std::vector<const char*> validationLayers = {
                     "VK_LAYER_KHRONOS_validation"
@@ -98,6 +106,7 @@ namespace auswahlen
                 void initSurface(GLFWwindow* window);
                 void pickPhysicalDevice();
                 void initLogicalDevice();
+                void initSwapChain(GLFWwindow* window);
 
                 // Debugger functions.
                 VkDebugUtilsMessengerCreateInfoEXT populateDebugCreateInfo();
@@ -117,6 +126,9 @@ namespace auswahlen
 
                 // Swap chain functions.
                 const swapChainSupportedProperties querySwapChainSupport(const VkPhysicalDevice& physDevice);
+                const VkSurfaceFormatKHR chooseSurfaceFormat(const std::vector<VkSurfaceFormatKHR> availableFormats);
+                const VkPresentModeKHR choosePresentMode(const std::vector<VkPresentModeKHR> availableModes);
+                const VkExtent2D chooseSwapExtent(const VkSurfaceCapabilitiesKHR& capability, GLFWwindow* window);
             public:
                 vulkan() {}
                 vulkan(const std::string& appName, const std::array<uint32_t, 3>& appVersion);

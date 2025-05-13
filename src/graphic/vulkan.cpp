@@ -163,6 +163,72 @@ namespace auswahlen
 
             std::cout << "\t\t- Initialization completed." << std::endl;
         }
+        void vulkan::initSwapChain(GLFWwindow* window)
+        {
+            std::cout << "\t- Initializing swap chain." << std::endl;
+            swapChainSupportedProperties swapChainSupportInfo = querySwapChainSupport(physicalDevice);
+
+            const VkSurfaceFormatKHR surfaceFormat = chooseSurfaceFormat(swapChainSupportInfo.formats);
+            const VkPresentModeKHR presentMode = choosePresentMode(swapChainSupportInfo.presentModes);
+            const VkExtent2D extent = chooseSwapExtent(swapChainSupportInfo.capability, window);
+
+            // Recommended to have one more than the minimum.
+            uint32_t imageCounts = swapChainSupportInfo.capability.minImageCount + 1;
+
+            // Making sure that the image counts doesn't exceed that maximum that is allowed.
+            if (imageCounts > swapChainSupportInfo.capability.maxImageCount && swapChainSupportInfo.capability.maxImageCount > 0)
+            {
+                imageCounts = swapChainSupportInfo.capability.maxImageCount;
+            }
+
+            // Swap chain's create info.
+            VkSwapchainCreateInfoKHR createInfo = {
+                .sType = VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR,
+                .surface = surface,
+                .minImageCount = imageCounts,
+                .imageFormat = surfaceFormat.format,
+                .imageColorSpace = surfaceFormat.colorSpace,
+                .imageExtent = extent,
+                .imageArrayLayers = 1,
+                .imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT,
+                .preTransform = swapChainSupportInfo.capability.currentTransform,
+                .compositeAlpha = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR,
+                .presentMode = presentMode,
+                .clipped = VK_TRUE
+            };
+
+            // Check if the graphic queue and the presentation queue is from the same family.
+            queueFamily indices = checkCommandSupport(physicalDevice);
+            if (indices.graphicFamilyIdx.value() != indices.presentFamilyIdx.value())
+            {
+                uint32_t queueFamilyindicesArray[] = {indices.graphicFamilyIdx.value(), indices.presentFamilyIdx.value()};
+
+                // Can use VK_SHARING_MODE_EXCLUSIVE instead, but required more setup.
+                createInfo.imageSharingMode = VK_SHARING_MODE_CONCURRENT;
+                createInfo.queueFamilyIndexCount = 2;
+                createInfo.pQueueFamilyIndices = queueFamilyindicesArray;
+            }
+            else
+            {
+                createInfo.imageSharingMode = VK_SHARING_MODE_EXCLUSIVE;
+            }
+
+            // Create the swap chain itself.
+            if (vkCreateSwapchainKHR(device, &createInfo, nullptr, &swapChain) != VK_SUCCESS)
+            {
+                std::runtime_error("Failed to initialize swap chain.");
+            }
+            std::cout << "\t\t- Initialization completed." << std::endl;
+
+            // Get the swap chain's images handler.
+            vkGetSwapchainImagesKHR(device, swapChain, &imageCounts, nullptr);
+            swapChainImages.resize(imageCounts);
+            vkGetSwapchainImagesKHR(device, swapChain, &imageCounts, swapChainImages.data());
+
+            // For later use.
+            imageFormat = surfaceFormat.format;
+            imageExtent = extent;
+        }
 
         // Debugger functions.
         VkDebugUtilsMessengerCreateInfoEXT vulkan::populateDebugCreateInfo()
@@ -385,6 +451,51 @@ namespace auswahlen
 
             return supportInfo;
         }
+        const VkSurfaceFormatKHR vulkan::chooseSurfaceFormat(const std::vector<VkSurfaceFormatKHR> availableFormats)
+        {
+            for (VkSurfaceFormatKHR surfaceFormat : availableFormats)
+            {
+                if (surfaceFormat.colorSpace == VK_COLOR_SPACE_SRGB_NONLINEAR_KHR  && surfaceFormat.format == VK_FORMAT_B8G8R8A8_SRGB)
+                {
+                    return surfaceFormat;
+                }
+            }
+            return availableFormats[0];
+        }
+        const VkPresentModeKHR vulkan::choosePresentMode(const std::vector<VkPresentModeKHR> availableModes)
+        {
+            for (VkPresentModeKHR presentMode : availableModes)
+            {
+                if (presentMode == VK_PRESENT_MODE_MAILBOX_KHR)
+                {
+                    return presentMode;
+                }
+            }
+            return VK_PRESENT_MODE_FIFO_KHR;
+        }
+        const VkExtent2D vulkan::chooseSwapExtent(const VkSurfaceCapabilitiesKHR& capability, GLFWwindow* window)
+        {
+            // Check if the current capability's resolution doesn't surpass the largest number of uint32_t type.
+            // Else then compute the new resolution that is within the min-max of supported extents.
+            if (capability.currentExtent.width != std::numeric_limits<uint32_t>::max())
+            {
+                return capability.currentExtent;
+            }
+            else
+            {
+                int width, height;
+                glfwGetFramebufferSize(window, &width, &height);
+
+                VkExtent2D actualExtent = {
+                    (uint32_t)width,
+                    (uint32_t)height,
+                };
+
+                actualExtent.width = std::clamp(actualExtent.width, capability.minImageExtent.width, capability.maxImageExtent.width);
+                actualExtent.height = std::clamp(actualExtent.height, capability.minImageExtent.height, capability.maxImageExtent.height);
+                return actualExtent;
+            }
+        }
 
         /*------------------------------------------------------------
             Public functions
@@ -416,10 +527,14 @@ namespace auswahlen
             initSurface(window);
             pickPhysicalDevice();
             initLogicalDevice();
+            initSwapChain(window);
         }
         void vulkan::cleanUp()
         {
             std::cout << "Cleaning up vulkan." << std::endl;
+
+            std::cout << "\t- Destroying swap chain." << std::endl;
+            vkDestroySwapchainKHR(device, swapChain, nullptr);
 
             std::cout << "\t- Destroying logical device." << std::endl;
             vkDestroyDevice(device, nullptr);
