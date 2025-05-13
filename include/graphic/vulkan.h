@@ -13,6 +13,14 @@
 #include <iostream>
 #include <stdexcept>
 
+#ifndef DEBUG
+    #ifdef NDEBUG
+        #define DEBUG false
+    #else
+        #define DEBUG true
+    #endif
+#endif
+
 namespace auswahlen
 {
     namespace graphic
@@ -37,7 +45,13 @@ namespace auswahlen
                     "VK_LAYER_KHRONOS_validation"
                 };
                 const std::vector<const char*> vulkanExtensions = {
-                    VK_EXT_DEBUG_UTILS_EXTENSION_NAME
+                    #if DEBUG
+                        VK_EXT_DEBUG_UTILS_EXTENSION_NAME,
+                    #endif
+                };
+                const std::vector<const char*> deviceExtensions = {
+                    // Optional, if the presentation queue is supported, then the swapchain must be supported too.
+                    VK_KHR_SWAPCHAIN_EXTENSION_NAME
                 };
                 
                 // Device handler.
@@ -66,6 +80,16 @@ namespace auswahlen
                 };
 
                 /*------------------------------------------------------------
+                    Swap chain supported properties.
+                    For storing detail about swap chain's supported properties.
+                ------------------------------------------------------------*/
+                struct swapChainSupportedProperties{
+                    VkSurfaceCapabilitiesKHR capability;
+                    std::vector<VkSurfaceFormatKHR> formats;
+                    std::vector<VkPresentModeKHR> presentModes;
+                };
+
+                /*------------------------------------------------------------
                     Helper funcions.
                 ------------------------------------------------------------*/
                 // Initializer functions.
@@ -88,7 +112,11 @@ namespace auswahlen
                 // Device functions.
                 bool isDeviceSuitable(const VkPhysicalDevice& physDevice);
                 const queueFamily checkCommandSupport(const VkPhysicalDevice& physDevice);
-                VkDeviceQueueCreateInfo generateQueueCreateInfo(uint32_t queueIdx, uint32_t queueCount, float priority);
+                bool checkDeviceExtensionsSupport(const VkPhysicalDevice& physDevice);
+                const VkDeviceQueueCreateInfo generateQueueCreateInfo(uint32_t queueIdx, uint32_t queueCount, float priority);
+
+                // Swap chain functions.
+                const swapChainSupportedProperties querySwapChainSupport(const VkPhysicalDevice& physDevice);
             public:
                 vulkan() {}
                 vulkan(const std::string& appName, const std::array<uint32_t, 3>& appVersion);

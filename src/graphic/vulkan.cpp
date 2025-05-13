@@ -17,7 +17,7 @@ namespace auswahlen
                 throw std::runtime_error("Either name or version or both is not available to Vulkan class.");
             }
 
-            if (!checkValidationLayerSupport())
+            if (DEBUG && !checkValidationLayerSupport())
             {
                 throw std::runtime_error("One of the validation layers is not supported.");
             }
@@ -32,9 +32,6 @@ namespace auswahlen
                 .apiVersion = VK_API_VERSION_1_4
             };
 
-            // Debug's create info.
-            VkDebugUtilsMessengerCreateInfoEXT debugCreateInfo = populateDebugCreateInfo();
-
             // GLFW's requirement extensions.
             uint32_t glfwExtensionCount = 0;
             const char** glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
@@ -47,13 +44,19 @@ namespace auswahlen
             // Instance's create info.
             VkInstanceCreateInfo createInfo = {
                 .sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO,
-                .pNext = &debugCreateInfo,
                 .pApplicationInfo = &appInfo,
-                .enabledLayerCount = (uint32_t)validationLayers.size(),
-                .ppEnabledLayerNames = validationLayers.data(),
                 .enabledExtensionCount = (uint32_t)finalExtensions.size(),
                 .ppEnabledExtensionNames = finalExtensions.data(),
             };
+
+            // Modify instance's create info for validation layer.
+            if (DEBUG)
+            {
+                VkDebugUtilsMessengerCreateInfoEXT debugCreateInfo = populateDebugCreateInfo();
+                createInfo.pNext = &debugCreateInfo;
+                createInfo.enabledLayerCount = validationLayers.size();
+                createInfo.ppEnabledLayerNames = validationLayers.data();
+            }
 
             // Create the instance itself.
             if (vkCreateInstance(&createInfo, nullptr, &instance) != VK_SUCCESS)
@@ -143,7 +146,8 @@ namespace auswahlen
                 .sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO,
                 .queueCreateInfoCount = (uint32_t)queueCreateInfos.size(),
                 .pQueueCreateInfos = queueCreateInfos.data(),
-                .enabledExtensionCount = 0,
+                .enabledExtensionCount = (uint32_t)deviceExtensions.size(),
+                .ppEnabledExtensionNames = deviceExtensions.data(),
                 .pEnabledFeatures = &deviceFeatures
             };
 
@@ -267,7 +271,6 @@ namespace auswahlen
             PFN_vkDestroyDebugUtilsMessengerEXT func = (PFN_vkDestroyDebugUtilsMessengerEXT)vkGetInstanceProcAddr(instance, "vkDestroyDebugUtilsMessengerEXT");
             if (func)
             {
-                std::cout << "\t- Destroying debug messenger." << std::endl;
                 func(instance, debugMessenger, pAllocator);
             }
         }
@@ -276,7 +279,17 @@ namespace auswahlen
         bool vulkan::isDeviceSuitable(const VkPhysicalDevice& physDevice)
         {
             vulkan::queueFamily indicies = checkCommandSupport(physDevice);
-            return indicies.isComplete();
+            bool supportDeviceExtensions = checkDeviceExtensionsSupport(physDevice);
+
+            // Check if swap chain that we've supported surface formats and presentation modes.
+            bool swapChainSupport = false;
+            if (supportDeviceExtensions)
+            {
+                swapChainSupportedProperties swapChainSupportInfo = querySwapChainSupport(physDevice);
+                swapChainSupport = !swapChainSupportInfo.formats.empty() && !swapChainSupportInfo.presentModes.empty();
+            }
+
+            return indicies.isComplete() && supportDeviceExtensions && swapChainSupport;
         }
         const vulkan::queueFamily vulkan::checkCommandSupport(const VkPhysicalDevice& physDevice)
         {
@@ -314,7 +327,26 @@ namespace auswahlen
 
             return indices;
         }
-        VkDeviceQueueCreateInfo vulkan::generateQueueCreateInfo(const uint32_t queueIdx, const uint32_t queueCount, const float priority)
+        bool vulkan::checkDeviceExtensionsSupport(const VkPhysicalDevice& physDevice)
+        {
+            // Get extensions that are supported by the device.
+            uint32_t supportedExtensionsCount;
+            vkEnumerateDeviceExtensionProperties(physDevice, nullptr, &supportedExtensionsCount, nullptr);
+
+            std::vector<VkExtensionProperties> supportedExtensions(supportedExtensionsCount);
+            vkEnumerateDeviceExtensionProperties(physDevice, nullptr, &supportedExtensionsCount, supportedExtensions.data());
+
+            // Remove the required extension from a set, if the device supported that extension.
+            // The set must be a set of string to avoid it not recognize it as the same value.
+            std::set<std::string> requiredExtensions(deviceExtensions.begin(), deviceExtensions.end());
+            for (VkExtensionProperties supportedExtension : supportedExtensions)
+            {
+                requiredExtensions.erase(supportedExtension.extensionName);
+            }
+
+            return requiredExtensions.empty();
+        }
+        const VkDeviceQueueCreateInfo vulkan::generateQueueCreateInfo(const uint32_t queueIdx, const uint32_t queueCount, const float priority)
         {
             VkDeviceQueueCreateInfo queueCreateInfo = {
                 .sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO,
@@ -323,6 +355,35 @@ namespace auswahlen
                 .pQueuePriorities = &priority
             };
             return queueCreateInfo;
+        }
+
+        // Swap chain functions.
+        const vulkan::swapChainSupportedProperties vulkan::querySwapChainSupport(const VkPhysicalDevice& physDevice)
+        {
+            swapChainSupportedProperties supportInfo;
+
+            // Capability.
+            vkGetPhysicalDeviceSurfaceCapabilitiesKHR(physDevice, surface, &supportInfo.capability);
+
+            // Formats.
+            uint32_t formatsCount;
+            vkGetPhysicalDeviceSurfaceFormatsKHR(physDevice, surface, &formatsCount, nullptr);
+            if (formatsCount != 0)
+            {
+                supportInfo.formats.resize(formatsCount);
+                vkGetPhysicalDeviceSurfaceFormatsKHR(physDevice, surface, &formatsCount, supportInfo.formats.data());
+            }
+            
+            // Present modes.
+            uint32_t presentModesCount;
+            vkGetPhysicalDeviceSurfacePresentModesKHR(physDevice, surface, &presentModesCount, nullptr);
+            if (presentModesCount != 0)
+            {
+                supportInfo.presentModes.resize(presentModesCount);
+                vkGetPhysicalDeviceSurfacePresentModesKHR(physDevice, surface, &presentModesCount, supportInfo.presentModes.data());
+            }
+
+            return supportInfo;
         }
 
         /*------------------------------------------------------------
@@ -348,7 +409,10 @@ namespace auswahlen
         {
             std::cout << "Initializing Vulkan." << std::endl;
             initInstance();
-            initDebugCallback();
+            if (DEBUG)
+            {
+                initDebugCallback();
+            }
             initSurface(window);
             pickPhysicalDevice();
             initLogicalDevice();
@@ -363,7 +427,11 @@ namespace auswahlen
             std::cout << "\t- Destroying window surface." << std::endl;
             vkDestroySurfaceKHR(instance, surface, nullptr);
             
-            cleanUpDebugCallback(nullptr);
+            if (DEBUG)
+            {
+                std::cout << "\t- Destroying debug messenger." << std::endl;
+                cleanUpDebugCallback(nullptr);
+            }            
 
             std::cout << "\t- Destroying Vulkan instance." << std::endl;
             vkDestroyInstance(instance, nullptr);
