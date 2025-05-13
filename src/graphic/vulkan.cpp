@@ -282,14 +282,14 @@ namespace auswahlen
             bool supportDeviceExtensions = checkDeviceExtensionsSupport(physDevice);
 
             // Check if swap chain that we've supported surface formats and presentation modes.
-            bool swapChainSupport = false;
+            bool swapChainSuitable = false;
             if (supportDeviceExtensions)
             {
                 swapChainSupportedProperties swapChainSupportInfo = querySwapChainSupport(physDevice);
-                swapChainSupport = !swapChainSupportInfo.formats.empty() && !swapChainSupportInfo.presentModes.empty();
+                swapChainSuitable = !swapChainSupportInfo.formats.empty() && !swapChainSupportInfo.presentModes.empty();
             }
 
-            return indicies.isComplete() && supportDeviceExtensions && swapChainSupport;
+            return indicies.isComplete() && supportDeviceExtensions && swapChainSuitable;
         }
         const vulkan::queueFamily vulkan::checkCommandSupport(const VkPhysicalDevice& physDevice)
         {
