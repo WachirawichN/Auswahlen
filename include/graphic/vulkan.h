@@ -43,9 +43,12 @@ namespace auswahlen
                 ------------------------------------------------------------*/
                 VkInstance instance = VK_NULL_HANDLE;
                 VkDebugUtilsMessengerEXT debugMessenger = VK_NULL_HANDLE;
+
+                // Presentation stuffs.
                 VkSurfaceKHR surface;
                 VkSwapchainKHR swapChain;
                 std::vector<VkImage> swapChainImages;
+                std::vector<VkImageView> swapChainImageViews;
                 VkFormat imageFormat;
                 VkExtent2D imageExtent;
 
@@ -107,6 +110,7 @@ namespace auswahlen
                 void pickPhysicalDevice();
                 void initLogicalDevice();
                 void initSwapChain(GLFWwindow* window);
+                void initImageViews();
 
                 // Debugger functions.
                 VkDebugUtilsMessengerCreateInfoEXT populateDebugCreateInfo();

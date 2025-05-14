@@ -166,8 +166,9 @@ namespace auswahlen
         void vulkan::initSwapChain(GLFWwindow* window)
         {
             std::cout << "\t- Initializing swap chain." << std::endl;
-            swapChainSupportedProperties swapChainSupportInfo = querySwapChainSupport(physicalDevice);
 
+            // Swap chain properties.
+            swapChainSupportedProperties swapChainSupportInfo = querySwapChainSupport(physicalDevice);
             const VkSurfaceFormatKHR surfaceFormat = chooseSurfaceFormat(swapChainSupportInfo.formats);
             const VkPresentModeKHR presentMode = choosePresentMode(swapChainSupportInfo.presentModes);
             const VkExtent2D extent = chooseSwapExtent(swapChainSupportInfo.capability, window);
@@ -228,6 +229,46 @@ namespace auswahlen
             // For later use.
             imageFormat = surfaceFormat.format;
             imageExtent = extent;
+        }
+        void vulkan::initImageViews()
+        {
+            std::cout << "\t- Initializing image views." << std::endl;
+
+            swapChainImageViews.resize(swapChainImages.size());
+
+            // Specify component mapping and subresource range for all image views.
+            VkComponentMapping componentMapping = {
+                .r = VK_COMPONENT_SWIZZLE_IDENTITY,
+                .g = VK_COMPONENT_SWIZZLE_IDENTITY,
+                .b = VK_COMPONENT_SWIZZLE_IDENTITY,
+                .a = VK_COMPONENT_SWIZZLE_IDENTITY
+            };
+            VkImageSubresourceRange subresourceRange = {
+                .aspectMask = VK_IMAGE_ASPECT_COLOR_BIT,
+                .baseMipLevel = 0,
+                .levelCount = 1,
+                .baseArrayLayer = 0,
+                .layerCount = 1
+            };
+
+            // Create view for every image.
+            for (int i = 0; i < swapChainImages.size(); i++)
+            {
+                VkImageViewCreateInfo createInfo = {
+                    .sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO,
+                    .image = swapChainImages[i],
+                    .viewType = VK_IMAGE_VIEW_TYPE_2D,
+                    .format = imageFormat,
+                    .components = componentMapping,
+                    .subresourceRange = subresourceRange
+                };
+
+                if (vkCreateImageView(device, &createInfo, nullptr, &swapChainImageViews[i]) != VK_SUCCESS)
+                {
+                    std::runtime_error("Failed to initialize image views.");
+                }
+            }
+            std::cout << "\t\t- Initialization completed." << std::endl;
         }
 
         // Debugger functions.
@@ -528,10 +569,17 @@ namespace auswahlen
             pickPhysicalDevice();
             initLogicalDevice();
             initSwapChain(window);
+            initImageViews();
         }
         void vulkan::cleanUp()
         {
             std::cout << "Cleaning up vulkan." << std::endl;
+
+            std::cout << "\t- Destroying image views." << std::endl;
+            for (VkImageView imageView : swapChainImageViews)
+            {
+                vkDestroyImageView(device, imageView, nullptr);
+            }
 
             std::cout << "\t- Destroying swap chain." << std::endl;
             vkDestroySwapchainKHR(device, swapChain, nullptr);
