@@ -12,11 +12,11 @@ namespace auswahlen
         window& window::operator=(const window& window)
         {
             // Check if the window for this class is already created, and check if it try to use "=" operator on itself.
-            if (!(wWidth || wHeight) && (window.getWidth() && window.getHeight()) && (this != &window))
+            if (!(wWidth || wHeight) && (window.wWidth && window.wHeight) && (this != &window))
             {
-                wWidth = window.getWidth();
-                wHeight = window.getHeight();
-                wName = window.getName();
+                wWidth = window.wWidth;
+                wHeight = window.wHeight;
+                wName = window.wName;
             }
             return *this;
         }

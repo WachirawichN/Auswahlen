@@ -539,7 +539,7 @@ namespace auswahlen
         }
 
         /*------------------------------------------------------------
-            Public functions
+            Public functions.
         ------------------------------------------------------------*/
         vulkan::vulkan(const std::string& appName, const std::array<uint32_t, 3>& appVersion)
             : name{appName}, version{appVersion}

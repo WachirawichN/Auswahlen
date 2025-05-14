@@ -9,19 +9,23 @@ namespace auswahlen
     class app
     {
         private:
-            // graphic
+            /*------------------------------------------------------------
+                App variables.
+            ------------------------------------------------------------*/
             int width;
             int height;
             graphic::window guiWindow;
-            pipeline pipeline{"asset/shader/shader.vert.spv", "asset/shader/shader.frag.spv"};
-
+            graphic::pipeline pipeline;
             graphic::vulkan vulkan;
 
-            // Helper functions.
+            /*------------------------------------------------------------
+                Helper funcions.
+            ------------------------------------------------------------*/
             // For constructor.
             void initGLFW();
             void initWindow();
             void initVulkan();
+            void initGraphicPipeline();
 
             // For run function.
             void mainLoop();

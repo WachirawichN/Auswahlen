@@ -2,7 +2,9 @@
 
 namespace auswahlen
 {
-    // Helper functions.
+    /*------------------------------------------------------------
+        Helper funcions.
+    ------------------------------------------------------------*/
     void app::initGLFW()
     {
         std::cout << "Initializing GLFW." << std::endl;
@@ -23,6 +25,11 @@ namespace auswahlen
         vulkan = auswahlen::graphic::vulkan("Auswahlen", {0, 2, 0});
         vulkan.init(guiWindow.getWindow());
     }
+    void app::initGraphicPipeline()
+    {
+        pipeline = auswahlen::graphic::pipeline("asset/shader/shader.vert.spv", "asset/shader/shader.frag.spv");
+        pipeline.init();
+    }
 
     void app::mainLoop()
     {
@@ -42,27 +49,31 @@ namespace auswahlen
 
     }
 
-    void app::run()
-    {
-        mainLoop();
-    }
-
-    // Constructor / Deconstructor.
+    /*------------------------------------------------------------
+        Public funcions.
+    ------------------------------------------------------------*/
     app::app(int width, int height)
         : width(width), height(height)
     {
         initGLFW();
         initWindow();
         initVulkan();
+        initGraphicPipeline();
         std::cout << "================================================================" << std::endl;
     }
     app::~app()
     {
         std::cout << "================================================================" << std::endl;
+        pipeline.cleanUp();
         vulkan.cleanUp();
         guiWindow.cleanUp();
 
         std::cout << "Cleaning up GLFW." << std::endl;
         glfwTerminate();
+    }
+
+    void app::run()
+    {
+        mainLoop();
     }
 }
