@@ -3,7 +3,7 @@
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
 
-#include <graphic/vulkan.h>
+#include <graphics/vulkanCore.h>
 
 #include <string>
 #include <vector>
@@ -16,7 +16,7 @@
 
 namespace auswahlen
 {
-    namespace graphic
+    namespace graphics
     {
         class pipeline
         {
@@ -24,6 +24,8 @@ namespace auswahlen
                 /*------------------------------------------------------------
                     Graphics pipeline variables.
                 ------------------------------------------------------------*/
+                vulkanCore vulkan;
+
                 std::optional<std::string> shaderCodePath[2];
                 std::vector<char> vertexCode;
                 std::vector<char> fragmentCode;
@@ -44,21 +46,21 @@ namespace auswahlen
                     Helper funcions.
                 ------------------------------------------------------------*/
                 // Initializer functions.
-                void initRenderPass(const vulkan& vulkan);
-                void initGraphicsPipeline(const vulkan& vulkan);
+                void initRenderPass();
+                void initGraphicsPipeline();
 
                 // Shader functions.
                 static std::vector<char> readFile(const std::string& path);
-                VkShaderModule createShaderModule(std::vector<char> shaderCode, VkDevice device);
+                VkShaderModule createShaderModule(std::vector<char> shaderCode);
             public:
                 pipeline() {}
-                pipeline(const std::string& vertexShaderPath, const std::string& fragmentShaderPath);
+                pipeline(const vulkanCore& vulkanCore, const std::string& vertexShaderPath, const std::string& fragmentShaderPath);
 
                 pipeline(const pipeline&) = delete;
                 pipeline& operator=(const pipeline& pipeline);
 
-                void init(const vulkan& vulkan);
-                void cleanUp(const vulkan& vulkan);
+                void init();
+                void cleanUp();
         };
     }
 }

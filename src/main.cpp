@@ -1,5 +1,4 @@
 #include <app/app.h>
-#include <graphic/vulkan.h>
 
 #include <cstdlib>
 #include <iostream>

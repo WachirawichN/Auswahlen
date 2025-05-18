@@ -27,9 +27,9 @@
 
 namespace auswahlen
 {
-    namespace graphic
+    namespace graphics
     {
-        class vulkan
+        class vulkanCore
         {
             private:
                 /*------------------------------------------------------------
@@ -134,11 +134,11 @@ namespace auswahlen
                 const VkPresentModeKHR choosePresentMode(const std::vector<VkPresentModeKHR> availableModes);
                 const VkExtent2D chooseSwapExtent(const VkSurfaceCapabilitiesKHR& capability, GLFWwindow* window);
             public:
-                vulkan() {}
-                vulkan(const std::string& appName, const std::array<uint32_t, 3>& appVersion);
+                vulkanCore() {}
+                vulkanCore(const std::string& appName, const std::array<uint32_t, 3>& appVersion);
 
-                vulkan(const vulkan&) = delete;
-                vulkan& operator=(const vulkan& vulkan);
+                vulkanCore(const vulkanCore&) = delete;
+                vulkanCore& operator=(const vulkanCore& vulkan);
 
                 const std::optional<std::string>& getName() const { return name; }
                 const std::optional<std::array<uint32_t, 3>>& getAppVersion() const { return version; }

@@ -1,7 +1,7 @@
 #pragma once
 
-#include <graphic/window.h>
-#include <graphic/pipeline.h>
+#include <graphics/window.h>
+#include <graphics/pipeline.h>
 
 namespace auswahlen
 {

@@ -1,5 +1,5 @@
 # Graphic source files
-file(GLOB_RECURSE GRAPHIC_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/graphic/*.cpp)
+file(GLOB_RECURSE GRAPHIC_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/graphics/*.cpp)
 
 # Simulation source file
 set(SIMULATION_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/simulation/simulation.cpp)

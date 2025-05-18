@@ -8,7 +8,7 @@
 
 namespace auswahlen
 {
-    namespace graphic
+    namespace graphics
     {
         class window
         {

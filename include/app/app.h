@@ -1,8 +1,8 @@
 #pragma once
 
-#include <graphic/vulkan.h>
-#include <graphic/window.h>
-#include <graphic/pipeline.h>
+#include <graphics/vulkanCore.h>
+#include <graphics/window.h>
+#include <graphics/pipeline.h>
 
 namespace auswahlen
 {
@@ -14,9 +14,9 @@ namespace auswahlen
             ------------------------------------------------------------*/
             int width;
             int height;
-            graphic::window guiWindow;
-            graphic::pipeline pipeline;
-            graphic::vulkan vulkan;
+            graphics::window guiWindow;
+            graphics::pipeline pipeline;
+            graphics::vulkanCore vulkan;
 
             /*------------------------------------------------------------
                 Helper funcions.

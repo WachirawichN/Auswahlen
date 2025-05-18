@@ -1,8 +1,8 @@
-#include <graphic/window.h>
+#include <graphics/window.h>
 
 namespace auswahlen
 {
-    namespace graphic
+    namespace graphics
     {
         window::window(int width, int height, std::string name)
             : wWidth(width), wHeight(height), wName(name)

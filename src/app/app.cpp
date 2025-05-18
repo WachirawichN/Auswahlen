@@ -17,17 +17,17 @@ namespace auswahlen
     }
     void app::initWindow()
     {
-        guiWindow = auswahlen::graphic::window(width, height, "Auswahlen");
+        guiWindow = auswahlen::graphics::window(width, height, "Auswahlen");
         guiWindow.createWindow();
     }
     void app::initVulkan()
     {
-        vulkan = auswahlen::graphic::vulkan("Auswahlen", {0, 2, 0});
+        vulkan = auswahlen::graphics::vulkanCore("Auswahlen", {0, 2, 0});
         vulkan.init(guiWindow.getWindow());
     }
     void app::initGraphicPipeline()
     {
-        pipeline = auswahlen::graphic::pipeline("asset/shader/shader.vert.spv", "asset/shader/shader.frag.spv");
+        pipeline = auswahlen::graphics::pipeline("asset/shader/shader.vert.spv", "asset/shader/shader.frag.spv");
         pipeline.init(vulkan);
     }
 

@@ -1,14 +1,14 @@
-#include <graphic/pipeline.h>
+#include <graphics/pipeline.h>
 
 namespace auswahlen
 {
-    namespace graphic
+    namespace graphics
     {
         /*------------------------------------------------------------
             Helper functions.
         ------------------------------------------------------------*/
         // initializer functions.
-        void pipeline::initRenderPass(const vulkan& vulkan)
+        void pipeline::initRenderPass()
         {
             std::cout << "\t- Initializing Render pass." << std::endl;
 
@@ -47,7 +47,7 @@ namespace auswahlen
             }
             std::cout << "\t\t- Initialization completed." << std::endl;
         }
-        void pipeline::initGraphicsPipeline(const vulkan& vulkan)
+        void pipeline::initGraphicsPipeline()
         {
             std::cout << "\t- Initializing graphics pipeline." << std::endl;
 
@@ -68,8 +68,8 @@ namespace auswahlen
             // Turn raw SPIR-V code into shader module.
             vertexCode = readFile(shaderCodePath[0].value());
             fragmentCode = readFile(shaderCodePath[1].value());
-            VkShaderModule vertModule = createShaderModule(vertexCode, vulkan.getDevice());
-            VkShaderModule fragModule = createShaderModule(fragmentCode, vulkan.getDevice());
+            VkShaderModule vertModule = createShaderModule(vertexCode);
+            VkShaderModule fragModule = createShaderModule(fragmentCode);
 
             // Create shader stages to actually use the shaders.
             VkPipelineShaderStageCreateInfo vertStageCreateInfo = {
@@ -220,7 +220,7 @@ namespace auswahlen
     
             return buffer;
         }
-        VkShaderModule pipeline::createShaderModule(std::vector<char> shaderCode, VkDevice device)
+        VkShaderModule pipeline::createShaderModule(std::vector<char> shaderCode)
         {
             VkShaderModule shaderModule;
             VkShaderModuleCreateInfo createInfo = {
@@ -229,7 +229,7 @@ namespace auswahlen
                 .pCode = reinterpret_cast<const uint32_t*>(shaderCode.data())
             };
 
-            if (vkCreateShaderModule(device, &createInfo, nullptr, &shaderModule) != VK_SUCCESS)
+            if (vkCreateShaderModule(vulkan.getDevice(), &createInfo, nullptr, &shaderModule) != VK_SUCCESS)
             {
                 std::runtime_error("Failed to create shader module.");
             }
@@ -239,8 +239,9 @@ namespace auswahlen
         /*------------------------------------------------------------
             Public functions.
         ------------------------------------------------------------*/
-        pipeline::pipeline(const std::string& vertexShaderPath, const std::string& fragmentShaderPath)
+        pipeline::pipeline(const vulkanCore& vulkanCore, const std::string& vertexShaderPath, const std::string& fragmentShaderPath)
         {
+            vulkan = vulkanCore;
             shaderCodePath[0] = vertexShaderPath;
             shaderCodePath[1] = fragmentShaderPath;
         }
@@ -250,19 +251,20 @@ namespace auswahlen
             // Check if there are already vertex / fragment code assign to this variable yet, and check if it try to use "=" operator on itself.
             if (!(shaderCodePath[0].has_value() || shaderCodePath[1].has_value()) && (pipeline.shaderCodePath[0].has_value() && pipeline.shaderCodePath[1].has_value()) && this != &pipeline)
             {
+                vulkan = pipeline.vulkan;
                 shaderCodePath[0] = pipeline.shaderCodePath[0];
                 shaderCodePath[1] = pipeline.shaderCodePath[1];
             }
             return *this;
         }
     
-        void pipeline::init(const vulkan& vulkan)
+        void pipeline::init()
         {
             std::cout << "Initializing graphics pipeline." << std::endl;
-            initRenderPass(vulkan);
-            initGraphicsPipeline(vulkan);
+            initRenderPass();
+            initGraphicsPipeline();
         }
-        void pipeline::cleanUp(const vulkan& vulkan)
+        void pipeline::cleanUp()
         {
             std::cout << "Cleaning up graphics pipeline." << std::endl;
 

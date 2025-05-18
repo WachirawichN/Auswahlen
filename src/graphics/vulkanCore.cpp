@@ -1,14 +1,14 @@
-#include <graphic/vulkan.h>
+#include <graphics/vulkanCore.h>
 
 namespace auswahlen
 {
-    namespace graphic
+    namespace graphics
     {
         /*------------------------------------------------------------
             Helper functions.
         ------------------------------------------------------------*/
         // Initializer functions.
-        void vulkan::initInstance()
+        void vulkanCore::initInstance()
         {
             std::cout << "\t- Initializing Vulkan instance." << std::endl;
 
@@ -65,7 +65,7 @@ namespace auswahlen
             }
             std::cout << "\t\t- Initialization completed." << std::endl;
         }
-        void vulkan::initDebugCallback()
+        void vulkanCore::initDebugCallback()
         {
             std::cout << "\t- Initializing debug callback." << std::endl;
             VkDebugUtilsMessengerCreateInfoEXT debugCreateInfo = populateDebugCreateInfo();
@@ -75,7 +75,7 @@ namespace auswahlen
             }
             std::cout << "\t\t- Initialization completed." << std::endl;
         }
-        void vulkan::initSurface(GLFWwindow* window)
+        void vulkanCore::initSurface(GLFWwindow* window)
         {
             std::cout << "\t- Initializing window surface." << std::endl;
             if (glfwCreateWindowSurface(instance, window, nullptr, &surface) != VK_SUCCESS)
@@ -84,7 +84,7 @@ namespace auswahlen
             }
             std::cout << "\t\t- Initialization completed." << std::endl;
         }
-        void vulkan::pickPhysicalDevice()
+        void vulkanCore::pickPhysicalDevice()
         {
             std::cout << "\t- Picking physical device." << std::endl;
 
@@ -122,12 +122,12 @@ namespace auswahlen
             vkGetPhysicalDeviceProperties(physicalDevice, &properties);
             std::cout << "\t\t- Pick " << properties.deviceName << " as a physical device." << std::endl;
         }
-        void vulkan::initLogicalDevice()
+        void vulkanCore::initLogicalDevice()
         {
             std::cout << "\t- Initializing logical device." << std::endl;
 
             // Create queue create info for all queue families we wanted.
-            vulkan::queueFamily indices = checkCommandSupport(physicalDevice);
+            vulkanCore::queueFamily indices = checkCommandSupport(physicalDevice);
             std::set<uint32_t> uniqueQueueFamilyIdx = {
                 indices.graphicFamilyIdx.value(),
                 indices.presentFamilyIdx.value()
@@ -163,7 +163,7 @@ namespace auswahlen
 
             std::cout << "\t\t- Initialization completed." << std::endl;
         }
-        void vulkan::initSwapChain(GLFWwindow* window)
+        void vulkanCore::initSwapChain(GLFWwindow* window)
         {
             std::cout << "\t- Initializing swap chain." << std::endl;
 
@@ -231,7 +231,7 @@ namespace auswahlen
             
             std::cout << "\t\t- Initialization completed." << std::endl;
         }
-        void vulkan::initImageViews()
+        void vulkanCore::initImageViews()
         {
             std::cout << "\t- Initializing image views." << std::endl;
 
@@ -273,7 +273,7 @@ namespace auswahlen
         }
 
         // Debugger functions.
-        VkDebugUtilsMessengerCreateInfoEXT vulkan::populateDebugCreateInfo()
+        VkDebugUtilsMessengerCreateInfoEXT vulkanCore::populateDebugCreateInfo()
         {
             VkDebugUtilsMessengerCreateInfoEXT debugCreateInfo = {
                 .sType = VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT,
@@ -288,7 +288,7 @@ namespace auswahlen
             };
             return debugCreateInfo;
         }
-        bool vulkan::checkValidationLayerSupport()
+        bool vulkanCore::checkValidationLayerSupport()
         {
             // Total validation layers.
             uint32_t totalLayers;
@@ -324,7 +324,7 @@ namespace auswahlen
             return true;
         }
         
-        const std::string vulkan::decodeDebugServerity(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity)
+        const std::string vulkanCore::decodeDebugServerity(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity)
         {
             switch (messageSeverity)
             {
@@ -340,7 +340,7 @@ namespace auswahlen
                     return "UNKNOWN SERVERITY.";
             }
         }
-        const std::string vulkan::decodeDebugType(VkDebugUtilsMessageTypeFlagsEXT messageType)
+        const std::string vulkanCore::decodeDebugType(VkDebugUtilsMessageTypeFlagsEXT messageType)
         {
             switch (messageType)
             {
@@ -354,14 +354,14 @@ namespace auswahlen
                     return "UNKNOWN TYPE.";
             }
         }
-        VKAPI_ATTR VkBool32 VKAPI_CALL vulkan::debugCallback(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity, VkDebugUtilsMessageTypeFlagsEXT messageType, const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData, void* pUserData)
+        VKAPI_ATTR VkBool32 VKAPI_CALL vulkanCore::debugCallback(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity, VkDebugUtilsMessageTypeFlagsEXT messageType, const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData, void* pUserData)
         {
             std::cout << "Debug callback: " << pCallbackData->pMessage << std::endl;
             std::cout << "\t- Serverity: " << decodeDebugServerity(messageSeverity) << std::endl;
             std::cout << "\t- Type: " << decodeDebugType(messageType) << std::endl;
             return VK_FALSE;
         }
-        VkResult vulkan::createDebugCallback(const VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator)
+        VkResult vulkanCore::createDebugCallback(const VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator)
         {
             // Find address of a function that create debug callback (Because it's an extension function).
             PFN_vkCreateDebugUtilsMessengerEXT func = (PFN_vkCreateDebugUtilsMessengerEXT)vkGetInstanceProcAddr(instance, "vkCreateDebugUtilsMessengerEXT");
@@ -373,7 +373,7 @@ namespace auswahlen
             // Cannot find extension
             return VK_ERROR_EXTENSION_NOT_PRESENT;
         }
-        void vulkan::cleanUpDebugCallback(const VkAllocationCallbacks* pAllocator)
+        void vulkanCore::cleanUpDebugCallback(const VkAllocationCallbacks* pAllocator)
         {
             // Find address of a function that delete debug callback (Because it's an extension function).
             PFN_vkDestroyDebugUtilsMessengerEXT func = (PFN_vkDestroyDebugUtilsMessengerEXT)vkGetInstanceProcAddr(instance, "vkDestroyDebugUtilsMessengerEXT");
@@ -384,9 +384,9 @@ namespace auswahlen
         }
 
         // Device functions.
-        bool vulkan::isDeviceSuitable(const VkPhysicalDevice& physDevice)
+        bool vulkanCore::isDeviceSuitable(const VkPhysicalDevice& physDevice)
         {
-            vulkan::queueFamily indicies = checkCommandSupport(physDevice);
+            vulkanCore::queueFamily indicies = checkCommandSupport(physDevice);
             bool supportDeviceExtensions = checkDeviceExtensionsSupport(physDevice);
 
             // Check if swap chain that we've supported surface formats and presentation modes.
@@ -399,9 +399,9 @@ namespace auswahlen
 
             return indicies.isComplete() && supportDeviceExtensions && swapChainSuitable;
         }
-        const vulkan::queueFamily vulkan::checkCommandSupport(const VkPhysicalDevice& physDevice)
+        const vulkanCore::queueFamily vulkanCore::checkCommandSupport(const VkPhysicalDevice& physDevice)
         {
-            vulkan::queueFamily indices;
+            vulkanCore::queueFamily indices;
 
             // Get all the queue family that are supported.
             uint32_t supportedQueueFamiliesCount = 0;
@@ -435,7 +435,7 @@ namespace auswahlen
 
             return indices;
         }
-        bool vulkan::checkDeviceExtensionsSupport(const VkPhysicalDevice& physDevice)
+        bool vulkanCore::checkDeviceExtensionsSupport(const VkPhysicalDevice& physDevice)
         {
             // Get extensions that are supported by the device.
             uint32_t supportedExtensionsCount;
@@ -454,7 +454,7 @@ namespace auswahlen
 
             return requiredExtensions.empty();
         }
-        const VkDeviceQueueCreateInfo vulkan::generateQueueCreateInfo(const uint32_t queueIdx, const uint32_t queueCount, const float priority)
+        const VkDeviceQueueCreateInfo vulkanCore::generateQueueCreateInfo(const uint32_t queueIdx, const uint32_t queueCount, const float priority)
         {
             VkDeviceQueueCreateInfo queueCreateInfo = {
                 .sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO,
@@ -466,7 +466,7 @@ namespace auswahlen
         }
 
         // Swap chain functions.
-        const vulkan::swapChainSupportedProperties vulkan::querySwapChainSupport(const VkPhysicalDevice& physDevice)
+        const vulkanCore::swapChainSupportedProperties vulkanCore::querySwapChainSupport(const VkPhysicalDevice& physDevice)
         {
             swapChainSupportedProperties supportInfo;
 
@@ -493,7 +493,7 @@ namespace auswahlen
 
             return supportInfo;
         }
-        const VkSurfaceFormatKHR vulkan::chooseSurfaceFormat(const std::vector<VkSurfaceFormatKHR> availableFormats)
+        const VkSurfaceFormatKHR vulkanCore::chooseSurfaceFormat(const std::vector<VkSurfaceFormatKHR> availableFormats)
         {
             for (VkSurfaceFormatKHR surfaceFormat : availableFormats)
             {
@@ -504,7 +504,7 @@ namespace auswahlen
             }
             return availableFormats[0];
         }
-        const VkPresentModeKHR vulkan::choosePresentMode(const std::vector<VkPresentModeKHR> availableModes)
+        const VkPresentModeKHR vulkanCore::choosePresentMode(const std::vector<VkPresentModeKHR> availableModes)
         {
             for (VkPresentModeKHR presentMode : availableModes)
             {
@@ -515,7 +515,7 @@ namespace auswahlen
             }
             return VK_PRESENT_MODE_FIFO_KHR;
         }
-        const VkExtent2D vulkan::chooseSwapExtent(const VkSurfaceCapabilitiesKHR& capability, GLFWwindow* window)
+        const VkExtent2D vulkanCore::chooseSwapExtent(const VkSurfaceCapabilitiesKHR& capability, GLFWwindow* window)
         {
             // Check if the current capability's resolution doesn't surpass the largest number of uint32_t type.
             // Else then compute the new resolution that is within the min-max of supported extents.
@@ -542,12 +542,12 @@ namespace auswahlen
         /*------------------------------------------------------------
             Public functions.
         ------------------------------------------------------------*/
-        vulkan::vulkan(const std::string& appName, const std::array<uint32_t, 3>& appVersion)
+        vulkanCore::vulkanCore(const std::string& appName, const std::array<uint32_t, 3>& appVersion)
             : name{appName}, version{appVersion}
         {
         }
 
-        vulkan& vulkan::operator=(const vulkan& vulkan)
+        vulkanCore& vulkanCore::operator=(const vulkanCore& vulkan)
         {
             // Check if the Vulkan class value is not set yet, and the other Vulkan did have value, and check if tried to perform operator on itself.
             if (!(name.has_value() || version.has_value()) && (vulkan.getName().has_value() && vulkan.getAppVersion().has_value()) && (this != &vulkan))
@@ -558,7 +558,7 @@ namespace auswahlen
             return *this;
         }
 
-        void vulkan::init(GLFWwindow* window)
+        void vulkanCore::init(GLFWwindow* window)
         {
             std::cout << "Initializing Vulkan." << std::endl;
             initInstance();
@@ -572,7 +572,7 @@ namespace auswahlen
             initSwapChain(window);
             initImageViews();
         }
-        void vulkan::cleanUp()
+        void vulkanCore::cleanUp()
         {
             std::cout << "Cleaning up vulkan." << std::endl;
 
