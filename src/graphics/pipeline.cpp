@@ -10,7 +10,7 @@ namespace auswahlen
         // initializer functions.
         void pipeline::initRenderPass()
         {
-            std::cout << "\t- Initializing Render pass." << std::endl;
+            std::cout << "\t- Initializing render pass." << std::endl;
 
             // Render pass and its essential struct.
             VkAttachmentDescription colorAttachment = {
@@ -86,7 +86,7 @@ namespace auswahlen
             };
             VkPipelineShaderStageCreateInfo shaderStageCreateInfo[2] = {vertStageCreateInfo, fragStageCreateInfo};
 
-            // Essential create info.
+            // Pipeline stage config info.
             VkPipelineDynamicStateCreateInfo dynamicStateCreateInfo = {
                 .sType = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO,
                 .dynamicStateCount = (uint32_t)dynamicStates.size(),
@@ -133,6 +133,18 @@ namespace auswahlen
                 .alphaToCoverageEnable = VK_FALSE,
                 .alphaToOneEnable = VK_FALSE
             };
+            VkPipelineDepthStencilStateCreateInfo depthStencilCreateInfo = {
+                .sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO,
+                .depthTestEnable = VK_TRUE,
+                .depthWriteEnable = VK_TRUE,
+                .depthCompareOp = VK_COMPARE_OP_LESS,
+                .depthBoundsTestEnable = VK_FALSE,
+                .stencilTestEnable = VK_FALSE,
+                .front = {},
+                .back = {},
+                .minDepthBounds = 0.0f,
+                .maxDepthBounds = 1.0f
+            };
             VkPipelineColorBlendAttachmentState colorBlendAttatchmentState = {
                 .blendEnable = VK_FALSE,
                 .srcColorBlendFactor = VK_BLEND_FACTOR_ONE,
@@ -176,7 +188,7 @@ namespace auswahlen
                 .pViewportState = &viewportCreateInfo,
                 .pRasterizationState = &rasterizationCreateInfo,
                 .pMultisampleState = &multiSampleCreateInfo,
-                .pDepthStencilState = nullptr,
+                .pDepthStencilState = &depthStencilCreateInfo,
                 .pColorBlendState = &colorBlendCreateInfo,
                 .pDynamicState = &dynamicStateCreateInfo,
                 .layout = pipelineLayout,
