@@ -43,7 +43,7 @@ namespace auswahlen
             // Create render pass,
             if (vkCreateRenderPass(vulkan->getDevice(), &renderPassCreateInfo, nullptr, &renderPass) != VK_SUCCESS)
             {
-                std::runtime_error("Failed to create render pass.");
+                throw std::runtime_error("Failed to create render pass.");
             }
             std::cout << "\t\t- Initialization completed." << std::endl;
         }
@@ -174,7 +174,7 @@ namespace auswahlen
             // Create graphics pipeline layout.
             if (vkCreatePipelineLayout(vulkan->getDevice(), &pipelineLayoutCreateInfo, nullptr, &pipelineLayout) != VK_SUCCESS)
             {
-                std::runtime_error("Failed to created graphics pipeline layout.");
+                throw std::runtime_error("Failed to created graphics pipeline layout.");
             }
             
             // Graphics pipeline's create info.
@@ -201,7 +201,7 @@ namespace auswahlen
             // Creating the graphics pipeline itself.
             if (vkCreateGraphicsPipelines(vulkan->getDevice(), VK_NULL_HANDLE, 1, &pipelineCreateInfo, nullptr, &graphicsPipeline) != VK_SUCCESS)
             {
-                std::runtime_error("Failed to create graphics pipeline.");
+                throw std::runtime_error("Failed to create graphics pipeline.");
             }
             
             // Shader module will not be used now.
@@ -243,7 +243,7 @@ namespace auswahlen
 
             if (vkCreateShaderModule(vulkan->getDevice(), &createInfo, nullptr, &shaderModule) != VK_SUCCESS)
             {
-                std::runtime_error("Failed to create shader module.");
+                throw std::runtime_error("Failed to create shader module.");
             }
             return shaderModule;
         }

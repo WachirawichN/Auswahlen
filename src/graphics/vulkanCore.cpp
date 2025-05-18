@@ -80,7 +80,7 @@ namespace auswahlen
             std::cout << "\t- Initializing window surface." << std::endl;
             if (glfwCreateWindowSurface(instance, window, nullptr, &surface) != VK_SUCCESS)
             {
-                std::runtime_error("\t\t- Failed to create window surface.");
+                throw std::runtime_error("\t\t- Failed to create window surface.");
             }
             std::cout << "\t\t- Initialization completed." << std::endl;
         }
@@ -93,7 +93,7 @@ namespace auswahlen
             vkEnumeratePhysicalDevices(instance, &deviceCount, nullptr);
             if (deviceCount == 0)
             {
-                std::runtime_error("No device with Vulkan support found.");
+                throw std::runtime_error("No device with Vulkan support found.");
             }
 
             // Get devices with Vulkan support.
@@ -113,7 +113,7 @@ namespace auswahlen
 
             if (physicalDevice == VK_NULL_HANDLE)
             {
-                std::runtime_error("Cannot find sutable device.");
+                throw std::runtime_error("Cannot find sutable device.");
             }
 
             // Pick best device.
@@ -154,7 +154,7 @@ namespace auswahlen
             // Create device itself.
             if (vkCreateDevice(physicalDevice, &deviceCreateInfo, nullptr, &device) != VK_SUCCESS)
             {
-                std::runtime_error("Failed to create logical device.");
+                throw std::runtime_error("Failed to create logical device.");
             }
 
             // Assigning queue that have been create along the logical device to each queue's handler.
@@ -217,7 +217,7 @@ namespace auswahlen
             // Create the swap chain itself.
             if (vkCreateSwapchainKHR(device, &createInfo, nullptr, &swapChain) != VK_SUCCESS)
             {
-                std::runtime_error("Failed to initialize swap chain.");
+                throw std::runtime_error("Failed to initialize swap chain.");
             }
             
             // Get the swap chain's images handler.
@@ -266,7 +266,7 @@ namespace auswahlen
 
                 if (vkCreateImageView(device, &createInfo, nullptr, &swapChainImageViews[i]) != VK_SUCCESS)
                 {
-                    std::runtime_error("Failed to initialize image views.");
+                    throw std::runtime_error("Failed to initialize image views.");
                 }
             }
             std::cout << "\t\t- Initialization completed." << std::endl;
