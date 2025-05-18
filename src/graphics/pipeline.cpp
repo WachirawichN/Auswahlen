@@ -14,7 +14,7 @@ namespace auswahlen
 
             // Render pass and its essential struct.
             VkAttachmentDescription colorAttachment = {
-                .format = vulkan.getFormat(),
+                .format = vulkan->getFormat(),
                 .samples = VK_SAMPLE_COUNT_1_BIT,
                 .loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR,
                 .storeOp = VK_ATTACHMENT_STORE_OP_STORE,
@@ -41,7 +41,7 @@ namespace auswahlen
             };
             
             // Create render pass,
-            if (vkCreateRenderPass(vulkan.getDevice(), &renderPassCreateInfo, nullptr, &renderPass) != VK_SUCCESS)
+            if (vkCreateRenderPass(vulkan->getDevice(), &renderPassCreateInfo, nullptr, &renderPass) != VK_SUCCESS)
             {
                 std::runtime_error("Failed to create render pass.");
             }
@@ -55,14 +55,14 @@ namespace auswahlen
             VkViewport viewport = {
                 .x = 0.0f,
                 .y = 0.0f,
-                .width = (float)vulkan.getImgExtent().width,
-                .height = (float)vulkan.getImgExtent().height,
+                .width = (float)vulkan->getImgExtent().width,
+                .height = (float)vulkan->getImgExtent().height,
                 .minDepth = 0.0f,
                 .maxDepth = 1.0f
             };
             VkRect2D scissor = {
                 .offset = {0, 0},
-                .extent = vulkan.getImgExtent()
+                .extent = vulkan->getImgExtent()
             };
 
             // Turn raw SPIR-V code into shader module.
@@ -160,7 +160,7 @@ namespace auswahlen
             };
 
             // Create graphics pipeline layout.
-            if (vkCreatePipelineLayout(vulkan.getDevice(), &pipelineLayoutCreateInfo, nullptr, &pipelineLayout) != VK_SUCCESS)
+            if (vkCreatePipelineLayout(vulkan->getDevice(), &pipelineLayoutCreateInfo, nullptr, &pipelineLayout) != VK_SUCCESS)
             {
                 std::runtime_error("Failed to created graphics pipeline layout.");
             }
@@ -187,14 +187,14 @@ namespace auswahlen
             };
 
             // Creating the graphics pipeline itself.
-            if (vkCreateGraphicsPipelines(vulkan.getDevice(), VK_NULL_HANDLE, 1, &pipelineCreateInfo, nullptr, &graphicsPipeline) != VK_SUCCESS)
+            if (vkCreateGraphicsPipelines(vulkan->getDevice(), VK_NULL_HANDLE, 1, &pipelineCreateInfo, nullptr, &graphicsPipeline) != VK_SUCCESS)
             {
                 std::runtime_error("Failed to create graphics pipeline.");
             }
             
             // Shader module will not be used now.
-            vkDestroyShaderModule(vulkan.getDevice(), vertModule, nullptr);
-            vkDestroyShaderModule(vulkan.getDevice(), fragModule, nullptr);
+            vkDestroyShaderModule(vulkan->getDevice(), vertModule, nullptr);
+            vkDestroyShaderModule(vulkan->getDevice(), fragModule, nullptr);
 
             std::cout << "\t\t- Initialization completed." << std::endl;
         }
@@ -229,7 +229,7 @@ namespace auswahlen
                 .pCode = reinterpret_cast<const uint32_t*>(shaderCode.data())
             };
 
-            if (vkCreateShaderModule(vulkan.getDevice(), &createInfo, nullptr, &shaderModule) != VK_SUCCESS)
+            if (vkCreateShaderModule(vulkan->getDevice(), &createInfo, nullptr, &shaderModule) != VK_SUCCESS)
             {
                 std::runtime_error("Failed to create shader module.");
             }
@@ -239,7 +239,7 @@ namespace auswahlen
         /*------------------------------------------------------------
             Public functions.
         ------------------------------------------------------------*/
-        pipeline::pipeline(const vulkanCore& vulkanCore, const std::string& vertexShaderPath, const std::string& fragmentShaderPath)
+        pipeline::pipeline(const vulkanCore* vulkanCore, const std::string& vertexShaderPath, const std::string& fragmentShaderPath)
         {
             vulkan = vulkanCore;
             shaderCodePath[0] = vertexShaderPath;
@@ -269,13 +269,13 @@ namespace auswahlen
             std::cout << "Cleaning up graphics pipeline." << std::endl;
 
             std::cout << "\t- Destroying graphics pipeline." << std::endl;
-            vkDestroyPipeline(vulkan.getDevice(), graphicsPipeline, nullptr);
+            vkDestroyPipeline(vulkan->getDevice(), graphicsPipeline, nullptr);
 
             std::cout << "\t- Destroying pipeline layout." << std::endl;
-            vkDestroyPipelineLayout(vulkan.getDevice(), pipelineLayout, nullptr);
+            vkDestroyPipelineLayout(vulkan->getDevice(), pipelineLayout, nullptr);
             
             std::cout << "\t- Destroying render pass." << std::endl;
-            vkDestroyRenderPass(vulkan.getDevice(), renderPass, nullptr);
+            vkDestroyRenderPass(vulkan->getDevice(), renderPass, nullptr);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace auswahlen
                 /*------------------------------------------------------------
                     Graphics pipeline variables.
                 ------------------------------------------------------------*/
-                vulkanCore vulkan;
+                const vulkanCore* vulkan;
 
                 std::optional<std::string> shaderCodePath[2];
                 std::vector<char> vertexCode;
@@ -54,7 +54,7 @@ namespace auswahlen
                 VkShaderModule createShaderModule(std::vector<char> shaderCode);
             public:
                 pipeline() {}
-                pipeline(const vulkanCore& vulkanCore, const std::string& vertexShaderPath, const std::string& fragmentShaderPath);
+                pipeline(const vulkanCore* vulkanCore, const std::string& vertexShaderPath, const std::string& fragmentShaderPath);
 
                 pipeline(const pipeline&) = delete;
                 pipeline& operator=(const pipeline& pipeline);

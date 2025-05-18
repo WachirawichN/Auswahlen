@@ -27,8 +27,8 @@ namespace auswahlen
     }
     void app::initGraphicPipeline()
     {
-        pipeline = auswahlen::graphics::pipeline("asset/shader/shader.vert.spv", "asset/shader/shader.frag.spv");
-        pipeline.init(vulkan);
+        pipeline = auswahlen::graphics::pipeline(&vulkan, "asset/shader/shader.vert.spv", "asset/shader/shader.frag.spv");
+        pipeline.init();
     }
 
     void app::mainLoop()
@@ -64,7 +64,7 @@ namespace auswahlen
     app::~app()
     {
         std::cout << "================================================================" << std::endl;
-        pipeline.cleanUp(vulkan);
+        pipeline.cleanUp();
         vulkan.cleanUp();
         guiWindow.cleanUp();
 
