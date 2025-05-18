@@ -43,6 +43,31 @@ namespace auswahlen
                 };
 
                 /*------------------------------------------------------------
+                    Render pass / Graphics pipeline config info.
+                ------------------------------------------------------------*/
+                struct renderPassConfigInfo {
+                    VkAttachmentDescription colorAttachment;
+                    VkAttachmentReference colorAttachmentRef;
+                    VkSubpassDescription subpassDescription;
+                    VkRenderPassCreateInfo renderPassCreateInfo;
+                };
+                struct pipelineConfigInfo {
+                    VkViewport viewport;
+                    VkRect2D scissor;
+                    VkPipelineDynamicStateCreateInfo dymicStateInfo;
+                    VkPipelineVertexInputStateCreateInfo vertexInputInfo;
+                    VkPipelineInputAssemblyStateCreateInfo inputAssemblyInfo;
+                    VkPipelineViewportStateCreateInfo viewportInfo;
+                    VkPipelineRasterizationStateCreateInfo rasterizationInfo;
+                    VkPipelineMultisampleStateCreateInfo multisampleInfo;
+                    VkPipelineDepthStencilStateCreateInfo depthStencilInfo;
+                    VkPipelineColorBlendAttachmentState colorBlendAttachmentInfo;
+                    VkPipelineColorBlendStateCreateInfo colorBlenStateInfo;
+                    VkPipelineLayoutCreateInfo pipelineLayout;
+                };
+                
+
+                /*------------------------------------------------------------
                     Helper funcions.
                 ------------------------------------------------------------*/
                 // Initializer functions.
@@ -52,6 +77,10 @@ namespace auswahlen
                 // Shader functions.
                 static std::vector<char> readFile(const std::string& path);
                 VkShaderModule createShaderModule(std::vector<char> shaderCode);
+
+                // Render pass / Graphics pipeline config functions.
+                const renderPassConfigInfo populateRenderPassConfig();
+                const pipelineConfigInfo populatePipelineConfig();
             public:
                 pipeline() {}
                 pipeline(const vulkanCore* vulkanCore, const std::string& vertexShaderPath, const std::string& fragmentShaderPath);

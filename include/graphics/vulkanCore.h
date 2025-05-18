@@ -80,7 +80,7 @@ namespace auswahlen
                     Each member variable is index of that queue family correspond to the index of the element of "pQueueFamilyProperties",
                     this index is from "vkGetPhysicalDeviceQueueFamilyProperties", which is inside "checkCommandSupport" function.
                 ------------------------------------------------------------*/
-                struct queueFamily{
+                struct queueFamily {
                     std::optional<uint32_t> graphicFamilyIdx;
                     std::optional<uint32_t> presentFamilyIdx;
 
@@ -94,7 +94,7 @@ namespace auswahlen
                     Swap chain supported properties.
                     For storing detail about swap chain's supported properties.
                 ------------------------------------------------------------*/
-                struct swapChainSupportedProperties{
+                struct swapChainSupportedProperties {
                     VkSurfaceCapabilitiesKHR capability;
                     std::vector<VkSurfaceFormatKHR> formats;
                     std::vector<VkPresentModeKHR> presentModes;

@@ -12,36 +12,11 @@ namespace auswahlen
         {
             std::cout << "\t- Initializing render pass." << std::endl;
 
-            // Render pass and its essential struct.
-            VkAttachmentDescription colorAttachment = {
-                .format = vulkan->getFormat(),
-                .samples = VK_SAMPLE_COUNT_1_BIT,
-                .loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR,
-                .storeOp = VK_ATTACHMENT_STORE_OP_STORE,
-                .stencilLoadOp = VK_ATTACHMENT_LOAD_OP_DONT_CARE,
-                .stencilStoreOp = VK_ATTACHMENT_STORE_OP_DONT_CARE,
-                .initialLayout = VK_IMAGE_LAYOUT_UNDEFINED,
-                .finalLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR
-            };
-            VkAttachmentReference colorAttachmentRef = {
-                .attachment = 0,
-                .layout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL
-            };
-            VkSubpassDescription subpassDescription = {
-                .pipelineBindPoint = VK_PIPELINE_BIND_POINT_GRAPHICS,
-                .colorAttachmentCount = 1,
-                .pColorAttachments = &colorAttachmentRef
-            };
-            VkRenderPassCreateInfo renderPassCreateInfo = {
-                .sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO,
-                .attachmentCount = 1,
-                .pAttachments = &colorAttachment,
-                .subpassCount = 1,
-                .pSubpasses = &subpassDescription
-            };
+            // Render pass and its essentials config info.
+            renderPassConfigInfo renderPassConfig = populateRenderPassConfig();
             
             // Create render pass,
-            if (vkCreateRenderPass(vulkan->getDevice(), &renderPassCreateInfo, nullptr, &renderPass) != VK_SUCCESS)
+            if (vkCreateRenderPass(vulkan->getDevice(), &renderPassConfig.renderPassCreateInfo, nullptr, &renderPass) != VK_SUCCESS)
             {
                 throw std::runtime_error("Failed to create render pass.");
             }
@@ -50,20 +25,6 @@ namespace auswahlen
         void pipeline::initGraphicsPipeline()
         {
             std::cout << "\t- Initializing graphics pipeline." << std::endl;
-
-            // Viewport and scissor properties.
-            VkViewport viewport = {
-                .x = 0.0f,
-                .y = 0.0f,
-                .width = (float)vulkan->getImgExtent().width,
-                .height = (float)vulkan->getImgExtent().height,
-                .minDepth = 0.0f,
-                .maxDepth = 1.0f
-            };
-            VkRect2D scissor = {
-                .offset = {0, 0},
-                .extent = vulkan->getImgExtent()
-            };
 
             // Turn raw SPIR-V code into shader module.
             vertexCode = readFile(shaderCodePath[0].value());
@@ -86,93 +47,11 @@ namespace auswahlen
             };
             VkPipelineShaderStageCreateInfo shaderStageCreateInfo[2] = {vertStageCreateInfo, fragStageCreateInfo};
 
-            // Pipeline stage config info.
-            VkPipelineDynamicStateCreateInfo dynamicStateCreateInfo = {
-                .sType = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO,
-                .dynamicStateCount = (uint32_t)dynamicStates.size(),
-                .pDynamicStates = dynamicStates.data()
-            };
-            VkPipelineVertexInputStateCreateInfo vertexInputCreateInfo = {
-                .sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO,
-                .vertexBindingDescriptionCount = 0,
-                .pVertexBindingDescriptions = nullptr,
-                .vertexAttributeDescriptionCount = 0,
-                .pVertexAttributeDescriptions = nullptr
-            };
-            VkPipelineInputAssemblyStateCreateInfo inputAssemblyCreateInfo = {
-                .sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO,
-                .topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST,
-                .primitiveRestartEnable = VK_FALSE
-            };
-            VkPipelineViewportStateCreateInfo viewportCreateInfo = {
-                .sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO,
-                .viewportCount = 1,
-                .pViewports = &viewport,
-                .scissorCount = 1,
-                .pScissors = &scissor
-            };
-            VkPipelineRasterizationStateCreateInfo rasterizationCreateInfo = {
-                .sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO,
-                .depthClampEnable = VK_FALSE,
-                .rasterizerDiscardEnable = VK_FALSE,
-                .polygonMode = VK_POLYGON_MODE_FILL,
-                .cullMode = VK_CULL_MODE_BACK_BIT,
-                .frontFace = VK_FRONT_FACE_CLOCKWISE,
-                .depthBiasEnable = VK_FALSE,
-                .depthBiasConstantFactor = 0.0f,
-                .depthBiasClamp = 0.0f,
-                .depthBiasSlopeFactor = 0.0f,
-                .lineWidth = 1.0f,
-            };
-            VkPipelineMultisampleStateCreateInfo multiSampleCreateInfo = {
-                .sType = VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO,
-                .rasterizationSamples = VK_SAMPLE_COUNT_1_BIT,
-                .sampleShadingEnable = VK_FALSE,
-                .minSampleShading = 1.0f,
-                .pSampleMask = nullptr,
-                .alphaToCoverageEnable = VK_FALSE,
-                .alphaToOneEnable = VK_FALSE
-            };
-            VkPipelineDepthStencilStateCreateInfo depthStencilCreateInfo = {
-                .sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO,
-                .depthTestEnable = VK_TRUE,
-                .depthWriteEnable = VK_TRUE,
-                .depthCompareOp = VK_COMPARE_OP_LESS,
-                .depthBoundsTestEnable = VK_FALSE,
-                .stencilTestEnable = VK_FALSE,
-                .front = {},
-                .back = {},
-                .minDepthBounds = 0.0f,
-                .maxDepthBounds = 1.0f
-            };
-            VkPipelineColorBlendAttachmentState colorBlendAttatchmentState = {
-                .blendEnable = VK_FALSE,
-                .srcColorBlendFactor = VK_BLEND_FACTOR_ONE,
-                .dstColorBlendFactor = VK_BLEND_FACTOR_ZERO,
-                .colorBlendOp = VK_BLEND_OP_ADD,
-                .srcAlphaBlendFactor = VK_BLEND_FACTOR_ONE,
-                .dstAlphaBlendFactor = VK_BLEND_FACTOR_ZERO,
-                .alphaBlendOp = VK_BLEND_OP_ADD,
-                .colorWriteMask = VK_COLOR_COMPONENT_R_BIT | VK_COLOR_COMPONENT_G_BIT | VK_COLOR_COMPONENT_B_BIT | VK_COLOR_COMPONENT_A_BIT
-            };
-            VkPipelineColorBlendStateCreateInfo colorBlendCreateInfo = {
-                .sType = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO,
-                .logicOpEnable = VK_FALSE,
-                .logicOp = VK_LOGIC_OP_COPY,
-                .attachmentCount = 1,
-                .pAttachments = &colorBlendAttatchmentState,
-                .blendConstants = {0.0f, 0.0f, 0.0f, 0.0f}
-            };
-            VkPipelineLayoutCreateInfo pipelineLayoutCreateInfo = {
-                .sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO,
-                .setLayoutCount = 0,
-                .pSetLayouts = nullptr,
-                .pushConstantRangeCount = 0,
-                .pPushConstantRanges = nullptr
-            };
+            // Viewport / Scissor / Graphics pipeline stages config info.
+            pipelineConfigInfo pipelineConfig = populatePipelineConfig();
 
             // Create graphics pipeline layout.
-            if (vkCreatePipelineLayout(vulkan->getDevice(), &pipelineLayoutCreateInfo, nullptr, &pipelineLayout) != VK_SUCCESS)
+            if (vkCreatePipelineLayout(vulkan->getDevice(), &pipelineConfig.pipelineLayout, nullptr, &pipelineLayout) != VK_SUCCESS)
             {
                 throw std::runtime_error("Failed to created graphics pipeline layout.");
             }
@@ -182,15 +61,15 @@ namespace auswahlen
                 .sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO,
                 .stageCount = 2,
                 .pStages = shaderStageCreateInfo,
-                .pVertexInputState = &vertexInputCreateInfo,
-                .pInputAssemblyState = &inputAssemblyCreateInfo,
+                .pVertexInputState = &pipelineConfig.vertexInputInfo,
+                .pInputAssemblyState = &pipelineConfig.inputAssemblyInfo,
                 .pTessellationState = nullptr,
-                .pViewportState = &viewportCreateInfo,
-                .pRasterizationState = &rasterizationCreateInfo,
-                .pMultisampleState = &multiSampleCreateInfo,
-                .pDepthStencilState = &depthStencilCreateInfo,
-                .pColorBlendState = &colorBlendCreateInfo,
-                .pDynamicState = &dynamicStateCreateInfo,
+                .pViewportState = &pipelineConfig.viewportInfo,
+                .pRasterizationState = &pipelineConfig.rasterizationInfo,
+                .pMultisampleState = &pipelineConfig.multisampleInfo,
+                .pDepthStencilState = &pipelineConfig.depthStencilInfo,
+                .pColorBlendState = &pipelineConfig.colorBlenStateInfo,
+                .pDynamicState = &pipelineConfig.dymicStateInfo,
                 .layout = pipelineLayout,
                 .renderPass = renderPass,
                 .subpass = 0,
@@ -204,7 +83,7 @@ namespace auswahlen
                 throw std::runtime_error("Failed to create graphics pipeline.");
             }
             
-            // Shader module will not be used now.
+            // Shader module will not be used after graphics pipeline creation.
             vkDestroyShaderModule(vulkan->getDevice(), vertModule, nullptr);
             vkDestroyShaderModule(vulkan->getDevice(), fragModule, nullptr);
 
@@ -246,6 +125,145 @@ namespace auswahlen
                 throw std::runtime_error("Failed to create shader module.");
             }
             return shaderModule;
+        }
+
+        // Render pass / Graphics pipeline config functions.
+        const pipeline::renderPassConfigInfo pipeline::populateRenderPassConfig()
+        {
+            // Populate all create infos that are essential for render pass creation.
+            pipeline::renderPassConfigInfo config;
+            config.colorAttachment = {
+                .format = vulkan->getFormat(),
+                .samples = VK_SAMPLE_COUNT_1_BIT,
+                .loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR,
+                .storeOp = VK_ATTACHMENT_STORE_OP_STORE,
+                .stencilLoadOp = VK_ATTACHMENT_LOAD_OP_DONT_CARE,
+                .stencilStoreOp = VK_ATTACHMENT_STORE_OP_DONT_CARE,
+                .initialLayout = VK_IMAGE_LAYOUT_UNDEFINED,
+                .finalLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR
+            };
+            config.colorAttachmentRef = {
+                .attachment = 0,
+                .layout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL
+            };
+            config.subpassDescription = {
+                .pipelineBindPoint = VK_PIPELINE_BIND_POINT_GRAPHICS,
+                .colorAttachmentCount = 1,
+                .pColorAttachments = &config.colorAttachmentRef
+            };
+            config.renderPassCreateInfo = {
+                .sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO,
+                .attachmentCount = 1,
+                .pAttachments = &config.colorAttachment,
+                .subpassCount = 1,
+                .pSubpasses = &config.subpassDescription
+            };
+
+            return config;
+        }
+        const pipeline::pipelineConfigInfo pipeline::populatePipelineConfig()
+        {
+            // Populate all create infos that are essential for graphics pipeline creation.
+            // Both the viewport and scissor pair and all the stage of the pipeline.
+            pipeline::pipelineConfigInfo config;
+
+            config.viewport = {
+                .x = 0.0f,
+                .y = 0.0f,
+                .width = (float)vulkan->getImgExtent().width,
+                .height = (float)vulkan->getImgExtent().height,
+                .minDepth = 0.0f,
+                .maxDepth = 1.0f
+            };
+            config.scissor = {
+                .offset = {0, 0},
+                .extent = vulkan->getImgExtent()
+            };
+
+            config.dymicStateInfo = {
+                .sType = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO,
+                .dynamicStateCount = (uint32_t)dynamicStates.size(),
+                .pDynamicStates = dynamicStates.data()
+            };
+            config.vertexInputInfo = {
+                .sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO,
+                .vertexBindingDescriptionCount = 0,
+                .pVertexBindingDescriptions = nullptr,
+                .vertexAttributeDescriptionCount = 0,
+                .pVertexAttributeDescriptions = nullptr
+            };
+            config.inputAssemblyInfo = {
+                .sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO,
+                .topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST,
+                .primitiveRestartEnable = VK_FALSE
+            };
+            config.viewportInfo = {
+                .sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO,
+                .viewportCount = 1,
+                .pViewports = &config.viewport,
+                .scissorCount = 1,
+                .pScissors = &config.scissor
+            };
+            config.rasterizationInfo = {
+                .sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO,
+                .depthClampEnable = VK_FALSE,
+                .rasterizerDiscardEnable = VK_FALSE,
+                .polygonMode = VK_POLYGON_MODE_FILL,
+                .cullMode = VK_CULL_MODE_BACK_BIT,
+                .frontFace = VK_FRONT_FACE_CLOCKWISE,
+                .depthBiasEnable = VK_FALSE,
+                .depthBiasConstantFactor = 0.0f,
+                .depthBiasClamp = 0.0f,
+                .depthBiasSlopeFactor = 0.0f,
+                .lineWidth = 1.0f,
+            };
+            config.multisampleInfo = {
+                .sType = VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO,
+                .rasterizationSamples = VK_SAMPLE_COUNT_1_BIT,
+                .sampleShadingEnable = VK_FALSE,
+                .minSampleShading = 1.0f,
+                .pSampleMask = nullptr,
+                .alphaToCoverageEnable = VK_FALSE,
+                .alphaToOneEnable = VK_FALSE
+            };
+            config.depthStencilInfo = {
+                .sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO,
+                .depthTestEnable = VK_TRUE,
+                .depthWriteEnable = VK_TRUE,
+                .depthCompareOp = VK_COMPARE_OP_LESS,
+                .depthBoundsTestEnable = VK_FALSE,
+                .stencilTestEnable = VK_FALSE,
+                .front = {},
+                .back = {},
+                .minDepthBounds = 0.0f,
+                .maxDepthBounds = 1.0f
+            };
+            config.colorBlendAttachmentInfo = {
+                .blendEnable = VK_FALSE,
+                .srcColorBlendFactor = VK_BLEND_FACTOR_ONE,
+                .dstColorBlendFactor = VK_BLEND_FACTOR_ZERO,
+                .colorBlendOp = VK_BLEND_OP_ADD,
+                .srcAlphaBlendFactor = VK_BLEND_FACTOR_ONE,
+                .dstAlphaBlendFactor = VK_BLEND_FACTOR_ZERO,
+                .alphaBlendOp = VK_BLEND_OP_ADD,
+                .colorWriteMask = VK_COLOR_COMPONENT_R_BIT | VK_COLOR_COMPONENT_G_BIT | VK_COLOR_COMPONENT_B_BIT | VK_COLOR_COMPONENT_A_BIT
+            };
+            config.colorBlenStateInfo = {
+                .sType = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO,
+                .logicOpEnable = VK_FALSE,
+                .logicOp = VK_LOGIC_OP_COPY,
+                .attachmentCount = 1,
+                .pAttachments = &config.colorBlendAttachmentInfo,
+                .blendConstants = {0.0f, 0.0f, 0.0f, 0.0f}
+            };
+            config.pipelineLayout = {
+                .sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO,
+                .setLayoutCount = 0,
+                .pSetLayouts = nullptr,
+                .pushConstantRangeCount = 0,
+                .pPushConstantRanges = nullptr
+            };
+            return config;
         }
 
         /*------------------------------------------------------------
