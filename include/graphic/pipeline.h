@@ -22,7 +22,7 @@ namespace auswahlen
         {
             private:
                 /*------------------------------------------------------------
-                    Pipeline variables.
+                    Graphics pipeline variables.
                 ------------------------------------------------------------*/
                 std::optional<std::string> shaderCodePath[2];
                 std::vector<char> vertexCode;
@@ -44,8 +44,8 @@ namespace auswahlen
                     Helper funcions.
                 ------------------------------------------------------------*/
                 // Initializer functions.
-                void initRenderPass();
-                void initGraphicsPipeline();
+                void initRenderPass(const vulkan& vulkan);
+                void initGraphicsPipeline(const vulkan& vulkan);
 
                 // Shader functions.
                 static std::vector<char> readFile(const std::string& path);

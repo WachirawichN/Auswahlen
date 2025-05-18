@@ -219,16 +219,17 @@ namespace auswahlen
             {
                 std::runtime_error("Failed to initialize swap chain.");
             }
-            std::cout << "\t\t- Initialization completed." << std::endl;
-
+            
             // Get the swap chain's images handler.
             vkGetSwapchainImagesKHR(device, swapChain, &imageCounts, nullptr);
             swapChainImages.resize(imageCounts);
             vkGetSwapchainImagesKHR(device, swapChain, &imageCounts, swapChainImages.data());
-
+            
             // For use with graphics pipeline.
             imageFormat = surfaceFormat.format;
             imageExtent = extent;
+            
+            std::cout << "\t\t- Initialization completed." << std::endl;
         }
         void vulkan::initImageViews()
         {

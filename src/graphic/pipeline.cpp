@@ -8,75 +8,48 @@ namespace auswahlen
             Helper functions.
         ------------------------------------------------------------*/
         // initializer functions.
-        void pipeline::initRenderPass()
+        void pipeline::initRenderPass(const vulkan& vulkan)
         {
+            std::cout << "\t- Initializing Render pass." << std::endl;
 
-        }
-        void pipeline::initGraphicsPipeline()
-        {
-
-        }
-        
-        // Shader functions.
-        std::vector<char> pipeline::readFile(const std::string& path)
-        {
-            // Read at the end of the file.
-            std::ifstream file(path, std::ios::ate | std::ios::binary);
-            if (!file.is_open())
-            {
-                throw std::runtime_error("Unable to open file: " + path);
-            }
-    
-            // The file is last position so tellg will just return the last position aka size.
-            size_t fileSize = static_cast<size_t>(file.tellg());
-            std::vector<char> buffer(fileSize);
-    
-            // Find first position, then read up from there.
-            file.seekg(0);
-            file.read(buffer.data(), fileSize);
-            file.close();
-    
-            return buffer;
-        }
-        VkShaderModule pipeline::createShaderModule(std::vector<char> shaderCode, VkDevice device)
-        {
-            VkShaderModule shaderModule;
-            VkShaderModuleCreateInfo createInfo = {
-                .sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO,
-                .codeSize = shaderCode.size(),
-                .pCode = reinterpret_cast<const uint32_t*>(shaderCode.data())
+            // Render pass and its essential struct.
+            VkAttachmentDescription colorAttachment = {
+                .format = vulkan.getFormat(),
+                .samples = VK_SAMPLE_COUNT_1_BIT,
+                .loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR,
+                .storeOp = VK_ATTACHMENT_STORE_OP_STORE,
+                .stencilLoadOp = VK_ATTACHMENT_LOAD_OP_DONT_CARE,
+                .stencilStoreOp = VK_ATTACHMENT_STORE_OP_DONT_CARE,
+                .initialLayout = VK_IMAGE_LAYOUT_UNDEFINED,
+                .finalLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR
             };
-
-            if (vkCreateShaderModule(device, &createInfo, nullptr, &shaderModule) != VK_SUCCESS)
+            VkAttachmentReference colorAttachmentRef = {
+                .attachment = 0,
+                .layout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL
+            };
+            VkSubpassDescription subpassDescription = {
+                .pipelineBindPoint = VK_PIPELINE_BIND_POINT_GRAPHICS,
+                .colorAttachmentCount = 1,
+                .pColorAttachments = &colorAttachmentRef
+            };
+            VkRenderPassCreateInfo renderPassCreateInfo = {
+                .sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO,
+                .attachmentCount = 1,
+                .pAttachments = &colorAttachment,
+                .subpassCount = 1,
+                .pSubpasses = &subpassDescription
+            };
+            
+            // Create render pass,
+            if (vkCreateRenderPass(vulkan.getDevice(), &renderPassCreateInfo, nullptr, &renderPass) != VK_SUCCESS)
             {
-                std::runtime_error("Failed to create shader module.");
+                std::runtime_error("Failed to create render pass.");
             }
-            return shaderModule;
+            std::cout << "\t\t- Initialization completed." << std::endl;
         }
-
-        /*------------------------------------------------------------
-            Public functions.
-        ------------------------------------------------------------*/
-        pipeline::pipeline(const std::string& vertexShaderPath, const std::string& fragmentShaderPath)
+        void pipeline::initGraphicsPipeline(const vulkan& vulkan)
         {
-            shaderCodePath[0] = vertexShaderPath;
-            shaderCodePath[1] = fragmentShaderPath;
-        }
-
-        pipeline& pipeline::operator=(const pipeline& pipeline)
-        {
-            // Check if there are already vertex / fragment code assign to this variable yet, and check if it try to use "=" operator on itself.
-            if (!(shaderCodePath[0].has_value() || shaderCodePath[1].has_value()) && (pipeline.shaderCodePath[0].has_value() && pipeline.shaderCodePath[1].has_value()) && this != &pipeline)
-            {
-                shaderCodePath[0] = pipeline.shaderCodePath[0];
-                shaderCodePath[1] = pipeline.shaderCodePath[1];
-            }
-            return *this;
-        }
-    
-        void pipeline::init(const vulkan& vulkan)
-        {
-            std::cout << "Initializing graphics pipeline." << std::endl;
+            std::cout << "\t- Initializing graphics pipeline." << std::endl;
 
             // Viewport and scissor properties.
             VkViewport viewport = {
@@ -191,40 +164,6 @@ namespace auswahlen
             {
                 std::runtime_error("Failed to created graphics pipeline layout.");
             }
-
-            // Render pass and its essential struct.
-            VkAttachmentDescription colorAttachment = {
-                .format = vulkan.getFormat(),
-                .samples = VK_SAMPLE_COUNT_1_BIT,
-                .loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR,
-                .storeOp = VK_ATTACHMENT_STORE_OP_STORE,
-                .stencilLoadOp = VK_ATTACHMENT_LOAD_OP_DONT_CARE,
-                .stencilStoreOp = VK_ATTACHMENT_STORE_OP_DONT_CARE,
-                .initialLayout = VK_IMAGE_LAYOUT_UNDEFINED,
-                .finalLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR
-            };
-            VkAttachmentReference colorAttachmentRef = {
-                .attachment = 0,
-                .layout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL
-            };
-            VkSubpassDescription subpassDescription = {
-                .pipelineBindPoint = VK_PIPELINE_BIND_POINT_GRAPHICS,
-                .colorAttachmentCount = 1,
-                .pColorAttachments = &colorAttachmentRef
-            };
-            VkRenderPassCreateInfo renderPassCreateInfo = {
-                .sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO,
-                .attachmentCount = 1,
-                .pAttachments = &colorAttachment,
-                .subpassCount = 1,
-                .pSubpasses = &subpassDescription
-            };
-            
-            // Create render pass,
-            if (vkCreateRenderPass(vulkan.getDevice(), &renderPassCreateInfo, nullptr, &renderPass) != VK_SUCCESS)
-            {
-                std::runtime_error("Failed to create render pass.");
-            }
             
             // Graphics pipeline's create info.
             VkGraphicsPipelineCreateInfo pipelineCreateInfo = {
@@ -250,20 +189,91 @@ namespace auswahlen
             // Creating the graphics pipeline itself.
             if (vkCreateGraphicsPipelines(vulkan.getDevice(), VK_NULL_HANDLE, 1, &pipelineCreateInfo, nullptr, &graphicsPipeline) != VK_SUCCESS)
             {
-                std::runtime_error("Failed to create graphics pipeline");
+                std::runtime_error("Failed to create graphics pipeline.");
             }
-
+            
             // Shader module will not be used now.
             vkDestroyShaderModule(vulkan.getDevice(), vertModule, nullptr);
             vkDestroyShaderModule(vulkan.getDevice(), fragModule, nullptr);
+
+            std::cout << "\t\t- Initialization completed." << std::endl;
+        }
+        
+        // Shader functions.
+        std::vector<char> pipeline::readFile(const std::string& path)
+        {
+            // Read at the end of the file.
+            std::ifstream file(path, std::ios::ate | std::ios::binary);
+            if (!file.is_open())
+            {
+                throw std::runtime_error("Unable to open file: " + path);
+            }
+    
+            // The file is last position so tellg will just return the last position aka size.
+            size_t fileSize = static_cast<size_t>(file.tellg());
+            std::vector<char> buffer(fileSize);
+    
+            // Find first position, then read up from there.
+            file.seekg(0);
+            file.read(buffer.data(), fileSize);
+            file.close();
+    
+            return buffer;
+        }
+        VkShaderModule pipeline::createShaderModule(std::vector<char> shaderCode, VkDevice device)
+        {
+            VkShaderModule shaderModule;
+            VkShaderModuleCreateInfo createInfo = {
+                .sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO,
+                .codeSize = shaderCode.size(),
+                .pCode = reinterpret_cast<const uint32_t*>(shaderCode.data())
+            };
+
+            if (vkCreateShaderModule(device, &createInfo, nullptr, &shaderModule) != VK_SUCCESS)
+            {
+                std::runtime_error("Failed to create shader module.");
+            }
+            return shaderModule;
+        }
+
+        /*------------------------------------------------------------
+            Public functions.
+        ------------------------------------------------------------*/
+        pipeline::pipeline(const std::string& vertexShaderPath, const std::string& fragmentShaderPath)
+        {
+            shaderCodePath[0] = vertexShaderPath;
+            shaderCodePath[1] = fragmentShaderPath;
+        }
+
+        pipeline& pipeline::operator=(const pipeline& pipeline)
+        {
+            // Check if there are already vertex / fragment code assign to this variable yet, and check if it try to use "=" operator on itself.
+            if (!(shaderCodePath[0].has_value() || shaderCodePath[1].has_value()) && (pipeline.shaderCodePath[0].has_value() && pipeline.shaderCodePath[1].has_value()) && this != &pipeline)
+            {
+                shaderCodePath[0] = pipeline.shaderCodePath[0];
+                shaderCodePath[1] = pipeline.shaderCodePath[1];
+            }
+            return *this;
+        }
+    
+        void pipeline::init(const vulkan& vulkan)
+        {
+            std::cout << "Initializing graphics pipeline." << std::endl;
+            initRenderPass(vulkan);
+            initGraphicsPipeline(vulkan);
         }
         void pipeline::cleanUp(const vulkan& vulkan)
         {
             std::cout << "Cleaning up graphics pipeline." << std::endl;
 
+            std::cout << "\t- Destroying graphics pipeline." << std::endl;
             vkDestroyPipeline(vulkan.getDevice(), graphicsPipeline, nullptr);
-            vkDestroyRenderPass(vulkan.getDevice(), renderPass, nullptr);
+
+            std::cout << "\t- Destroying pipeline layout." << std::endl;
             vkDestroyPipelineLayout(vulkan.getDevice(), pipelineLayout, nullptr);
+            
+            std::cout << "\t- Destroying render pass." << std::endl;
+            vkDestroyRenderPass(vulkan.getDevice(), renderPass, nullptr);
         }
     }
 }
