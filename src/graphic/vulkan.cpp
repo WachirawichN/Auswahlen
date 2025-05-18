@@ -226,7 +226,7 @@ namespace auswahlen
             swapChainImages.resize(imageCounts);
             vkGetSwapchainImagesKHR(device, swapChain, &imageCounts, swapChainImages.data());
 
-            // For later use.
+            // For use with graphics pipeline.
             imageFormat = surfaceFormat.format;
             imageExtent = extent;
         }

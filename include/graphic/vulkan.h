@@ -142,6 +142,9 @@ namespace auswahlen
 
                 const std::optional<std::string>& getName() const { return name; }
                 const std::optional<std::array<uint32_t, 3>>& getAppVersion() const { return version; }
+                const VkDevice& getDevice() const { return device; }
+                const VkFormat& getFormat() const { return imageFormat; }
+                const VkExtent2D getImgExtent() const { return imageExtent; }
 
                 void init(GLFWwindow* window);
                 void cleanUp();
