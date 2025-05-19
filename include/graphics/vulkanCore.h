@@ -138,6 +138,7 @@ namespace auswahlen
                 vulkanCore(const std::string& appName, const std::array<uint32_t, 3>& appVersion);
 
                 vulkanCore(const vulkanCore&) = delete;
+                // For copying some basic data before initialization only.
                 vulkanCore& operator=(const vulkanCore& vulkan);
 
                 const std::optional<std::string>& getName() const { return name; }

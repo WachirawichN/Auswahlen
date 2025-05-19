@@ -155,7 +155,7 @@ namespace auswahlen
                 .sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO,
                 .attachmentCount = 1,
                 .pAttachments = &config.colorAttachment,
-                .subpassCount = 1,
+                .subpassCount = config.subpassCount,
                 .pSubpasses = &config.subpassDescription
             };
 

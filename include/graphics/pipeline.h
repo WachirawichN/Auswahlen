@@ -50,6 +50,7 @@ namespace auswahlen
                     VkAttachmentReference colorAttachmentRef;
                     VkSubpassDescription subpassDescription;
                     VkRenderPassCreateInfo renderPassCreateInfo;
+                    uint32_t subpassCount = 1;
                 };
                 struct pipelineConfigInfo {
                     VkViewport viewport;
@@ -86,6 +87,7 @@ namespace auswahlen
                 pipeline(const vulkanCore* vulkanCore, const std::string& vertexShaderPath, const std::string& fragmentShaderPath);
 
                 pipeline(const pipeline&) = delete;
+                // For copying some basic data before initialization only.
                 pipeline& operator=(const pipeline& pipeline);
 
                 void init();

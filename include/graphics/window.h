@@ -21,9 +21,8 @@ namespace auswahlen
                 window() {}
                 window(int width, int height, std::string name);
     
-                // Remove copy constructor, becuase why not. Who even use this?
                 window(const window&) = delete;
-                // Repurpose "=" operator into copying width and height of the other window then create a new one.
+                // For copying some basic data before initialization only.
                 window& operator=(const window& window);
 
                 GLFWwindow* getWindow() const { return guiWindow; }
