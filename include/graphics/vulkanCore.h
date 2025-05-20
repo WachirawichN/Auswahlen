@@ -1,3 +1,8 @@
+/*
+
+    Class that contains multiple variables that are necessary for writing images onto screen, like image views, swap chain.
+
+*/
 #pragma once
 
 #define GLFW_INCLUDE_VULKAN
@@ -29,6 +34,32 @@ namespace auswahlen
 {
     namespace graphics
     {
+        /*------------------------------------------------------------
+            Queue family.
+            For storing index of required queue family.
+
+            Each member variable is index of that queue family correspond to the index of the element of "pQueueFamilyProperties",
+            this index is from "vkGetPhysicalDeviceQueueFamilyProperties", which is inside "checkCommandSupport" function.
+        ------------------------------------------------------------*/
+        struct queueFamily {
+            std::optional<uint32_t> graphicFamilyIdx;
+            std::optional<uint32_t> presentFamilyIdx;
+
+            bool isComplete()
+            {
+                return graphicFamilyIdx.has_value() && presentFamilyIdx.has_value();
+            }
+        };
+        /*------------------------------------------------------------
+            Swap chain supported properties.
+            For storing detail about swap chain's supported properties.
+        ------------------------------------------------------------*/
+        struct swapChainSupportedProperties {
+            VkSurfaceCapabilitiesKHR capability;
+            std::vector<VkSurfaceFormatKHR> formats;
+            std::vector<VkPresentModeKHR> presentModes;
+        };
+
         class vulkanCore
         {
             private:
@@ -69,36 +100,10 @@ namespace auswahlen
                 VkPhysicalDevice physicalDevice = VK_NULL_HANDLE;
                 VkDevice device;
 
-                // Queue family handlers.
+                // Queue family indices / handlers.
+                queueFamily queueFamilyIndices;
                 VkQueue graphicQueue;
                 VkQueue presentQueue;
-
-                /*------------------------------------------------------------
-                    Queue family.
-                    For storing index of required queue family.
-
-                    Each member variable is index of that queue family correspond to the index of the element of "pQueueFamilyProperties",
-                    this index is from "vkGetPhysicalDeviceQueueFamilyProperties", which is inside "checkCommandSupport" function.
-                ------------------------------------------------------------*/
-                struct queueFamily {
-                    std::optional<uint32_t> graphicFamilyIdx;
-                    std::optional<uint32_t> presentFamilyIdx;
-
-                    bool isComplete()
-                    {
-                        return graphicFamilyIdx.has_value() && presentFamilyIdx.has_value();
-                    }
-                };
-
-                /*------------------------------------------------------------
-                    Swap chain supported properties.
-                    For storing detail about swap chain's supported properties.
-                ------------------------------------------------------------*/
-                struct swapChainSupportedProperties {
-                    VkSurfaceCapabilitiesKHR capability;
-                    std::vector<VkSurfaceFormatKHR> formats;
-                    std::vector<VkPresentModeKHR> presentModes;
-                };
 
                 /*------------------------------------------------------------
                     Helper funcions.
@@ -145,7 +150,8 @@ namespace auswahlen
                 const std::optional<std::array<uint32_t, 3>>& getAppVersion() const { return version; }
                 const VkDevice& getDevice() const { return device; }
                 const VkFormat& getFormat() const { return imageFormat; }
-                const VkExtent2D getImgExtent() const { return imageExtent; }
+                const VkExtent2D& getImgExtent() const { return imageExtent; }
+                const queueFamily& getQueueFamilyIndices() const { return queueFamilyIndices; }
 
                 void init(GLFWwindow* window);
                 void cleanUp();

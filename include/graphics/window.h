@@ -1,3 +1,9 @@
+/*
+
+    A class use for create and managing window.
+
+*/
+
 #pragma once
 
 #define GLFW_INCLUDE_VULKAN

@@ -45,7 +45,7 @@ namespace auswahlen
             VkInstanceCreateInfo createInfo = {
                 .sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO,
                 .pApplicationInfo = &appInfo,
-                .enabledExtensionCount = (uint32_t)finalExtensions.size(),
+                .enabledExtensionCount = static_cast<uint32_t>(finalExtensions.size()),
                 .ppEnabledExtensionNames = finalExtensions.data(),
             };
 
@@ -126,11 +126,12 @@ namespace auswahlen
         {
             std::cout << "\t- Initializing logical device." << std::endl;
 
-            // Create queue create info for all queue families we wanted.
-            vulkanCore::queueFamily indices = checkCommandSupport(physicalDevice);
+            // Set queueFamilyIndices variable all its memebers index,
+            // then create queue create info for all queue families we wanted.
+            queueFamilyIndices = checkCommandSupport(physicalDevice);
             std::set<uint32_t> uniqueQueueFamilyIdx = {
-                indices.graphicFamilyIdx.value(),
-                indices.presentFamilyIdx.value()
+                queueFamilyIndices.graphicFamilyIdx.value(),
+                queueFamilyIndices.presentFamilyIdx.value()
             };
             std::vector<VkDeviceQueueCreateInfo> queueCreateInfos;
 
@@ -144,9 +145,9 @@ namespace auswahlen
             VkPhysicalDeviceFeatures deviceFeatures{};
             VkDeviceCreateInfo deviceCreateInfo = {
                 .sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO,
-                .queueCreateInfoCount = (uint32_t)queueCreateInfos.size(),
+                .queueCreateInfoCount = static_cast<uint32_t>(queueCreateInfos.size()),
                 .pQueueCreateInfos = queueCreateInfos.data(),
-                .enabledExtensionCount = (uint32_t)deviceExtensions.size(),
+                .enabledExtensionCount = static_cast<uint32_t>(deviceExtensions.size()),
                 .ppEnabledExtensionNames = deviceExtensions.data(),
                 .pEnabledFeatures = &deviceFeatures
             };
@@ -158,8 +159,8 @@ namespace auswahlen
             }
 
             // Assigning queue that have been create along the logical device to each queue's handler.
-            vkGetDeviceQueue(device, indices.graphicFamilyIdx.value(), 0, &graphicQueue);
-            vkGetDeviceQueue(device, indices.presentFamilyIdx.value(), 0, &presentQueue);
+            vkGetDeviceQueue(device, queueFamilyIndices.graphicFamilyIdx.value(), 0, &graphicQueue);
+            vkGetDeviceQueue(device, queueFamilyIndices.presentFamilyIdx.value(), 0, &presentQueue);
 
             std::cout << "\t\t- Initialization completed." << std::endl;
         }
@@ -199,10 +200,9 @@ namespace auswahlen
             };
 
             // Check if the graphic queue and the presentation queue is from the same family.
-            queueFamily indices = checkCommandSupport(physicalDevice);
-            if (indices.graphicFamilyIdx.value() != indices.presentFamilyIdx.value())
+            if (queueFamilyIndices.graphicFamilyIdx.value() != queueFamilyIndices.presentFamilyIdx.value())
             {
-                uint32_t queueFamilyindicesArray[] = {indices.graphicFamilyIdx.value(), indices.presentFamilyIdx.value()};
+                uint32_t queueFamilyindicesArray[] = {queueFamilyIndices.graphicFamilyIdx.value(), queueFamilyIndices.presentFamilyIdx.value()};
 
                 // Can use VK_SHARING_MODE_EXCLUSIVE instead, but required more setup.
                 createInfo.imageSharingMode = VK_SHARING_MODE_CONCURRENT;
@@ -386,7 +386,7 @@ namespace auswahlen
         // Device functions.
         bool vulkanCore::isDeviceSuitable(const VkPhysicalDevice& physDevice)
         {
-            vulkanCore::queueFamily indicies = checkCommandSupport(physDevice);
+            queueFamily indicies = checkCommandSupport(physDevice);
             bool supportDeviceExtensions = checkDeviceExtensionsSupport(physDevice);
 
             // Check if swap chain that we've supported surface formats and presentation modes.
@@ -399,9 +399,9 @@ namespace auswahlen
 
             return indicies.isComplete() && supportDeviceExtensions && swapChainSuitable;
         }
-        const vulkanCore::queueFamily vulkanCore::checkCommandSupport(const VkPhysicalDevice& physDevice)
+        const queueFamily vulkanCore::checkCommandSupport(const VkPhysicalDevice& physDevice)
         {
-            vulkanCore::queueFamily indices;
+            queueFamily indices;
 
             // Get all the queue family that are supported.
             uint32_t supportedQueueFamiliesCount = 0;
@@ -411,7 +411,7 @@ namespace auswahlen
             vkGetPhysicalDeviceQueueFamilyProperties(physDevice, &supportedQueueFamiliesCount, supportedQueueFamilies.data());
 
             // Check if any of those supported queue family support the commands we want,
-            // and assigning corresponding index to those queue family member variable.
+            // and assigning correspond index to those queue family member variable.
             int i = 0;
             for (VkQueueFamilyProperties queueFamily : supportedQueueFamilies)
             {
@@ -466,7 +466,7 @@ namespace auswahlen
         }
 
         // Swap chain functions.
-        const vulkanCore::swapChainSupportedProperties vulkanCore::querySwapChainSupport(const VkPhysicalDevice& physDevice)
+        const swapChainSupportedProperties vulkanCore::querySwapChainSupport(const VkPhysicalDevice& physDevice)
         {
             swapChainSupportedProperties supportInfo;
 
@@ -529,8 +529,8 @@ namespace auswahlen
                 glfwGetFramebufferSize(window, &width, &height);
 
                 VkExtent2D actualExtent = {
-                    (uint32_t)width,
-                    (uint32_t)height,
+                    static_cast<uint32_t>(width),
+                    static_cast<uint32_t>(height),
                 };
 
                 actualExtent.width = std::clamp(actualExtent.width, capability.minImageExtent.width, capability.maxImageExtent.width);

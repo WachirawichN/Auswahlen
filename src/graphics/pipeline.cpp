@@ -170,8 +170,8 @@ namespace auswahlen
             config.viewport = {
                 .x = 0.0f,
                 .y = 0.0f,
-                .width = (float)vulkan->getImgExtent().width,
-                .height = (float)vulkan->getImgExtent().height,
+                .width = static_cast<float>(vulkan->getImgExtent().width),
+                .height = static_cast<float>(vulkan->getImgExtent().height),
                 .minDepth = 0.0f,
                 .maxDepth = 1.0f
             };
@@ -182,7 +182,7 @@ namespace auswahlen
 
             config.dymicStateInfo = {
                 .sType = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO,
-                .dynamicStateCount = (uint32_t)dynamicStates.size(),
+                .dynamicStateCount = static_cast<uint32_t>(dynamicStates.size()),
                 .pDynamicStates = dynamicStates.data()
             };
             config.vertexInputInfo = {

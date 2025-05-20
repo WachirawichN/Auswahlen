@@ -1,3 +1,9 @@
+/*
+
+    A graphic pipeline class use to configure and create the stages of the pipeline and render pass.
+
+*/
+
 #pragma once
 
 #define GLFW_INCLUDE_VULKAN
