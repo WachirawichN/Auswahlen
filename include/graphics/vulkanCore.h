@@ -42,12 +42,12 @@ namespace auswahlen
             this index is from "vkGetPhysicalDeviceQueueFamilyProperties", which is inside "checkCommandSupport" function.
         ------------------------------------------------------------*/
         struct queueFamily {
-            std::optional<uint32_t> graphicFamilyIdx;
+            std::optional<uint32_t> graphicsFamilyIdx;
             std::optional<uint32_t> presentFamilyIdx;
 
             bool isComplete()
             {
-                return graphicFamilyIdx.has_value() && presentFamilyIdx.has_value();
+                return graphicsFamilyIdx.has_value() && presentFamilyIdx.has_value();
             }
         };
         /*------------------------------------------------------------
@@ -102,7 +102,7 @@ namespace auswahlen
 
                 // Queue family indices / handlers.
                 queueFamily queueFamilyIndices;
-                VkQueue graphicQueue;
+                VkQueue graphicsQueue;
                 VkQueue presentQueue;
 
                 /*------------------------------------------------------------
@@ -149,9 +149,13 @@ namespace auswahlen
                 const std::optional<std::string>& getName() const { return name; }
                 const std::optional<std::array<uint32_t, 3>>& getAppVersion() const { return version; }
                 const VkDevice& getDevice() const { return device; }
+                const VkSwapchainKHR& getSwapChain() const { return swapChain; }
+                const std::vector<VkImageView>& getImageViews() const { return swapChainImageViews; }
                 const VkFormat& getFormat() const { return imageFormat; }
-                const VkExtent2D& getImgExtent() const { return imageExtent; }
+                const VkExtent2D& getImageExtent() const { return imageExtent; }
                 const queueFamily& getQueueFamilyIndices() const { return queueFamilyIndices; }
+                const VkQueue& getGraphicsQueue() const { return graphicsQueue; }
+                const VkQueue& getPresentQueue() const { return presentQueue; }
 
                 void init(GLFWwindow* window);
                 void cleanUp();

@@ -130,7 +130,7 @@ namespace auswahlen
             // then create queue create info for all queue families we wanted.
             queueFamilyIndices = checkCommandSupport(physicalDevice);
             std::set<uint32_t> uniqueQueueFamilyIdx = {
-                queueFamilyIndices.graphicFamilyIdx.value(),
+                queueFamilyIndices.graphicsFamilyIdx.value(),
                 queueFamilyIndices.presentFamilyIdx.value()
             };
             std::vector<VkDeviceQueueCreateInfo> queueCreateInfos;
@@ -159,7 +159,7 @@ namespace auswahlen
             }
 
             // Assigning queue that have been create along the logical device to each queue's handler.
-            vkGetDeviceQueue(device, queueFamilyIndices.graphicFamilyIdx.value(), 0, &graphicQueue);
+            vkGetDeviceQueue(device, queueFamilyIndices.graphicsFamilyIdx.value(), 0, &graphicsQueue);
             vkGetDeviceQueue(device, queueFamilyIndices.presentFamilyIdx.value(), 0, &presentQueue);
 
             std::cout << "\t\t- Initialization completed." << std::endl;
@@ -200,9 +200,9 @@ namespace auswahlen
             };
 
             // Check if the graphic queue and the presentation queue is from the same family.
-            if (queueFamilyIndices.graphicFamilyIdx.value() != queueFamilyIndices.presentFamilyIdx.value())
+            if (queueFamilyIndices.graphicsFamilyIdx.value() != queueFamilyIndices.presentFamilyIdx.value())
             {
-                uint32_t queueFamilyindicesArray[] = {queueFamilyIndices.graphicFamilyIdx.value(), queueFamilyIndices.presentFamilyIdx.value()};
+                uint32_t queueFamilyindicesArray[] = {queueFamilyIndices.graphicsFamilyIdx.value(), queueFamilyIndices.presentFamilyIdx.value()};
 
                 // Can use VK_SHARING_MODE_EXCLUSIVE instead, but required more setup.
                 createInfo.imageSharingMode = VK_SHARING_MODE_CONCURRENT;
@@ -423,7 +423,7 @@ namespace auswahlen
                 }
                 if (queueFamily.queueFlags & VK_QUEUE_GRAPHICS_BIT)
                 {
-                    indices.graphicFamilyIdx = i;
+                    indices.graphicsFamilyIdx = i;
                 }
 
                 if (indices.isComplete())

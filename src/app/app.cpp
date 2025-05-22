@@ -17,18 +17,23 @@ namespace auswahlen
     }
     void app::initWindow()
     {
-        guiWindow = auswahlen::graphics::window(width, height, "Auswahlen");
+        guiWindow = graphics::window(width, height, "Auswahlen");
         guiWindow.createWindow();
     }
     void app::initVulkan()
     {
-        vulkan = auswahlen::graphics::vulkanCore("Auswahlen", {0, 2, 0});
+        vulkan = graphics::vulkanCore("Auswahlen", {0, 2, 0});
         vulkan.init(guiWindow.getWindow());
     }
     void app::initGraphicPipeline()
     {
-        pipeline = auswahlen::graphics::pipeline(&vulkan, "asset/shader/shader.vert.spv", "asset/shader/shader.frag.spv");
+        pipeline = graphics::pipeline(&vulkan, "asset/shader/shader.vert.spv", "asset/shader/shader.frag.spv");
         pipeline.init();
+    }
+    void app::initRenderer()
+    {
+        renderer = graphics::renderer(&vulkan, &pipeline);
+        renderer.init();
     }
 
     void app::mainLoop()
@@ -39,10 +44,11 @@ namespace auswahlen
             renderFrame();
             stepSimulation();
         }
+        vkDeviceWaitIdle(vulkan.getDevice());
     }
     void app::renderFrame()
     {
-
+        renderer.render();
     }
     void app::stepSimulation()
     {
@@ -59,11 +65,13 @@ namespace auswahlen
         initWindow();
         initVulkan();
         initGraphicPipeline();
+        initRenderer();
         std::cout << "================================================================" << std::endl;
     }
     app::~app()
     {
         std::cout << "================================================================" << std::endl;
+        renderer.cleanUp();
         pipeline.cleanUp();
         vulkan.cleanUp();
         guiWindow.cleanUp();

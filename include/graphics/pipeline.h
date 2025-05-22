@@ -55,6 +55,7 @@ namespace auswahlen
                     VkAttachmentDescription colorAttachment;
                     VkAttachmentReference colorAttachmentRef;
                     VkSubpassDescription subpassDescription;
+                    VkSubpassDependency dependency;
                     VkRenderPassCreateInfo renderPassCreateInfo;
                     uint32_t subpassCount = 1;
                 };
@@ -95,6 +96,9 @@ namespace auswahlen
                 pipeline(const pipeline&) = delete;
                 // For copying some basic data before initialization only.
                 pipeline& operator=(const pipeline& pipeline);
+
+                const VkRenderPass& getRenderPass() const { return renderPass; }
+                const VkPipeline& getPipeline() const { return graphicsPipeline; }
 
                 void init();
                 void cleanUp();

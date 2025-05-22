@@ -151,12 +151,22 @@ namespace auswahlen
                 .colorAttachmentCount = 1,
                 .pColorAttachments = &config.colorAttachmentRef
             };
+            config.dependency = {
+                .srcSubpass = VK_SUBPASS_EXTERNAL,
+                .dstSubpass = 0,
+                .srcStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,
+                .dstStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,
+                .srcAccessMask = 0,
+                .dstAccessMask = VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT
+            };
             config.renderPassCreateInfo = {
                 .sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO,
                 .attachmentCount = 1,
                 .pAttachments = &config.colorAttachment,
                 .subpassCount = config.subpassCount,
-                .pSubpasses = &config.subpassDescription
+                .pSubpasses = &config.subpassDescription,
+                .dependencyCount = 1,
+                .pDependencies = &config.dependency
             };
 
             return config;
@@ -170,14 +180,14 @@ namespace auswahlen
             config.viewport = {
                 .x = 0.0f,
                 .y = 0.0f,
-                .width = static_cast<float>(vulkan->getImgExtent().width),
-                .height = static_cast<float>(vulkan->getImgExtent().height),
+                .width = static_cast<float>(vulkan->getImageExtent().width),
+                .height = static_cast<float>(vulkan->getImageExtent().height),
                 .minDepth = 0.0f,
                 .maxDepth = 1.0f
             };
             config.scissor = {
                 .offset = {0, 0},
-                .extent = vulkan->getImgExtent()
+                .extent = vulkan->getImageExtent()
             };
 
             config.dymicStateInfo = {
