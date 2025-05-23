@@ -14,6 +14,7 @@
 #include <optional>
 #include <vector>
 #include <set>
+#include <map>
 
 #include <limits>
 #include <algorithm>
@@ -129,6 +130,7 @@ namespace auswahlen
 
                 // Device functions.
                 bool isDeviceSuitable(const VkPhysicalDevice& physDevice);
+                int scoreDevice(const VkPhysicalDevice& physDevice);
                 const queueFamily checkCommandSupport(const VkPhysicalDevice& physDevice);
                 bool checkDeviceExtensionsSupport(const VkPhysicalDevice& physDevice);
                 const VkDeviceQueueCreateInfo generateQueueCreateInfo(uint32_t queueIdx, uint32_t queueCount, float priority);

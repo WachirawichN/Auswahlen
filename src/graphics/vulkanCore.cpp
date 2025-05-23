@@ -101,22 +101,25 @@ namespace auswahlen
             vkEnumeratePhysicalDevices(instance, &deviceCount, devicesList.data());
 
             // Check for devices that is suitable.
-            //std::vector<VkPhysicalDevice> suitableDevices;
+            std::multimap<int, VkPhysicalDevice> suitableDevices;
             for (const VkPhysicalDevice& physDevice : devicesList)
             {
                 if (isDeviceSuitable(physDevice))
                 {
-                    physicalDevice = physDevice;
-                    break;
+                    // Rate the device.
+                    suitableDevices.insert(std::make_pair(scoreDevice(physDevice), physDevice));
                 }
             }
 
-            if (physicalDevice == VK_NULL_HANDLE)
+            // Choose the best device.
+            if (suitableDevices.size() > 0)
+            {
+                physicalDevice = suitableDevices.rbegin()->second;
+            }
+            else
             {
                 throw std::runtime_error("Cannot find sutable device.");
             }
-
-            // Pick best device.
 
             VkPhysicalDeviceProperties properties;
             vkGetPhysicalDeviceProperties(physicalDevice, &properties);
@@ -398,6 +401,20 @@ namespace auswahlen
             }
 
             return indicies.isComplete() && supportDeviceExtensions && swapChainSuitable;
+        }
+        int vulkanCore::scoreDevice(const VkPhysicalDevice& physDevice)
+        {
+            int score = 0;
+            VkPhysicalDeviceProperties properties;
+            vkGetPhysicalDeviceProperties(physDevice, &properties);
+
+            // Rating part.
+            if (properties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU)
+            {
+                score += 100;
+            }
+
+            return score;
         }
         const queueFamily vulkanCore::checkCommandSupport(const VkPhysicalDevice& physDevice)
         {
