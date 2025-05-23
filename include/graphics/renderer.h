@@ -36,19 +36,21 @@ namespace auswahlen
                 // Variables that are actually the one that responsible for rendering.
                 std::vector<VkFramebuffer> frameBuffers;
                 VkCommandPool commandPool;
-                VkCommandBuffer commandBuffer;
-                VkSemaphore imageAvailableSemaphore;
-                VkSemaphore renderFinishedSemaphore;
-                VkFence inFlightFence;
-
+                std::vector<VkCommandBuffer> commandBuffers;
+                // Synchronize objects.
+                std::vector<VkSemaphore> imageAvailableSemaphores;
+                std::vector<VkSemaphore> renderFinishedSemaphores;
+                std::vector<VkFence> inFlightFences;
+                // Multiple frames in flight variables
                 const int maxFramesInFlight = 2;
+                uint32_t currentFrame = 0;
 
                 /*------------------------------------------------------------
                     Helper funcions.
                 ------------------------------------------------------------*/
                 // Initializer functions.
                 void initFrameBuffer();
-                void initCommandBuffer();
+                void initCommandBuffers();
                 void initSyncObjects();
 
                 // Command functions.

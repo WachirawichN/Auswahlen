@@ -35,7 +35,7 @@ namespace auswahlen
             }
             std::cout << "\t\t- Initialization completed." << std::endl;
         }
-        void renderer::initCommandBuffer()
+        void renderer::initCommandBuffers()
         {
             std::cout << "\t- Initializing command Pool." << std::endl;
 
@@ -55,14 +55,15 @@ namespace auswahlen
 
             std::cout << "\t- Initializing command buffer." << std::endl;
 
-            // Create the command buffer.
+            // Create the command buffers.
+            commandBuffers.resize(maxFramesInFlight);
             VkCommandBufferAllocateInfo commandBufferAllocateInfo = {
                 .sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO,
                 .commandPool = commandPool,
                 .level = VK_COMMAND_BUFFER_LEVEL_PRIMARY,
-                .commandBufferCount = 1
+                .commandBufferCount = static_cast<uint32_t>(commandBuffers.size())
             };
-            if (vkAllocateCommandBuffers(vulkan->getDevice(), &commandBufferAllocateInfo, &commandBuffer) != VK_SUCCESS)
+            if (vkAllocateCommandBuffers(vulkan->getDevice(), &commandBufferAllocateInfo, commandBuffers.data()) != VK_SUCCESS)
             {
                 throw std::runtime_error("Failed to allocate command buffer.");
             }
@@ -71,17 +72,25 @@ namespace auswahlen
         void renderer::initSyncObjects()
         {
             std::cout << "\t- Initializing synchronization objects." << std::endl;
+
+            imageAvailableSemaphores.resize(maxFramesInFlight);
+            renderFinishedSemaphores.resize(maxFramesInFlight);
+            inFlightFences.resize(maxFramesInFlight);
+
             VkSemaphoreCreateInfo semaphoreCreateInfo = {.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO};
             VkFenceCreateInfo fenceCreateInfo = {
                 .sType = VK_STRUCTURE_TYPE_FENCE_CREATE_INFO,
                 .flags = VK_FENCE_CREATE_SIGNALED_BIT
             };
 
-            if (vkCreateSemaphore(vulkan->getDevice(), &semaphoreCreateInfo, nullptr, &imageAvailableSemaphore) != VK_SUCCESS ||
-                vkCreateSemaphore(vulkan->getDevice(), &semaphoreCreateInfo, nullptr, &renderFinishedSemaphore) != VK_SUCCESS ||
-                vkCreateFence(vulkan->getDevice(), &fenceCreateInfo, nullptr, &inFlightFence) != VK_SUCCESS)
+            for (size_t i = 0; i < maxFramesInFlight; i++)
             {
-                throw std::runtime_error("Failed to create semaphore(s) or fence.");
+                if (vkCreateSemaphore(vulkan->getDevice(), &semaphoreCreateInfo, nullptr, &imageAvailableSemaphores[i]) != VK_SUCCESS ||
+                    vkCreateSemaphore(vulkan->getDevice(), &semaphoreCreateInfo, nullptr, &renderFinishedSemaphores[i]) != VK_SUCCESS ||
+                    vkCreateFence(vulkan->getDevice(), &fenceCreateInfo, nullptr, &inFlightFences[i]) != VK_SUCCESS)
+                {
+                    throw std::runtime_error("Failed to create semaphore(s) or fence.");
+                }
             }
             std::cout << "\t\t- Initialization completed." << std::endl;
         }
@@ -169,26 +178,26 @@ namespace auswahlen
         void renderer::render()
         {
             // Wait for the previous frame to finish rendering.
-            vkWaitForFences(vulkan->getDevice(), 1, &inFlightFence, VK_TRUE, UINT64_MAX);
+            vkWaitForFences(vulkan->getDevice(), 1, &inFlightFences[currentFrame], VK_TRUE, UINT64_MAX);
 
             // Reset the fence to unsignaled state which mean the frame is currently being render.
-            vkResetFences(vulkan->getDevice(), 1, &inFlightFence);
+            vkResetFences(vulkan->getDevice(), 1, &inFlightFences[currentFrame]);
 
             // Get the image index for choosing frame buffer.
             uint32_t imageIdx;
-            vkAcquireNextImageKHR(vulkan->getDevice(), vulkan->getSwapChain(), UINT64_MAX, imageAvailableSemaphore, nullptr, &imageIdx);
+            vkAcquireNextImageKHR(vulkan->getDevice(), vulkan->getSwapChain(), UINT64_MAX, imageAvailableSemaphores[currentFrame], nullptr, &imageIdx);
             
             // Recording the command buffer.
-            vkResetCommandBuffer(commandBuffer, 0);
-            recordCommand(commandBuffer, imageIdx);
+            vkResetCommandBuffer(commandBuffers[currentFrame], 0);
+            recordCommand(commandBuffers[currentFrame], imageIdx);
 
             // Wait on which semaphores at which stage before execute the command.
             // Currently waiting for acquiring the frame buffer index only, before being able to drawn into that frame buffer.
-            VkSemaphore waitSemaphores[] = {imageAvailableSemaphore};
+            VkSemaphore waitSemaphores[] = {imageAvailableSemaphores[currentFrame]};
             VkPipelineStageFlags waitStages[] = {VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT};
 
             // Which semaphores will be signaled after finished rendering.
-            VkSemaphore signalSemaphores[] = {renderFinishedSemaphore};
+            VkSemaphore signalSemaphores[] = {renderFinishedSemaphores[currentFrame]};
 
             // Submit to graphics queue.
             VkSubmitInfo submitInfo = {
@@ -197,11 +206,11 @@ namespace auswahlen
                 .pWaitSemaphores = waitSemaphores,
                 .pWaitDstStageMask = waitStages,
                 .commandBufferCount = 1,
-                .pCommandBuffers = &commandBuffer,
+                .pCommandBuffers = &commandBuffers[currentFrame],
                 .signalSemaphoreCount = 1,
                 .pSignalSemaphores = signalSemaphores
             };
-            if (vkQueueSubmit(vulkan->getGraphicsQueue(), 1, &submitInfo, inFlightFence) != VK_SUCCESS)
+            if (vkQueueSubmit(vulkan->getGraphicsQueue(), 1, &submitInfo, inFlightFences[currentFrame]) != VK_SUCCESS)
             {
                 throw std::runtime_error("Failed to submitted command to queue.");
             }
@@ -218,13 +227,16 @@ namespace auswahlen
                 .pResults = nullptr
             };
             vkQueuePresentKHR(vulkan->getPresentQueue(), &presentInfo);
+
+            // Updating current frame for correct frame buffer and the command buffer.
+            currentFrame = (currentFrame + 1) % maxFramesInFlight;
         }
 
         void renderer::init()
         {
             std::cout << "Initializing renderer." << std::endl;
             initFrameBuffer();
-            initCommandBuffer();
+            initCommandBuffers();
             initSyncObjects();
         }
         void renderer::cleanUp()
@@ -232,9 +244,12 @@ namespace auswahlen
             std::cout << "Cleaning up renderer." << std::endl;
 
             std::cout << "\t- Destroying synchronization objects." << std::endl;
-            vkDestroyFence(vulkan->getDevice(), inFlightFence, nullptr);
-            vkDestroySemaphore(vulkan->getDevice(), renderFinishedSemaphore, nullptr);
-            vkDestroySemaphore(vulkan->getDevice(), imageAvailableSemaphore, nullptr);
+            for (size_t i = 0; i < maxFramesInFlight; i++)
+            {
+                vkDestroyFence(vulkan->getDevice(), inFlightFences[i], nullptr);
+                vkDestroySemaphore(vulkan->getDevice(), renderFinishedSemaphores[i], nullptr);
+                vkDestroySemaphore(vulkan->getDevice(), imageAvailableSemaphores[i], nullptr);
+            }
             
             std::cout << "\t- Destroying command pool." << std::endl;
             vkDestroyCommandPool(vulkan->getDevice(), commandPool, nullptr);
