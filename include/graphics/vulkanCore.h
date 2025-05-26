@@ -23,12 +23,10 @@
 #include <iostream>
 #include <stdexcept>
 
-#ifndef DEBUG
-    #ifdef NDEBUG
-        #define DEBUG false
-    #else
-        #define DEBUG true
-    #endif
+#ifdef NDEBUG
+    #define DEBUG false
+#else
+    #define DEBUG true
 #endif
 
 namespace auswahlen
