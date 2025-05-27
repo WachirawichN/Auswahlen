@@ -176,6 +176,8 @@ namespace auswahlen
             // Populate all create infos that are essential for graphics pipeline creation.
             // Both the viewport and scissor pair and all the stage of the pipeline.
             pipeline::pipelineConfigInfo config;
+            VkVertexInputBindingDescription vertexBindingDescription = vertex::bindingDescription();
+            std::array<VkVertexInputAttributeDescription, 2> vertexAttributeDescription = vertex::attributeDescription();
 
             config.viewport = {
                 .x = 0.0f,
@@ -197,10 +199,10 @@ namespace auswahlen
             };
             config.vertexInputInfo = {
                 .sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO,
-                .vertexBindingDescriptionCount = 0,
-                .pVertexBindingDescriptions = nullptr,
-                .vertexAttributeDescriptionCount = 0,
-                .pVertexAttributeDescriptions = nullptr
+                .vertexBindingDescriptionCount = 1,
+                .pVertexBindingDescriptions = &vertexBindingDescription,
+                .vertexAttributeDescriptionCount = static_cast<uint32_t>(vertex::attributeDescription().size()),
+                .pVertexAttributeDescriptions = vertexAttributeDescription.data()
             };
             config.inputAssemblyInfo = {
                 .sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO,
@@ -266,6 +268,7 @@ namespace auswahlen
                 .pAttachments = &config.colorBlendAttachmentInfo,
                 .blendConstants = {0.0f, 0.0f, 0.0f, 0.0f}
             };
+            
             config.pipelineLayout = {
                 .sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO,
                 .setLayoutCount = 0,

@@ -38,12 +38,6 @@ namespace auswahlen
 
     void app::mainLoop()
     {
-        const std::vector<graphics::vertex> vertices = {
-            {{ 0.0f, -0.5f}, {1.0f, 0.0f, 0.0f}, { 0.0f, -0.5f}},
-            {{ 0.5f,  0.5f}, {0.0f, 1.0f, 0.0f}, { 0.5f,  0.5f}},
-            {{-0.5f,  0.5f}, {0.0f, 0.0f, 1.0f}, {-0.5f,  0.5f}}
-        };
-
         double lastTime = glfwGetTime();
         while (!guiWindow.shouldClose())
         {

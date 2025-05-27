@@ -6,13 +6,16 @@
 
 #pragma once
 
+// Vulkan
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
-
 #include <graphics/vulkanCore.h>
+#include <graphics/vertex.h>
 
+// std
 #include <string>
 #include <vector>
+#include <array>
 #include <optional>
 #include <fstream>
 
