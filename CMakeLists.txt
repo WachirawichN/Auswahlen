@@ -15,7 +15,12 @@ add_subdirectory(dependencies)
 add_subdirectory(src)
 
 # Executable
+set_source_files_properties(${CMAKE_SOURCE_DIR}/src/main.cpp PROPERTIES LANGUAGE CUDA)
 add_executable(${CMAKE_PROJECT_NAME} ${CMAKE_SOURCE_DIR}/src/main.cpp)
+set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
+    LINKER_LANGUAGE CUDA
+    CUDA_SEPARABLE_COMPILATION ON
+)
 
 #Library linking
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE

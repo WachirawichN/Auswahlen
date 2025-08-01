@@ -8,17 +8,15 @@ namespace GLC
 {
     class vec2
     {
-        private:
-            float value[2];
         public:
-            __host__ __device__ vec2();
-            __host__ __device__ vec2(float v0);
-            __host__ __device__ vec2(float v0, float v1);
-            __host__ __device__ vec2(const vec2& vector);
+            float x, y;
+
+            __host__ __device__ vec2() : x(0.0f), y(0.0f) {}
+            __host__ __device__ vec2(float v) : x(v), y(v) {}
+            __host__ __device__ vec2(float v0, float v1) : x(v0), y(v1) {}
 
             __host__ __device__ float& operator [] (unsigned int index);
             __host__ __device__ float operator [] (unsigned int index) const;
-            __host__ __device__ vec2& operator = (const vec2& vector);
 
             __host__ __device__ vec2 operator + (float scalar) const;
             __host__ __device__ vec2& operator += (float scalar);
@@ -40,17 +38,15 @@ namespace GLC
     };
     class vec3
     {
-        private:
-            float value[3];
         public:
-            __host__ __device__ vec3();
-            __host__ __device__ vec3(float v0);
-            __host__ __device__ vec3(float v0, float v1, float v2);
-            __host__ __device__ vec3(const vec3& vector);
+            float x, y, z;
+
+            __host__ __device__ vec3() : x(0.0f), y(0.0f), z(0.0f) {}
+            __host__ __device__ vec3(float v) : x(v), y(v), z(v) {}
+            __host__ __device__ vec3(float v0, float v1, float v2) : x(v0), y(v1), z(v2) {}
 
             __host__ __device__ float& operator [] (unsigned int index);
             __host__ __device__ float operator [] (unsigned int index) const;
-            __host__ __device__ vec3& operator = (const vec3& vector);
 
             __host__ __device__ vec3 operator + (float scalar) const;
             __host__ __device__ vec3& operator += (float scalar);
@@ -72,17 +68,15 @@ namespace GLC
     };
     class vec4
     {
-        private:
-            float value[4];
         public:
-            __host__ __device__ vec4();
-            __host__ __device__ vec4(float v0);
-            __host__ __device__ vec4(float v0, float v1, float v2, float v3);
-            __host__ __device__ vec4(const vec4& vector);
+            float x, y, z, w;
+
+            __host__ __device__ vec4() : x(0.0f), y(0.0f), z(0.0f), w(0.0f) {}
+            __host__ __device__ vec4(float v) : x(v), y(v), z(v), w(v) {}
+            __host__ __device__ vec4(float v0, float v1, float v2, float v3) : x(v0), y(v1), z(v2), w(v3) {}
 
             __host__ __device__ float& operator [] (unsigned int index);
             __host__ __device__ float operator [] (unsigned int index) const;
-            __host__ __device__ vec4& operator = (const vec4& vector);
 
             __host__ __device__ vec4 operator + (float scalar) const;
             __host__ __device__ vec4& operator += (float scalar);

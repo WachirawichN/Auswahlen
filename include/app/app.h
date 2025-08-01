@@ -1,9 +1,6 @@
 #pragma once
 
 #include <cuda_runtime.h>
-#include <GLC/vector.cuh>
-#include <GLC/matrix.cuh>
-#include <GLC/utility.cuh>
 
 #include <graphics/vulkanCore.h>
 #include <graphics/window.h>
@@ -25,6 +22,12 @@ namespace auswahlen
             graphics::pipeline pipeline;
             graphics::vulkanCore vulkan;
             graphics::renderer renderer;
+
+            const std::vector<graphics::vertex> vertices = {
+                {{ 0.0f, -0.5f}, {1.0f, 0.0f, 0.0f}},
+                {{ 0.5f,  0.5f}, {0.0f, 1.0f, 0.0f}},
+                {{-0.5f,  0.5f}, {0.0f, 0.0f, 1.0f}}
+            };
 
             /*------------------------------------------------------------
                 Helper funcions.

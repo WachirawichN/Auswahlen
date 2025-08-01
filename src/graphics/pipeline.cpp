@@ -48,7 +48,9 @@ namespace auswahlen
             VkPipelineShaderStageCreateInfo shaderStageCreateInfo[2] = {vertStageCreateInfo, fragStageCreateInfo};
 
             // Viewport / Scissor / Graphics pipeline stages config info.
-            pipelineConfigInfo pipelineConfig = populatePipelineConfig();
+            VkVertexInputBindingDescription vertexBindingDescription = vertex::bindingDescription();
+            std::array<VkVertexInputAttributeDescription, 2> vertexAttributeDescriptions = vertex::attributeDescriptions();
+            pipelineConfigInfo pipelineConfig = populatePipelineConfig(vertexBindingDescription, vertexAttributeDescriptions);
 
             // Create graphics pipeline layout.
             if (vkCreatePipelineLayout(vulkan->getDevice(), &pipelineConfig.pipelineLayout, nullptr, &pipelineLayout) != VK_SUCCESS)
@@ -56,6 +58,15 @@ namespace auswahlen
                 throw std::runtime_error("Failed to created graphics pipeline layout.");
             }
             
+            // Test
+            std::cout << std::endl;
+            for (int i = 0; i < pipelineConfig.vertexInputInfo.vertexAttributeDescriptionCount; ++i) {
+                std::cout << "Attr[" << i << "] loc=" << pipelineConfig.vertexInputInfo.pVertexAttributeDescriptions[i].location
+                        << ", binding=" << pipelineConfig.vertexInputInfo.pVertexAttributeDescriptions[i].binding
+                        << ", format=" << pipelineConfig.vertexInputInfo.pVertexAttributeDescriptions[i].format
+                        << ", offset=" << pipelineConfig.vertexInputInfo.pVertexAttributeDescriptions[i].offset << '\n';
+            }
+
             // Graphics pipeline's create info.
             VkGraphicsPipelineCreateInfo pipelineCreateInfo = {
                 .sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO,
@@ -69,7 +80,7 @@ namespace auswahlen
                 .pMultisampleState = &pipelineConfig.multisampleInfo,
                 .pDepthStencilState = &pipelineConfig.depthStencilInfo,
                 .pColorBlendState = &pipelineConfig.colorBlenStateInfo,
-                .pDynamicState = &pipelineConfig.dymicStateInfo,
+                .pDynamicState = &pipelineConfig.dynamicStateInfo,
                 .layout = pipelineLayout,
                 .renderPass = renderPass,
                 .subpass = 0,
@@ -171,13 +182,11 @@ namespace auswahlen
 
             return config;
         }
-        const pipeline::pipelineConfigInfo pipeline::populatePipelineConfig()
+        const pipeline::pipelineConfigInfo pipeline::populatePipelineConfig(const VkVertexInputBindingDescription& vertexBindingDescription, const std::array<VkVertexInputAttributeDescription, 2>& vertexAttributeDescriptions)
         {
             // Populate all create infos that are essential for graphics pipeline creation.
             // Both the viewport and scissor pair and all the stage of the pipeline.
             pipeline::pipelineConfigInfo config;
-            VkVertexInputBindingDescription vertexBindingDescription = vertex::bindingDescription();
-            std::array<VkVertexInputAttributeDescription, 2> vertexAttributeDescription = vertex::attributeDescription();
 
             config.viewport = {
                 .x = 0.0f,
@@ -192,7 +201,7 @@ namespace auswahlen
                 .extent = vulkan->getImageExtent()
             };
 
-            config.dymicStateInfo = {
+            config.dynamicStateInfo = {
                 .sType = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO,
                 .dynamicStateCount = static_cast<uint32_t>(dynamicStates.size()),
                 .pDynamicStates = dynamicStates.data()
@@ -201,8 +210,8 @@ namespace auswahlen
                 .sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO,
                 .vertexBindingDescriptionCount = 1,
                 .pVertexBindingDescriptions = &vertexBindingDescription,
-                .vertexAttributeDescriptionCount = static_cast<uint32_t>(vertex::attributeDescription().size()),
-                .pVertexAttributeDescriptions = vertexAttributeDescription.data()
+                .vertexAttributeDescriptionCount = static_cast<uint32_t>(vertexAttributeDescriptions.size()),
+                .pVertexAttributeDescriptions = vertexAttributeDescriptions.data()
             };
             config.inputAssemblyInfo = {
                 .sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO,

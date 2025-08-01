@@ -9,7 +9,7 @@
 #include <graphics/vulkanCore.h>
 
 // GLC
-#include <GLC/vector.cuh>
+#include <GLC/GLC.cuh>
 
 // std
 #include <array>
@@ -25,16 +25,38 @@ namespace auswahlen
 
             static VkVertexInputBindingDescription bindingDescription()
             {
-                VkVertexInputBindingDescription description = {
+                VkVertexInputBindingDescription desc{};
+                desc.binding = 0;
+                desc.stride = sizeof(vertex);
+                desc.inputRate = VK_VERTEX_INPUT_RATE_VERTEX;
+
+                return desc;
+                /*
+                VkVertexInputBindingDescription bindingDescription = {
                     .binding = 0,
                     .stride = sizeof(vertex),
                     .inputRate = VK_VERTEX_INPUT_RATE_VERTEX
                 };
-                return description;
+                return bindingDescription;
+                */
             };
-            static std::array<VkVertexInputAttributeDescription, 2> attributeDescription()
+            static std::array<VkVertexInputAttributeDescription, 2> attributeDescriptions()
             {
-                std::array<VkVertexInputAttributeDescription, 2> descriptions = {
+                std::array<VkVertexInputAttributeDescription, 2> descs{};
+                descs[0].location = 0;
+                descs[0].binding = 0;
+                descs[0].format = VK_FORMAT_R32G32_SFLOAT;
+                descs[0].offset = offsetof(vertex, position);
+
+                descs[1].location = 1;
+                descs[1].binding = 0;
+                descs[1].format = VK_FORMAT_R32G32B32_SFLOAT;
+                descs[1].offset = offsetof(vertex, color);
+
+                return descs;
+
+                /*
+                std::array<VkVertexInputAttributeDescription, 2> attributeDescriptions = {
                     VkVertexInputAttributeDescription {
                         .location = 0,
                         .binding = 0,
@@ -48,7 +70,8 @@ namespace auswahlen
                         .offset = offsetof(vertex, color)
                     }
                 };
-                return descriptions;
+                return attributeDescriptions;
+                */
             }
         };
     }

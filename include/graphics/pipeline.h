@@ -65,7 +65,7 @@ namespace auswahlen
                 struct pipelineConfigInfo {
                     VkViewport viewport;
                     VkRect2D scissor;
-                    VkPipelineDynamicStateCreateInfo dymicStateInfo;
+                    VkPipelineDynamicStateCreateInfo dynamicStateInfo;
                     VkPipelineVertexInputStateCreateInfo vertexInputInfo;
                     VkPipelineInputAssemblyStateCreateInfo inputAssemblyInfo;
                     VkPipelineViewportStateCreateInfo viewportInfo;
@@ -91,7 +91,7 @@ namespace auswahlen
 
                 // Render pass / Graphics pipeline config functions.
                 const renderPassConfigInfo populateRenderPassConfig();
-                const pipelineConfigInfo populatePipelineConfig();
+                const pipelineConfigInfo populatePipelineConfig(const VkVertexInputBindingDescription& vertexBindingDescription, const std::array<VkVertexInputAttributeDescription, 2>& vertexAttributeDescriptions);
             public:
                 pipeline() {}
                 pipeline(const vulkanCore* vulkanCore, const std::string& vertexShaderPath, const std::string& fragmentShaderPath);

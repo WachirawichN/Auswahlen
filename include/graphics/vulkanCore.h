@@ -148,6 +148,7 @@ namespace auswahlen
 
                 const std::optional<std::string>& getName() const { return name; }
                 const std::optional<std::array<uint32_t, 3>>& getAppVersion() const { return version; }
+                const VkPhysicalDevice& getPhysicalDevice() const { return physicalDevice; }
                 const VkDevice& getDevice() const { return device; }
                 const VkSwapchainKHR& getSwapChain() const { return swapChain; }
                 const std::vector<VkImageView>& getImageViews() const { return swapChainImageViews; }

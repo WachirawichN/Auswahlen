@@ -36,6 +36,8 @@ namespace auswahlen
                 // Variables that are actually the one that responsible for rendering.
                 std::vector<VkFramebuffer> frameBuffers;
                 VkCommandPool commandPool;
+                VkBuffer vertexBuffer;
+                VkDeviceMemory vertexBufferMemory;
                 std::vector<VkCommandBuffer> commandBuffers;
                 // Synchronize objects.
                 std::vector<VkSemaphore> imageAvailableSemaphores;
@@ -45,19 +47,26 @@ namespace auswahlen
                 const int maxFramesInFlight = 2;
                 uint32_t currentFrame = 0;
 
+                // Test vertices.
+                std::vector<vertex> vertices;
                 /*------------------------------------------------------------
                     Helper funcions.
                 ------------------------------------------------------------*/
                 // Initializer functions.
                 void initFrameBuffer();
+                void initCommandPool();
+                void initVertexBuffer();
                 void initCommandBuffers();
                 void initSyncObjects();
+
+                // Memory functions.
+                uint32_t findMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties);
 
                 // Command functions.
                 void recordCommand(VkCommandBuffer buffer, uint32_t imageIdx);
             public:
                 renderer() {}
-                renderer(const vulkanCore* vulkanCore, const pipeline* pipeline);
+                renderer(const vulkanCore* vulkanCore, const pipeline* pipeline, const std::vector<vertex>& testVertices);
 
                 renderer(const renderer&) = delete;
                 // For copying some basic data before initialization only.

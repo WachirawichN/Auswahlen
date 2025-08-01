@@ -2,51 +2,13 @@
 
 namespace GLC
 {
-    __host__ __device__ vec2::vec2()
-    {
-        for (int i = 0; i < 2; i++)
-        {
-            value[i] = 0.0f;
-        }
-    }
-    __host__ __device__ vec2::vec2(float v0)
-    {
-        for (int i = 0; i < 2; i++)
-        {
-            value[i] = v0;
-        }
-    }
-    __host__ __device__ vec2::vec2(float v0, float v1)
-    {
-        value[0] = v0;
-        value[1] = v1;
-    }
-    __host__ __device__ vec2::vec2(const vec2& vector)
-    {
-        for (int i = 0; i < 2; i++)
-        {
-            value[i] = vector[i];
-        }
-    }
-
     __host__ __device__ float& vec2::operator[](unsigned int index)
     {
-        return value[index];
+        return *(&x + index);
     }
     __host__ __device__ float vec2::operator[](unsigned int index) const
     {
-        return value[index];
-    }
-    __host__ __device__ vec2& vec2::operator=(const vec2& vector)
-    {
-        if (this != &vector)
-        {
-            for (int i = 0; i < 2; i++)
-            {
-                value[i] = vector[i];
-            }
-        }
-        return *this;
+        return *(&x + index);
     }
 
     __host__ __device__ vec2 vec2::operator+(float scalar) const
@@ -62,7 +24,7 @@ namespace GLC
         vec2 out;
         for (int i = 0; i < 2; i++)
         {
-            out[i] = value[i] + vector[i];
+            out[i] = *(&x + i) + vector[i];
         }
         return out;
     }
@@ -70,7 +32,7 @@ namespace GLC
     {
         for (int i = 0; i < 2; i++)
         {
-            value[i] += vector[i];
+            *(&x + i) += vector[i];
         }
         return *this;
     }
@@ -88,7 +50,7 @@ namespace GLC
         vec2 out;
         for (int i = 0; i < 2; i++)
         {
-            out[i] = value[i] - vector[i];
+            out[i] = *(&x + i) - vector[i];
         }
         return out;
     }
@@ -96,7 +58,7 @@ namespace GLC
     {
         for (int i = 0; i < 2; i++)
         {
-            value[i] -= vector[i];
+            *(&x + i) -= vector[i];
         }
         return *this;
     }
@@ -106,7 +68,7 @@ namespace GLC
         vec2 out;
         for (int i = 0; i < 2; i++)
         {
-            out[i] = value[i] * scalar;
+            out[i] = *(&x + i) * scalar;
         }
         return out;
     }
@@ -114,7 +76,7 @@ namespace GLC
     {
         for (int i = 0; i < 2; i++)
         {
-            value[i] *= scalar;
+            *(&x + i) *= scalar;
         }
         return *this;
     }
@@ -124,7 +86,7 @@ namespace GLC
         vec2 out;
         for (int i = 0; i < 2; i++)
         {
-            out[i] = value[i] / scalar;
+            out[i] = *(&x + i) / scalar;
         }
         return out;
     }
@@ -132,7 +94,7 @@ namespace GLC
     {
         for (int i = 0; i < 2; i++)
         {
-            value[i] /= scalar;
+            *(&x + i) /= scalar;
         }
         return *this;
     }

@@ -35,7 +35,7 @@ namespace auswahlen
             }
             std::cout << "\t\t- Initialization completed." << std::endl;
         }
-        void renderer::initCommandBuffers()
+        void renderer::initCommandPool()
         {
             std::cout << "\t- Initializing command Pool." << std::endl;
 
@@ -52,10 +52,51 @@ namespace auswahlen
                 throw std::runtime_error("Failed to create command pool.");
             }
             std::cout << "\t\t- Initialization completed." << std::endl;
+        }
+        void renderer::initVertexBuffer()
+        {
+            std::cout << "\t- Initializing vertex buffer." << std::endl;
 
+            // Vertex buffer part
+            VkBufferCreateInfo vertexBufferCreateInfo = {
+                .sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO,
+                .size = vertices.size() * sizeof(vertices[0]),
+                .usage = VK_BUFFER_USAGE_VERTEX_BUFFER_BIT,
+                .sharingMode = VK_SHARING_MODE_EXCLUSIVE,
+            };
+            if (vkCreateBuffer(vulkan->getDevice(), &vertexBufferCreateInfo, nullptr, &vertexBuffer) != VK_SUCCESS)
+            {
+                throw std::runtime_error("Failed to create vertex buffer.");
+            }
+            std::cout << "\t\t- Created vertex buffer." << std::endl;
+            
+            // Memory allocation.
+            // Get vertex buffer requirement for memory allocation.
+            VkMemoryRequirements memRequirements;
+            vkGetBufferMemoryRequirements(vulkan->getDevice(), vertexBuffer, &memRequirements);
+
+            // Allocate the memory.
+            VkMemoryAllocateInfo memAllocationInfo = {
+                .sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO,
+                .allocationSize = memRequirements.size,
+                .memoryTypeIndex = findMemoryType(memRequirements.memoryTypeBits, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT)
+            };
+            if(vkAllocateMemory(vulkan->getDevice(), &memAllocationInfo, nullptr, &vertexBufferMemory) != VK_SUCCESS)
+            {
+                throw std::runtime_error("Failed to allocate vertex buffer memory.");
+            }
+            std::cout << "\t\t- Allocated memory for vertex buffer." << std::endl;
+            
+            // Copy data.
+            void* data;
+            vkMapMemory(vulkan->getDevice(), vertexBufferMemory, 0, vertexBufferCreateInfo.size, 0, &data);
+            memcpy(data, vertices.data(), static_cast<size_t>(vertexBufferCreateInfo.size));
+            vkUnmapMemory(vulkan->getDevice(), vertexBufferMemory);
+            std::cout << "\t\t- Copied vertex buffer data." << std::endl;
+        }
+        void renderer::initCommandBuffers()
+        {
             std::cout << "\t- Initializing command buffer." << std::endl;
-
-            // Create the command buffers.
             commandBuffers.resize(maxFramesInFlight);
             VkCommandBufferAllocateInfo commandBufferAllocateInfo = {
                 .sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO,
@@ -93,6 +134,25 @@ namespace auswahlen
                 }
             }
             std::cout << "\t\t- Initialization completed." << std::endl;
+        }
+
+        // Memory functions.
+        uint32_t renderer::findMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties)
+        {
+            // Find the index of memory type that that have all of the required properties.
+
+            // Get physical device's supported memory.
+            VkPhysicalDeviceMemoryProperties memProperties;
+            vkGetPhysicalDeviceMemoryProperties(vulkan->getPhysicalDevice(), &memProperties);
+
+            for (uint32_t i = 0; i < memProperties.memoryTypeCount; i++)
+            {
+                if ((typeFilter & (i << 1)) && (memProperties.memoryTypes[i].propertyFlags & properties) == properties)
+                {
+                    return i;
+                }
+            }
+            throw std::runtime_error("Cannot find the index of the suitable memory type.");
         }
 
         // Command functions.
@@ -147,8 +207,13 @@ namespace auswahlen
             };
             vkCmdSetScissor(buffer, 0, 1, &scissor);
 
+            // Bind multiple vertex buffers.
+            VkBuffer vertexBuffers[] = {vertexBuffer};
+            VkDeviceSize offsets[] = {0};
+            vkCmdBindVertexBuffers(buffer, 0, 1, vertexBuffers, offsets);
+
             // Draw 3 vertices with 1 instance.
-            vkCmdDraw(buffer, 3, 1, 0, 0);
+            vkCmdDraw(buffer, static_cast<uint32_t>(vertices.size()), 1, 0, 0);
 
             // End the command recording.
             vkCmdEndRenderPass(buffer);
@@ -160,8 +225,8 @@ namespace auswahlen
         /*------------------------------------------------------------
             Public functions.
         ------------------------------------------------------------*/
-        renderer::renderer(const vulkanCore* vulkanCore, const pipeline* pipeline)
-            : vulkan(vulkanCore), graphicsPipeline(pipeline)
+        renderer::renderer(const vulkanCore* vulkanCore, const pipeline* pipeline, const std::vector<vertex>& testVertices)
+            : vulkan(vulkanCore), graphicsPipeline(pipeline), vertices(testVertices)
         {
         }
 
@@ -171,6 +236,7 @@ namespace auswahlen
             {
                 vulkan = renderer.vulkan;
                 graphicsPipeline = renderer.graphicsPipeline;
+                vertices = renderer.vertices;
             }
             return *this;
         }
@@ -236,6 +302,8 @@ namespace auswahlen
         {
             std::cout << "Initializing renderer." << std::endl;
             initFrameBuffer();
+            initCommandPool();
+            initVertexBuffer();
             initCommandBuffers();
             initSyncObjects();
         }
@@ -251,6 +319,12 @@ namespace auswahlen
                 vkDestroySemaphore(vulkan->getDevice(), imageAvailableSemaphores[i], nullptr);
             }
             
+            std::cout << "\t- Destroying vertex buffer." << std::endl;
+            vkDestroyBuffer(vulkan->getDevice(), vertexBuffer, nullptr);
+            
+            std::cout << "\t- Freeing allocated memory." << std::endl;
+            vkFreeMemory(vulkan->getDevice(), vertexBufferMemory, nullptr);
+
             std::cout << "\t- Destroying command pool." << std::endl;
             vkDestroyCommandPool(vulkan->getDevice(), commandPool, nullptr);
 

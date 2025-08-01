@@ -17,3 +17,12 @@ target_link_libraries(GLFW INTERFACE
 )
 
 # GLC
+file(GLOB_RECURSE GLC_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/GLC/*/*.cu)
+add_library(GLC STATIC ${GLC_SOURCES})
+
+set_target_properties(GLC PROPERTIES
+    CUDA_SEPARABLE_COMPILATION ON
+)
+target_include_directories(GLC PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+)

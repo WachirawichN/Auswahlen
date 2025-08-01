@@ -19,4 +19,5 @@ target_include_directories(AUSWAHLEN_LIB PUBLIC
 )
 target_link_libraries(AUSWAHLEN_LIB PUBLIC
     GLFW
+    GLC
 )

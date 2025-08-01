@@ -2,48 +2,13 @@
 
 namespace GLC
 {
-    __host__ __device__ mat3::mat3()
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            value[i] = vec3();
-        }
-    }
-    __host__ __device__ mat3::mat3(float v0)
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 3; j++)
-            {
-                if (i == j) value[i][j] = v0;
-            }
-        }
-    }
-    __host__ __device__ mat3::mat3(const vec3& v0, const vec3& v1, const vec3& v2)
-    {
-        value[0] = v0;
-        value[1] = v1;
-        value[2] = v2;
-    }
-
     __host__ __device__ vec3& mat3::operator[](unsigned int index)
     {
-        return value[index];
+        return *(&x + index);
     }
     __host__ __device__ const vec3& mat3::operator[] (unsigned int index) const
     {
-        return value[index];
-    }
-    __host__ __device__ mat3& mat3::operator=(const mat3& matrix)
-    {
-        if (this != &matrix)
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                value[i] = matrix[i];
-            }
-        }
-        return *this;
+        return *(&x + index);
     }
 
     __host__ __device__ mat3 mat3::operator+(const mat3& matrix) const
@@ -51,7 +16,7 @@ namespace GLC
         mat3 out;
         for (int i = 0; i < 3; ++i)
         {
-            out[i] = value[i] + matrix[i];
+            out[i] = (*this)[i] + matrix[i];
         }
         return out;
     }
@@ -59,7 +24,7 @@ namespace GLC
     {
         for (int i = 0; i < 3; ++i)
         {
-            value[i] += matrix[i];
+            (*this)[i] += matrix[i];
         }
         return *this;
     }
@@ -69,7 +34,7 @@ namespace GLC
         mat3 out;
         for (int i = 0; i < 3; ++i)
         {
-            out[i] = value[i] - matrix[i];
+            out[i] = (*this)[i] - matrix[i];
         }
         return out;
     }
@@ -77,7 +42,7 @@ namespace GLC
     {
         for (int i = 0; i < 3; ++i)
         {
-            value[i] -= matrix[i];
+            (*this)[i] -= matrix[i];
         }
         return *this;
     }
@@ -87,7 +52,7 @@ namespace GLC
         mat3 out;
         for (int i = 0; i < 3; ++i)
         {
-            out[i] = value[i] * scalar;
+            out[i] = (*this)[i] * scalar;
         }
         return out;
     }
@@ -95,7 +60,7 @@ namespace GLC
     {
         for (int i = 0; i < 3; ++i)
         {
-            value[i] *= scalar;
+            (*this)[i] *= scalar;
         }
         return *this;
     }
@@ -119,7 +84,7 @@ namespace GLC
         {
             for (int row = 0; row < 3; row++)
             {
-                value[row][column] = dot(transposed[column], matrix[row]);
+                (*this)[row][column] = dot(transposed[column], matrix[row]);
             }
         }
         return *this;
@@ -143,7 +108,7 @@ namespace GLC
         mat3 out;
         for (int i = 0; i < 3; ++i)
         {
-            out[i] = value[i] / scalar;
+            out[i] = (*this)[i] / scalar;
         }
         return out;
     }
@@ -151,7 +116,7 @@ namespace GLC
     {
         for (int i = 0; i < 3; ++i)
         {
-            value[i] /= scalar;
+            (*this)[i] /= scalar;
         }
         return *this;
     }

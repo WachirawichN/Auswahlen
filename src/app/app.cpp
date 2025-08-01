@@ -32,7 +32,7 @@ namespace auswahlen
     }
     void app::initRenderer()
     {
-        renderer = graphics::renderer(&vulkan, &pipeline);
+        renderer = graphics::renderer(&vulkan, &pipeline, vertices);
         renderer.init();
     }
 
